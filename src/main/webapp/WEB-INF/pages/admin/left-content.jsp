@@ -24,21 +24,25 @@
 							Users Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a
-							href="${pageContext.request.contextPath}/admin/viewuser">Users
-								List</a></li>
-						<li><a
-							href="${pageContext.request.contextPath}/admin/adduser">Add
-								Users</a></li>
-					</ul></li>
+						<li>
+							<a href="${pageContext.request.contextPath}/admin/viewuser">
+							Users List
+							</a>
+						</li>
+						<li>
+							<a href="${pageContext.request.contextPath}/admin/adduser">Add Users</a>
+						</li>
+					</ul>
+				</li>
 
-				<li class="has_sub"><a href="javascript:void(0)"
-					class="waves-effect"> <i class="fa fa-th" aria-hidden="true"></i><span>
-							Category Management</span> <span class="menu-arrow"></span>
+				<li class="has_sub"><a href="javascript:void(0)" class="waves-effect"> 
+					<i class="fa fa-th" aria-hidden="true"></i>
+					<span>Category Management</span> 
+					<span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="categorylist.html ">Category List</a></li>
-						<li><a href="addcategory.html ">Add Category & Brand</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/viewcategory">Category List</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/addcategory">Add Category & Brand</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
@@ -47,8 +51,8 @@
 						class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="products.html ">Products List</a></li>
-						<li><a href="addproducts.html ">Add Products</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/viewproduct">Products List</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/addproduct">Add Products</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
@@ -56,8 +60,8 @@
 							Auction Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="auctionlist.html ">Auction List</a></li>
-						<li><a href="addauction.html ">Add Auction</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/viewauction">Auction List</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/addauction">Add Auction</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
@@ -65,7 +69,7 @@
 						aria-hidden="true"></i><span> Bids</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="bidhistory.html ">Bid History</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/bidhistory">Bid History</a></li>
 					</ul></li>
 			</ul>
 			<div class="clearfix"></div>
