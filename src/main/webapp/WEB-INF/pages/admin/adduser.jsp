@@ -134,7 +134,7 @@
 									<div class="col-lg-10">
 										<div class="input-group">
 											<input type="text" class="required form-control"
-												placeholder="mm/dd/yyyy" ng-model="dob.value" id="datepicker"> 
+												placeholder="mm/dd/yyyy" id="datepicker" ng-model="dob"> 
 											<span class="input-group-addon bg-custom b-0 text-white"><i
 												class="icon-calender"></i></span>
 										</div>

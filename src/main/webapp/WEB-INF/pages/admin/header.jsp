@@ -1,3 +1,4 @@
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/assets/images/auction.ico">
 <!-- Sweet Alert CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/static/assets/plugins/sweetalert/dist/sweetalert.css"

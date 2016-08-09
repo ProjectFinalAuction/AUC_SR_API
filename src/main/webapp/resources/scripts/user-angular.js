@@ -18,9 +18,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	// add record function
 	$scope.addUser = function(){
 		$scope.created_date = new Date();
-		$scope.dob = {
-			value: new Date().format('DD-MM-YYYY')	
-		};
+		alert(moment($scope.dob).format("YYYY-MM-DD"));
 		$http({
 			url: 'http://localhost:8080/rest/user',
 			method: 'POST',
@@ -30,7 +28,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "contact": $scope.contact,
 	  			  "created_by": $scope.created_by,
 	  			  "created_date": $scope.created_date,
-	  			  "dob": $scope.dob,
+	  			  "dob": moment($scope.dob).format("YYYY-MM-DD"),
 	  			  "email": $scope.email,
 	  			  "first_name": $scope.first_name,
 	  			  "gender": $scope.gender,

@@ -115,5 +115,7 @@ src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.wiz
 	});
 </script>
 
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/moment.js"></script>
 </body>
 </html>
