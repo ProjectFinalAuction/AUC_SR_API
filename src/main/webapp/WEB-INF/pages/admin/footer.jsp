@@ -91,17 +91,16 @@
 	type="text/javascript"></script>
 
 <!--Form Wizard-->
-<script
-	src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery.steps/build/jquery.steps.min.js"
-	type="text/javascript"></script>
+	<%-- <script
+		src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery.steps/build/jquery.steps.min.js"
+		type="text/javascript"></script> --%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 
 <!--wizard initialization-->
 <script
-	src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.wizard-init.js"
+src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.wizard-init.js"
 	type="text/javascript"></script>
-
 <script
 	src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js"
 	type="text/javascript"></script>

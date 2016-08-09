@@ -1,5 +1,4 @@
-
-
+<body class="fixed-left" ng-app="myApp" ng-controller="myCtrl">
 
 	<div class="bg-img-main"></div>
 

@@ -8,7 +8,7 @@
 
 <!-- header -->
 <jsp:include page="../admin/header.jsp"></jsp:include>
-<body class="fixed-left" ng-app="myApp" ng-controller="myCtrl">
+
 	<!-- menu -->
 	<jsp:include page="../admin/menu.jsp"></jsp:include>
 	<!-- left content -->

@@ -46,7 +46,7 @@
 										name *</label>
 									<div class="col-lg-10">
 										<input class=" form-control required" id="userName2"
-											name="userName" type="text" ng-model="userName">
+											name="userName" type="text" ng-model="user_name">
 									</div>
 								</div>
 								<div class="form-group clearfix">
@@ -63,9 +63,9 @@
 										Password *</label>
 									<div class="col-lg-10">
 										<input id="confirm2" name="confirm" type="password"
-											class="required form-control" ng-model="confrim" onChange="checkPasswordMatch();">
-										<br />
-										<div class="registrationFormAlert" id="divCheckPasswordMatch"></div>	
+											class="required form-control" ng-model="confrim"
+											onChange="checkPasswordMatch();"> <br />
+										<div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
 									</div>
 								</div>
 
@@ -80,7 +80,7 @@
 										*</label>
 									<div class="col-lg-10">
 										<input id="email2" name="email" type="text"
-											class="required email form-control">
+											class="required email form-control" ng-model="email">
 									</div>
 								</div>
 
@@ -89,7 +89,7 @@
 										Number *</label>
 									<div class="col-lg-10">
 										<input id="phone" name="phone" type="text" placeholder=""
-											data-mask="(999) 999-9999" class="required form-control">
+											class="required form-control" ng-model="contact">
 									</div>
 								</div>
 
@@ -105,7 +105,7 @@
 										Name *</label>
 									<div class="col-lg-10">
 										<input id="fname" name="fname" type="text"
-											class="required form-control">
+											class="required form-control" ng-model="first_name">
 									</div>
 								</div>
 
@@ -114,7 +114,7 @@
 										Name *</label>
 									<div class="col-lg-10">
 										<input id="lname" name="lname" type="text"
-											class="required form-control">
+											class="required form-control" ng-model="last_name">
 									</div>
 								</div>
 
@@ -122,7 +122,7 @@
 									<label class="col-lg-2 control-label " for="lname">Gender
 										*</label>
 									<div class="col-lg-10">
-										<select class="form-control select2">
+										<select class="form-control select2" ng-model="gender">
 											<option value="female">Female</option>
 											<option value="male">Male</option>
 										</select>
@@ -134,8 +134,8 @@
 									<div class="col-lg-10">
 										<div class="input-group">
 											<input type="text" class="required form-control"
-												placeholder="mm/dd/yyyy" id="datepicker"> <span
-												class="input-group-addon bg-custom b-0 text-white"><i
+												placeholder="mm/dd/yyyy" ng-model="dob.value" id="datepicker"> 
+											<span class="input-group-addon bg-custom b-0 text-white"><i
 												class="icon-calender"></i></span>
 										</div>
 										<!-- input-group -->
@@ -145,14 +145,15 @@
 								<div class="form-group clearfix">
 									<label class="col-lg-2 control-label">Address</label>
 									<div class="col-lg-10">
-										<textarea class="required form-control" rows="5"></textarea>
+										<textarea class="required form-control" rows="5"
+											ng-model="address"></textarea>
 									</div>
 								</div>
 
 								<div class="form-group portlets">
 									<label class="col-lg-2 control-label">Photo</label>
 									<div class="col-lg-10 dropzone dz-clickable" id="dropzone">
-										<div class="dz-default dz-message"></div>
+										<div class="dz-default dz-message" ng-model="photo"></div>
 									</div>
 								</div>
 
@@ -160,12 +161,13 @@
 									<label class="col-lg-2 control-label">Role</label>
 									<div class="col-lg-10">
 										<div class="radio radio-info radio-inline">
-											<input type="radio" id="role1" value="admin" name="role"
-												checked> <label for="role1"> Admin </label>
+											<input type="radio" id="role1" ng-value="admin" name="role"
+												ng-model="type"> <label for="role1">
+												Admin </label>
 										</div>
 										<div class="radio radio-inline">
-											<input type="radio" id="role2" value="user" name="role">
-											<label for="role2"> User </label>
+											<input type="radio" id="role2" ng-value="user" name="role"
+												ng-model="type"> <label for="role2"> User </label>
 										</div>
 									</div>
 								</div>
@@ -174,13 +176,14 @@
 									<label class="col-lg-2 control-label">Status</label>
 									<div class="col-lg-10">
 										<div class="radio radio-info radio-inline">
-											<input type="radio" id="status1" value="enable" name="status"
-												checked> <label for="status1"> Enable </label>
+											<input type="radio" id="status1" value="t" name="status"
+												ng-model="status"> <label for="status1">
+												Enable </label>
 										</div>
 										<div class="radio radio-inline">
-											<input type="radio" id="status2" value="disable"
-												name="status"> <label for="status2"> Disable
-											</label>
+											<input type="radio" id="status2" value="f"
+												name="status" ng-model="status"> <label
+												for="status2"> Disable </label>
 										</div>
 									</div>
 								</div>
@@ -188,12 +191,18 @@
 								<div class="form-group clearfix">
 									<label class="col-lg-2 control-label">Comment</label>
 									<div class="col-lg-10">
-										<textarea class="form-control" rows="5"></textarea>
+										<textarea class="form-control" rows="5" ng-model="comment"></textarea>
+									</div>
+								</div>
+								<div class="form-group clearfix">
+									<label class="col-lg-2 control-label"></label>
+									<div class="col-lg-10">
+										<button type="submit" class="btn btn-default" ng-click="addUser()">Submit</button>
 									</div>
 								</div>
 
 								</section>
-								<h3>Step Final</h3>
+								<!-- <h3>Step Final</h3>
 								<section>
 								<div class="form-group clearfix">
 									<div class="col-lg-12">
@@ -202,8 +211,10 @@
 											agree with the Terms and Conditions.</label>
 									</div>
 								</div>
-								</section>
+								</section> -->
 							</div>
+											
+							
 						</form>
 					</div>
 				</div>
@@ -212,7 +223,6 @@
 
 		</div>
 		<!-- container -->
-
 	</div>
 	<!-- content -->
 </div>
@@ -222,19 +232,21 @@
 
 
 <script type="text/javascript">
-function checkPasswordMatch() {
-    var password = $("#password2").val();
-    var confirmPassword = $("#confirm2").val();
+	function checkPasswordMatch() {
+		var password = $("#password2").val();
+		var confirmPassword = $("#confirm2").val();
 
-    if (password != confirmPassword){
-        $("#divCheckPasswordMatch").html("Passwords do not match!");
-        $("#confirm2").val("");
-    }else
-        $("#divCheckPasswordMatch").html("Passwords match. CLICK NEXT");
-}
-
+		if (password != confirmPassword) {
+			$("#divCheckPasswordMatch").html("Passwords do not match!");
+			$("#confirm2").val("");
+		} else
+			$("#divCheckPasswordMatch").html("Passwords match. CLICK NEXT");
+	}
+	
+	
 </script>
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
-
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>

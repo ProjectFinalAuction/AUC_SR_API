@@ -1,8 +1,6 @@
 /**
-* Theme: Ubold Admin Template
-* Author: Coderthemes
-* Form wizard page
-*/
+ * Theme: Ubold Admin Template Author: Coderthemes Form wizard page
+ */
 
 !function($) {
     "use strict";
@@ -15,12 +13,13 @@
             bodyTag: "section",
             transitionEffect: "slideLeft",
             onFinishing: function (event, currentIndex) { 
-                //NOTE: Here you can do form validation and return true or false based on your validation logic
+                // NOTE: Here you can do form validation and return true or
+				// false based on your validation logic
                 console.log("Form has been validated!");
                 return true; 
             }, 
             onFinished: function (event, currentIndex) {
-               //NOTE: Submit the form, if all validation passed.
+               // NOTE: Submit the form, if all validation passed.
                 console.log("Form can be submitted using submit method. E.g. $('#basic-form').submit()"); 
                 $("#basic-form").submit();
 
@@ -28,7 +27,7 @@
         });
         return $form_container;
     },
-    //creates form with validation
+    // creates form with validation
     FormWizard.prototype.createValidatorForm = function($form_container) {
         $form_container.validate({
             errorPlacement: function errorPlacement(error, element) {
@@ -48,13 +47,13 @@
                 return $form_container.valid();
             },
             onFinished: function (event, currentIndex) {
-                alert("Submitted to DB!");
+            // alert("Submitted to DB!");
             }
         });
 
         return $form_container;
     },
-    //creates vertical form
+    // creates vertical form
     FormWizard.prototype.createVertical = function($form_container) {
         $form_container.steps({
             headerTag: "h3",
@@ -65,22 +64,22 @@
         return $form_container;
     },
     FormWizard.prototype.init = function() {
-        //initialzing various forms
+        // initialzing various forms
 
-        //basic form
+        // basic form
         this.createBasic($("#basic-form"));
 
-        //form with validation
+        // form with validation
         this.createValidatorForm($("#wizard-validation-form"));
 
-        //vertical form
+        // vertical form
         this.createVertical($("#wizard-vertical"));
     },
-    //init
+    // init
     $.FormWizard = new FormWizard, $.FormWizard.Constructor = FormWizard
 }(window.jQuery),
 
-//initializing 
+// initializing
 function($) {
     "use strict";
     $.FormWizard.init()
