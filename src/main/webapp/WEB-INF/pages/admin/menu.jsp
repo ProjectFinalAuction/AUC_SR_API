@@ -6,7 +6,7 @@
 		<div class="topbar">
 			<!-- LOGO -->
 			<div class="topbar-left">
-				<div class="text-right">
+				<div class="text-right" style="padding-top:10px; margin-left:15px">
 					<a href="${pageContext.request.contextPath}/admin" class="logo"><img
 						src="${pageContext.request.contextPath}/resources/static/assets/images/logo.png"
 						class="img-responsive"></a>
@@ -15,7 +15,7 @@
 
 			<!-- Button mobile view to collapse sidebar menu -->
 			<div class="navbar navbar-default" role="navigation">
-				<div class="container">
+				<div class="container" style="padding:10px; padding-top:25px;">
 					<div class="">
 						<div class="pull-left">
 							<button class="button-menu-mobile open-left">
@@ -27,8 +27,7 @@
 						<ul class="nav navbar-nav navbar-right pull-right">
 							<li class="dropdown hidden-xs"><a href="#" data-target="#"
 								class="dropdown-toggle waves-effect" data-toggle="dropdown"
-								aria-expanded="true"> <i class="icon-bell"></i> <span
-									class="badge badge-xs badge-danger">3</span>
+								aria-expanded="true"> <i class="icon-bell"></i>
 							</a>
 								<ul class="dropdown-menu dropdown-menu-lg">
 									<li class="notifi-title"><span
@@ -129,7 +128,7 @@
 							<li class="hidden-xs"><a href="#"
 								class="right-bar-toggle waves-effect"><i
 									class="icon-settings"></i></a></li>
-							<li class="dropdown"><a href="#"
+							<li class="dropdown" style="margin-top:-10px;"><a href="#"
 								class="dropdown-toggle profile waves-effect"
 								data-toggle="dropdown" aria-expanded="true"> <img
 									src="${pageContext.request.contextPath}/resources/static/assets/images/users/avatar-1.jpg" alt="user-img"

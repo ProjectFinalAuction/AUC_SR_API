@@ -1,4 +1,4 @@
-<body>
+<body ng-app="myApp" ng-controller="myCtrl">
 
 <!-- ================ Starting Header Section ================= -->
 <header>

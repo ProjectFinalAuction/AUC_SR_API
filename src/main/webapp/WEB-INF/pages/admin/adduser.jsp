@@ -15,7 +15,6 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
-
 <div class="content-page">
 	<!-- Start content -->
 	<div class="content">
@@ -161,13 +160,14 @@
 									<label class="col-lg-2 control-label">Role</label>
 									<div class="col-lg-10">
 										<div class="radio radio-info radio-inline">
-											<input type="radio" id="role1" ng-value="admin" name="role"
-												ng-model="type"> <label for="role1">
-												Admin </label>
+											<input type="radio" id="role1" name="role"
+												ng-model="type" value="admin"> 
+												<label for="role1"> Admin </label>
 										</div>
 										<div class="radio radio-inline">
-											<input type="radio" id="role2" ng-value="user" name="role"
-												ng-model="type"> <label for="role2"> User </label>
+											<input type="radio" id="role2" name="role"
+												ng-model="type" value="bidder"> 
+												<label for="role2"> Bidder </label>
 										</div>
 									</div>
 								</div>
@@ -176,13 +176,13 @@
 									<label class="col-lg-2 control-label">Status</label>
 									<div class="col-lg-10">
 										<div class="radio radio-info radio-inline">
-											<input type="radio" id="status1" value="t" name="status"
-												ng-model="status"> <label for="status1">
+											<input type="radio" id="status1" name="status"
+												ng-model="status" value="true"> <label for="status1">
 												Enable </label>
 										</div>
 										<div class="radio radio-inline">
-											<input type="radio" id="status2" value="f"
-												name="status" ng-model="status"> <label
+											<input type="radio" id="status2" name="status" 
+												ng-model="status" value="false"> <label
 												for="status2"> Disable </label>
 										</div>
 									</div>
@@ -194,15 +194,15 @@
 										<textarea class="form-control" rows="5" ng-model="comment"></textarea>
 									</div>
 								</div>
-								<div class="form-group clearfix">
+								<!-- <div class="form-group clearfix">
 									<label class="col-lg-2 control-label"></label>
 									<div class="col-lg-10">
-										<button type="submit" class="btn btn-default" ng-click="addUser()">Submit</button>
+										<button type="submit" class="btn btn-default">Submit</button>
 									</div>
-								</div>
+								</div> -->
 
 								</section>
-								<!-- <h3>Step Final</h3>
+								<h3>Step Final</h3>
 								<section>
 								<div class="form-group clearfix">
 									<div class="col-lg-12">
@@ -211,11 +211,11 @@
 											agree with the Terms and Conditions.</label>
 									</div>
 								</div>
-								</section> -->
+								</section>
 							</div>
-											
-							
+
 						</form>
+						<button id="save" ng-click="addUser()" ng-show></button>
 					</div>
 				</div>
 			</div>
@@ -243,10 +243,11 @@
 			$("#divCheckPasswordMatch").html("Passwords match. CLICK NEXT");
 	}
 	
-	
 </script>
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
+	<!--wizard initialization-->
+<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.wizard-init.js" type="text/javascript"></script>

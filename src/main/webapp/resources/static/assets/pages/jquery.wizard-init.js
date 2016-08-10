@@ -48,6 +48,7 @@
             },
             onFinished: function (event, currentIndex) {
             // alert("Submitted to DB!");
+            	$('#save').click();
             }
         });
 
