@@ -28,14 +28,14 @@
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="uname">Username <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7">
-						      <input type="text" class="form-control" id="uname">
+						      <input type="text" class="form-control" id="uname" ng-model="user_name">
 						      <p>Your username will be shown when you bid, buy, and sell.</p>
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="pwd">Password <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7"> 
-						      <input type="password" class="form-control" id="pwd">
+						      <input type="password" class="form-control" id="pwd" ng-model="password">
 						    </div>
 						  </div>
 						  <div class="form-group">
@@ -58,7 +58,7 @@
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="email">Email <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7">
-						      <input type="email" class="form-control" id="email">
+						      <input type="email" class="form-control" id="email" ng-model="email">
 						    </div>
 						  </div>
 						  <div class="form-group">
@@ -80,19 +80,19 @@
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="fname">First Name <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7">
-						      <input type="text" class="form-control" id="fname">
+						      <input type="text" class="form-control" id="fname" ng-model="first_name">
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="lname">Last Name <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7">
-						      <input type="text" class="form-control" id="lname">
+						      <input type="text" class="form-control" id="lname" ng-model="last_name">
 						    </div>
 						  </div>
 						  <div class="form-group">
 						  	<div class="col-sm-3"></div>
 						  	<div class="col-sm-3">
-						    	<button type="button" class="btn btn-success btn-block">Complete Registration</button>
+						    	<button type="button" class="btn btn-success btn-block" ng-click="addUser()">Complete Registration</button>
 						    </div>
 						    <div class="col-sm-4"><p><small>ALL FIELDS MARKED WITH " <sup><i class="glyphicon glyphicon-star"></i></sup> " ARE REQUIRED</small></p></div>
 						  </div>
@@ -105,3 +105,8 @@
 	
 <!-- footer -->
 <jsp:include page="footer.jsp"/>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
+	
+	
+	

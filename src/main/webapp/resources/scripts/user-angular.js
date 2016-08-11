@@ -18,7 +18,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	// add record function
 	$scope.addUser = function(){
 		$scope.created_date = new Date();
-		alert(moment($scope.dob).format("YYYY-MM-DD"));
+		$scope.created_by = 'admin';
 		$http({
 			url: 'http://localhost:8080/rest/user',
 			method: 'POST',
@@ -40,8 +40,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "user_name": $scope.user_name
 			}
 		}).then(function(respone){
-//			swal("Good job!", "You clicked the button!", "success");
-//			alert("Success");
+			swal("Good job!", "You clicked the button!", "success");
 		});
 	}
 	$scope.loadme = function(){

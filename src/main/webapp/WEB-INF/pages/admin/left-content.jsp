@@ -15,8 +15,8 @@
 							Supplier Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="supplierslist.html">Supplier List</a></li>
-						<li><a href="addsuppliers.html">Add Suppliers</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/viewsupplier">Supplier List</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/addsupplier">Add Suppliers</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
