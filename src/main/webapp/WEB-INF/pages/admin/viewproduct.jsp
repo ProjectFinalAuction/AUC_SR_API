@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
@@ -14,12 +15,11 @@
 <jsp:include page="left-content.jsp"></jsp:include>
 
 
-
-
- <!-- ============================================================== -->
+ 
+ 	  <!-- ============================================================== -->
       <!-- Start right Content here -->
       <!-- ============================================================== -->                      
-      <div class="content-page">
+    <div class="content-page">
         <!-- Start content -->
         <div class="content">
           <div class="container">
@@ -36,6 +36,7 @@
 						</div>
 
             <!-- SECTION FILTER ================================================== -->
+            
             <div class="row">
               <div class="col-lg-12 col-md-12 col-sm-12 ">
                 <div class="portfolioFilter">
@@ -47,340 +48,100 @@
                 </div>
               </div>
             </div>
-
-            <div class="row port">
-              <div class="portfolioContainer m-b-15">
-                <div class="col-sm-6 col-lg-3 col-md-4 mobiles">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/1.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/1.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Samsung Gallaxy</a> </h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
+			
+			
+			<div class="row">
+            	<div class="col-lg-12">
+            		<div class="card-box">
+            			<div class="row">
+                  	<div class="col-sm-8">
+                  		<form role="form">
+                        <div class="form-group contact-search m-b-30">
+                        	<input type="text" id="search" class="form-control" placeholder="Search...">
+                            <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
+                        </div> <!-- form-group -->
+                      </form>
+                  	</div>
+                  	<div class="col-sm-4">
+                  		 <a href="${pageContext.request.contextPath}/admin/addproduct" class="btn btn-default btn-md waves-effect waves-light m-b-30"><i class="md md-add"></i> Add Product</a>
+                  	</div>
                   </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 other">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/2.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/2.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Branded camera A1254</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-half-o" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
+			                        
+            	  <div class="table-responsive">
+                    <table class="table table-hover mails m-0 table table-actions-bar">
+                      <thead>
+							<tr>
+								<th style="min-width: 95px;">
+									<div class="checkbox checkbox-primary checkbox-single m-r-15">
+                              			<input id="action-checkbox" type="checkbox">
+                              			<label for="action-checkbox"></label>
+                            		</div>
+  								</th>
+  								<th>Product ID</th>
+                          		<th>Product Name</th>
+                          		<th>Description</th>
+  								<th>Supplier</th>
+                          		<th>Category</th>  
+                          		<th>Quantity</th>   
+                          		<th>Brand</th>                 
+								<th style="min-width: 90px;">Action</th>
+							</tr>
+					</thead>
+					
+                    <tbody>
+                        <tr  ng-repeat="pro in products">
+	                          <td>
+	                            <div class="checkbox checkbox-primary m-r-15">
+	                              <input id="checkbox14" type="checkbox">
+	                              <label for="checkbox14"></label>
+	                            </div>
+	                          </td>
+	                          <td>{{pro.product_id}}</td>
+	                          <td>{{pro.product_name}}</td>
+	                          <td>{{pro.product_description}}</td>
+	                          <td>{{pro.supplier.contact_name}}</td>                                                       
+	                          <td>{{pro.category.category_name}}</td>
+	                          <td>{{pro.qty}}</td>
+	                          <td>{{pro.brand.brand_name}}</td>
+	                          <td>
+	                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
+	                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
+	                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
                   </div>
-                </div>
+            </div>
+           </div> <!-- end col -->   
+          </div>
+			
 
-                <div class="col-sm-6 col-lg-3 col-md-4 mobiles">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/3.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/3.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Samsung Gallaxy</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 desktops">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/4.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/4.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Apple iMac 27"</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 mobiles">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/5.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/5.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Sony xperia Aqua M4</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 other">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/6.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/6.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Branded headphone UB07</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-half-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 tablets">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/7.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/7.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Apple iPad</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 desktops">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/8.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/8.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Branded Laptop</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 mobiles">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/1.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/1.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Samsung Gallaxy</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 other">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/2.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/2.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Branded camera A1254</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-half-o" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 mobiles">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/3.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/3.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Samsung Gallaxy</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 col-md-4 desktops">
-                  <div class="product-list-box thumb">
-                    <a href="assets/images/products/big/4.jpg" class="image-popup" title="Screenshot-1">
-                      <img src="assets/images/products/big/4.jpg" class="thumb-img" alt="work-thumbnail">
-                    </a>
-
-                    <div class="product-action">
-                      <a href="#" class="btn btn-success btn-sm"><i class="md md-mode-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="md md-close"></i></a>
-                    </div>
-
-                    <div class="detail">
-                      <h4 class="m-t-0 m-b-5"><a href="#" class="text-white">Apple iMac 27"</a></h4>
-                      <div class="rating">
-                        <ul class="list-inline">
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star" href="#"></a></li>
-                          <li><a class="fa fa-star-o" href="#"></a></li>
-                        </ul>
-                      </div>
-                      <h5 class="m-0"><span class="text-custom">$ 125</span> <span class="text-muted m-l-15"> Stock :98pcs.</span></h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- End row -->
           </div> <!-- container -->                    
         </div> <!-- content -->
+        </div>
         
-        
+<script type="text/javascript">
+	var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($rootScope,$scope, $http) {
 
+			//$rootScope.test="hello";
+    	$rootScope.getmethod=function(){
+    		//alert("a");
+           $http.get("http://localhost:8080/rest/product")
+          		.then(function(response) {
+          		$rootScope.products = response.data.DATA;
+				console.log(response.data.DATA);
+				
+  			});
+        }
+    	$rootScope.getmethod();
+	});
+
+</script>
 
 <!-- footer -->
-<jsp:include page="footer.jsp"></jsp:include>      
+<jsp:include page="footer.jsp"></jsp:include>     
+ 
+ 
         

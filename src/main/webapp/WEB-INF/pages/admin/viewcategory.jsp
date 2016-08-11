@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 
 
+<!-- header -->
+<jsp:include page="header.jsp"></jsp:include>
+<!-- menu -->
+<jsp:include page="menu.jsp"></jsp:include>
+<!-- left content -->
+<jsp:include page="left-content.jsp"></jsp:include>
+
 <!-- ============================================================== -->
       <!-- Start right Content here -->
       <!-- ============================================================== -->                      
@@ -62,41 +69,25 @@
 										    </tr>
 									    </thead>
                       <tbody>
-                        <tr class="active">
+                        <tr class="" ng-repeat="category in Categories">
                           <td>
                             <div class="checkbox checkbox-primary m-r-15">
-                              <input id="checkbox5" type="checkbox" checked="">
+                              <input id="checkbox5" type="checkbox" >
                               <label for="checkbox5"></label>
                             </div>
                           </td>
-                          <td>C001</td>
-                          <td>Computer</td>
-                          <td>ffgg</td>
-                          <td>null</td>
-                          <td>active</td>
+                          <td>{{category.category_id}}</td>
+                          <td>{{category.category_name}}</td>
+                          <td>{{category.category_description}}</td>
+                          <td>{{category.parent_id}}</td>
+                          <td>{{category.status}}</td>
                           <td>
                           	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
                           	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
                           </td>
                         </tr>
 
-                        <tr>
-                          <td>
-                            <div class="checkbox checkbox-primary m-r-15">
-                              <input id="checkbox14" type="checkbox">
-                              <label for="checkbox14"></label>
-                            </div>
-                          </td>
-                          <td>C002</td>
-                          <td>Phone</td>
-                          <td>ssssssss</td>
-                          <td>null</td>                                                       
-                          <td>inactive</td>
-                          <td>
-                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
-                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
-                          </td>
-                        </tr>
+                       
                       </tbody>
                     </table>
                   </div>
@@ -105,3 +96,26 @@
             </div>
           </div> <!-- container -->             
         </div> <!-- content -->
+        
+        <script type="text/javascript">
+	var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($rootScope,$scope, $http) {
+
+			
+    	$rootScope.getmethod=function(){
+    		
+           $http.get("http://localhost:8080/rest/category")
+          		.then(function(response) {
+          		$rootScope.Categories = response.data.DATA;
+				console.log(response.data.DATA);
+				
+  			});
+        }
+    	$rootScope.getmethod();
+    	
+	});
+
+</script>
+        
+        <!-- footer -->
+<jsp:include page="footer.jsp"></jsp:include>      

@@ -46,79 +46,78 @@
                         <h5 class="text-muted text-uppercase m-t-0 m-b-20"><b>Add Product</b></h5>
                         <div class="form-group m-b-20">
                           <label for="productname">Product name <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" name="productname" id="productname" placeholder="e.g : Apple iMac">
+                          <input type="text" class="form-control" ng-model="name" name="productname" id="productname" placeholder="e.g : Nokia8800">
                         </div>
 
                         <div class="form-group m-b-20">
-                          <label for="prodescript">Product Description <span class="text-danger">*</span></label>
-                          <textarea class="form-control" rows="5" name="prodescript" id="prodescript" placeholder="Please enter description"></textarea>
+                          <label for="productdescription">Product Description <span class="text-danger">*</span></label>
+                          <textarea class="form-control" ng-model="description" rows="5" name="prodescript" id="productdescription" placeholder="Please enter description"></textarea>
                         </div>
 
                         <div class="form-group m-b-20">
                           <label>Categories <span class="text-danger">*</span></label>
-                          <select class="form-control select2" name="category">
-                            <option>Select</option>
-                            <optgroup label="Shopping">
-                              <option value="cat1">Shopping 1</option>
-                              <option value="cat2">Shopping 2</option>
-                              <option value="cat3">Shopping 3</option>
-                              <option value="cat4">Shopping 4</option>
+                          <select class="form-control select2" name="category" id="selectcategory" ng-model="category" aria-label="ngSelected demo">
+                          	
+                          	
+                          	
+                        <!-- TODO: Auto selet after load page -->
+                        
+                          	<optgroup name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+							      <option value="">---Please select---</option> 
+      						</optgroup>
+                          <!-- -------------------------------- --> 	
+                          	
+                          	
+                          	
+                            <optgroup ng-repeat="sub in Categories" label="{{sub.category_name}}">
+                            	
+                        		<option ng-repeat="s in sub.subCategories" value="{{s.category_id}}">
+                        			{{s.category_name}}
+                        		</option>
+                            	
                             </optgroup>
-                            <optgroup label="CRM">
-                              <option value="CRM1">Crm 1</option>
-                              <option value="CRM2">Crm 2</option>
-                              <option value="CRM3">Crm 3</option>
-                              <option value="CRM4">Crm 4</option>
-                            </optgroup>
-                            <optgroup label="eCommerce">
-                              <option value="E1">eCommerce 1</option>
-                              <option value="E2">eCommerce 2</option>
-                              <option value="E3">eCommerce 3</option>
-                              <option value="E4">eCommerce 4</option>
-                            </optgroup>
+                            
+                            
                           </select>
                         </div>
+
 
                         <div class="form-group m-b-20">
                           <label for="brand">Brand <span class="text-danger">*</span></label>
-                          <select class="form-control select2" name="brand">
-                            <option>Select</option>
-                            <optgroup label="Shopping">
-                              <option value="bra1">brand 1</option>
-                              <option value="bra2">brand 2</option>
-                              <option value="bra3">brand 3</option>
-                              <option value="bra4">brand 4</option>
+                         <select class="form-control select2" name="category" id="selectbrand" ng-model="brand" aria-label="ngSelected demo">
+                        <!-- TODO: Auto selet after load page -->
+                        
+                          	<optgroup name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+							      <option value="">---Please select---</option> 
+      						</optgroup>
+                          <!-- -------------------------------- --> 	
+                          
+                            <optgroup>
+                        		<!-- <option ng-repeat="brands in Brands" value="brand.brand_id">{{brand.brand_name}}</option> -->
+                        		<option ng-repeat="brands in Brands" value="{{brands.brand_id}}">{{brands.brand_name}}</option>
                             </optgroup>
-                            <optgroup label="CRM">
-                              <option value="CRM1">brand 1</option>
-                              <option value="CRM2">brand 2</option>
-                              <option value="CRM3">brand 3</option>
-                              <option value="CRM4">brand 4</option>
-                            </optgroup>
-                            <optgroup label="eCommerce">
-                              <option value="E1">brand 1</option>
-                              <option value="E2">brand 2</option>
-                              <option value="E3">brand 3</option>
-                              <option value="E4">brand 4</option>
-                            </optgroup>
+                            
+                            
                           </select>
                         </div>
 
+
+
                         <div class="form-group m-b-20">
                           <label for="qty">Quantity<span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" name="qty">
+                          <input type="text" class="form-control" name="qty" id="qty" ng-model="quantity">
                         </div>
 
                         <div class="form-group m-b-20">
                           <label class="m-b-15" for="prostatus">Status <span class="text-danger">*</span></label>
                           <br/>
                           <div class="radio radio-inline">
-                            <input type="radio" id="prostatus1" value="active" name="prostatus" checked="">
-                            <label for="prostatus1"> active </label>
+                            <input type="radio" id="status_active" value="active" name="prostatus" ng-model="radioValue" checked="">
+                            <label for="status_active"> active </label>
                           </div>
                           <div class="radio radio-inline">
-                            <input type="radio" id="prostatus2" value="inactive" name="prostatus">
-                            <label for="prostatus2"> inactive </label>
+                            <input type="radio" id="status_inactive" value="inactive" name="prostatus" ng-model="radioValue">
+                            <label for="status_inactive"> inactive </label>
                           </div>               
                         </div>                                                       
                       </div><!-- End card-box -->
@@ -194,8 +193,9 @@
               <div class="col-sm-12">           
                 <div class="text-center p-20">
                   <button type="button" class="btn w-sm btn-white waves-effect">Cancel</button>
-                  <button type="button" class="btn w-sm btn-default waves-effect waves-light">Save</button>
-                  <button type="button" class="btn w-sm btn-danger waves-effect waves-light">Delete</button>
+                  <button type="button" class="btn w-sm btn-default waves-effect waves-light" ng-click="addmethod()">Save</button>
+                  <button type="button" class="btn w-sm btn-white waves-effect" ng-click="testMethod()">test</button>
+           			
                 </div>
               </div>
             </div>
@@ -203,6 +203,116 @@
           </div><!-- End container -->
         </div><!-- End content -->
       </div><!-- End content-page -->
+      
+      <script type="text/javascript">
+			var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($rootScope,$scope, $http) {
+					
+					
+					
+					//TODO: auto seleted option
+					$scope.data = {
+						    singleSelect: null,
+						   };
+
+						   	$scope.forceUnknownOption = function() {
+						     $scope.data.singleSelect = 'nonsense';
+						   };
+					////////////////////////////////
+					
+					
+					
+					
+			       	$scope.testMethod=function(){
+			       		 alert($scope.brand);
+			       	}
+					
+					
+			       	$rootScope.addmethod=function () {
+			       		alert($scope.category);
+			       		$http({
+					      method:"POST",
+					      url:"http://localhost:8080/rest/product",
+					      data:{
+					    	  "brand_id": $scope.brand,
+					    	  "category_id":$scope.category,
+					    	  "product_description": $scope.description,
+					    	  "product_id":0,
+					    	  "product_name": $scope.name,
+					    	  "qty": $scope.quantity,
+					    	  "status":true,
+					    	  "supplier_id":1 
+					      }
+					    }).then(function(response){
+					    	
+					    	console.log(response.data.MESSAGE);
+					      
+					    }) 
+					
+					  }
+			       	
+			       	
+			       	
+			       	
+			       	
+			       	
+			       	
+			       	$rootScope.getCategory=function(){
+			    		//alert("a");
+			           $http.get("http://localhost:8080/rest/category")
+			          		.then(function(response) {
+			          		$rootScope.Categories = response.data.DATA;
+			          		//$scope.subcate = response.data.DATA.subCategories;
+							console.log(response.data.DATA);
+							
+			  			});
+			        }
+			    	$rootScope.getCategory();
+			    	
+			    	
+			    	
+			    	$rootScope.getBrand=function(){
+			    		//alert("a");
+			           $http.get("http://localhost:8080/rest/brand")
+			          		.then(function(response) {
+			          		$rootScope.Brands = response.data.DATA;
+							console.log(response.data.DATA);
+							
+			  			});
+			        }
+			    	$rootScope.getBrand();
+			    	
+			    	
+			    	
+			});
+
+	</script>
+    <!-- <script>  
+    var app = angular.module('myApp',[]);
+	app.controller('myCtrl', function($rootScope,$scope, $http) {
+		
+		$scope.testMethod=function(){
+       		alert("9999");
+       	}
+			$rootScope.addmethod=function () {
+		    var nam=$("#name").val();
+		    var aag=$("#age").val();
+		    $http({
+		      method:"POST",
+		      url:"http://localhost:8080/rest/product",
+		      data:{
+		              "AGE":aag,
+		              "NAME":nam
+		      }
+		    }).then(function(response){
+		        alert(response.data.MESSAGE);
+		        $rootScope.getmethod();
+		    })
+		
+		  }
+	}
+    </script> -->
+      
       
       <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
