@@ -69,40 +69,22 @@
 										    </tr>
 									    </thead>
                       <tbody>
-                        <tr class="active">
-                          <td>
-                            <div class="checkbox checkbox-primary m-r-15">
-                              <input id="checkbox5" type="checkbox" checked="">
-                              <label for="checkbox5"></label>
-                            </div>
-                          </td>
-                          <td>S001</td>
-                          <td>Shahedk</td>
-                          <td>Phnom Penh</td>
-                          <td>
-                            <a href="#">shahedk@dummy.com</a>
-                          </td>
-                          <td>012 345 678</td>
-                          <td>
-                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
-                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
-                          </td>
-                        </tr>
+                        
 
-                        <tr>
+                        <tr ng-repeat = "s in supplier">
                           <td>
                             <div class="checkbox checkbox-primary m-r-15">
                               <input id="checkbox14" type="checkbox">
                               <label for="checkbox14"></label>
                             </div>
                           </td>
-                          <td>S002</td>
-                          <td>Kurafire</td>
-                          <td>Siem Reap</td>
+                          <td>{{s.supplier_id}}</td>
+                          <td>{{s.contact_name}}</td>
+                          <td>{{s.address}}</td>
                           <td>
-                            <a href="#">kurafire@dummy.com</a>
+                            <a href="#">{{s.email}}</a>
                           </td>                                                       
-                          <td>099 876 543</td>
+                          <td>{{s.phone}}</td>
                           <td>
                           	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
                           	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
@@ -118,4 +100,6 @@
         </div> <!-- content -->
         
         <!-- footer -->
-<jsp:include page="footer.jsp"></jsp:include>     
+<jsp:include page="footer.jsp"></jsp:include>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/scripts/supplier-angular.js"></script>     
