@@ -1,3 +1,9 @@
+		
+		
+		</div>
+	</div>
+	<!-- ================ Ending Content Section ================= -->
+
 <!-- ================ Starting Footer Section ================= -->
 	<footer>
 		<div class="container">

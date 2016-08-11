@@ -9,9 +9,13 @@
 <jsp:include page="header.jsp"/>
 <!-- menu -->
 <jsp:include page="menu.jsp"/>
-
+<!-- left content -->
+<jsp:include page="left-content.jsp"/>
+<!-- right content -->
 
 
 
 <!-- footer -->
 <jsp:include page="footer.jsp"/>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script>

@@ -16,6 +16,7 @@
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/icons.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/pages.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/static/css/sol.css" rel="stylesheet" type="text/css" />
 
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/modernizr.min.js"></script>
 <script>
@@ -34,5 +35,6 @@
 	ga('create', 'UA-69506598-1', 'auto');
 	ga('send', 'pageview');
 </script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
 </head>

@@ -21,6 +21,7 @@
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.scrollTo.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.core.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.app.js"></script>
+<script src="${pageContext.request.contextPath}/resources/static/js/sol.js"></script>
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
@@ -73,6 +74,7 @@
 		jQuery('#datepickerEnd').datepicker();
 	});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/resources/static/js/moment.js"></script> --%>
 </body>
 </html>
