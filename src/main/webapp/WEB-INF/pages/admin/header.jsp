@@ -19,7 +19,7 @@
 <link href="${pageContext.request.contextPath}/resources/static/css/sol.css" rel="stylesheet" type="text/css" />
 
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/modernizr.min.js"></script>
-<script>
+<!-- <script>
 	(function(i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function() {
@@ -34,7 +34,7 @@
 
 	ga('create', 'UA-69506598-1', 'auto');
 	ga('send', 'pageview');
-</script>
+</script> -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
 </head>
