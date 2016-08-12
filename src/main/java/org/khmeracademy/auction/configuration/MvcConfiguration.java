@@ -1,6 +1,7 @@
 package org.khmeracademy.auction.configuration;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -30,4 +31,12 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		registry.addViewController("/admin/uploadImage").setViewName("/admin/uploadImage");
 		
 	}
+	
+	 @Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		//TODO: to map from ui:8080 to opt/images
+		 registry.addResourceHandler("/files/images/**").addResourceLocations("file:/opt/images/");
+		 
+	}
+	
 }

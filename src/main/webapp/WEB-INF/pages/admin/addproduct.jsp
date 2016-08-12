@@ -53,7 +53,7 @@
                           <label for="productdescription">Product Description <span class="text-danger">*</span></label>
                           <textarea class="form-control" ng-model="description" rows="5" name="prodescript" id="productdescription" placeholder="Please enter description"></textarea>
                         </div>
-
+						
                         <div class="form-group m-b-20">
                           <label>Categories <span class="text-danger">*</span></label>
                           <select class="form-control select2" name="category" id="selectcategory" ng-model="category" aria-label="ngSelected demo">
@@ -62,10 +62,10 @@
                           	
                         <!-- TODO: Auto selet after load page -->
                         
-                          	<optgroup name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+                           	<optgroup name="" id="" >
 							      <option value="">---Please select---</option> 
-      						</optgroup>
-                          <!-- -------------------------------- --> 	
+      						</optgroup> -->
+                         
                           	
                           	
                           	
@@ -74,18 +74,20 @@
                         		<option ng-repeat="s in sub.subCategories" value="{{s.category_id}}">
                         			{{s.category_name}}
                         		</option>
+                        		
                             	
-                            </optgroup>
+                            </optgroup>	
                             
                             
                           </select>
                         </div>
-
+											
 
                         <div class="form-group m-b-20">
                           <label for="brand">Brand <span class="text-danger">*</span></label>
                          <select class="form-control select2" name="category" id="selectbrand" ng-model="brand" aria-label="ngSelected demo">
-                        <!-- TODO: Auto selet after load page -->
+                        
+                        <!-- TODO: Auto select after load page -->
                         
                           	<optgroup name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
 							      <option value="">---Please select---</option> 
@@ -211,11 +213,11 @@
 					
 					
 					//TODO: auto seleted option
-					$scope.data = {
+					 	$scope.data = {
 						    singleSelect: null,
 						   };
 
-						   	$scope.forceUnknownOption = function() {
+					$scope.forceUnknownOption = function() {
 						     $scope.data.singleSelect = 'nonsense';
 						   };
 					////////////////////////////////
@@ -229,27 +231,41 @@
 					
 					
 			       	$rootScope.addmethod=function () {
-			       		alert($scope.category);
-			       		$http({
-					      method:"POST",
-					      url:"http://localhost:8080/rest/product",
-					      data:{
-					    	  "brand_id": $scope.brand,
-					    	  "category_id":$scope.category,
-					    	  "product_description": $scope.description,
-					    	  "product_id":0,
-					    	  "product_name": $scope.name,
-					    	  "qty": $scope.quantity,
-					    	  "status":true,
-					    	  "supplier_id":1 
-					      }
-					    }).then(function(response){
-					    	
-					    	console.log(response.data.MESSAGE);
-					      
-					    }) 
+			       		
+			       		
+			       			
+			       			
+			       			$scope.getFooUndef = function(){
+			       				
+			       				if (typeof $scope.category == 'undefined') {
+			       					alert("Undefined...");
+								}else{
+									$http({
+									      method:"POST",
+									      url:"http://localhost:8080/rest/product",
+									      data:{
+									    	  "brand_id": $scope.brand,
+									    	  "category_id":$scope.category,
+									    	  "product_description": $scope.description,
+									    	  "product_id":0,
+									    	  "product_name": $scope.name,
+									    	  "qty": $scope.quantity,
+									    	  "status":true,
+									    	  "supplier_id":1 
+									      }
+									    }).then(function(response){
+									    	
+									    	console.log(response.data.MESSAGE);
+									      
+									    }) 
+			       				}
+			       			}
+			       			$scope.getFooUndef();
+						
+						
+			       
 					
-					  }
+					}
 			       	
 			       	
 			       	
@@ -262,7 +278,8 @@
 			           $http.get("http://localhost:8080/rest/category")
 			          		.then(function(response) {
 			          		$rootScope.Categories = response.data.DATA;
-			          		//$scope.subcate = response.data.DATA.subCategories;
+			          		//$scope.subcate =$rootScope.Categories.subCategories;
+			          		
 							console.log(response.data.DATA);
 							
 			  			});

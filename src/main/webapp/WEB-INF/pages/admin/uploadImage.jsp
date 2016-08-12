@@ -37,7 +37,6 @@
  		  	        	//WRONG
  						//xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
  		  	        	
- 		  	        	
  						//xhr.setRequestHeader('Authorization', 'Basic ZWxpYnJhcnlBRE1JTjplbGlicmFyeVBAU1NXT1JE');
  		  	        },
  		            success: function(data) {

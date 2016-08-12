@@ -136,6 +136,26 @@
   			});
         }
     	$rootScope.getmethod();
+    	
+    	$http({
+		      method:"GET",
+		      url:"http://localhost:8080/rest/product/getimage",
+		      data:{
+		    	  "brand_id": $scope.brand,
+		    	  "category_id":$scope.category,
+		    	  "product_description": $scope.description,
+		    	  "product_id":0,
+		    	  "product_name": $scope.name,
+		    	  "qty": $scope.quantity,
+		    	  "status":true,
+		    	  "supplier_id":1 
+		      }
+		    }).then(function(response){
+		    	
+		    	console.log(response.data.MESSAGE);
+		      
+		    }) 
+    	$rootScope.getImg();
 	});
 
 </script>
