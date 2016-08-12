@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Auction</title>
+
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
 <!-- menu -->
@@ -45,10 +46,10 @@
 									Name *</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="supplier"
-										ng-model="" id="supplier">
+										ng-model="sup" id="supplier" required>
 										<option value="" ng-selected="true">-- Choose
-											supplier --</option>
-										<option ng-repeat="p in product" value="">{{p.supplier.contact_name}}</option>
+											Supplier --</option>
+										<option ng-repeat="s in product | unique: 'supplier.supplier_id'" value="{{s.supplier.supplier_id}}">{{s.supplier.contact_name}}</option>
 									</select>
 								</div>
 							</div>
@@ -57,10 +58,10 @@
 									*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-model="product_id" id="product">
-										<option ng-value="" ng-selected="true">-- Choose
+										ng-model="product_id" id="product" required>
+										<option value="" ng-selected="true">-- Choose
 											Product --</option>
-										<option ng-repeat="p in product" value="{{p.product_id}}">{{p.product_name}}</option>
+										<option ng-repeat="p in product" ng-show="p.supplier.supplier_id == sup" value="{{p.product_id}}">{{p.product_name}}</option>
 									</select>
 								</div>
 							</div>
@@ -69,13 +70,13 @@
 									Condition *</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-model="product_condition">
-										<option ng-value="" ng-selected="true">-- Condition
+										ng-model="product_condition" required>
+										<option value="" ng-selected="true">-- Choose Condition
 											--</option>
-										<option ng-value="Good">Good</option>
-										<option ng-value="Very Good">Very Good</option>
-										<option ng-value="Like New">Like New</option>
-										<option ng-value="New">New</option>
+										<option value="Good">Good</option>
+										<option value="Very Good">Very Good</option>
+										<option value="Like New">Like New</option>
+										<option value="New">New</option>
 									</select>
 								</div>
 							</div>
@@ -94,7 +95,7 @@
 								<div class="col-lg-10">
 									<input id="increseprice" name="increseprice" type="number"
 										class="required form-control" placeholder="$"
-										ng-model="increment_price">
+										ng-model="increment_price" required>
 								</div>
 							</div>
 
@@ -104,7 +105,7 @@
 								<div class="col-lg-10">
 									<input id="buyprice" name="buyprice" type="number"
 										class="required  form-control" placeholder="$"
-										ng-model="buy_price">
+										ng-model="buy_price" required>
 								</div>
 							</div>
 
@@ -165,7 +166,7 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="text-center p-20">
-										<button type="button"
+										<button type="submit"
 											class="btn w-sm btn-default waves-effect waves-light"
 											ng-click="addAuction()">
 											<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
@@ -194,9 +195,13 @@
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.min.js"></script>
+
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#product").select2();
-		$("#supplier").select2();
-	});
+//  		$(document).ready(function() {
+// 			$("#cboproduct").select2();
+// 			$("#cbosupplier").select2();
+// 		});
 </script>
+

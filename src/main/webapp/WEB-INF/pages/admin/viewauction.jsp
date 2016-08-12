@@ -11,6 +11,7 @@
 
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
+<body class="fixed-left" ng-app="vAucApp" ng-controller="vAucCtrl">
 <!-- menu -->
 <jsp:include page="menu.jsp"></jsp:include>
 <!-- left content -->
@@ -129,7 +130,7 @@
 										<td>{{a.product.product_id}}</td>
 										<td>{{a.product.product_name}}</td>
 										<td>{{a.product.supplier.contact_name}}</td>
-										<td>{{a.current_price}}</td>
+										<td>{{a.start_price}}</td>
 										<td>{{a.start_date}}</td>
 										<td>{{a.end_date}}</td>
 										<td><span>0 Bids</span></td>

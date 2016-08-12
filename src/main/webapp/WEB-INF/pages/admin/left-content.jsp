@@ -21,7 +21,7 @@
 
 				<li class="has_sub"><a href="javascript:void(0)"
 					class="waves-effect"> <i class="fa fa-user" aria-hidden="true"></i><span>
-							Users Management</span> <span class="menu-arrow"></span>
+							User Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
 						<li>
@@ -47,7 +47,7 @@
 
 				<li class="has_sub"><a href="javascript:void(0)"
 					class="waves-effect"> <i class="fa fa-shopping-cart"
-						aria-hidden="true"></i><span> Products Management</span> <span
+						aria-hidden="true"></i><span> Product Management</span> <span
 						class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">

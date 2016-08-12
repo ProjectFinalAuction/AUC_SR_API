@@ -1,9 +1,31 @@
 /**
  * 
  */
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http, $rootScope) {
+
+// for loop data to view auction
+var app1 = angular.module('vAucApp',[]);
+app1.controller('vAucCtrl', function($scope, $http, $rootScope) {
 	
+	$scope.currentDate = new Date();
+	// select all record to display
+	$scope.findAllAuctions = function() {
+		$http({
+			url : 'http://localhost:8080/rest/auction',
+			method : 'GET',
+
+		}).then(function(respone) {
+			$scope.auction = respone.data.DATA;
+		});
+	}
+	
+	//	load function
+	$scope.findAllAuctions();
+})
+
+
+var app = angular.module('myApp',['angular.filter']);
+app.controller('myCtrl', function($scope, $http) {
+
 	$scope.currentDate = new Date();
 	// select all record to display
 	$scope.findAllAuctions = function() {
@@ -31,12 +53,10 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 	
 	// add record function
 	$scope.addAuction = function() {
-		alert($scope.start_price);
-//		alert($('#product').val());
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({
-			url : 'http://localhost:8080/rest/auction1',
+			url : 'http://localhost:8080/rest/auction',
 			method : 'POST',
 			data : {
 				"buy_price" : $scope.buy_price,
@@ -61,14 +81,9 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 	$scope.loadme = function() {
 		alert("me");
 	}
-
+	
 		
-//	angular.element(document).ready(function () {
-//		$("#product_id").find("option").eq(0).remove();	
-//    });
-	
-	
 	// load all record
-	$scope.findAllAuctions();
 	$scope.findAllProducts();
+	$scope.findAllAuctions();
 })
