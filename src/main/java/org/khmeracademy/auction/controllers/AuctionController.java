@@ -36,7 +36,6 @@ public class AuctionController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addAuction(@RequestBody AddAuction addAuction){
-		System.out.println(addAuction.getProduct_id());
 		HttpEntity<Object> request = new HttpEntity<Object>(addAuction,header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-auction", HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);

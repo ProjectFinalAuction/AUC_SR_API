@@ -70,11 +70,11 @@
 	jQuery(document).ready(function() {
 
 		jQuery('#datepicker').datepicker();
-		jQuery('#datepickerStart').datepicker();
+// 		jQuery('#datepickerStart').datepicker();
 		jQuery('#datepickerEnd').datepicker();
 	});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/resources/static/js/moment.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/static/js/moment.js"></script>
 </body>
 </html>

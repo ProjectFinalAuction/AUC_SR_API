@@ -3,6 +3,8 @@
  */
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http, $rootScope) {
+	
+	$scope.currentDate = new Date();
 	// select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
@@ -29,10 +31,12 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 	
 	// add record function
 	$scope.addAuction = function() {
+		alert($scope.start_price);
+//		alert($('#product').val());
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({
-			url : 'http://localhost:8080/rest/auction',
+			url : 'http://localhost:8080/rest/auction1',
 			method : 'POST',
 			data : {
 				"buy_price" : $scope.buy_price,
@@ -40,16 +44,17 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 				"created_by" : $scope.created_by,
 				"created_date" : $scope.created_date,
 				"current_price" : $scope.current_price,
-				"end_date" : moment($scope.end_date).format("YYYY-MM-DD"),
+				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
 				"increment_price" : $scope.increment_price,
 				"product_condition" : $scope.product_condition,
-				"product_id" : $('#product_id').val(),
-				"start_date" : moment($scope.start_date).format("YYYY-MM-DD"),
+				"product_id" : $('#product').val(),
+				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD"),
 				"start_price" : $scope.start_price,
 				"status" : $scope.status
 			}
 		}).then(function(respone) {
 			 swal("Good job!", "You clicked the button!", "success");
+			 location.href = 'http://localhost:8080/admin/viewauction';
 		});
 	}
 
@@ -62,8 +67,8 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 //		$("#product_id").find("option").eq(0).remove();	
 //    });
 	
-	// load all record
-	//$scope.findAllAuctions();
 	
+	// load all record
+	$scope.findAllAuctions();
 	$scope.findAllProducts();
 })
