@@ -34,7 +34,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<form name="myForm">
+				
 						<div class="row">
 							<form name="categoryForm">
 							<div class="col-lg-6">
@@ -94,7 +94,7 @@
 											<button type="button" class="btn w-sm btn-white waves-effect">Cancel</button>
 											<button type="button"
 												class="btn w-sm btn-default waves-effect waves-light"
-												ng-click="addCategory()" ng-disabled="myForm.$invalid">Save</button>
+												ng-click="addCategory()" ng-disabled="categoryForm.$invalid">Save</button>
 											<button type="button"
 												class="btn w-sm btn-danger waves-effect waves-light">Delete</button>
 										</div>
@@ -104,7 +104,7 @@
 							</form>
 
 							<!-- Brand Section -->
-
+							<form name="brandForm">
 							<div class="col-lg-6">
 								<div class="card-box">
 									<h5 class="text-muted text-uppercase m-t-0 m-b-20">
@@ -143,14 +143,16 @@
 									<div class="row">
 										<div class="text-center p-20">
 											<button type="button" class="btn w-sm btn-white waves-effect">Cancel</button>
-											<button type="button" class="btn w-sm btn-default waves-effect waves-light" ng-click="addBrand()" ng-disabled="myForm.$invalid">Save</button>
+											<button type="button" class="btn w-sm btn-default waves-effect waves-light" ng-click="addBrand()" ng-disabled="brandForm.$invalid">Save</button>
 											<button type="button" class="btn w-sm btn-danger waves-effect waves-light">Delete</button>
 										</div>
 									</div>
 								</div>
+							
 							</div>
+							</form>
 						</div>
-					</form>
+					
 				</div>
 			</div>
 		</div>
