@@ -92,15 +92,24 @@
                     <tbody>
               			
                         <tr  ng-repeat="pro in products">
+                       
 	                          <td>
 	                            <div class="checkbox checkbox-primary m-r-15">
 	                              <input id="checkbox14" type="checkbox">
 	                              <label for="checkbox14"></label>
 	                            </div>
 	                          </td>
+	                          
 	                          <td><img
-											src={{pro.gallery.image_path}}
-											class="thumb-sm" alt="product-img"></td>
+											src="http://localhost:9999/files/images/2cb67aa4-5e39-41b1-a6c3-a57f349b24b6.jpg"
+											class="thumb-sm" alt="product-img" />
+								
+								<h1 ng-repeat="proimg in pro.gallery">
+                       		
+                       			{{proimg.image_path}}
+                       		  </h1>			
+							  </td>
+											
 	                          <td>{{pro.product_id}}</td>
 	                          <td>{{pro.product_name}}</td>
 	                          <td>{{pro.product_description}}</td>
@@ -108,6 +117,9 @@
 	                          <td>{{pro.category.category_name}}</td>
 	                          <td>{{pro.qty}}</td>
 	                          <td>{{pro.brand.brand_name}}</td>
+	                          
+	                          	
+	                          
 	                          <td>
 	                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
 	                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
@@ -129,7 +141,7 @@
 <script type="text/javascript">
 	var app = angular.module('myApp', []);
 		app.controller('myCtrl', function($rootScope,$scope, $http) {
-			$scope.imgSrc = "/files/images/";
+			
 			
 			//$rootScope.test="hello";
     	$rootScope.getmethod=function(){
@@ -137,6 +149,7 @@
            $http.get("http://localhost:8080/rest/product")
           		.then(function(response) {
           		$rootScope.products = response.data.DATA;
+          		/* alert(response.data.DATA.gallery.image_path); */
 				console.log(response.data.DATA);
 				
 				/* for ( var i = 0; i < $rootScope.products.length; i++) {

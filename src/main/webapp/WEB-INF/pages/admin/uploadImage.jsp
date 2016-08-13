@@ -50,6 +50,8 @@
  		        });
  			});
  			
+ 			
+ 			
  			$("#btnSave").click(function(){
  				alert($("#result").attr("src"));
  				$.ajax({
@@ -61,12 +63,10 @@
  						"product_id": $("#productID").val()
  						 
  					}),
- 					 beforeSend: function(xhr) {
- 						//xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
- 						xhr.setRequestHeader('Content-Type', 'application/json');
- 						//xhr.setRequestHeader('Authorization', 'Basic ZWxpYnJhcnlBRE1JTjplbGlicmFyeVBAU1NXT1JE');
- 		  	        },
- 					
+ 		  	     beforeSend: function(xhr) {
+                     xhr.setRequestHeader("Accept", "application/json");
+                     xhr.setRequestHeader("Content-Type", "application/json");
+                 },
  					success: function(data) {
  		            	alert(data);
  		            },
