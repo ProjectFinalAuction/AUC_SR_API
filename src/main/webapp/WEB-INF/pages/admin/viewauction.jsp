@@ -107,6 +107,7 @@
 										</th>
 										<th>Product_ID</th>
 										<th>Product_Name</th>
+										<th>Product_Condition</th>
 										<th>Supplier</th>
 										<th>Start Price</th>
 										<th>Start Date</th>
@@ -129,19 +130,19 @@
 											class="thumb-sm" alt="product-img"></td>
 										<td>{{a.product.product_id}}</td>
 										<td>{{a.product.product_name}}</td>
+										<td>{{a.product_condition}}</td>
 										<td>{{a.product.supplier.contact_name}}</td>
 										<td>{{a.start_price}}</td>
 										<td>{{a.start_date}}</td>
 										<td>{{a.end_date}}</td>
 										<td><span>0 Bids</span></td>
-										<td class="action"><a href="#custom-modal"
-											class="table-action-btn" data-animation="fadein"
-											data-plugin="custommodal" data-overlaySpeed="200"
-											data-overlayColor="#36404a"> <i class="fa fa-eye"></i>
-										</a>&nbsp;&nbsp;&nbsp; <a href="#dialog" class="table-action-btn"
-											data-animation="fadein" data-plugin="custommodal"
-											data-overlaySpeed="200" data-overlayColor="#36404a"><i
-												class="fa fa-trash-o"></i></a></td>
+										<td class="action">
+				                          	<a href="#custom-modal"><i class="fa fa-eye" title="View bids"></i>
+				                            </a>&nbsp;&nbsp;
+				                            <a href="#custom-modal"><i class="fa fa-pencil-square-o" title="Edit"></i>
+				                            </a>&nbsp;&nbsp;
+				                          	<a href="#dialog"><i class="fa fa-trash-o" title="Delete"></i></a>
+			                          	</td>
 									</tr>
 								</tbody>
 							</table>
@@ -188,6 +189,45 @@
 	</div>
 	<!-- content -->
 </div>
+
+<!-- Modal Show Bid Detail-->
+      <div id="custom-modal" class="modal-demo">
+        <button type="button" class="close" onclick="Custombox.close();">
+          <span>&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="custom-modal-title">Auction Details</h4>
+        <div class="custom-modal-text text-left table-responsive">
+            <table class="mails m-0 table table-striped m-0">
+              <thead>
+                <tr>
+                  <th>Date/Time</th>
+                  <th>Username</th>
+                  <th>Amount</th> 
+              </tr>
+            </thead>
+
+            <tbody class="table-striped">
+              <tr class="active">
+                <td>3/7/2014 5:50:23 PM</td>
+                <td>Dara</td>
+                <td>$200</td>
+              </tr>  
+              <tr>
+                <td>3/7/2014 5:51:23 PM</td>
+                <td>Sok</td>
+                <td>$190</td>
+              </tr>  
+              <tr>
+                <td>3/7/2014 5:51:23 PM</td>
+                <td>Sok</td>
+                <td>$190</td>
+              </tr>                                                 
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- End Modal Show Bid Detail-->
+      
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
 
