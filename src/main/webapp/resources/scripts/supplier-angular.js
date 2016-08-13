@@ -8,7 +8,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	$scope.findAllSuppliers = function(){
 		$http({
 			url: 'http://localhost:8080/rest/supplier',
-			method: 'GET',
+			method: 'GET'
 			
 		}).then(function(respone){
 			$scope.supplier = respone.data.DATA;

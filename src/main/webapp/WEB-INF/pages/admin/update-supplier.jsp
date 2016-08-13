@@ -36,7 +36,7 @@
                 <ol class="breadcrumb">
                   <li><a href="">iWant Auction</a></li>
                   <li><a href="">Supplier Management</a></li>
-                  <li class="active">Add/Edit Supplier</li>
+                  <li class="active">Edit Supplier</li>
                 </ol>
               </div>
             </div>
@@ -50,26 +50,26 @@
                       <div class="form-group clearfix">
                         <label  class="col-lg-2" for="contactname">Contact name <span class="text-danger">*</span></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" name="contactname" id="contactname" ng-model="contact_name" required>
+                          <input type="text" class="form-control" name="contactname" id="contactname" ng-model="contact_name" value="{{contact_name}}" required>
                         </div>
                       </div>
                       <div class="form-group clearfix">
                         <label class="col-lg-2" for="address">Address<span class="text-danger">*</span></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" name="address" id="address" ng-model="address" required>
+                          <input type="text" class="form-control" name="address" id="address" ng-model="address"  value="{{address}}" required>
                         </div>
                       </div>
                       <div class="form-group clearfix">
                         <label class="col-lg-2" for="phone">Phone<span class="text-danger">*</span></label>
                         
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" name="phone" id="phone" placeholder="ex : 012 99 98 99" ng-model="phone" required>
+                          <input type="text" class="form-control" name="phone" id="phone" placeholder="ex : 012 99 98 99" ng-model="phone" value="{{phone}}" required>
                         </div>
                       </div>
                       <div class="form-group clearfix">
                         <label class="col-lg-2" for="email">Email<span class="text-danger">*</span></label>
                         <div class="col-lg-10">
-                          <input type="email" class="form-control" name="email" id="email" placeholder="ex :example@gmail.com" ng-model="email" required>
+                          <input type="email" class="form-control" name="email" id="email" placeholder="ex :example@gmail.com" ng-model="email" value="{{email}}" required>
                         </div>
                       </div><br/>
                       <div class="row">

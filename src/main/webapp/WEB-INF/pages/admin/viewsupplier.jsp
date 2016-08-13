@@ -40,13 +40,13 @@
                   	<div class="col-sm-8">
                   		<form role="form">
                         <div class="form-group contact-search m-b-30">
-                        	<input type="text" id="search" class="form-control" placeholder="Search...">
-                            <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
+                        	<input type="text" id="search" class="form-control" placeholder="Search..." ng-model="str_search">
+                            <button type="submit" class="btn btn-white" ><i class="fa fa-search"></i></button>
                         </div> <!-- form-group -->
                       </form>
                   	</div>
                   	<div class="col-sm-4">
-                  		 <a href="addsuppliers.html" class="btn btn-default btn-md waves-effect waves-light m-b-30"><i class="md md-add"></i> Add Supliser</a>
+                  		 <a href="${pageContext.request.contextPath}/admin/addsupplier" class="btn btn-default btn-md waves-effect waves-light m-b-30"><i class="md md-add"></i> Add Supliser</a>
                   	</div>
                   </div>
 			                        
@@ -71,7 +71,7 @@
                       <tbody>
                         
 
-                        <tr ng-repeat = "s in supplier">
+                        <tr ng-repeat = "s in supplier | filter:str_search">
                           <td>
                             <div class="checkbox checkbox-primary m-r-15">
                               <input id="checkbox14" type="checkbox">
@@ -86,7 +86,7 @@
                           </td>                                                       
                           <td>{{s.phone}}</td>
                           <td>
-                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
+                          	<a href="${pageContext.request.contextPath}/admin/update-supplier" class="table-action-btn"><i class="md md-edit"></i></a>
                           	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
                           </td>
                         </tr>
