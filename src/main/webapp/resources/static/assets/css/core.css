@@ -1352,6 +1352,12 @@ body.fixed-left .side-menu.left {
   margin-top: 60px;
   padding: 20px 5px 15px 5px;
 }
+.rightContent .widget-style-2 i{
+	padding: 0px 40px;
+}
+.rightContent .widget-panel{
+	padding: 0px 0px;
+}
 .button-menu-mobile {
   background: transparent;
   border: none;

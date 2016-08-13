@@ -78,7 +78,7 @@
                   </div>
                   <div class="widget-panel widget-style-2">
                   <i class="md md-add-shopping-cart text-warning"></i>
-                  <h2 class="m-0 counter font-600">1256</h2>
+                  <h3><b class="counter">1256</b></h3>
                   <div class="m-t-5">Today's Bids</div>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                   </div>
                   <div class="widget-panel widget-style-2">
                     <i class="md md-store-mall-directory text-danger"></i>
-                    <h2 class="m-0 counter font-600">1118</h2>
+                    <h3><b class="counter">1118</b></h3>
                     <div class="m-t-5">Products Auction</div>
                   </div>
                 </div>
@@ -102,7 +102,7 @@
                   </div>
                   <div class="widget-panel widget-style-2">
                     <i class="md md-account-child text-custom"></i>
-                    <h2 class="m-0 counter font-600">85</h2>
+                    <h2><b class="counter">85</b></h2>
                     <div class="m-t-5">All Bidder</div>
                   </div>
                 </div>
