@@ -25,24 +25,12 @@ app1.controller('vAucCtrl', function($scope, $http, $rootScope) {
 
 var app = angular.module('myApp',['angular.filter']);
 app.controller('myCtrl', function($scope, $http) {
-
 	$scope.currentDate = new Date();
-	// select all record to display
-	$scope.findAllAuctions = function() {
-		$http({
-			url : 'http://localhost:8080/rest/auction',
-			method : 'GET',
 
-		}).then(function(respone) {
-			$scope.auction = respone.data.DATA;
-			// alert($scope.auction);
-		});
-	}
-	
 	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
 	$scope.findAllProducts = function(){		
 		$http({
-			url : 'http://localhost:9999/api/find-all-products',
+			url : 'http://localhost:8080/rest/product',
 			method : 'GET',
 
 		}).then(function(respone) {
@@ -72,9 +60,15 @@ app.controller('myCtrl', function($scope, $http) {
 				"start_price" : $scope.start_price,
 				"status" : $scope.status
 			}
-		}).then(function(respone) {
-			 swal("Good job!", "You clicked the button!", "success");
-			 location.href = 'http://localhost:8080/admin/viewauction';
+		}).then(function(respone) {;
+			swal({ 
+				title: "Success!",
+				text: "Auction has been inserted.",
+			    type: "success" 
+			  },
+			  function(){
+			    window.location.href = 'http://localhost:8080/admin/viewauction';
+			});
 		});
 	}
 
@@ -85,5 +79,4 @@ app.controller('myCtrl', function($scope, $http) {
 		
 	// load all record
 	$scope.findAllProducts();
-	$scope.findAllAuctions();
 })

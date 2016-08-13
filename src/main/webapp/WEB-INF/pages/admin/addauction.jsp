@@ -166,7 +166,7 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="text-center p-20">
-										<button type="submit"
+										<button type="button"
 											class="btn w-sm btn-default waves-effect waves-light"
 											ng-click="addAuction()">
 											<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
