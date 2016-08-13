@@ -31,7 +31,7 @@
 		});
 
 		$(".knob").knob();
-
+		$('.circliful-chart').circliful();
 	});
 </script>
 
@@ -47,14 +47,10 @@
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/counterup/jquery.counterup.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-knob/jquery.knob.js"></script>
+<script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
 
-<!-- Todojs  -->
-<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.todo.js"></script>
-
-<!-- chatjs  -->
-<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.chat.js"></script>
-<script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.dashboard.js"></script>
+<!-- Jquery Dashboard -->
+<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.dashboard_ecommerce.js"></script>
 
 <!--Form Validation-->
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrapvalidator/dist/js/bootstrapValidator.js" type="text/javascript"></script>

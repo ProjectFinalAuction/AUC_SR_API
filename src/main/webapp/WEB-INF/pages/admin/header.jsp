@@ -7,7 +7,12 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/sweetalert.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/sweetalert-dev.js"></script>
+<!-- Style Circliful Chart-->
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 
+<!--Radial Chart CSS -->
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/radial/radial.css" rel="stylesheet">
+   
 <!--Form Wizard-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery.steps/demo/css/jquery.steps.css" />
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
