@@ -28,7 +28,7 @@ public class CategoryController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> findAllCategories(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-main-category", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-categories", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 }
