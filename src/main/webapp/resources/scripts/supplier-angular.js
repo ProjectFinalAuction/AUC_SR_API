@@ -15,6 +15,18 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
+	
+	// select suplier by id
+	$scope.findSupplierById = function(id){
+		$http({
+			url: 'http://localhost:8080/rest/supplier/'+id,
+			method: 'GET'
+			
+		}).then(function(respone){
+			$scope.supplier = respone.data.DATA;
+		});
+	}
+	
 	// add record function
 	$scope.addSupplier = function(){
 		
@@ -39,6 +51,29 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			//=======================
 		});
 	}
+	
+	// update supplier
+	$scope.updateSupplier = function(id){
+		
+		$http({
+			url: 'http://localhost:8080/rest/supplier',
+			data: {
+				"address": $scope.address,
+				"contact_name": $scope.contact_name,
+				"email": $scope.email,
+				"phone": $scope.phone,
+				"supplier_id": id
+			},
+			method: 'PUT'
+		}).then(function(){
+			swal("Update Successfully!", "click this button.", "success");
+			$scope.findAllSuppliers();
+		},function(){});
+	}
+	
+	
+	
+	
 	$scope.loadme = function(){
 		alert("me");
 	};

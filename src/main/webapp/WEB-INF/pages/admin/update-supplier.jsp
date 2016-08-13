@@ -46,7 +46,7 @@
                 <form id="wizard-validation-form" name="myForm" >
                   <div class="row">                    
                     <div class="card-box">
-                      <h5 class="text-muted text-uppercase m-t-0 m-b-20"><b>Add Supplier</b></h5>
+                      <h5 class="text-muted text-uppercase m-t-0 m-b-20"><b>Update Supplier</b></h5>
                       <div class="form-group clearfix">
                         <label  class="col-lg-2" for="contactname">Contact name <span class="text-danger">*</span></label>
                         <div class="col-lg-10">
