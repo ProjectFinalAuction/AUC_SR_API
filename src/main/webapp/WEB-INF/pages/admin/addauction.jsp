@@ -126,9 +126,9 @@
 							<div class="form-group clearfix">
 								<label class="control-label col-lg-2">End Date *</label>
 								<div class="col-lg-10">
-									<div class="input-group">
+									<div class="input-group" >
 										<input type="text" class="required form-control"
-											placeholder="mm/dd/yyyy" id="datepickerEnd" ng-model="end_date">
+											placeholder="mm/dd/yyyy" id="datepickerEnd" name="endDate" ng-model="end_date">
 										<span class="input-group-addon bg-custom b-0 text-white"><i
 											class="icon-calender"></i></span>
 									</div>
@@ -199,9 +199,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.min.js"></script>
 
 <script type="text/javascript">
-//  		$(document).ready(function() {
-// 			$("#cboproduct").select2();
-// 			$("#cbosupplier").select2();
-// 		});
+	
 </script>
 

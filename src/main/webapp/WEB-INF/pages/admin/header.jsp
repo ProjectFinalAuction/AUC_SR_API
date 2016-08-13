@@ -16,6 +16,7 @@
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/icons.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/pages.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/static/assets/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/static/css/sol.css" rel="stylesheet" type="text/css" />
 
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/modernizr.min.js"></script>

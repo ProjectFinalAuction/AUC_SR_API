@@ -70,8 +70,10 @@
 	jQuery(document).ready(function() {
 
 		jQuery('#datepicker').datepicker();
-// 		jQuery('#datepickerStart').datepicker();
-		jQuery('#datepickerEnd').datepicker();
+		jQuery('#datepickerEnd').datepicker({
+	          format: 'mm/dd/yyyy',
+	          startDate: 'today'
+	      });
 	});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
