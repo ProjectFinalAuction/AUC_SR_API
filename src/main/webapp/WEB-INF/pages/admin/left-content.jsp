@@ -42,6 +42,7 @@
 				</a>
 					<ul class="list-unstyled">
 						<li><a href="${pageContext.request.contextPath}/admin/viewcategory">Category List</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/viewbrand">Brand List</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/addcategory">Add Category & Brand</a></li>
 					</ul></li>
 

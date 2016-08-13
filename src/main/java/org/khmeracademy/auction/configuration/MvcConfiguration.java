@@ -21,7 +21,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		registry.addViewController("/admin/addsupplier").setViewName("/admin/addsupplier");
 		registry.addViewController("/admin/viewsupplier").setViewName("/admin/viewsupplier");
 		registry.addViewController("/admin/addcategory").setViewName("/admin/addcategory");
-		registry.addViewController("/admin/addcategory").setViewName("/admin/addcategory");
+		registry.addViewController("/admin/viewbrand").setViewName("/admin/viewbrand");
 		registry.addViewController("/admin/viewcategory").setViewName("/admin/viewcategory");
 		registry.addViewController("/admin/addproduct").setViewName("/admin/addproduct");
 		registry.addViewController("/admin/viewproduct").setViewName("/admin/viewproduct");
@@ -37,7 +37,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	 @Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		//TODO: to map from ui:8080 to opt/images
-		 registry.addResourceHandler("/files/images/**").addResourceLocations("file:/opt/images/");
+		 registry.addResourceHandler("http://localhost:9999/files/images/**").addResourceLocations("file:/opt/images/");
 		 
 	}
 	

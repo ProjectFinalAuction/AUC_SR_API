@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -49,9 +50,9 @@ public class ProductController {
 	}
 	
 	//-----------------image controller
-	@RequestMapping("/getimage")
-	public ResponseEntity<Map<String,Object>> getAllImages(@RequestBody  Product product_name){
-		//System.out.println("Hello image");
+	@RequestMapping(value="/getimage/{product_name}" ,method = RequestMethod.GET)
+	public ResponseEntity<Map<String,Object>> getAllImages(@PathVariable String product_name){
+		//System.out.println("Hello image>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+product_name);
 		HttpEntity<Object> request= new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-image-by-product-name/"+product_name, HttpMethod.GET , request , Map.class) ;
 	return new ResponseEntity<Map<String,Object>>(response.getBody(), HttpStatus.OK);

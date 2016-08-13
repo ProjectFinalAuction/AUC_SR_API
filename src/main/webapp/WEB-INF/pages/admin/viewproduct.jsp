@@ -77,6 +77,7 @@
                               			<label for="action-checkbox"></label>
                             		</div>
   								</th>
+  								<th>Images</th>
   								<th>Product ID</th>
                           		<th>Product Name</th>
                           		<th>Description</th>
@@ -89,6 +90,7 @@
 					</thead>
 					
                     <tbody>
+              			
                         <tr  ng-repeat="pro in products">
 	                          <td>
 	                            <div class="checkbox checkbox-primary m-r-15">
@@ -96,6 +98,9 @@
 	                              <label for="checkbox14"></label>
 	                            </div>
 	                          </td>
+	                          <td><img
+											src={{pro.gallery.image_path}}
+											class="thumb-sm" alt="product-img"></td>
 	                          <td>{{pro.product_id}}</td>
 	                          <td>{{pro.product_name}}</td>
 	                          <td>{{pro.product_description}}</td>
@@ -124,7 +129,8 @@
 <script type="text/javascript">
 	var app = angular.module('myApp', []);
 		app.controller('myCtrl', function($rootScope,$scope, $http) {
-
+			$scope.imgSrc = "/files/images/";
+			
 			//$rootScope.test="hello";
     	$rootScope.getmethod=function(){
     		//alert("a");
@@ -133,29 +139,41 @@
           		$rootScope.products = response.data.DATA;
 				console.log(response.data.DATA);
 				
+				/* for ( var i = 0; i < $rootScope.products.length; i++) {
+					
+			
+					$rootScope.getImg = function(){
+			    		$http.get("http://localhost:8080/rest/product/getimage/"+$rootScope.products[i].product_name)
+			      		.then(function(response) {
+			      		$scope.imgs = response.data.DATA;
+			      		
+			      			
+			      			
+			      		alert($scope.imgs.image_path);
+						console.log(response.data.DATA);
+						
+						});
+			    	}
+					$rootScope.getImg();
+					
+				} */
+				
   			});
         }
     	$rootScope.getmethod();
     	
-    	$http({
-		      method:"GET",
-		      url:"http://localhost:8080/rest/product/getimage",
-		      data:{
-		    	  "brand_id": $scope.brand,
-		    	  "category_id":$scope.category,
-		    	  "product_description": $scope.description,
-		    	  "product_id":0,
-		    	  "product_name": $scope.name,
-		    	  "qty": $scope.quantity,
-		    	  "status":true,
-		    	  "supplier_id":1 
-		      }
-		    }).then(function(response){
-		    	
-		    	console.log(response.data.MESSAGE);
-		      
-		    }) 
-    	$rootScope.getImg();
+    	
+    	////////////////////////////////
+    	
+    	/* $rootScope.getImg = function(){
+    		$http.get("http://localhost:8080/rest/product/getimage/"+$rootScope.products.product_name)
+      		.then(function(response) {
+      		
+			console.log(response.data.DATA);
+			
+			});
+    	} */
+    	/*  $rootScope.getImg(); */
 	});
 
 </script>

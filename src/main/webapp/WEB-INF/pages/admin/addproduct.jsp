@@ -195,7 +195,7 @@
               <div class="col-sm-12">           
                 <div class="text-center p-20">
                   <button type="button" class="btn w-sm btn-white waves-effect">Cancel</button>
-                  <button type="button" class="btn w-sm btn-default waves-effect waves-light" ng-click="addmethod()">Save</button>
+                  <button type="button" class="btn w-sm btn-default waves-effect waves-light" ng-click="addProduct()">Save</button>
                   <button type="button" class="btn w-sm btn-white waves-effect" ng-click="testMethod()">test</button>
            			
                 </div>
@@ -213,34 +213,38 @@
 					
 					
 					//TODO: auto seleted option
-					 	$scope.data = {
+		/* 			 	$scope.data = {
 						    singleSelect: null,
 						   };
 
 					$scope.forceUnknownOption = function() {
 						     $scope.data.singleSelect = 'nonsense';
-						   };
+						   }; */
 					////////////////////////////////
 					
 					
 					
 					
-			       	$scope.testMethod=function(){
+			     /*   	$scope.testMethod=function(){
 			       		 alert($scope.brand);
 			       	}
+					 */
 					
-					
-			       	$rootScope.addmethod=function () {
-			       		
-			       		
+			       	$rootScope.addProduct=function () {
+						/*  alert($scope.category);
+						 alert($scope.brand);
+			       			 */
 			       			
-			       			
-			       			$scope.getFooUndef = function(){
+			       			 $scope.checkIfValueUndefine = function(){
 			       				
-			       				if (typeof $scope.category == 'undefined') {
-			       					alert("Undefined...");
+			       				if (typeof $scope.category == "undefined" ) {
+			       					alert("You have not chose ***Categoy");
+								}else if (typeof $scope.brand == "undefined" ){
+									alert("You have not chose ***Brand");
 								}else{
+									
 									$http({
+										  
 									      method:"POST",
 									      url:"http://localhost:8080/rest/product",
 									      data:{
@@ -259,8 +263,9 @@
 									      
 									    }) 
 			       				}
-			       			}
-			       			$scope.getFooUndef();
+			       			};
+			       			$scope.checkIfValueUndefine(); 
+			       			
 						
 						
 			       
@@ -275,8 +280,10 @@
 			       	
 			       	$rootScope.getCategory=function(){
 			    		//alert("a");
-			           $http.get("http://localhost:8080/rest/category")
-			          		.then(function(response) {
+			           $http.get("http://localhost:8080/rest/category/find-main-category")
+			          		 .then(function(response) {
+			          			
+			          
 			          		$rootScope.Categories = response.data.DATA;
 			          		//$scope.subcate =$rootScope.Categories.subCategories;
 			          		

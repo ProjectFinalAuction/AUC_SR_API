@@ -61,7 +61,7 @@
  						"product_id": $("#productID").val()
  						 
  					}),
- 					beforeSend: function(xhr) {
+ 					 beforeSend: function(xhr) {
  						//xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
  						xhr.setRequestHeader('Content-Type', 'application/json');
  						//xhr.setRequestHeader('Authorization', 'Basic ZWxpYnJhcnlBRE1JTjplbGlicmFyeVBAU1NXT1JE');
