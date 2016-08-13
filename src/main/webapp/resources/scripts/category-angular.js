@@ -25,7 +25,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
-	//AddSupplier
+	//AddCategory
 	$scope.addCategory = function(){
 		
 		$http({
@@ -51,6 +51,29 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
+	//AddBrand
+	$scope.addBrand = function(){
+//		alert("Hello");
+		$http({
+			url: 'http://localhost:8080/rest/brand',
+			method: 'POST',
+			data:{
+				  "brand_description": $scope.brand_description,
+				  "brand_name": $scope.brand_name,
+				  "status": $scope.brand_status
+	  			  
+			}
+		}).then(function(respone){
+			swal({ 
+				title: "Success!",
+				text: "Brand has been inserted.",
+			    type: "success" 
+			  },
+			  function(){
+//			    window.location.href = 'http://localhost:8080/admin/viewcategory';
+			});
+		});
+	}
 	
 	$scope.loadme = function(){
 		alert("me");
