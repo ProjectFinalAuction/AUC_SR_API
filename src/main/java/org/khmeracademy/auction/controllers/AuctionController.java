@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,13 @@ public class AuctionController {
 	public ResponseEntity<Map<String , Object>> findAllAuctions(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-auctions", HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/{auction-id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findAuctionByID(@PathVariable("auction-id") int id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-by-id/" + id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

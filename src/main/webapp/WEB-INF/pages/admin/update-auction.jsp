@@ -85,7 +85,7 @@
 								<div class="col-lg-10">
 									<input id="startprice" name="startprice" type="number"
 										class="required form-control" placeholder="$"
-										ng-model="start_price" required>
+										ng-model="start_price" ng-value="start_price">
 								</div>
 							</div>
 							<div class="form-group clearfix">
@@ -194,5 +194,5 @@
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.min.js"></script> -->

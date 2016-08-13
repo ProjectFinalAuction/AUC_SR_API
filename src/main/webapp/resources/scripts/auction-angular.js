@@ -18,6 +18,31 @@ app1.controller('vAucCtrl', function($scope, $http, $rootScope) {
 		});
 	}
 	
+	// get one record function
+	$scope.getAuctionById = function(id){
+		$http({
+			url: 'http://localhost:8080/rest/auction/'+id,
+			method: 'GET'
+		}).then(function(respone){
+//			$scope.contact_name = respone.data.DATA.supplier.contact_name;
+//			$scope.product_name = respone.data.DATA.product.product_name;
+//			$scope.product_condition = respone.data.DATA.product_condition
+			$scope.start_price = respone.data.DATA.start_price;
+//			$scope.increment_price = respone.data.DATA.increment_price;
+//			$scope.buy_price = respone.data.DATA.buy_price;
+//			$scope.start_date = respone.data.DATA.start_date;
+//			$scope.end_date = respone.data.DATA.end_date;
+//			$scope.status = respone.data.DATA.status;
+//			$scope.comment = respone.data.DATA.comment;
+//			console.log(respone.data.DATA.start_price);
+		});
+	}
+	
+	
+	$scope.alertme = function(){
+		alert("Me");
+	}
+
 	//	load function
 	$scope.findAllAuctions();
 })
@@ -26,7 +51,19 @@ app1.controller('vAucCtrl', function($scope, $http, $rootScope) {
 var app = angular.module('myApp',['angular.filter']);
 app.controller('myCtrl', function($scope, $http) {
 	$scope.currentDate = new Date();
+	
+	$scope.currentDate = new Date();
+	// select all record to display
+	$scope.findAllAuctions = function() {
+		$http({
+			url : 'http://localhost:8080/rest/auction',
+			method : 'GET',
 
+		}).then(function(respone) {
+			$scope.auction = respone.data.DATA;
+		});
+	}
+	
 	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
 	$scope.findAllProducts = function(){		
 		$http({
@@ -71,12 +108,35 @@ app.controller('myCtrl', function($scope, $http) {
 			});
 		});
 	}
-
-	$scope.loadme = function() {
-		alert("me");
+	
+	
+	// get one record function
+	$scope.getAuctionById = function(id){
+		$rootScope.ids = id;
+		alert($scope.start_price);
+		uhuh
+		$http({
+			url: 'http://localhost:8080/rest/auction/'+id,
+			method: 'GET'
+		}).then(function(respone){
+//			$scope.contact_name = respone.data.DATA.supplier.contact_name;
+//			$scope.product_name = respone.data.DATA.product.product_name;
+//			$scope.product_condition = respone.data.DATA.product_condition
+			$scope.start_price = respone.data.DATA.start_price;
+//			$scope.increment_price = respone.data.DATA.increment_price;
+//			$scope.buy_price = respone.data.DATA.buy_price;
+//			$scope.start_date = respone.data.DATA.start_date;
+//			$scope.end_date = respone.data.DATA.end_date;
+//			$scope.status = respone.data.DATA.status;
+//			$scope.comment = respone.data.DATA.comment;
+		});
 	}
 	
+	$scope.alertme = function(){
+		alert("Me");
+	}
 		
 	// load all record
+	$scope.findAllAuctions();
 	$scope.findAllProducts();
 })

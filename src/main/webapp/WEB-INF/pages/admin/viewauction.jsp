@@ -137,11 +137,12 @@
 										<td>{{a.end_date}}</td>
 										<td><span>0 Bids</span></td>
 										<td class="action">
+<!-- 										<button type="button" class="btn btn-info" ng-click="getAuctionById(a.auction_id)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button> -->
 				                          	<a href="#custom-modal"><i class="fa fa-eye" title="View bids"></i>
 				                            </a>&nbsp;&nbsp;
-				                            <a href="#custom-modal"><i class="fa fa-pencil-square-o" title="Edit"></i>
+				                            <a href="#" data-toggle="modal" data-target="#myModal" ng-click="getAuctionById(a.auction_id)"><i class="fa fa-pencil-square-o" title="Edit"></i>
 				                            </a>&nbsp;&nbsp;
-				                          	<a href="#dialog"><i class="fa fa-trash-o" title="Delete"></i></a>
+				                          	<a href="#" ng-click="alertme()"><i class="fa fa-trash-o" title="Delete"></i></a>
 			                          	</td>
 									</tr>
 								</tbody>
@@ -190,44 +191,42 @@
 	<!-- content -->
 </div>
 
-<!-- Modal Show Bid Detail-->
-      <div id="custom-modal" class="modal-demo">
-        <button type="button" class="close" onclick="Custombox.close();">
-          <span>&times;</span><span class="sr-only">Close</span>
-        </button>
-        <h4 class="custom-modal-title">Auction Details</h4>
-        <div class="custom-modal-text text-left table-responsive">
-            <table class="mails m-0 table table-striped m-0">
-              <thead>
-                <tr>
-                  <th>Date/Time</th>
-                  <th>Username</th>
-                  <th>Amount</th> 
-              </tr>
-            </thead>
+			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
 
-            <tbody class="table-striped">
-              <tr class="active">
-                <td>3/7/2014 5:50:23 PM</td>
-                <td>Dara</td>
-                <td>$200</td>
-              </tr>  
-              <tr>
-                <td>3/7/2014 5:51:23 PM</td>
-                <td>Sok</td>
-                <td>$190</td>
-              </tr>  
-              <tr>
-                <td>3/7/2014 5:51:23 PM</td>
-                <td>Sok</td>
-                <td>$190</td>
-              </tr>                                                 
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <!-- End Modal Show Bid Detail-->
-      
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Operation</h4>
+			      </div>
+			      <div class="modal-body">
+			      	<form class="form-horizontal" role="form" name="myForm">
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="name">Name</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="start_price" ng-model="start_price" value="{{start_price}}" name="start_price">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="age">Age</label>
+					    <div class="col-sm-10"> 
+					      <input type="text" class="form-control" id="age" ng-model="age" ng-value="age" name="txtage">
+					    </div>
+					  </div>
+					  <div class="form-group"> 
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-success" data-dismiss="modal" ng-click="updatePerson()">Update</button>
+					    </div>
+					  </div>
+					</form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+			      
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
 
