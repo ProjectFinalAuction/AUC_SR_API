@@ -50,7 +50,7 @@
                       <div class="form-group clearfix">
                         <label  class="col-lg-2" for="contactname">Contact name <span class="text-danger">*</span></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" name="contactname" id="contactname" ng-model="contact_name" required>
+                          <input type="text" class="form-control" name="contactname" id="contactname" ng-model="contact_name" autofocus required>
                         </div>
                       </div>
                       <div class="form-group clearfix">
@@ -63,7 +63,7 @@
                         <label class="col-lg-2" for="phone">Phone<span class="text-danger">*</span></label>
                         
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" name="phone" id="phone" placeholder="ex : 012 99 98 99" ng-model="phone" required>
+                          <input type="text" class="form-control" name="phone" id="phone" placeholder="Ex: 012735487 (not allow letter and space)" ng-model="phone" ng-pattern="/^\d+$/" required>
                         </div>
                       </div>
                       <div class="form-group clearfix">

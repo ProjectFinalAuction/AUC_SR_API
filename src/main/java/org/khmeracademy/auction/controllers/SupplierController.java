@@ -28,7 +28,7 @@ public class SupplierController {
 	@Autowired
 	private String WS_URL;
 	
-	
+	// get all suppliers
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> findAllSuppliers(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
@@ -36,6 +36,7 @@ public class SupplierController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	// get supplier by supplier_id
 	@RequestMapping(value="/{supplier_id}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> findSupplierById(@PathVariable int supplier_id){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
@@ -43,7 +44,7 @@ public class SupplierController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	
+	// add supplier
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addSupplier(@RequestBody AddSupplier addSupplier){
 		HttpEntity<Object> request = new HttpEntity<Object>(addSupplier,header);
@@ -51,10 +52,19 @@ public class SupplierController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	// update supplier
 	@RequestMapping(method = RequestMethod.PUT)
 	public ResponseEntity<Map<String , Object>> updateSupplier(@RequestBody AddSupplier addSupplier){
 		HttpEntity<Object> request = new HttpEntity<Object>(addSupplier,header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-supplier", HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
+	// delete supplier
+	@RequestMapping(value="/{supplier_id}",method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deleteSupplier(@PathVariable int supplier_id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-supplier/"+supplier_id, HttpMethod.DELETE , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 }

@@ -91,14 +91,15 @@
 										<td>{{s.address}}</td>
 										<td><a href="#">{{s.email}}</a></td>
 										<td>{{s.phone}}</td>
-										<!--  Update button and pass supplier_id to modal -->
+										<!--  Update supplier and pass supplier_id to modal -->
 										<td><a href="#" class="table-action-btn" data-toggle="modal"
 											data-target=".enterData" 
 											ng-click="findSupplierById(s.supplier_id)"
 											><i	class="md md-edit"></i></a> 
-										<!-- // Update button --> 
-											<a	href="#" class="table-action-btn"><i class="md md-close"></i></a>
-											 
+										<!-- end update supplier --> 
+										<!--  delete supplier -->
+											<a	href="#" class="table-action-btn" ng-click="deleteSupplier(s.supplier_id)"><i class="md md-close"></i></a>
+										<!--  end delete supplier -->	 
 										</td>
 									</tr>
 								</tbody>

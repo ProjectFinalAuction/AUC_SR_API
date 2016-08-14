@@ -48,13 +48,20 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  
 			}
 		}).then(function(response){
-			swal("Good job!", "You clicked the button!", "success");
+			swal({ 
+				title: "Success!",
+				text: "Supplier has been inserted.",
+			    type: "success" 
+			  },
+			  function(){
+			    window.location.href = 'http://localhost:8080/admin/viewsupplier';
+			});
 			// clear input fields
 			$scope.address = "";
 			$scope.contact_name = "";
 			$scope.email = "";
 			$scope.phone = "";
-			//=======================
+			// =======================
 		});
 	}
 	
@@ -77,7 +84,38 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		},function(error){});
 	}
 	
+	// delete supplier
+	$rootScope.deleteSupplier = function(id){	
+		
+		swal({
+		title: "Are you sure?",
+		text: "Your will not be able to recover this supplier!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
+		cancelButtonText: "No, cancel plx!",
+		closeOnConfirm: false,
+		closeOnCancel: false }, 
+		function(isConfirm){ 
+			if (isConfirm) {
+				$http({
+					url: 'http://localhost:8080/rest/supplier/'+id,
+					
+					method: 'DELETE'
+				}).
+				success(function(response){
+						$scope.findAllSuppliers();
+					});
+				swal("Deleted!", "The supplier has been deleted.", "success");
+
+				$scope.getData();
+			} else {
+				swal("Cancelled", "Your supplier is not deleted :)", "error");
+			}
+		});				
+		
 	
+	}
 	
 	
 	$scope.loadme = function(){
