@@ -24,10 +24,11 @@ app1.controller('vAucCtrl', function($scope, $http, $rootScope) {
 			url: 'http://localhost:8080/rest/auction/'+id,
 			method: 'GET'
 		}).then(function(respone){
+
 //			$scope.contact_name = respone.data.DATA.supplier.contact_name;
 //			$scope.product_name = respone.data.DATA.product.product_name;
 //			$scope.product_condition = respone.data.DATA.product_condition
-			$scope.start_price = respone.data.DATA.start_price;
+			$scope.start_price = respone.data.DATA.auction_id;
 //			$scope.increment_price = respone.data.DATA.increment_price;
 //			$scope.buy_price = respone.data.DATA.buy_price;
 //			$scope.start_date = respone.data.DATA.start_date;
@@ -35,6 +36,7 @@ app1.controller('vAucCtrl', function($scope, $http, $rootScope) {
 //			$scope.status = respone.data.DATA.status;
 //			$scope.comment = respone.data.DATA.comment;
 //			console.log(respone.data.DATA.start_price);
+			alert($scope.start_price);
 		});
 	}
 	
