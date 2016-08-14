@@ -66,9 +66,7 @@
 											<!-- TODO: Auto select after load page -->
 											<!-- -------------------------------- -->
 											<optgroup>
-												<option disabled="disabled" selected="selected">Please
-													Select</option>
-												<option ng-repeat="cat in category"
+												<option ng-repeat="cat in maincategory"
 													value="{{cat.category_id}}">{{cat.category_name}}</option>
 											</optgroup>
 										</select>

@@ -4,7 +4,7 @@
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$http,$rootScope){
-	// select all record to display
+	// Get All Category
 	$scope.findAllCategories = function(){
 		$http({
 			url: 'http://localhost:8080/rest/category',
@@ -21,7 +21,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			method: 'GET',
 			
 		}).then(function(respone){
-			$scope.category = respone.data.DATA;
+			$scope.maincategory = respone.data.DATA;
 		});
 	}
 	
@@ -51,7 +51,18 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
-	//AddBrand
+	//Get Brand
+	$scope.findAllBrands = function(){
+		$http({
+			url: 'http://localhost:8080/rest/category',
+			method: 'GET',
+			
+		}).then(function(respone){
+			$scope.category = respone.data.DATA;
+		});
+	}
+	
+	//Add Brand
 	$scope.addBrand = function(){
 //		alert("Hello");
 		$http({
@@ -74,11 +85,12 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			});
 		});
 	}
-	
+//	.........................................
 	$scope.loadme = function(){
 		alert("me");
 	};
 	
 	// load all record
 	$scope.findAllCategories();
+	$scope.findMainCategories();
 })

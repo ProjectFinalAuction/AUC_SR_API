@@ -4,7 +4,7 @@
 			<!-- ============ List Categpries Section ============= -->
 			<div class="col-md-3">		
 				<div class="panel-group" id="parent">
-				   <div class="panel panel-default" ng-repeat="c in category">
+				   <div class="panel panel-default" ng-repeat="c in maincategory">
 				     <div class="panel-heading">
 				       <h4 class="panel-title">
 				         <a data-toggle="collapse" href="#item-{{$index+1}}" data-parent="#parent">{{c.category_name}}</a>
