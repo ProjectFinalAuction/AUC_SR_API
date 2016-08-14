@@ -27,6 +27,43 @@
               </div>
             </div>
 
+			<div class="row">              
+              <div class="col-lg-4 col-sm-6">
+                <div class="card-box">
+                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="Today's Bids" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#ffbd4a" data-bgcolor="#505A66">
+                  </div>
+                  <div class="widget-panel widget-style-2">
+                  <i class="md md-add-shopping-cart text-warning"></i>
+                  <h3><b class="counter">1256</b></h3>
+                  <div class="m-t-5">Today's Bids</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <div class="card-box">
+                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="Products Auction" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#f05050" data-bgcolor="#505A66">
+                  </div>
+                  <div class="widget-panel widget-style-2">
+                    <i class="md md-store-mall-directory text-danger"></i>
+                    <h3><b class="counter">1118</b></h3>
+                    <div class="m-t-5">Products Auction</div>
+                  </div>
+                </div>
+               
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <div class="card-box">
+                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="All Bidder" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#5d9cec" data-bgcolor="#505A66">
+                  </div>
+                  <div class="widget-panel widget-style-2">
+                    <i class="md md-account-child text-custom"></i>
+                    <h2><b class="counter">85</b></h2>
+                    <div class="m-t-5">All Bidder</div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+			
             <div class="row">
               <div class="col-md-6 col-lg-4">
                 <div class="widget-bg-color-icon card-box fadeInDown animated">
@@ -69,45 +106,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="row">              
-              <div class="col-lg-4 col-sm-6">
-                <div class="card-box">
-                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="Today's Bids" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#ffbd4a" data-bgcolor="#505A66">
-                  </div>
-                  <div class="widget-panel widget-style-2">
-                  <i class="md md-add-shopping-cart text-warning"></i>
-                  <h3><b class="counter">1256</b></h3>
-                  <div class="m-t-5">Today's Bids</div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-lg-4 col-sm-6">
-                <div class="card-box">
-                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="Products Auction" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#f05050" data-bgcolor="#505A66">
-                  </div>
-                  <div class="widget-panel widget-style-2">
-                    <i class="md md-store-mall-directory text-danger"></i>
-                    <h3><b class="counter">1118</b></h3>
-                    <div class="m-t-5">Products Auction</div>
-                  </div>
-                </div>
-               
-              </div>
-              <div class="col-lg-4 col-sm-6">
-                <div class="card-box">
-                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="All Bidder" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#5d9cec" data-bgcolor="#505A66">
-                  </div>
-                  <div class="widget-panel widget-style-2">
-                    <i class="md md-account-child text-custom"></i>
-                    <h2><b class="counter">85</b></h2>
-                    <div class="m-t-5">All Bidder</div>
-                  </div>
-                </div>
-              </div>
-            </div>           
+            </div>         
                                        
             <div class="row">
             	<div class="col-lg-6">

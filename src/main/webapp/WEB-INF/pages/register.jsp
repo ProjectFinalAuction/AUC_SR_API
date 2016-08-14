@@ -11,8 +11,8 @@
 <!-- menu -->
 <jsp:include page="menu.jsp"/>
 
-<!-- content -->
-<div class="content" id="register">
+	<!-- content -->
+	<div class="content" id="register">
 		<div class="container-fluid">
 			<div class="col-md-12">
 				<div class="panel panel-default">
@@ -20,93 +20,189 @@
 				</div>
 			</div>
 			<!-- form register -->
-			<div class="col-md-12">
-				<div class="list-group">
-					<div class="list-group-item"><small>CREATE LOGIN</small></div>
-					<div class="list-group-item">
-						<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="list-group">
+						<div class="list-group-item"><small>CREATE LOGIN</small></div>
+						<div class="list-group-item">
 						  <div class="form-group">
-						    <label class="control-label col-sm-3" for="uname">Username <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+						    <label class="control-label col-sm-2" for="uname">Username <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7">
 						      <input type="text" class="form-control" id="uname" ng-model="user_name">
 						      <p>Your username will be shown when you bid, buy, and sell.</p>
 						    </div>
 						  </div>
 						  <div class="form-group">
-						    <label class="control-label col-sm-3" for="pwd">Password <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+						    <label class="control-label col-sm-2" for="pwd">Password <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7"> 
-						      <input type="password" class="form-control" id="pwd" ng-model="password">
-						    </div>
-						  </div>
-						  <div class="form-group">
-						    <label class="control-label col-sm-3" for="cpwd">Confirm Password <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-						    <div class="col-sm-7"> 
-						      <input type="password" class="form-control" id="cpwd">
+						      <input type="password" class="form-control" id="pwd" ng-model="password" required
+						      onkeyup="checkPassword();">
 						      <p>Your Password must be at least 6 characters long. Passwords are case sensitive</p>
-						    </div>
-						  </div>
-						</form>
-					</div>
-				</div>
-			</div> <!-- end div col-md-12 -->
-
-			<div class="col-md-12">
-				<div class="list-group">
-					<div class="list-group-item"><small>YOUR CONTACT INFORMATION</small></div>
-					<div class="list-group-item">
-						<form class="form-horizontal" role="form">
-						  <div class="form-group">
-						    <label class="control-label col-sm-3" for="email">Email <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-						    <div class="col-sm-7">
-						      <input type="email" class="form-control" id="email" ng-model="email">
+						      <span id="pass"></span>
 						    </div>
 						  </div>
 						  <div class="form-group">
-						    <label class="control-label col-sm-3" for="cemail">Confirm Email <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-						    <div class="col-sm-7">
-						      <input type="email" class="form-control" id="cemail">
+						    <label class="control-label col-sm-2" for="cpwd">Confirm Password <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+						    <div class="col-sm-7"> 
+						      <input type="password" class="form-control" id="cpwd" required onkeyup="checkPasswordMatch();">
+						      <span id="confirm"></span>
 						    </div>
 						  </div>
-						</form>
+						</div>
 					</div>
-				</div>
-			</div> <!-- end div col-md-12 -->
-
-			<div class="col-md-12">
+				</div> <!-- end div col-md-12 -->
+			</div>
+				<div class="col-md-12">
+					<div class="list-group">
+						<div class="list-group-item"><small>YOUR CONTACT INFORMATION</small></div>
+						<div class="list-group-item">						
+						  <div class="form-group">
+						    <label class="control-label col-sm-2" for="email">Email <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+						    <div class="col-sm-7">
+						      <input type="email" class="form-control" id="email" ng-model="email" required>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="control-label col-sm-2" for="cemail">Confirm Email <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+						    <div class="col-sm-7">
+						      <input type="email" class="form-control" id="cemail" required onkeyup="checkEmailMatch();">
+						      <span id="conemail"></span>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="control-label col-sm-2" for="contact">Contact <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+						    <div class="col-sm-7">
+						      <input type="text" class="form-control" id="contact" required placeholder="Ex: 012 345 678" ng-model="contact">
+						    </div>
+						  </div>						
+						</div>
+					</div>
+				</div> <!-- end div col-md-12 -->
+	
+				<div class="col-md-12">
 				<div class="list-group">
 					<div class="list-group-item"><small>ADDITIONAL INFORMATION</small></div>
-					<div class="list-group-item">
-						<form class="form-horizontal" role="form">
-						  <div class="form-group">
-						    <label class="control-label col-sm-3" for="fname">First Name <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-						    <div class="col-sm-7">
-						      <input type="text" class="form-control" id="fname" ng-model="first_name">
-						    </div>
+					<div class="list-group-item">						
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="fname">First Name <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					      <input type="text" class="form-control" id="fname" ng-model="first_name" required>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="lname">Last Name <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					      <input type="text" class="form-control" id="lname" ng-model="last_name" required>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="gender">Gender <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					      <select class="form-control select2" ng-model="gender">
+							<option value="female">Female</option>
+							<option value="male">Male</option>
+						  </select>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="gender">Date of Birth <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					      <div class="input-group">
+							<input type="text" class="required form-control"
+								placeholder="mm/dd/yyyy" id="datepicker" ng-model="dob"> 
+							<span class="input-group-addon bg-custom b-0 text-white"><i class="glyphicon glyphicon-calendar"></i></span>
 						  </div>
-						  <div class="form-group">
-						    <label class="control-label col-sm-3" for="lname">Last Name <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-						    <div class="col-sm-7">
-						      <input type="text" class="form-control" id="lname" ng-model="last_name">
-						    </div>
-						  </div>
-						  <div class="form-group">
-						  	<div class="col-sm-3"></div>
-						  	<div class="col-sm-3">
-						    	<button type="button" class="btn btn-success btn-block" ng-click="addUser()">Complete Registration</button>
-						    </div>
-						    <div class="col-sm-4"><p><small>ALL FIELDS MARKED WITH " <sup><i class="glyphicon glyphicon-star"></i></sup> " ARE REQUIRED</small></p></div>
-						  </div>
-						</form>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="gender">Address <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					    	<textarea class="required form-control" rows="5" ng-model="address"></textarea>								
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="role">Role <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					    	<div class="radio radio-info radio-inline">
+								<input type="radio" id="role1" name="role" ng-model="type" value="admin"> 
+								<label for="role1"> Admin </label>
+							</div>
+							<div class="radio radio-inline">
+								<input type="radio" id="role2" name="role" ng-model="type" value="bidder"> 
+								<label for="role2"> Bidder </label>
+							</div>						
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="status"> Status <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					    	<div class="radio radio-info radio-inline">
+								<input type="radio" id="status1" name="status" ng-model="status" value="true"> 
+								<label for="status1"> Enable </label>
+							</div>
+							<div class="radio radio-inline">
+								<input type="radio" id="status2" name="status" ng-model="status" value="false"> 
+								<label for="status2"> Disable </label>
+							</div>				
+					   	</div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="comment"> Comment <sup><i class="glyphicon glyphicon-star"></i></sup></label>
+					    <div class="col-sm-7">
+					    	<textarea class="form-control" rows="5" ng-model="comment"></textarea>			
+					   	</div>
+					  </div>
+					  <div class="form-group">
+					  	<div class="col-sm-2"></div>
+					  	<div class="col-sm-3">
+					    	<button type="button" class="btn btn-primary btn-block" ng-click="">Complete Registration</button>
+					    </div>
+					    <div class="col-sm-4"><p><small>ALL FIELDS MARKED WITH " <sup><i class="glyphicon glyphicon-star"></i></sup> " ARE REQUIRED</small></p></div>
+					  </div>						
 					</div>
 				</div>
 			</div> <!-- end div col-md-12 -->
+			</form>
 		</div> <!-- end div container -->
 	</div> <!-- end div main content information -->
 	
 <!-- footer -->
 <jsp:include page="footer.jsp"/>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
+	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js">
+</script>
+<script type="text/javascript">
+
+	function checkPassword(){
+		var password = $("#pwd").val();
+		if(password.length >= 6){
+			$("#pass").text("Password Correct Format...!");
+		}else{
+			$("#pass").text("Must best at least 6 characters!");
+		}
+	}
+	function checkPasswordMatch() {
+		var password = $("#pwd").val();
+		var confirmPassword = $("#cpwd").val();
+
+		if (password != confirmPassword) {
+			$("#confirm").text("Passwords do not match!");
+		} else
+			$("#confirm").text("Passwords matched!");
+	}
+	
+	function checkEmailMatch(){
+		var email = $("#email").val();
+		var cemail = $("#cemail").val();
+		
+		if(email != cemail){
+			$("#conemail").text("Email not match");
+		}else{
+			$("#conemail").text("Email matched!");
+		}
+	}
+</script>
 	
 	
 	

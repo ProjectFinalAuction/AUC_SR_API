@@ -1,5 +1,5 @@
 <!-- ================ Starting Content Section ================= -->
-	<div class="content">
+	<div class="content panle1">
 		<div class="row">
 			<!-- ============ List Categpries Section ============= -->
 			<div class="col-md-3">		
