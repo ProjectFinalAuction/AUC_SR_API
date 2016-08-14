@@ -31,7 +31,7 @@
 						    <div class="col-sm-7">
 						      <input type="text" class="form-control" id="uname" ng-model="user_name">
 						      <p>Your username will be shown when you bid, buy, and sell.</p>
-						    </div>
+						    </div>						    
 						  </div>
 						  <div class="form-group">
 						    <label class="control-label col-sm-2" for="pwd">Password <sup><i class="glyphicon glyphicon-star"></i></sup></label>
@@ -49,9 +49,10 @@
 						      <span id="confirm"></span>
 						    </div>
 						  </div>
-						</div>
+						</div>						
 					</div>
-				</div> <!-- end div col-md-12 -->
+				</div> <!-- end div col-md-9 -->
+				
 			</div>
 				<div class="col-md-12">
 					<div class="list-group">
@@ -156,22 +157,20 @@
 					  <div class="form-group">
 					  	<div class="col-sm-2"></div>
 					  	<div class="col-sm-3">
-					    	<button type="button" class="btn btn-primary btn-block" ng-click="">Complete Registration</button>
+					    	<button type="submit" class="btn btn-primary btn-block" ng-click="addUser()">Complete Registration</button>
 					    </div>
 					    <div class="col-sm-4"><p><small>ALL FIELDS MARKED WITH " <sup><i class="glyphicon glyphicon-star"></i></sup> " ARE REQUIRED</small></p></div>
 					  </div>						
 					</div>
 				</div>
-			</div> <!-- end div col-md-12 -->
+				</div> <!-- end div col-md-12 -->
 			</form>
 		</div> <!-- end div container -->
 	</div> <!-- end div main content information -->
 	
 <!-- footer -->
 <jsp:include page="footer.jsp"/>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js">
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
 <script type="text/javascript">
 
 	function checkPassword(){

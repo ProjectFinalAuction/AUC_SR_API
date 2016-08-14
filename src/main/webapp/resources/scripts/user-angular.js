@@ -28,19 +28,20 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "contact": $scope.contact,
 	  			  "created_by": $scope.created_by,
 	  			  "created_date": $scope.created_date,
-	  			  "dob": moment($scope.dob).format("YYYY-MM-DD"),
+	  			  "dob": moment($('#datepicker').val()).format("YYYY-MM-DD"),
 	  			  "email": $scope.email,
 	  			  "first_name": $scope.first_name,
 	  			  "gender": $scope.gender,
 	  			  "last_name": $scope.last_name,
 	  			  "password": $scope.password,
 	  			  "photo": $scope.photo,
-	  			  "status": $scope.status,
+	  			  "status": ($scope.status==undefined)?true:$scope.status,
 	  			  "type": $scope.type,
 	  			  "user_name": $scope.user_name
 			}
 		}).then(function(respone){
 			swal("Good job!", "You clicked the button!", "success");
+
 		});
 	}
 	$scope.loadme = function(){

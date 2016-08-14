@@ -2,10 +2,8 @@
 	href="${pageContext.request.contextPath}/resources/static/assets/images/auction.ico">
 
 <!-- angular -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.min.js">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/assets/js/angular.min.js">
-
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/assets/js/angular.min.js"></script>
 
 <!-- Sweet Alert CSS -->
 <link rel="stylesheet" type="text/css"

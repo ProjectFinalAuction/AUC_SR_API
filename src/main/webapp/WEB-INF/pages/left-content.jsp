@@ -13,7 +13,7 @@
 				     </div>
 				     <div class="panel-collapse collapse" id="item-{{$index+1}}">
 				       <ul class="list-group">
-				         <li class="list-group-item" ng-repeat="subCategory in c.subCategories">{{subCategory.category_name}}</li>
+				         <li class="list-group-item" ng-repeat="subCategory in c.subCategories">&nbsp;&nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{subCategory.category_name}}</li>
 				       </ul>
 				     </div>
 				   </div>

@@ -41,6 +41,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/static/js/bootstrap.min.js">
 </script>
+<script src="${pageContext.request.contextPath}/resources/static/assets/plugins/moment/moment.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/dropzone/dist/dropzone.js"></script>
