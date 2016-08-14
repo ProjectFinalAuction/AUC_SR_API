@@ -57,10 +57,10 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			    window.location.href = 'http://localhost:8080/admin/viewsupplier';
 			});
 			// clear input fields
-			$scope.address = "";
+			/*$scope.address = "";
 			$scope.contact_name = "";
 			$scope.email = "";
-			$scope.phone = "";
+			$scope.phone = "";*/
 			// =======================
 		});
 	}
@@ -108,7 +108,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 					});
 				swal("Deleted!", "The supplier has been deleted.", "success");
 
-				$scope.getData();
+				//$scope.findAllSuppliers();
 			} else {
 				swal("Cancelled", "Your supplier is not deleted :)", "error");
 			}
