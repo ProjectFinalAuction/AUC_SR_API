@@ -226,9 +226,9 @@
 									*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-options="p.product_id as p.product_name for p in product"
-										ng-model="product_id" ng-value="product_name" >
-<!-- 										<option value="" style="display:none">-- Choose	Product --</option> -->
+										ng-model="pro"
+										ng-options="p.product_id as p.product_name for p in product">
+										<option value="" style="display:none">-- Choose	Product --</option>
 									</select>
 								</div>
 							</div>

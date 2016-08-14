@@ -77,14 +77,15 @@ app.controller('myCtrl', function($scope, $http) {
 	
 	// get one record function
 	$scope.getAuctionById = function(id){
-	
+		$scope.pro =2;
 		$http({
 			url: 'http://localhost:8080/rest/auction/'+id,
 			method: 'GET'
 		}).then(function(respone){
+			
 //			$scope.contact_name = respone.data.DATA.supplier.contact_name;
-//			$scope.sup = respone.data.DATA.supplier.supplier_id;
-//			$scope.product_name = respone.data.DATA.product.product_name;
+			$scope.sup = respone.data.DATA.product.supplier.supplier_id;
+//			$scope.product = respone.data.DATA.product.product_id;
 			$scope.product_condition = respone.data.DATA.product_condition
 			$scope.start_price = respone.data.DATA.start_price;
 			$scope.increment_price = respone.data.DATA.increment_price;
@@ -92,8 +93,9 @@ app.controller('myCtrl', function($scope, $http) {
 			$scope.start_date = moment(respone.data.DATA.start_date).format("MM/DD/YYYY");
 			$scope.end_date = moment(respone.data.DATA.end_date).format("MM/DD/YYYY");
 			$scope.status = respone.data.DATA.status;
-			$scope.comment = respone.data.DATA.comment;
-			alert(respone.data.DATA.supplier.supplier_id);
+			$scope.comment = respone.data.DATA.comment;			
+			$scope.findProductsHasSupplier($scope.sup);
+			$scope.pro = respone.data.DATA.product.product_id;
 		});
 	}
 	
