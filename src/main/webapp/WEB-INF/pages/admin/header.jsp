@@ -42,5 +42,12 @@
 	ga('send', 'pageview');
 </script> -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-
+<style type="text/css">
+#myModal .modal-content{
+	background-color: #36404a;
+}
+#myModal .modal-header .modal-title {
+    color: #f9f8f8;
+}
+</style>
 </head>

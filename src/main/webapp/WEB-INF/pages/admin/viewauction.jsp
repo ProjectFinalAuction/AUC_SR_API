@@ -15,7 +15,6 @@
 
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
-<body class="fixed-left" ng-app="vAucApp" ng-controller="vAucCtrl">
 	<!-- menu -->
 	<jsp:include page="menu.jsp"></jsp:include>
 	<!-- left content -->
@@ -199,7 +198,7 @@
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog" style="background-color:black">
+	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -208,148 +207,145 @@
 				</div>
 				<div class="modal-body">
 					<form id="wizard-validation-form" action="/index">
-						<section>
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label" for="supplier">Supplier
-								Name *</label>
-							<div class="col-lg-10">
-								<select class="form-control required" name="supplier"
-									ng-model="sup" id="supplier" required>
-									<option value="" ng-selected="true">-- Choose Supplier
-										--</option>
-									<option value="{{s.supplier.supplier_id}}">{{s.supplier.contact_name}}</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label" for="product">Product
-								*</label>
-							<div class="col-lg-10">
-								<select class="form-control required" name="product"
-									ng-model="product_id" id="product" required>
-									<option value="" ng-selected="true">-- Choose Product
-										--</option>
-									<option ng-repeat="p in product"
-										ng-show="p.supplier.supplier_id == sup"
-										value="{{p.product_id}}">{{p.product_name}}</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label" for="product">Product
-								Condition *</label>
-							<div class="col-lg-10">
-								<select class="form-control required" name="product"
-									ng-model="product_condition" required>
-									<option value="" ng-selected="true">-- Choose
-										Condition --</option>
-									<option value="Good">Good</option>
-									<option value="Very Good">Very Good</option>
-									<option value="Like New">Like New</option>
-									<option value="New">New</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label" for="startprice">
-								Start Price *</label>
-							<div class="col-lg-10">
-								<input id="startprice" ng-value	="start_price1" name="startprice" type="number"
-									class="required form-control" placeholder="$"
-									ng-model="start_price" required>
-							</div>
-						</div>
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="increseprice">
-								Increment Price *</label>
-							<div class="col-lg-10">
-								<input id="increseprice" name="increseprice" type="number"
-									class="required form-control" placeholder="$"
-									ng-model="increment_price" required>
-							</div>
-						</div>
+							<section>
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label" for="supplier">Supplier
+									Name *</label>
+								<div class="col-lg-10">
+									<select class="form-control required" name="supplier" 
+										ng-change="findProductsHasSupplier(sup)"
+										ng-model="sup" id="supplier"
+										ng-options="s.supplier_id as s.contact_name for s in supplier">
+										<option value="" style="display:none">-- Choose Supplier --</option>
 
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="buyprice">Buy
-								Now Price *</label>
-							<div class="col-lg-10">
-								<input id="buyprice" name="buyprice" type="number"
-									class="required  form-control" placeholder="$"
-									ng-model="buy_price" required>
-							</div>
-						</div>
-
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="startdate">Start
-								Date *</label>
-							<div class="col-lg-10">
-								<div class="input-group">
-									<input type="text" class="required form-control"
-										ng-value="currentDate | date:'MM/dd/yyyy'" ng-disabled="true"
-										ng-model="start_date"> <span
-										class="input-group-addon bg-custom b-0 text-white"><i
-										class="icon-calender"></i></span>
-								</div>
-								<!-- input-group -->
-							</div>
-						</div>
-						<div class="form-group clearfix">
-							<label class="control-label col-lg-2">End Date *</label>
-							<div class="col-lg-10">
-								<div class="input-group">
-									<input type="text" class="required form-control"
-										placeholder="mm/dd/yyyy" id="datepickerEnd" name="endDate"
-										ng-model="end_date"> <span
-										class="input-group-addon bg-custom b-0 text-white"><i
-										class="icon-calender"></i></span>
-								</div>
-								<!-- input-group -->
-							</div>
-						</div>
-
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label">Status</label>
-							<div class="col-lg-10">
-								<div class="radio radio-info radio-inline">
-									<input type="radio" id="status1" name="status"
-										ng-model="status" value="true" checked> <label
-										for="status1"> Enable </label>
-								</div>
-								<div class="radio radio-inline">
-									<input type="radio" id="status2" name="status"
-										ng-model="status" value="false"> <label for="status2">
-										Disable </label>
+									</select>
 								</div>
 							</div>
-						</div>
-
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label">Comment</label>
-							<div class="col-lg-10">
-								<textarea class="form-control" rows="5" ng-model="comment"></textarea>
-							</div>
-						</div>
-
-						<div class="form-group clearfix">
-							<label class="col-lg-12 control-label ">(*) Mandatory</label>
-						</div>
-						</section>
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="text-center p-20">
-									<button type="button"
-										class="btn w-sm btn-default waves-effect waves-light"
-										ng-click="addAuction()">
-										<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
-									</button>
-									<button type="button"
-										class="btn w-sm btn-danger waves-effect waves-light">
-										<i class="fa fa-times" aria-hidden="true"></i> Cancel
-									</button>
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label" for="product">Product
+									*</label>
+								<div class="col-lg-10">
+									<select class="form-control required" name="product"
+										ng-options="p.product_id as p.product_name for p in product"
+										ng-model="product_id" ng-value="product_name" >
+<!-- 										<option value="" style="display:none">-- Choose	Product --</option> -->
+									</select>
 								</div>
 							</div>
-						</div>
-					</form>
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label" for="product">Product
+									Condition*</label>
+								<div class="col-lg-10">
+									<select class="form-control required" name="product"
+										ng-model="product_condition" required>
+										<option value="" ng-selected="true">-- Choose Condition	--</option>
+										<option value="Good">Good</option>
+										<option value="Very Good">Very Good</option>
+										<option value="Like New">Like New</option>
+										<option value="New">New</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label" for="startprice">
+									Start Price *</label>
+								<div class="col-lg-10">
+									<input id="startprice" name="startprice" type="number"
+										class="required form-control" placeholder="$"
+										ng-model="start_price" ng-value="start_price" required>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label " for="increseprice">
+									Increment Price *</label>
+								<div class="col-lg-10">
+									<input id="increseprice" name="increseprice" type="number"
+										class="required form-control" placeholder="$"
+										ng-model="increment_price" ng-value="increment_price" required>
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label " for="buyprice">Buy
+									Now Price *</label>
+								<div class="col-lg-10">
+									<input id="buyprice" name="buyprice" type="number"
+										class="required form-control" placeholder="$"
+										ng-model="buy_price" ng-value="buy_price" required>
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label " for="startdate">Start
+									Date *</label>
+								<div class="col-lg-10">
+									<div class="input-group">
+										<input type="text" class="required form-control"
+											ng-value="start_date" ng-disabled="true"
+											ng-model="start_date"> <span
+											class="input-group-addon bg-custom b-0 text-white"><i
+											class="icon-calender"></i></span>
+									</div>
+									<!-- input-group -->
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="control-label col-lg-2">End Date *</label>
+								<div class="col-lg-10">
+									<div class="input-group" >
+										<input type="text" class="required form-control"
+											placeholder="mm/dd/yyyy" id="datepickerEnd" name="endDate" 
+											ng-model="end_date" ng-value="end_date">
+										<span class="input-group-addon bg-custom b-0 text-white"><i
+											class="icon-calender"></i></span>
+									</div>
+									<!-- input-group -->
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label">Status</label>
+								<div class="col-lg-10">
+									<div class="radio radio-info radio-inline">
+										<input type="radio" id="status1" name="status"
+											ng-model="status" value="true" ng-value="true" ng-checked="status==true"> <label for="status1">
+											Enable </label>
+									</div>
+									<div class="radio radio-inline">
+										<input type="radio" id="status2" name="status"
+											ng-model="status" value="false" ng-value="false" ng-checked="status==false"> <label for="status2">
+											Disable </label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="col-lg-2 control-label">Comment</label>
+								<div class="col-lg-10">
+									<textarea class="form-control" rows="5" ng-model="comment" ng-value="comment"></textarea>
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="col-lg-12 control-label ">(*) Mandatory</label>
+							</div>
+							</section>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="text-center p-20">
+										<button type="button"
+											class="btn w-sm btn-success waves-effect waves-light"
+											ng-click="getAuctionById(a.auction_id)">
+											<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+										</button>
+										<button type="button"
+											class="btn w-sm btn-danger waves-effect waves-light">
+											<i class="fa fa-times" aria-hidden="true"></i> Cancel
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

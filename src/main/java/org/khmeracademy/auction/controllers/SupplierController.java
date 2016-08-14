@@ -67,4 +67,11 @@ public class SupplierController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-supplier/"+supplier_id, HttpMethod.DELETE , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/supplier-in-product", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findSupplersInProducts(){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-suppliers-in-products", HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 }

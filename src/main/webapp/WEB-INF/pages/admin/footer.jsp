@@ -50,7 +50,7 @@
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
 
 <!-- Jquery Dashboard -->
-<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.dashboard_ecommerce.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.dashboard_ecommerce.js"></script> --%>
 
 <!--Form Validation-->
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrapvalidator/dist/js/bootstrapValidator.js" type="text/javascript"></script>

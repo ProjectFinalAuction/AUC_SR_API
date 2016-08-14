@@ -50,8 +50,7 @@
  		        });
  			});
  			
- 			
- 			
+
  			$("#btnSave").click(function(){
  				alert($("#result").attr("src"));
  				$.ajax({
@@ -60,8 +59,7 @@
  					data: JSON.stringify({
  						"image_id": 1,
  						"image_path":$("#result").attr("src"),
- 						"product_id": $("#productID").val()
- 						 
+ 						"product_id": $("#productID").val() 
  					}),
  		  	     beforeSend: function(xhr) {
                      xhr.setRequestHeader("Accept", "application/json");

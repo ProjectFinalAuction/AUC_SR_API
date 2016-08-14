@@ -41,6 +41,13 @@ public class ProductController {
 	return new ResponseEntity<Map<String,Object>>(response.getBody(), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/product-of-supplier/{supID}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String,Object>> findProductsHasSupplier(@PathVariable(value="supID") int supID){
+		HttpEntity<Object> request= new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-products-has-supplier/"+ supID, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String,Object>>(response.getBody(), HttpStatus.OK);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String,Object>> addProduct(@RequestBody Product addproduct){
 		//System.out.println("Hello");
