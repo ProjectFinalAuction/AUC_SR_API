@@ -35,7 +35,7 @@ public class BrandController {
 	
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String,Object>> getAllProducts(){
+	public ResponseEntity<Map<String,Object>> findAllBrands(){
 		HttpEntity<Object> request= new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-brands", HttpMethod.GET , request , Map.class) ;
 	return new ResponseEntity<Map<String,Object>>(response.getBody(), HttpStatus.OK);

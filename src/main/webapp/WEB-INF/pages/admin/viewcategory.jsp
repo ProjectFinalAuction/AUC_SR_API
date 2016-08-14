@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Category List</title>
 
 
 <!-- header -->
@@ -76,7 +76,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="" ng-repeat="cat in category | filter:str_search | orderBy:'-category_id' ">
+									<tr class=""
+										ng-repeat="cat in category | filter:str_search | orderBy:'-category_id' ">
 										<td>
 											<div class="checkbox checkbox-primary m-r-15">
 												<input id="checkbox5" type="checkbox"> <label
@@ -88,8 +89,11 @@
 										<td>{{cat.category_description}}</td>
 										<td>{{cat.parent_id}}</td>
 										<td>{{cat.status}}</td>
-										<td><a href="#" class="table-action-btn"><i
-												class="md md-edit"></i></a> <a href="#" class="table-action-btn"><i
+										<td><a href="#" class="table-action-btn"
+											data-toggle="modal" data-target=".enterData"
+											ng-click="getCategoryByID(cat)"><i
+												class="md md-edit"></i></a> <a href="#" class="table-action-btn"
+											ng-click="deleteCategory(cat.category_id)"><i
 												class="md md-close"></i></a></td>
 									</tr>
 
@@ -124,5 +128,100 @@
 		});
 	</script>
 
+
+	<!-- Modal -->
+	<div class="modal fade enterData" id="myModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Update Category</h4>
+				</div>
+				<div class="modal-body">
+					<form name="myForm">
+						<!--  Category name -->
+						<div class="form-group row">
+							<label for="category-name" class="col-sm-2 form-control-label"><strong>Category
+									Name<span class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="category-name"
+									ng-model="category_name" value="{{category_name}}"
+									placeholder="Ex: Automotive" required>
+							</div>
+						</div>
+						<!--  Category Description -->
+						<div class="form-group row">
+							<label for="category-description"
+								class="col-sm-2 form-control-label"><strong>Category
+									Description<span class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<textarea class="form-control" id="category-description"
+									ng-model="category_description"
+									value="{{category_description}}"
+									placeholder="Please Enter Summary" required></textarea>
+							</div>
+						</div>
+
+						<!--  Type of / Parent ID -->
+						<div class="form-group row">
+							<label for="selectcateogory" class="col-sm-2 form-control-label"><strong>Type
+									of <span class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<select class="form-control select2" name="category"
+									id="selectcateogory" aria-label="ngSelected demo" ng-model="mainCat" 
+									ng-options="cat.category_id as cat.category_name for cat in mainCategories">
+									<!-- TODO: Auto select after load page -->
+									<!-- -------------------------------- -->
+								</select>
+							</div>
+						</div>
+
+						<!--  Status -->
+						<div class="form-group row">
+							<label for="catestatus1" class="col-sm-2 form-control-label"><strong>Status<span
+									class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<div class="radio-inline">
+									<input type="radio" id="catestatus1" value="true"
+										name="categorystatus" ng-model="status" checked="" required>
+									<label for="inlineRadio1"> active </label>
+								</div>
+								<div class="radio-inline">
+									<input type="radio" id="catestatus2" value="false"
+										name="categorystatus" ng-model="status"> <label
+										for="catestatus2">inactive </label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="" class="col-sm-2 form-control-label"></label>
+							<div class="col-sm-10">
+
+								<button type="button" class="btn btn-success btn-md"
+									ng-model="supplier_id" ng-click="updateSupplier(supplier_id)"
+									ng-disabled="myForm.$invalid" id="u_submit"
+									data-dismiss="modal">Update</button>
+							</div>
+
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--  end modal  -->
+
 	<!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script>

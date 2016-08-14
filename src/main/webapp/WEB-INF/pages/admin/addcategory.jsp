@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Category & Brand </title>
 </head>
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
@@ -93,8 +93,8 @@
 											<button type="button"
 												class="btn w-sm btn-default waves-effect waves-light"
 												ng-click="addCategory()" ng-disabled="categoryForm.$invalid">Save</button>
-											<button type="button"
-												class="btn w-sm btn-danger waves-effect waves-light">Delete</button>
+											<!-- <button type="button"
+												class="btn w-sm btn-danger waves-effect waves-light">Delete</button> -->
 										</div>
 									</div>
 								</div>
@@ -142,7 +142,7 @@
 										<div class="text-center p-20">
 											<button type="button" class="btn w-sm btn-white waves-effect">Cancel</button>
 											<button type="button" class="btn w-sm btn-default waves-effect waves-light" ng-click="addBrand()" ng-disabled="brandForm.$invalid">Save</button>
-											<button type="button" class="btn w-sm btn-danger waves-effect waves-light">Delete</button>
+										<!-- 	<button type="button" class="btn w-sm btn-danger waves-effect waves-light">Delete</button> -->
 										</div>
 									</div>
 								</div>

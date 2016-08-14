@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Brand List</title>
 
 
 <!-- header -->
@@ -28,7 +28,7 @@
 					<ol class="breadcrumb">
 						<li><a href="#">iWant Auction</a></li>
 						<li><a href="">Category Management</a></li>
-						<li class="active">Category List</li>
+						<li class="active">Brand List</li>
 					</ol>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 							<div class="col-sm-4">
 								<a href="${pageContext.request.contextPath}/admin/addcategory"
 									class="btn btn-default btn-md waves-effect waves-light m-b-30"><i
-									class="md md-add"></i> Add Category</a>
+									class="md md-add"></i> Add Brand</a>
 							</div>
 						</div>
 
@@ -76,21 +76,19 @@
 								</thead>
 								<tbody>
 									<tr class=""
-										ng-repeat="cat in category | filter:str_search | orderBy:'-category_id' ">
+										ng-repeat="b in brand | filter:str_search | orderBy:'-brand_id' ">
 										<td>
 											<div class="checkbox checkbox-primary m-r-15">
 												<input id="checkbox5" type="checkbox"> <label
 													for="checkbox5"></label>
 											</div>
 										</td>
-										<td>{{cat.category_id}}</td>
-										<td>{{cat.category_name}}</td>
-										<td>{{cat.category_description}}</td>
-										<td>{{cat.parent_id}}</td>
-										<td>{{cat.status}}</td>
-										<td><a href="#" class="table-action-btn"><i
-												class="md md-edit"></i></a> <a href="#" class="table-action-btn"><i
-												class="md md-close"></i></a></td>
+										<td>{{b.brand_id}}</td>
+										<td>{{b.brand_name}}</td>
+										<td>{{b.brand_description}}</td>
+										<td>{{b.status}}</td>
+										<td><a href="#" class="table-action-btn" ><i class="md md-edit"></i></a> 
+											<a href="#" class="table-action-btn "><i class="md md-close"></i></a></td>
 									</tr>
 
 
