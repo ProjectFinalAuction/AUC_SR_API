@@ -91,10 +91,14 @@
 										<td>{{s.address}}</td>
 										<td><a href="#">{{s.email}}</a></td>
 										<td>{{s.phone}}</td>
-										<td><a
-											href="${pageContext.request.contextPath}/admin/update-supplier" ng-click="findSupplierById({{s.supplier_id}})"
-											class="table-action-btn"><i class="md md-edit"></i></a> <a
-											href="#" class="table-action-btn"><i class="md md-close"></i></a>
+										<!--  Update button and pass supplier_id to modal -->
+										<td><a href="#" class="table-action-btn" data-toggle="modal"
+											data-target=".enterData" 
+											ng-click="findSupplierById(s.supplier_id)"
+											><i	class="md md-edit"></i></a> 
+										<!-- // Update button --> 
+											<a	href="#" class="table-action-btn"><i class="md md-close"></i></a>
+											 
 										</td>
 									</tr>
 								</tbody>
@@ -108,6 +112,82 @@
 		<!-- container -->
 	</div>
 	<!-- content -->
+
+	<!-- Modal -->
+	<div class="modal fade enterData" id="myModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Update Supplier</h4>
+				</div>
+				<div class="modal-body">
+					<form name="myForm">
+						<!--  Contact name -->
+						<div class="form-group row">
+							<label for="contact-name" class="col-sm-2 form-control-label"><strong>Contact
+									Name<span class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="contact-name" ng-model="contact_name"
+									value="{{contact_name}}" placeholder="Ex: Jonh Query"
+									required>
+							</div>
+						</div>
+						<!--  Phone -->
+						<div class="form-group row">
+							<label for="phone" class="col-sm-2 form-control-label"><strong>Phone<span
+									class="text-danger">*</span></strong></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="phone" ng-model="phone"
+									placeholder="Ex: 012735487 (not allow letter and space)"
+									ng-pattern="/^\d+$/" name="phone" value="{{phone}}" required>
+							</div>
+						</div>
+						<!--  Email -->
+						<div class="form-group row">
+							<label for="email" class="col-sm-2 form-control-label"><strong>Email<span
+									class="text-danger">*</span></strong></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="email" ng-model="email"
+									value="{{email}}" placeholder="Ex: example@gmail.com" required>
+							</div>
+						</div>
+
+						<!--  Address -->
+						<div class="form-group row">
+							<label for="address" class="col-sm-2 form-control-label"><strong>Address<span
+									class="text-danger">*</span></strong></label>
+							<div class="col-sm-10">
+								<textarea class="form-control" id="address" ng-model="address"
+									value="{{address}}"
+									placeholder="Ex: House No., Street No, Sangkat, Khan, City"
+									required></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="" class="col-sm-2 form-control-label"></label>
+							<div class="col-sm-10">
+
+								<button type="button" class="btn btn-success btn-md" ng-model="supplier_id"
+									ng-click="updateSupplier(supplier_id)" ng-disabled="myForm.$invalid"
+									id="u_submit" data-dismiss="modal">Update</button>
+							</div>
+
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--  end modal  -->
+
+
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>

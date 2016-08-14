@@ -50,4 +50,11 @@ public class SupplierController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-supplier", HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateSupplier(@RequestBody AddSupplier addSupplier){
+		HttpEntity<Object> request = new HttpEntity<Object>(addSupplier,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-supplier", HttpMethod.PUT , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 }

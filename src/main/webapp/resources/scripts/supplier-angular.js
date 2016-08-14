@@ -10,23 +10,29 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			url: 'http://localhost:8080/rest/supplier',
 			method: 'GET'
 			
-		}).then(function(respone){
-			$scope.supplier = respone.data.DATA;
+		}).then(function(response){
+			$scope.supplier = response.data.DATA;
 		});
 	}
 	
 	
 	// select suplier by id
 	$scope.findSupplierById = function(id){
+		
 		$http({
 			url: 'http://localhost:8080/rest/supplier/'+id,
 			method: 'GET'
 			
 		}).then(function(respone){
-			$scope.supplier = respone.data.DATA;
+			$scope.contact_name = respone.data.DATA.contact_name;
+			$scope.phone=respone.data.DATA.phone;
+			$scope.email = respone.data.DATA.email;
+			$scope.address = respone.data.DATA.address;			
+			$scope.supplier_id = respone.data.DATA.supplier_id;
 		});
 	}
 	
+		
 	// add record function
 	$scope.addSupplier = function(){
 		
@@ -41,7 +47,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "phone": $scope.phone
 	  			  
 			}
-		}).then(function(respone){
+		}).then(function(response){
 			swal("Good job!", "You clicked the button!", "success");
 			// clear input fields
 			$scope.address = "";
@@ -65,10 +71,10 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				"supplier_id": id
 			},
 			method: 'PUT'
-		}).then(function(){
+		}).then(function(response){
 			swal("Update Successfully!", "click this button.", "success");
 			$scope.findAllSuppliers();
-		},function(){});
+		},function(error){});
 	}
 	
 	
