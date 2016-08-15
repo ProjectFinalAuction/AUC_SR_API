@@ -89,12 +89,19 @@
 										<td>{{cat.category_description}}</td>
 										<td>{{cat.parent_id}}</td>
 										<td>{{cat.status}}</td>
-										<td><a href="#" class="table-action-btn"
+										<td>
+										<!--  Update Category -->
+											<a href="#" class="table-action-btn"
 											data-toggle="modal" data-target=".enterData"
 											ng-click="getCategoryByID(cat)"><i
-												class="md md-edit"></i></a> <a href="#" class="table-action-btn"
+												class="md md-edit"></i></a> 
+										<!--  end updating category -->		
+										
+										<!--  Delete Category -->		
+												<a href="#" class="table-action-btn"
 											ng-click="deleteCategory(cat.category_id)"><i
 												class="md md-close"></i></a></td>
+										<!--  End Deleting Category -->
 									</tr>
 
 
@@ -171,7 +178,7 @@
 						<!--  Type of / Parent ID -->
 						<div class="form-group row">
 							<label for="selectcateogory" class="col-sm-2 form-control-label"><strong>Type
-									of <span class="text-danger">*</span>
+									of 
 							</strong></label>
 							<div class="col-sm-10">
 								<select class="form-control select2" name="category"
@@ -191,7 +198,7 @@
 							<div class="col-sm-10">
 								<div class="radio-inline">
 									<input type="radio" id="catestatus1" value="true"
-										name="categorystatus" ng-model="status" checked="" required>
+										name="categorystatus" ng-model="status" checked="" >
 									<label for="inlineRadio1"> active </label>
 								</div>
 								<div class="radio-inline">
@@ -207,7 +214,7 @@
 							<div class="col-sm-10">
 
 								<button type="button" class="btn btn-success btn-md"
-									ng-model="supplier_id" ng-click="updateSupplier(supplier_id)"
+									ng-model="parent_id" ng-click="updateCategory(category_id)"
 									ng-disabled="myForm.$invalid" id="u_submit"
 									data-dismiss="modal">Update</button>
 							</div>

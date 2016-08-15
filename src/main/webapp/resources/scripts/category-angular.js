@@ -122,47 +122,31 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		$scope.category_description = categoryObject.category_description;
 		$scope.category_id = categoryObject.category_id;
 		$scope.category_name = categoryObject.category_name;
-		$scope.status = categoryObject.status;
-		console.log($scope.mainCategories);
-		console.log('ID', categoryObject.category_id);
-		$scope.mainCat = categoryObject.category_id;
+		if(categoryObject.status==true){
+			$( "#catestatus1" ).prop( "checked", true);
+		}
+		else{
+			$( "#catestatus2" ).prop( "checked", true);
+		}
 		
-/*//		alert("Hello");
-		$http({
-			url: 'http://localhost:8080/rest/category/'+id,
-			method: 'GET'		
-		}).then(function(respone){
-			
-			
-//			$scope.parent_id = respone.data.DATA.parent_id;
-			//$scope.parent_id= respone.data.DATA.parent_name;
-			//$("#parent_name").getElementById.innerHTML = respone.data.DATA.parent_name;
-			//alert(respone.data.DATA.parent_name);
-			//$("#selectcateogory").val(respone.data.DATA.parent_id);
-			//$("#selectcateogory").text(respone.data.DATA.parent_name);
-			
-			//alert(respone.data.DATA.parent_id);
-			//alert($("#selectcateogory").val());
-			//$('#selectcateogory option[value="'+2+'"]');
-			//alert($('#selectcateogory option[value]'));
-			
-			
-			//$("#selectcateogory").val(4);
-			alert($scope.parent_id);
-		});*/
+		// match parent_id with "type of"
+		$scope.mainCat = categoryObject.parent_id;
+		// pass parent_id to store in update button
+		$scope.parent_id = categoryObject.parent_id;
+		
 	}
 	
 	//Update
-	$scope.updateCategory = function(){
-//		alert("Hello");
+	$scope.updateCategory = function(id){
+		
 		$http({
 			url: 'http://localhost:8080/rest/category',
 			method: 'PUT',
 			data:{
 				 "category_description": $scope.category_description,
-				  "category_id": $scope.category_id,
+				  "category_id": id,
 				  "category_name": $scope.category_name,
-				  "parent_id": $scope.parent_id,
+				  "parent_id": $scope.mainCat,
 				  "status": $scope.status
 	  			  
 			}
@@ -177,6 +161,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			});
 		});
 	}
+	
 	
 	
 	
