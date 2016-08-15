@@ -71,13 +71,6 @@
 													data-toggle="dropdown" aria-expanded="false">
 													<i class="caret"></i>
 												</button>
-												<ul class="dropdown-menu" role="menu">
-													<li><a href="#">Action</a></li>
-													<li><a href="#">Another action</a></li>
-													<li><a href="#">Something else here</a></li>
-													<li class="divider"></li>
-													<li><a href="#">Separated link</a></li>
-												</ul>
 											</div>
 										</th>
 										<th>UserName</th>
@@ -114,7 +107,7 @@
 										<td>{{u.type}}</td>
 										<td><a href="#" class="table-action-btn"><i
 												class="md md-edit"></i></a> <a href="#" class="table-action-btn"><i
-												class="md md-close"></i></a></td>
+												class="md md-close" ng-click="deleteUser(u.user_id})"></i></a></td>
 									</tr>
 								</tbody>
 							</table>

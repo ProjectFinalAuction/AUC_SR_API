@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -29,7 +29,7 @@
 						  <div class="form-group">
 						    <label class="control-label col-sm-2" for="uname">Username <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 						    <div class="col-sm-7">
-						      <input type="text" class="form-control" id="uname" ng-model="user_name">
+						      <input type="text" class="form-control" id="uname" ng-model="user_name" required>
 						      <p>Your username will be shown when you bid, buy, and sell.</p>
 						    </div>						    
 						  </div>
@@ -122,38 +122,7 @@
 					    	<textarea class="required form-control" rows="5" ng-model="address"></textarea>								
 					    </div>
 					  </div>
-					  <div class="form-group">
-					    <label class="control-label col-sm-2" for="role">Role <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-					    <div class="col-sm-7">
-					    	<div class="radio radio-info radio-inline">
-								<input type="radio" id="role1" name="role" ng-model="type" value="admin"> 
-								<label for="role1"> Admin </label>
-							</div>
-							<div class="radio radio-inline">
-								<input type="radio" id="role2" name="role" ng-model="type" value="bidder"> 
-								<label for="role2"> Bidder </label>
-							</div>						
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="control-label col-sm-2" for="status"> Status <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-					    <div class="col-sm-7">
-					    	<div class="radio radio-info radio-inline">
-								<input type="radio" id="status1" name="status" ng-model="status" value="true"> 
-								<label for="status1"> Enable </label>
-							</div>
-							<div class="radio radio-inline">
-								<input type="radio" id="status2" name="status" ng-model="status" value="false"> 
-								<label for="status2"> Disable </label>
-							</div>				
-					   	</div>
-					  </div>
-					  <div class="form-group">
-					    <label class="control-label col-sm-2" for="comment"> Comment <sup><i class="glyphicon glyphicon-star"></i></sup></label>
-					    <div class="col-sm-7">
-					    	<textarea class="form-control" rows="5" ng-model="comment"></textarea>			
-					   	</div>
-					  </div>
+					 					 
 					  <div class="form-group">
 					  	<div class="col-sm-2"></div>
 					  	<div class="col-sm-3">

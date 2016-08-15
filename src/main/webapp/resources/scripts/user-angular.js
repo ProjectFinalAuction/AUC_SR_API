@@ -24,7 +24,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			method: 'POST',
 			data:{
 				  "address": $scope.address,
-	  			  "comment": $scope.comment,
+	  			  "comment": ($scope.comment==undefined)?true:$scope.comment,
 	  			  "contact": $scope.contact,
 	  			  "created_by": $scope.created_by,
 	  			  "created_date": $scope.created_date,
@@ -34,9 +34,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "gender": $scope.gender,
 	  			  "last_name": $scope.last_name,
 	  			  "password": $scope.password,
-	  			  "photo": $scope.photo,
+	  			  "photo": ($scope.photo==undefined)?true:$scope.photo,
 	  			  "status": ($scope.status==undefined)?true:$scope.status,
-	  			  "type": $scope.type,
+	  			  "type": ($scope.type == undefined)?Bidder:$scope.type,
 	  			  "user_name": $scope.user_name
 			}
 		}).then(function(respone){
@@ -44,10 +44,24 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 
 		});
 	}
+	
+	//Delete User by ID
+	$scope.deleteUsers = function(userId){
+		alert($scope.delUser = respone.data.DATA);
+		$http({
+			url: 'http://localhost:8080/rest/user/{userId}',
+			method: 'DELETE',
+		}).then(function(respone){
+			$scope.delUser = respone.data.DATA;
+		});
+	}
+	
 	$scope.loadme = function(){
 		alert("me");
 	};
 	
 	// load all record
 	$scope.getAllUsers();
+//	$scope.deleteUsers();
+	
 })
