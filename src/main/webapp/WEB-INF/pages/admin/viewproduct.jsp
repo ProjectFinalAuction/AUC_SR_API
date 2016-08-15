@@ -100,14 +100,15 @@
 	                            </div>
 	                          </td>
 	                          
-	                          <td><img
-											src="http://localhost:9999/files/images/2cb67aa4-5e39-41b1-a6c3-a57f349b24b6.jpg"
+	                          <td><img ng-repeat="proimg in pro.gallery"
+											src={{proimg.image_path}}
 											class="thumb-sm" alt="product-img" />
 								
-								<h1 ng-repeat="proimg in pro.gallery">
+<!-- 								<h1 ng-repeat="proimg in pro.gallery"> -->
                        		
-                       			{{proimg.image_path}}
-                       		  </h1>			
+<!--                        						{{proimg.image_path}} -->
+                       			
+<!--                        		  </h1>			 -->
 							  </td>
 											
 	                          <td>{{pro.product_id}}</td>
