@@ -126,6 +126,18 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
+	//Get user_name and password to login
+	$scope.userLogin = function(user_name,password){
+		$http({  
+			url:'http://localhost:8080/rest/user',
+			method: 'POST',
+			data:{
+				"user_name": $scope.user_name,
+				"password": $scope.password
+			}
+		})
+	}
+	
 	
 	// load all record
 	$scope.getAllUsers();

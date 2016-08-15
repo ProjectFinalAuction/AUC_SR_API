@@ -65,7 +65,16 @@ public class UserController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-id/"+ user_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
-		
+	
+	
+	//Get User by user_id and password
+	@RequestMapping(value="/{user_name}/{password}", method = RequestMethod.POST)
+	public ResponseEntity<Map<String , Object>> findCategoryByID( @PathVariable String user_name,@PathVariable String password){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/login/"+ user_name +"/"+ password, HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+	
 	//Delete user by id	
 //	@RequestMapping(value="/{userId}", method = RequestMethod.DELETE)
 //	public ResponseEntity<Map<String , Object>> deleteUsers(@PathVariable int userId){

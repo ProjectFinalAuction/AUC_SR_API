@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -24,13 +24,13 @@
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="uname">Username</label>
 						    <div class="col-sm-8">
-						      <input type="email" class="form-control" id="uname">
+						      <input type="email" class="form-control" id="uname" ng-model="user_name" value={{user_name}} required>
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="pwd">Password</label>
 						    <div class="col-sm-8"> 
-						      <input type="password" class="form-control" id="pwd">
+						      <input type="password" class="form-control" id="pwd" ng-model="password" value={{password}} required>
 						    </div>
 						  </div>
 						  <div class="form-group"> 
@@ -42,7 +42,7 @@
 						  </div>
 						  <div class="form-group"> 
 						    <div class="col-sm-offset-3 col-sm-10">
-						      <button type="submit" class="btn btn-primary">Submit</button>
+						      <button type="submit" class="btn btn-primary" ng-click="">Submit</button>
 						    </div>
 						  </div>
 						</form>
