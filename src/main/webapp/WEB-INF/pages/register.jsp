@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<!-- form register -->
-			<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form" id="myForm">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="list-group">
@@ -100,7 +100,7 @@
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="gender">Gender <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 					    <div class="col-sm-7">
-					      <select class="form-control select2" ng-model="gender">
+					      <select class="form-control select2" ng-model="gender" required>
 							<option value="female">Female</option>
 							<option value="male">Male</option>
 						  </select>
@@ -111,7 +111,7 @@
 					    <div class="col-sm-7">
 					      <div class="input-group">
 							<input type="text" class="required form-control"
-								placeholder="mm/dd/yyyy" id="datepicker" ng-model="dob"> 
+								placeholder="mm/dd/yyyy" id="datepicker" ng-model="dob" required> 
 							<span class="input-group-addon bg-custom b-0 text-white"><i class="glyphicon glyphicon-calendar"></i></span>
 						  </div>
 					    </div>
@@ -119,14 +119,14 @@
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="gender">Address <sup><i class="glyphicon glyphicon-star"></i></sup></label>
 					    <div class="col-sm-7">
-					    	<textarea class="required form-control" rows="5" ng-model="address"></textarea>								
+					    	<textarea class="required form-control" rows="5" ng-model="address" required></textarea>								
 					    </div>
 					  </div>
 					 					 
 					  <div class="form-group">
 					  	<div class="col-sm-2"></div>
 					  	<div class="col-sm-3">
-					    	<button type="submit" class="btn btn-primary btn-block" ng-click="addUser()">Complete Registration</button>
+					    	<button type="submit" class="btn btn-primary btn-block" ng-click="addUser()" ng-disabled="#myForm.$invalided">Complete Registration</button>
 					    </div>
 					    <div class="col-sm-4"><p><small>ALL FIELDS MARKED WITH " <sup><i class="glyphicon glyphicon-star"></i></sup> " ARE REQUIRED</small></p></div>
 					  </div>						

@@ -122,7 +122,7 @@
 										*</label>
 									<div class="col-lg-10">
 										<select class="form-control select2" ng-model="gender">
-											<option value="female">Female</option>
+											<option value="female" ng-selected="true">Female</option>
 											<option value="male">Male</option>
 										</select>
 									</div>
@@ -166,7 +166,7 @@
 										</div>
 										<div class="radio radio-inline">
 											<input type="radio" id="role2" name="role"
-												ng-model="type" value="bidder"> 
+												ng-model="type" value="bidder" ng-checked="true"> 
 												<label for="role2"> Bidder </label>
 										</div>
 									</div>
@@ -177,7 +177,7 @@
 									<div class="col-lg-10">
 										<div class="radio radio-info radio-inline">
 											<input type="radio" id="status1" name="status"
-												ng-model="status" value="true"> <label for="status1">
+												ng-model="status" value="true"  ng-checked="true"> <label for="status1">
 												Enable </label>
 										</div>
 										<div class="radio radio-inline">

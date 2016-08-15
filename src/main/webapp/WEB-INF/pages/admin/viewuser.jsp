@@ -40,7 +40,7 @@
 								<form role="form">
 									<div class="form-group contact-search m-b-30">
 										<input type="text" id="search" class="form-control"
-											placeholder="Search...">
+											placeholder="Search..." ng-model="str_search">
 										<button type="submit" class="btn btn-white">
 											<i class="fa fa-search"></i>
 										</button>
@@ -71,7 +71,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="u in user">
+									<tr ng-repeat="u in user | filter:str_search | orderBy:'-user_id'">
 										<td class="text-center">
 											
 											<img
@@ -112,7 +112,7 @@
 <!-- Modal -->
 <div class="modal fade enterData" id="myModal" tabindex="-1"
 	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"

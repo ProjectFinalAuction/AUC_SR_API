@@ -31,17 +31,24 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "dob": moment($('#datepicker').val()).format("YYYY-MM-DD"),
 	  			  "email": $scope.email,
 	  			  "first_name": $scope.first_name,
-	  			  "gender": $scope.gender,
+	  			  "gender": $("input:radio[name=role]:checked").val(),
 	  			  "last_name": $scope.last_name,
 	  			  "password": $scope.password,
-	  			  "photo": ($scope.photo==undefined)?true:$scope.photo,
-	  			  "status": ($scope.status==undefined)?true:$scope.status,
-	  			  "type": ($scope.type == undefined)?Bidder:$scope.type,
+	  			  "photo": ($scope.photo==undefined)?'String':$scope.photo,
+	  			  "status": ($scope.status==undefined)?true:$("input:radio[name=status]:checked").val(),
+	  			  "type": ($scope.type == undefined)?'bidder': $("input:radio[name=role]:checked").val(),
 	  			  "user_name": $scope.user_name
 			}
 		}).then(function(respone){
-			swal("Good job!", "You clicked the button!", "success");
-
+			swal({ 
+				title: "Success!",
+				text: "User has been inserted.",
+			    type: "success" 
+			  },
+			  function(){
+			    window.location.href = 'http://localhost:8080/admin/viewuser';
+			});
+			
 		});
 	}
 	
