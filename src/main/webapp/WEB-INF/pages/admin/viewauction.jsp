@@ -27,7 +27,7 @@
 	<!-- ============================================================== -->
 	<!-- Start right Content here -->
 	<!-- ============================================================== -->
-	<div class="content-page">
+	<div class="content-page" ng-controller="auctionCtrl">
 		<!-- Start content -->
 		<div class="content">
 			<div class="container">

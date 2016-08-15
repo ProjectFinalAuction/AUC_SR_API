@@ -6,7 +6,7 @@
  */
 
 var app = angular.module('myApp',[]);
-app.controller('myCtrl', function($scope, $http, $rootScope) {
+app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	$scope.currentDate = new Date();
 	$scope.created_date = new Date();
 	$scope.created_by = 'admin';
