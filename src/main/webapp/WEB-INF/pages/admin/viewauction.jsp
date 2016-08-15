@@ -116,6 +116,7 @@
 											<th>Start Price</th>
 											<th>Start Date</th>
 											<th>End Date</th>
+											<th>Status</th>
 											<th>Total Bids</th>
 											<th style="min-width: 90px;">Action</th>
 										</tr>
@@ -139,6 +140,7 @@
 											<td>{{a.start_price}}</td>
 											<td>{{a.start_date}}</td>
 											<td>{{a.end_date}}</td>
+											<td>{{a.status}}</td>
 											<td><span>0 Bids</span></td>
 											<td class="action">
 												<!-- 										<button type="button" class="btn btn-info" ng-click="getAuctionById(a.auction_id)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button> -->
@@ -147,7 +149,7 @@
 												data-toggle="modal" data-target="#myModal"
 												ng-click="getAuctionById(a.auction_id)"><i
 													class="fa fa-pencil-square-o" title="Edit"></i> </a>&nbsp;&nbsp;
-												<a href="#" ng-click="alertme()"><i
+												<a href="#" ng-click="deleteAuction(a.auction_id)"><i
 													class="fa fa-trash-o" title="Delete"></i></a>
 											</td>
 										</tr>
@@ -217,7 +219,6 @@
 										ng-model="sup" id="supplier"
 										ng-options="s.supplier_id as s.contact_name for s in supplier">
 										<option value="" style="display:none">-- Choose Supplier --</option>
-
 									</select>
 								</div>
 							</div>
@@ -335,10 +336,10 @@
 									<div class="text-center p-20">
 										<button type="button"
 											class="btn w-sm btn-success waves-effect waves-light"
-											ng-click="getAuctionById(a.auction_id)">
-											<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+											ng-click="updateAuction()">
+											<i class="fa fa-floppy-o" aria-hidden="true"></i> Update
 										</button>
-										<button type="button"
+										<button type="button" data-dismiss="modal"
 											class="btn w-sm btn-danger waves-effect waves-light">
 											<i class="fa fa-times" aria-hidden="true"></i> Cancel
 										</button>
@@ -347,9 +348,9 @@
 							</div>
 						</form>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+<!-- 				<div class="modal-footer"> -->
+<!-- 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+<!-- 				</div> -->
 			</div>
 		</div>
 	</div>

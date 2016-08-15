@@ -170,7 +170,7 @@
 											ng-click="addAuction()">
 											<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
 										</button>
-										<button type="button"
+										<button type="button" onclick="clearFrm()"
 											class="btn w-sm btn-danger waves-effect waves-light">
 											<i class="fa fa-times" aria-hidden="true"></i> Cancel
 										</button>
@@ -198,6 +198,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.min.js"></script>
 
 <script type="text/javascript">
-	
+	function clearFrm(){
+		$("#wizard-validation-form")[0].reset();
+	}
 </script>
 
