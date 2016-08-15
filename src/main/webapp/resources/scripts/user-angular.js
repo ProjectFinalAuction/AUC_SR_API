@@ -45,23 +45,82 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
-	//Delete User by ID
-	$scope.deleteUsers = function(userId){
-		alert($scope.delUser = respone.data.DATA);
+	// Get User By ID
+	$scope.getUserByID = function(userObject){
+		$scope.user_name = userObject.user_name;
+		$scope.password = userObject.password;
+		$scope.email = userObject.email;
+		$scope.contact = userObject.contact;
+		$scope.first_name = userObject.first_name;
+		$scope.last_name = userObject.last_name;
+		
+		if((userObject.gender=='female') || (userObject.gender=='F')){
+
+			$('select[name="gender"]').find('option[value="female"]').attr("selected",true);
+		}else{
+
+			$('select[name="gender"]').find('option[value="male"]').attr("selected",true);
+		}
+		$scope.dob = userObject.dob;
+		$scope.address = userObject.address;
+		$scope.photo = userObject.photo;
+		if(userObject.type=='admin'){
+			$( "#role1" ).prop( "checked", true);
+		}
+		else{
+			$( "#role2" ).prop( "checked", true);
+		}
+		if(userObject.status==true){
+			$( "#status1" ).prop( "checked", true);
+		}
+		else{
+			$( "#status2" ).prop( "checked", true);
+		}
+		$scope.comment = userObject.comment;
+		
+		$scope.user_id = userObject.user_id;
+			
+	}
+	
+	//Update User
+	$scope.updateUser = function(id){
+		$scope.created_date = new Date();
+		$scope.created_by = 'admin';
 		$http({
-			url: 'http://localhost:8080/rest/user/{userId}',
-			method: 'DELETE',
+			url: 'http://localhost:8080/rest/user',
+			method: 'PUT',
+			data:{
+				  "user_id" : id,
+				  "address": $scope.address,
+	  			  "comment": $scope.comment,
+				  "contact": $scope.contact,
+	  			  "created_by": $scope.created_by,
+	  			  "created_date": $scope.created_date,
+	  			  "dob": moment($('#datepicker').val()).format("YYYY-MM-DD"),
+	  			  "email": $scope.email,
+	  			  "first_name": $scope.first_name,
+	  			  "gender": $('.select2').val(),
+	  			  "last_name": $scope.last_name,
+	  			  "password": $scope.password,
+	  			  "photo": $scope.photo,
+	  			  "status": $("input:radio[name=status]:checked").val(),
+	  			  "type": $("input:radio[name=role]:checked").val(),	  			  
+	  			  "user_name": $scope.user_name
+			}
 		}).then(function(respone){
-			$scope.delUser = respone.data.DATA;
+			swal({ 
+				title: "Success!",
+				text: "User has been updated!",
+			    type: "success" 
+			  },
+			  function(){
+				  $scope.getAllUsers();
+			});
 		});
 	}
 	
-	$scope.loadme = function(){
-		alert("me");
-	};
 	
 	// load all record
 	$scope.getAllUsers();
-//	$scope.deleteUsers();
-	
+
 })

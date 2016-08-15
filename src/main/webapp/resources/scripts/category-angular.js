@@ -115,8 +115,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
-	//Get Category By ID
-	
+	//Get Category By ID	
 	$scope.getCategoryByID = function(categoryObject){
 		$scope.mainCategories = angular.copy($scope.category);
 		$scope.category_description = categoryObject.category_description;

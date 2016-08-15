@@ -2,6 +2,7 @@ package org.khmeracademy.auction.controllers;
 
 import java.util.Map;
 
+import org.khmeracademy.auction.entities.input.AddCategory;
 import org.khmeracademy.auction.entities.input.AddUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -31,6 +32,7 @@ public class UserController {
 	@Autowired
 	private String WS_URL;
 	
+	// Get all Users
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> getAllUsers(){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
@@ -38,6 +40,7 @@ public class UserController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
+	//Add User
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addUser(@RequestBody AddUser addUser){
 		HttpEntity<Object> request = new HttpEntity<Object>(addUser,header);
@@ -45,10 +48,29 @@ public class UserController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/{userId}", method = RequestMethod.DELETE)
-	public ResponseEntity<Map<String , Object>> deleteUsers(@PathVariable int userId){
-		HttpEntity<Object> request = new HttpEntity<Object>(userId,header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-user/{userId}", HttpMethod.DELETE , request , Map.class) ;
+	//Update User
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Map<String , Object>> updateUser(@RequestBody AddUser updateUser){
+		
+		// REQUEST = REQUEST BODY + HEADER
+		HttpEntity<Object> request = new HttpEntity<Object>(updateUser,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user", HttpMethod.PUT , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	// Get User by ID
+	@RequestMapping(value="/{user_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findCategoryByID( @PathVariable int user_id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-id/"+ user_id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+		
+	//Delete user by id	
+//	@RequestMapping(value="/{userId}", method = RequestMethod.DELETE)
+//	public ResponseEntity<Map<String , Object>> deleteUsers(@PathVariable int userId){
+//		HttpEntity<Object> request = new HttpEntity<Object>(header);
+//		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-user/" + userId, HttpMethod.DELETE , request , Map.class, userId) ;
+//		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+//	}
 }
