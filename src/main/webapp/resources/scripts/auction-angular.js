@@ -1,5 +1,8 @@
 /**
- * 
+ * GET ALL AUCTIONS
+ * GET SUPPLIER AND PRODUCT
+ * GET A RECORD AUCTION
+ * UPDATE AUCTION
  */
 
 var app = angular.module('myApp',[]);
@@ -7,16 +10,69 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 	$scope.currentDate = new Date();
 	$scope.created_date = new Date();
 	$scope.created_by = 'admin';
-	// select all record to display
+	$scope.productName="";
+	
+	var checkPagination = true;
+	var currentPage = 1;
+
+	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
-			url : 'http://localhost:8080/rest/auction',
-			method : 'GET',
-
-		}).then(function(respone) {
-			$scope.auction = respone.data.DATA;
+			url : 'http://localhost:8080/rest/auction?limit=' + 2 +"&page=" + currentPage + "&productName="+$scope.productName,
+			method : 'GET'
+		}).then(function(response) {
+			$scope.auction = response.data.DATA;
+			$scope.pages = response.data.PAGINATION.PAGE;
+			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
+			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
+			if(checkPagination){
+				$scope.setPagination(response.data.PAGINATION);
+				checkPagination = false;
+			}
 		});
 	}
+	
+	//TODO: SEARCH BY PRODUCT NAME
+	$scope.searchProName = function(proName){
+		$http({
+			url : 'http://localhost:8080/rest/auction?limit=' + 2 +"&page=" + currentPage + "&productName="+proName,
+			method : 'GET'
+		}).then(function(response) {
+			$scope.auction = response.data.DATA;
+			if(checkPagination){
+				$scope.setPagination(response.data.PAGINATION);
+			}
+		});
+	}
+	
+	//TODO: CTEATE PAGINATION BUTTON
+	$scope.setPagination = function(pagination){
+		console.log("PAGINATION==>", pagination);
+		$("#PAGINATION").bootpag({
+	        total: pagination.TOTAL_PAGES,
+	        page: pagination.PAGE,
+	        maxVisible: 10,
+	        leaps: true,
+	        firstLastUse: true,
+	        first: 'First',
+	        last: 'Last',
+	        wrapClass: 'pagination',
+	        activeClass: 'active',
+	        disabledClass: 'disabled',
+	        nextClass: 'next',
+	        prevClass: 'prev',
+	        lastClass: 'last',
+	        firstClass: 'first'
+	    }); 
+		$("#PAGINATION ul").addClass("pagination");
+	}
+	
+	$('#PAGINATION').bootpag().on("page", function(event, page){
+		checkPagination = false;
+		currentPage = page;
+		$scope.findAllAuctions();
+	});
+	
 	
 	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
 	$scope.findProductsHasSupplier = function(id){		
@@ -24,8 +80,8 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
 			method : 'GET',
 
-		}).then(function(respone) {
-			$scope.product = respone.data.DATA;
+		}).then(function(response) {
+			$scope.product = response.data.DATA;
 		});
 	}
 	
@@ -35,13 +91,13 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 			url : 'http://localhost:8080/rest/supplier/supplier-in-product',
 			method : 'GET',
 
-		}).then(function(respone) {
-			$scope.supplier = respone.data.DATA;
+		}).then(function(response) {
+			$scope.supplier = response.data.DATA;
 			
 		});
 	}
 	
-	// add record function
+	// TODO: add record function
 	$scope.addAuction = function() {
 		$http({
 			url : 'http://localhost:8080/rest/auction',
@@ -60,7 +116,7 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 				"start_price" : $scope.start_price,
 				"status" : $scope.status
 			}
-		}).then(function(respone) {
+		}).then(function(response) {
 			swal({ 
 				title: "Success!",
 				text: "Auction has been inserted.",
@@ -72,31 +128,31 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 		});
 	}
 	
-	// get one record function
+	// TODO: get one record function
 	$scope.getAuctionById = function(id){
 		$rootScope.rootID = id;
 		$http({
 			url: 'http://localhost:8080/rest/auction/'+id,
 			method: 'GET'
-		}).then(function(respone){
-			$scope.sup = respone.data.DATA.product.supplier.supplier_id;
+		}).then(function(response){
+			$scope.sup = response.data.DATA.product.supplier.supplier_id;
 			
 			$scope.findProductsHasSupplier($scope.sup);
-			$scope.pro = respone.data.DATA.product.product_id;
+			$scope.pro = response.data.DATA.product.product_id;
 			
-			$scope.product_condition = respone.data.DATA.product_condition
-			$scope.start_price = respone.data.DATA.start_price;
-			$scope.increment_price = respone.data.DATA.increment_price;
-			$scope.buy_price = respone.data.DATA.buy_price;
-			$scope.start_date = moment(respone.data.DATA.start_date).format("MM/DD/YYYY");
-			$scope.end_date = moment(respone.data.DATA.end_date).format("MM/DD/YYYY");
-			$scope.status = respone.data.DATA.status;
-			$scope.comment = respone.data.DATA.comment;			
+			$scope.product_condition = response.data.DATA.product_condition
+			$scope.start_price = response.data.DATA.start_price;
+			$scope.increment_price = response.data.DATA.increment_price;
+			$scope.buy_price = response.data.DATA.buy_price;
+			$scope.start_date = moment(response.data.DATA.start_date).format("MM/DD/YYYY");
+			$scope.end_date = moment(response.data.DATA.end_date).format("MM/DD/YYYY");
+			$scope.status = response.data.DATA.status;
+			$scope.comment = response.data.DATA.comment;			
 		});
 	}
 	
+	//	TODO: UPDATE FUNCTION 
 	$scope.updateAuction = function(){
-//		alert($rootScope.rootID);
 		$http({
 			url: 'http://localhost:8080/rest/auction',
 			method: 'PUT',
@@ -115,7 +171,7 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 				"start_price" : $scope.start_price,
 				"status" : $scope.status
 			} 
-		}).then(function(respone){
+		}).then(function(response){
 			swal({ 
 				title: "Success!",
 				text: "Auction has been updated.",
@@ -126,76 +182,16 @@ app.controller('myCtrl', function($scope, $http, $rootScope) {
 			});
 		});
 	}
+
 	
-	$scope.deleteAuction = function(id){
-		swal({
-		   	title: "Are you sure?",
-		   	text: "Your will not be able to recover this imaginary file!",
-		   	type: "warning",
-		   	showCancelButton: true,
-		   	confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
-		   	cancelButtonText: "No, cancel plx!",
-		   	closeOnConfirm: false,
-		  	closeOnCancel: false }, 
-		function(isConfirm){ 
-			 if (isConfirm) {
-				   swal({
-					   	title: "Are you sure?",
-					   	text: "Your will not be able to recover this imaginary file!",
-					   	type: "warning",
-					   	showCancelButton: true,
-					   	confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
-					   	cancelButtonText: "No, cancel plx!",
-					   	closeOnConfirm: false,
-					  	closeOnCancel: false }, 
-						function(isConfirm){ 
-						   if (isConfirm) {
-						      	swal("Deleted!", "Auction has been deleted.", "success");
-						      	$http({
-									url: 'http://localhost:8080/rest/auction/'+id,
-									method: 'DELETE'
-							   }).then(function(respone){
-									window.location.href = 'http://localhost:8080/admin/viewauction';
-							   });
-						   } else {
-						      swal("Cancelled", "Auction is safe :)", "error");
-						   }
-						});
-			   } else {
-			      swal("Cancelled", "Your imaginary file is safe :)", "error");
-			   }
-			});
-//		swal({
-//			title: "Are you sure?",
-//			text: "Your will not be able to recover this imaginary file!",
-//			type: "warning",
-//			showCancelButton: true,
-//			confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
-//			cancelButtonText: "No, cancel plx!",
-//			closeOnConfirm: false,
-//			closeOnCancel: false }, 
-//		function(isConfirm){ 
-//			if (isConfirm) {
-//			   SweetAlert.swal("Deleted!", "Auction has been deleted.", "success");
-//			   $http({
-//					url: 'http://localhost:8080/rest/auction/'+id,
-//					method: 'DELETE'
-//			   }).then(function(respone){
-//					window.location.href = 'http://localhost:8080/admin/viewauction';
-//			   });
-//			} else {
-//			   SweetAlert.swal("Cancelled", "Auction is safe :)", "error");
-//			}
-//		});
-	}
-	
-	$scope.alertme = function(){
-		alert("Me");
-	}
+//	$scope.alertme = function(){
+//		alert("Me");
+//	}
 	
 //	$scope.$watch('status', function(x){
 //		alert(x);
 //	});
+	
 	// load all record
 	$scope.findAllAuctions();
 	$scope.findSupplersInProducts();

@@ -12,9 +12,13 @@
 	href="${pageContext.request.contextPath}/resources/static/assets/plugins/magnific-popup/dist/magnific-popup.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-datatables-editable/datatables.css" />
+	
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
+
 	<!-- menu -->
 	<jsp:include page="menu.jsp"></jsp:include>
 	<!-- left content -->
@@ -43,54 +47,55 @@
 					<div class="col-lg-12">
 						<div class="card-box">
 							<div class="row m-t-10 m-b-10">
-								<!--Select Limit Row-->
-								<div class="col-sm-4 col-lg-2">
-									<div class="dataTables_length" id="datatable-editable_length">
-										<label>Show <select name="datatable-editable_length"
-											aria-controls="datatable-editable"
-											class="form-control input-sm" style="height: 38px;">
-												<option value="10">10</option>
-												<option value="25">25</option>
-												<option value="50">50</option>
-												<option value="100">100</option>
-										</select> entries
-										</label>
-									</div>
-								</div>
-								<!--Form Search-->
+<!-- 								Select Limit Row -->
+<!-- 								<div class="col-sm-4 col-lg-2"> -->
+<!-- 									<div class="dataTables_length" id="datatable-editable_length"> -->
+<!-- 										<label>Show <select name="datatable-editable_length" -->
+<!-- 											aria-controls="datatable-editable" -->
+<!-- 											class="form-control input-sm" style="height: 38px;"> -->
+<!-- 												<option value="10">10</option> -->
+<!-- 												<option value="25">25</option> -->
+<!-- 												<option value="50">50</option> -->
+<!-- 												<option value="100">100</option> -->
+<!-- 										</select> entries -->
+<!-- 										</label> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								Form Search -->
 								<div class="col-sm-4 col-lg-6">
 									<form role="form">
 										<div class="form-group contact-search m-b-30">
-											<input type="text" id="search" name="search"
+											<input type="text" id="search" name="search" ng-model="proName" ng-change="searchProName(proName)"
 												class="form-control" placeholder="Search...">
 											<button type="submit" class="btn btn-white">
 												<i class="fa fa-search"></i>
 											</button>
 										</div>
-										<!-- form-group -->
+<!-- 										form-group -->
 									</form>
 								</div>
-								<!--Option Sort-->
-								<div class="col-sm-4 col-lg-4">
-									<div class="h5 m-0">
-										<span class="vertical-middle">Sort By:</span>
-										<div class="btn-group vertical-middle" data-toggle="buttons">
-											<label class="btn btn-white btn-md waves-effect active">
-												<input type="radio" autocomplete="off" checked="">
-												Status
-											</label> <label class="btn btn-white btn-md waves-effect"> <input
-												type="radio" autocomplete="off"> Type
-											</label> <label class="btn btn-white btn-md waves-effect"> <input
-												type="radio" autocomplete="off"> Name
-											</label>
-										</div>
-									</div>
-								</div>
-							</div>
+<!-- 								Option Sort -->
+<!-- 								<div class="col-sm-4 col-lg-4"> -->
+<!-- 									<div class="h5 m-0"> -->
+<!-- 										<span class="vertical-middle">Sort By:</span> -->
+<!-- 										<div class="btn-group vertical-middle" data-toggle="buttons"> -->
+<!-- 											<label class="btn btn-white btn-md waves-effect active"> -->
+<!-- 												<input type="radio" autocomplete="off" checked=""> -->
+<!-- 												Status -->
+<!-- 											</label> <label class="btn btn-white btn-md waves-effect"> <input -->
+<!-- 												type="radio" autocomplete="off"> Type -->
+<!-- 											</label> <label class="btn btn-white btn-md waves-effect"> <input -->
+<!-- 												type="radio" autocomplete="off"> Name -->
+<!-- 											</label> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 
 							<!-- Table Data-->
-							<div class="">
+<!-- 							<div class=""> -->
 								<table class="mails m-b-0 table table-striped">
+<!-- 								<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"> -->
 									<thead>
 										<tr>
 											<th>
@@ -140,50 +145,35 @@
 											<td>{{a.start_price}}</td>
 											<td>{{a.start_date}}</td>
 											<td>{{a.end_date}}</td>
-											<td>{{a.status}}</td>
+											<td ng-if="a.status==true"><a href="#"
+												class="table-action-btn"><i class="fa fa-check" aria-hidden="true"></i></a></td>
+											<td ng-if="a.status==false"><a href="#"
+												class="table-action-btn"><i class="fa fa-times" aria-hidden="true"></i></a></td>
 											<td><span>0 Bids</span></td>
 											<td class="action">
-												<!-- 										<button type="button" class="btn btn-info" ng-click="getAuctionById(a.auction_id)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button> -->
 												<a href="#custom-modal"><i class="fa fa-eye"
-													title="View bids"></i> </a>&nbsp;&nbsp; <a href="#"
-												data-toggle="modal" data-target="#myModal"
-												ng-click="getAuctionById(a.auction_id)"><i
+													title="View bids"></i> </a>&nbsp;&nbsp; 
+												<a href="#" data-toggle="modal" data-target="#myModal"
+													ng-click="getAuctionById(a.auction_id)"><i
 													class="fa fa-pencil-square-o" title="Edit"></i> </a>&nbsp;&nbsp;
-												<a href="#" ng-click="deleteAuction(a.auction_id)"><i
-													class="fa fa-trash-o" title="Delete"></i></a>
+												<!-- <a href="#" ng-click="deleteAuction(a.auction_id)"><i
+													class="fa fa-trash-o" title="Delete"></i></a> -->
 											</td>
 										</tr>
 									</tbody>
 								</table>
-							</div>
+<!-- 							</div> -->
 							<!-- Table Data-->
 
 							<!-- Pagination-->
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="dataTables_info" id="datatable-editable_info"
-										role="status" aria-live="polite">Showing 1 to 10 of 16
+										role="status" aria-live="polite">Showing {{pages}} to {{totalpages}} of {{totalcount}}
 										entries</div>
 								</div>
 								<div class="col-sm-6">
-									<div class="dataTables_paginate paging_simple_numbers"
-										id="datatable-editable_paginate">
-										<ul class="pagination">
-											<li class="paginate_button previous disabled"
-												aria-controls="datatable-editable" tabindex="0"
-												id="datatable-editable_previous"><a href="#">Previous</a>
-											</li>
-											<li class="paginate_button active"
-												aria-controls="datatable-editable" tabindex="0"><a
-												href="#">1</a></li>
-											<li class="paginate_button "
-												aria-controls="datatable-editable" tabindex="0"><a
-												href="#">2</a></li>
-											<li class="paginate_button next"
-												aria-controls="datatable-editable" tabindex="0"
-												id="datatable-editable_next"><a href="#">Next</a></li>
-										</ul>
-									</div>
+									<div id="PAGINATION" class="pull-right"></div>
 								</div>
 							</div>
 							<!-- End Pagination-->
@@ -358,5 +348,7 @@
 	<!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootpag/1.0.4/jquery.bootpag.min.js"></script>

@@ -3,6 +3,8 @@ package org.khmeracademy.auction.controllers;
 import java.util.Map;
 
 import org.khmeracademy.auction.entities.input.AddAuction;
+import org.khmeracademy.auction.filtering.AuctionFilter;
+import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/rest/auction")
@@ -29,9 +32,14 @@ public class AuctionController {
 	private String WS_URL;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findAllAuctions(){
+	public ResponseEntity<Map<String , Object>> findAllAuctions(AuctionFilter filter, Pagination pagination){
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-auctions")
+						.queryParam("page",pagination.getPage())
+						.queryParam("limit", pagination.getLimit())
+						.queryParam("productName", filter.getProductName())
+						.toUriString();
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-auctions", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(url, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
