@@ -24,10 +24,10 @@
 			<!-- Page-Title -->
 			<div class="row">
 				<div class="col-sm-12">
-					<h4 class="page-title">Category</h4>
+					<h4 class="page-title">Brand</h4>
 					<ol class="breadcrumb">
 						<li><a href="#">iWant Auction</a></li>
-						<li><a href="">Category Management</a></li>
+						<li><a href="">Brand Management</a></li>
 						<li class="active">Brand List</li>
 					</ol>
 				</div>
@@ -87,8 +87,18 @@
 										<td>{{b.brand_name}}</td>
 										<td>{{b.brand_description}}</td>
 										<td>{{b.status}}</td>
-										<td><a href="#" class="table-action-btn" ><i class="md md-edit"></i></a> 
-											<a href="#" class="table-action-btn "><i class="md md-close"></i></a></td>
+										
+										<!--  Update Brand -->
+										<td><a href="#" class="table-action-btn" 
+											data-toggle="modal" data-target=".enterData"
+											ng-click="getBrandById(b)"
+										><i class="md md-edit"></i></a>
+										<!--  End Update Brand --> 
+										
+										
+										<!--  Delete Brand -->
+										<!-- 	<a href="#" class="table-action-btn" ng-click="deleteBrand(b.brand_id)"><i class="md md-close"></i></a></td> -->
+										<!-- End Delete Brand -->
 									</tr>
 
 
@@ -122,6 +132,82 @@
 		});
 	</script> -->
 
+	<!-- Modal -->
+	<div class="modal fade enterData" id="myModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Update Brand</h4>
+				</div>
+				<div class="modal-body">
+					<form name="myForm">
+						<!--  Brand name -->
+						<div class="form-group row">
+							<label for="brand-name" class="col-sm-2 form-control-label"><strong>Brand
+									Name<span class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="brand-name"
+									ng-model="brand_name" value="{{brand_name}}"
+									placeholder="Ex: Samsung" required>
+							</div>
+						</div>
+						<!--  Brand Description -->
+						<div class="form-group row">
+							<label for="brand-description"
+								class="col-sm-2 form-control-label"><strong>Brand
+									Description<span class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<textarea class="form-control" id="brand-description"
+									ng-model="brand_description"
+									value="{{brand_description}}"
+									placeholder="Please Enter Summary" required></textarea>
+							</div>
+						</div>
+
+						<!--  Status -->
+						<div class="form-group row">
+							<label for="brand_status1" class="col-sm-2 form-control-label"><strong>Status<span
+									class="text-danger">*</span>
+							</strong></label>
+							<div class="col-sm-10">
+								<div class="radio-inline">
+									<input type="radio" id="brand_status1" value="true"
+										name="brand_status" ng-model="status" checked="" >
+									<label for="brand_status1"> active </label>
+								</div>
+								<div class="radio-inline">
+									<input type="radio" id="brand_status2" value="false"
+										name="brand_status" ng-model="status"> <label
+										for="brand_status2">inactive </label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="" class="col-sm-2 form-control-label"></label>
+							<div class="col-sm-10">
+
+								<button type="button" class="btn btn-success btn-md"
+									ng-model="brand_id" ng-click="updateBrand(brand_id)"
+									ng-disabled="myForm.$invalid" id="u_submit"
+									data-dismiss="modal">Update</button>
+							</div>
+
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--  end modal  -->
 	<!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script>
