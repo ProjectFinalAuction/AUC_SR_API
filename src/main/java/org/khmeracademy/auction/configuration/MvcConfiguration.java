@@ -34,7 +34,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		registry.addViewController("/itemlist").setViewName("/itemlist");
 		registry.addViewController("/group-items").setViewName("/group-items");
 		registry.addViewController("/viewtranslate").setViewName("/viewtranslate");
-		
+		registry.addViewController("/detail").setViewName("/detail");
 		
 	}
 	

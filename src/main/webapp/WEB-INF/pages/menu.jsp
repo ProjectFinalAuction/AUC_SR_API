@@ -42,6 +42,10 @@ header .menu-list-ul .menu-list-li a:hover{
 	background-color: #fff;
 	padding:0;
 }
+.fa-caret-square-o-down:hover{
+	color: black;
+	cursor: pointer;
+}
 
 </style>
 <body ng-app="myApp">
@@ -86,7 +90,9 @@ header .menu-list-ul .menu-list-li a:hover{
 	<div class="container" style="padding-right:0">
 			<div class="row" style="padding:0">
 				<div class="col-md-3" style="line-height:-8px;background-color: #e6e6e6;padding:2px;">
-					<div align="center" style="color:gray; margin-top:5px;"><b>CATEGORIES</b></div>
+					<div align="center" style="color:gray; margin:5px 0 0 15px;"><b>CATEGORIES</b>
+					<i class="fa fa-caret-square-o-down" aria-hidden="true" style="margin-left:80px; font-size:18px;" id="dropdownmenu"></i>
+					</div>
 				</div>
 				<div class="col-md-9" style="background-color: #e6e6e6;padding:0;">
 					<form style="padding:4px;">
@@ -99,3 +105,11 @@ header .menu-list-ul .menu-list-li a:hover{
 			</div>
 		</div>
 </header>
+<script type="text/javascript">
+$("#dropdownmenu").click(function(){
+	$("#menustand").toggle(function(){
+		$("#right-content").toggleClass('col-md-9 col-md-12');
+	});
+});
+
+</script>

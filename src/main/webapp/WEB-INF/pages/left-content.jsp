@@ -3,7 +3,7 @@
 	<div class="container panle1" style="padding:0;" ng-controller="myCtrl">
 		<div class="row">
 			<!-- ============ List Categpries Section ============= -->
-			<div class="col-md-3">		
+			<div class="col-md-3" id="menustand">		
 				<div class="panel-group" id="parent">
 				   <div class="panel panel-default" ng-repeat="c in maincategory">
 				     <div class="panel-heading">
