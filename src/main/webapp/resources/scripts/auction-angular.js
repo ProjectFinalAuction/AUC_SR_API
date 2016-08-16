@@ -73,61 +73,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 		$scope.findAllAuctions();
 	});
 	
-	
-	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
-	$scope.findProductsHasSupplier = function(id){		
-		$http({
-			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
-			method : 'GET',
 
-		}).then(function(response) {
-			$scope.product = response.data.DATA;
-		});
-	}
-	
-	//TODO: TO LIST ALL SUPPLIER FOR CHOOSE TO ADD
-	$scope.findSupplersInProducts = function(){		
-		$http({
-			url : 'http://localhost:8080/rest/supplier/supplier-in-product',
-			method : 'GET',
-
-		}).then(function(response) {
-			$scope.supplier = response.data.DATA;
-			
-		});
-	}
-	
-	// TODO: add record function
-	$scope.addAuction = function() {
-		$http({
-			url : 'http://localhost:8080/rest/auction',
-			method : 'POST',
-			data : {
-				"buy_price" : $scope.buy_price,
-				"comment" : $scope.comment,
-				"created_by" : $scope.created_by,
-				"created_date" : $scope.created_date,
-				"current_price" : $scope.current_price,
-				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
-				"increment_price" : $scope.increment_price,
-				"product_condition" : $scope.product_condition,
-				"product_id" : $scope.product_id,
-				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD"),
-				"start_price" : $scope.start_price,
-				"status" : $scope.status
-			}
-		}).then(function(response) {
-			swal({ 
-				title: "Success!",
-				text: "Auction has been inserted.",
-			    type: "success" 
-			  },
-			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewauction';
-			});
-		});
-	}
-	
 	// TODO: get one record function
 	$scope.getAuctionById = function(id){
 		$rootScope.rootID = id;
@@ -182,8 +128,8 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 			});
 		});
 	}
-
 	
+
 //	$scope.alertme = function(){
 //		alert("Me");
 //	}
@@ -194,5 +140,77 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	
 	// load all record
 	$scope.findAllAuctions();
+})
+
+
+//TODO: FOR ADD AUCTION
+app.controller('addAucCtrl', function($scope, $http, $rootScope) {
+	$scope.currentDate = new Date();
+	$scope.created_date = new Date();
+	$scope.created_by = 'admin';
+
+	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
+	$scope.findProductsHasSupplier = function(id){		
+		$http({
+			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
+			method : 'GET',
+
+		}).then(function(response) {
+			$scope.product = response.data.DATA;
+		});
+	}
+	
+	//TODO: TO LIST ALL SUPPLIER FOR CHOOSE TO ADD
+	$scope.findSupplersInProducts = function(){		
+		$http({
+			url : 'http://localhost:8080/rest/supplier/supplier-in-product',
+			method : 'GET',
+
+		}).then(function(response) {
+			$scope.supplier = response.data.DATA;
+			
+		});
+	}
+	
+	// TODO: add record function
+	$scope.addAuction = function() {
+		$http({
+			url : 'http://localhost:8080/rest/auction',
+			method : 'POST',
+			data : {
+				"buy_price" : $scope.buy_price,
+				"comment" : $scope.comment,
+				"created_by" : $scope.created_by,
+				"created_date" : $scope.created_date,
+				"current_price" : $scope.current_price,
+				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
+				"increment_price" : $scope.increment_price,
+				"product_condition" : $scope.product_condition,
+				"product_id" : $scope.product_id,
+				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD"),
+				"start_price" : $scope.start_price,
+				"status" : $scope.status
+			}
+		}).then(function(response) {
+			swal({ 
+				title: "Success!",
+				text: "Auction has been inserted.",
+			    type: "success" 
+			  },
+			  function(){
+			    window.location.href = 'http://localhost:8080/admin/viewauction';
+			});
+		});
+	}
+	
+	function test(){
+		var today = new Date();
+		var start = moment("2016-08-20");
+		var end = moment(today);
+		alert(start.diff(end, "days"));
+	}
+
+	// load all record
 	$scope.findSupplersInProducts();
+	test();
 })

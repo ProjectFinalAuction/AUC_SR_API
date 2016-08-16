@@ -275,3 +275,42 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	$scope.findMainCategories();
 	$scope.findAllBrands();
 })
+
+var firstDate = new Date();
+var secondDate = "2016-08-20";
+
+$scope.formatString = function(format) {
+    var day   = parseInt(format.substring(0,2));
+    var month  = parseInt(format.substring(3,5));
+    var year   = parseInt(format.substring(6,10));
+    var date = new Date(year, month-1, day);
+    return date;
+}
+
+$scope.dayDiff = function(firstDate,secondDate){
+    var date2 = new Date($scope.formatString(secondDate));
+    var date1 = new Date($scope.formatString(firstDate));
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime());   
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+    alert(diffDays);
+}
+
+
+//TODO: SHOW AUCTON TO VIEW CLIENTS
+app.controller('auctionCtrl', function($scope, $http, $rootScope) {
+	$scope.productName = "";
+	$scope.currentPage = 1;
+	//TODO: select all record to display
+	$scope.findAllAuctions = function() {
+		$http({
+			url : 'http://localhost:8080/rest/auction?limit=' + 8 +"&page=" + $scope.currentPage + "&productName="+$scope.productName,
+			method : 'GET'
+		}).then(function(response) {
+			$scope.auction = response.data.DATA;
+		});
+	}
+
+	// load all record
+	$scope.findAllAuctions();
+	$scope.dayDiff();
+})

@@ -155,9 +155,7 @@
 													title="View bids"></i> </a>&nbsp;&nbsp; 
 												<a href="#" data-toggle="modal" data-target="#myModal"
 													ng-click="getAuctionById(a.auction_id)"><i
-													class="fa fa-pencil-square-o" title="Edit"></i> </a>&nbsp;&nbsp;
-												<!-- <a href="#" ng-click="deleteAuction(a.auction_id)"><i
-													class="fa fa-trash-o" title="Delete"></i></a> -->
+													class="fa fa-pencil-square-o" title="Edit"></i> </a>
 											</td>
 										</tr>
 									</tbody>

@@ -6,69 +6,56 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>CAMBODIA AUCTION</title>
 <!-- header -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/accordion-menu.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/accordion-menu.js"></script>
-
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/static/css/accordion-menu.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/static/js/accordion-menu.js"></script>
+<style type="text/css">
+#title {
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	color: gray;
+	margin-top: 12px;
+}
+</style>
 <jsp:include page="header.jsp" />
 <!-- menu -->
 <jsp:include page="menu.jsp" />
 <!-- left content -->
 <jsp:include page="left-content.jsp" />
 <!-- right content -->
-<div class="col-md-9" ng-controller="auctionCtrl">
-	<!-- ================ Starting New Item Content ================ -->
-<!-- 	<div class="row"> -->
-<!-- 		<h2 id="title">New Items</h2> -->
-<!-- 		<hr /> -->
-		<!-- ============ thumbnail 1 Section ============= -->
-<!-- 		<div class="col-sm-6 col-md-3"> -->
-<!-- 			<div class="thumbnail" ng-repeat="a in auction"> -->
-<%-- 				<a href="#"><img src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" alt="..." --%>
-<!-- 					class="img-thumbnail"></a> -->
-<!-- 				<div class="caption descript"> -->
-<!-- 					<a href="detail.html" class="title">{{a.product.product_name}}</a> -->
-<!-- 					<h5>9 Days, 21 Hours remaining</h5> -->
-<!-- 					<p> -->
-<!-- 						<span class="price">{{a.start_price}}</span> <span class="bid"></span> -->
-<!-- 					</p> -->
-<!-- 					<p> -->
-<!-- 						<a href="detail.html" class="btn btn-primary" role="button">Buy -->
-<!-- 							Now <span class="glyphicon glyphicon-chevron-right"></span> -->
-<!-- 						</a> -->
-<!-- 					</p> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+<div class="col-md-9" ng-controller="auctionCtrl" style="padding: 0;">
+	<div class="container-fluid">
+		<!-- ================ Starting New Item Content ================ -->
+		<div class="row">
+			<p id="title">NEW ARRIVAL</p>
+			<!-- ============ thumbnail Section ============= -->
+			<div class="col-sm-6 col-md-3" style="padding-right: 1px;" ng-repeat="a in auction">
+				<div class="thumbnail">
+					<a href="bid-detail.html"><img	
+						src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg"
+						alt="..." class="img-thumbnail"></a>
+					<div class="caption descript">
+						<a href="bid-detail.html" class="title">{{a.product.product_name}}</a>
+						<h5>{{}} Days, 7 Hours remaining</h5>
+						<p>
+							<span class="price">{{a.start_price | currency}}</span> <span class="bid">0
+								Bids</span>
+						</p>
+						<p>
+							<a href="bid-detail.html" class="btn btn-info" role="button"><font color="#f2f2f2">Bid
+								Now <span class="glyphicon glyphicon-chevron-right"></span></font>
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ============ End Row 2 Section ============= -->
+	</div>
 	<!-- ============ End col-md-9 Section ============= -->
-
-
-			<div class="container-fluid">
-				<!-- ================ Starting New Item Content ================ -->
-				<div class="row">
-					<h2 id="title">New Items</h2><hr/>
-					<!-- ============ thumbnail 1 Section ============= -->
-			  		<div class="col-sm-6 col-md-3">
-			   			<div class="thumbnail">
-			      			<a href="detail.html"><img src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" alt="..." class="img-thumbnail"></a>
-			      			<div class="caption descript">
-				        		<a href="detail.html" class="title">Beautiful Home</a>
-				        		<h5>9 Days, 21 Hours remaining</h5>
-				       			<p><span class="price">$10,000.00</span>
-				       				<span class="bid"></span>				       			
-				       			</p>
-				       			<p><a href="detail.html" class="btn btn-primary" role="button">Buy Now
-				       				<span class="glyphicon glyphicon-chevron-right"></span></a>
-				       			</p>
-			    			</div>
-			   			</div>
-			  		</div>
-				</div><!-- ============ End Row 2 Section ============= -->
-			</div><!-- ============ End col-md-9 Section ============= -->
-
-
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
-<%-- 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script> --%>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script>
