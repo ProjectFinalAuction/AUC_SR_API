@@ -10,6 +10,34 @@ pageEncoding="ISO-8859-1"%>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/accordion-menu.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.NumberPart{
+			color: green;
+			font-weight: bold;
+		}
+		.remaining{
+			color: #777574;
+			font-weight: bold;
+		}
+		.glyphicon-option-vertical{
+			color: #777574;
+		}
+		.title strong{
+			color: #777574;
+			font-size: larger;
+		}
+		.subtitle strong{
+			color: #777574;
+			font-size: medium;
+			font-weight:normal;
+
+		}
+		.img-wraper{
+			margin-top: -15px; margin-bottom: 5px;
+		}
+		.img{float: left; margin-right: 10px; }
+
+	</style>
 
 	<jsp:include page="header.jsp" />
 	<!-- menu -->
@@ -68,68 +96,63 @@ pageEncoding="ISO-8859-1"%>
 
 			<!-- DATA-LISTING -->
 
-			<section data-listingid="327081">
+			<section data-listingid="327081" style=" width: 100% ">
+				<!-- wrapper div -->
+				<div class="panel panel-default clearfix listing" >		
 
-				<div class="panel panel-default clearfix listing">
-					<span class="label label-primary status-type" style="float: right; margin-top: 5px; margin-right: 5px; ">Auction</span>
-					<div style=" float: left; ">
-						<div class="row">
-							<div class="col-xs-4 col-sm-3 col-lg-2 img-container ">
-								<div class="img-thumbnail" >
-								<a href="#">                    
-									<img src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" alt="Listing Image" class="img-responsive" width="2000" height="1400">
+					<!-- image and property -->
+					<div class="col-sm-7 img-wraper">
+						<!-- img & title -->
+						<h1 class="title">
+							<a href="#">
+								<span class="img" >
+									<img src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="200">
+								</span>
+								<strong >Beautiful Home</strong>
+							</a>
+						</h1>
+						<!-- subtitle -->
+						<p class="subtitle">
+							<a href="#">
+								<strong> This is Beautiful Home</strong>
+							</a>
+						</p>
+						<!-- seller -->
+						<span class="seller">
+							Seller: <a href="#">Makara</a>
+						</span><br>
+						
+					</div>	<!--End image and property -->
+
+					<!-- Auction Part -->
+					<div class="col-sm-5" >
+						<span class="label label-primary status-type" style="float: right; margin-top: 5px; ">Auction</span><br><br><br><br>
+						<span style=" text-align: right; ">
+							<p class="time remaining" >
+								<span data-epoch="ending" data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" data-action-time="08/25/2016 00:22:49" data-end-value="Ended" data-action-milliseconds="1472059369000">9 Days, 34 Minutes</span>
+								<span class="awe-rt-Done ">remaining</span>
+							</p>
+							<p class="bids">
+								&nbsp;
+								<span class="awe-rt-CurrentPrice price NumberPart">$<span class="NumberPart">1,999.00</span></span>
+								<span class="glyphicon glyphicon-option-vertical"></span>
+								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">0</span>
+								Bids
+								&nbsp;
+								<a href="#" class="btn btn-primary awe-rt-Active awe-rt-Done">Bid Now 
+									<span class="glyphicon glyphicon-chevron-right"></span>
 								</a>
-								</div>
-							</div>
-							<div class="col-xs-8 col-sm-9 col-lg-10">
-
-								<h1 class="title">
-									<a href="#">
-										<strong>Beautiful Home</strong>
-									</a>
-								</h1>
-
-								<h2 class="subtitle">
-									<a href="/AWDemo/Listing/Details/327081/Pablo-Picasso-Painting-Nightly-Dance-With-An-Owl-1960">
-
-										<strong></strong>
-									</a>
-								</h2>
-
-								<span class="seller">
-									Seller: <a href="Browse?Seller=SusanSales">SusanSales</a>
-								</span><br>
-							</div>
-						</div>
-					</div>
+							</p>
+						</span>
+					</div>	<!-- End auction part -->
 					
-					<div class="cta" style="float: right; margin-right: 5px; ">
-						<p class="time">
-							<span data-epoch="ending" data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" data-action-time="08/25/2016 00:22:49" data-end-value="Ended" data-action-milliseconds="1472059369000">9 Days, 34 Minutes</span>
-							<span class="awe-rt-Done remaining">remaining</span>
-						</p>
-						<p class="bids">
-							&nbsp;
-							<span class="awe-rt-CurrentPrice price">$<span class="NumberPart">1,999.00</span></span>
-							<span class="glyphicon glyphicon-option-vertical"></span>
-							<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">0</span>
-							Bids
-							&nbsp;
-							<a href="/AWDemo/Listing/Details/327081/Art" class="btn btn-primary awe-rt-Active awe-rt-Done">Bid Now <span class="glyphicon glyphicon-chevron-right"></span></a>
-						</p>
-					</div>
-				</div>
 
+				</div> <!-- End wrapper div -->
 			</section>
 
 
 		</div>
 
-
-
-<!-- <div class="panel panel-default" style=" margin-top: 10px; height: 150px; ">
-	<div class="panel-body">A Basic Panel</div>
-</div> -->
 
 </div>
 
