@@ -12,10 +12,10 @@
 <body> 
  		<input type="file" name="image" id="image" />
  		<h1>ORIGINAL</h1>
- 		<img src="" id="result"/>
+ 		<!-- <img src="" id="result"/> -->
  		<h1>THUMBNAIL</h1>
- 		<img src="" id="resultThumbnail"/>
- 		
+ 		<img src="" id="resultThumbnail" height="100" width="100"/>
+ 		<br/>
  		<input type="text" id="productID" />
  		<button id="btnSave"> SAVE</button>
  		
@@ -41,7 +41,7 @@
  		  	        },
  		            success: function(data) {
  		            	console.log(data);
- 		            	$("#result").attr("src", data.DATA);
+ 		            	/* $("#result").attr("src", data.DATA); */
  		            	$("#resultThumbnail").attr("src", data.DATA);
  		            },
  		         	error: function(data){
@@ -50,7 +50,8 @@
  		        });
  			});
  			
-
+ 			
+ 			
  			$("#btnSave").click(function(){
  				alert($("#result").attr("src"));
  				$.ajax({
@@ -59,7 +60,8 @@
  					data: JSON.stringify({
  						"image_id": 1,
  						"image_path":$("#result").attr("src"),
- 						"product_id": $("#productID").val() 
+ 						"product_id": $("#productID").val()
+ 						 
  					}),
  		  	     beforeSend: function(xhr) {
                      xhr.setRequestHeader("Accept", "application/json");

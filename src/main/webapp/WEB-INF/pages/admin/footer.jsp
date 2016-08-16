@@ -1,4 +1,3 @@
-
 </div>
 <!-- END wrapper -->
 <footer class="footer text-right"> © 2016. All rights reserved.
@@ -10,6 +9,7 @@
 
 <!-- jQuery  -->
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.min.js"></script>
+
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/detect.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/fastclick.js"></script>
@@ -50,7 +50,7 @@
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
 
 <!-- Jquery Dashboard -->
-<%-- <script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.dashboard_ecommerce.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.dashboard_ecommerce.js"></script>
 
 <!--Form Validation-->
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrapvalidator/dist/js/bootstrapValidator.js" type="text/javascript"></script>

@@ -19,7 +19,7 @@
  	  <!-- ============================================================== -->
       <!-- Start right Content here -->
       <!-- ============================================================== -->                      
-    <div class="content-page" ng-controller="myCtrl">
+    <div class="content-page">
         <!-- Start content -->
         <div class="content">
           <div class="container">
@@ -100,14 +100,12 @@
 	                            </div>
 	                          </td>
 	                          
-	                          <td><img ng-repeat="proimg in pro.gallery"
-											src={{proimg.image_path}}
-											class="thumb-sm" alt="product-img" />
+	                          <td ng-repeat="proimg in pro.gallery">
+	                          <img src={{proimg.image_path}}   class="thumb-sm" alt="product-img" />
 								
 <!-- 								<h1 ng-repeat="proimg in pro.gallery"> -->
                        		
-<!--                        						{{proimg.image_path}} -->
-                       			
+<!--                        			{{proimg.image_path}} -->
 <!--                        		  </h1>			 -->
 							  </td>
 											

@@ -39,10 +39,10 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	}
 	
 	 @Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		//TODO: to map from ui:8080 to opt/images
-		 registry.addResourceHandler("http://localhost:9999/files/images/**").addResourceLocations("file:/opt/images/");
-		 
-	}
+		public void addResourceHandlers(ResourceHandlerRegistry registry) {
+			
+			
+			 registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		}
 	
 }
