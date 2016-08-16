@@ -14,23 +14,24 @@
 <!-- content -->
 	<div class="content" id="login">
 		<div class="container-fluid">
-			<!-- form register -->
+		  <!-- form register -->
 		  <div class="row">
 			<div class="col-md-6">
 				<div class="list-group">
 					<div class="list-group-item"><small>LOG IN</small></div>
 					<div class="list-group-item">
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" id="formLogin" role="form">
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="uname">Username</label>
 						    <div class="col-sm-8">
-						      <input type="email" class="form-control" id="uname" ng-model="user_name" value={{user_name}} required>
+						      <input type="text" class="form-control" id="uname"
+						      placeholder="enter your username" required>
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="pwd">Password</label>
 						    <div class="col-sm-8"> 
-						      <input type="password" class="form-control" id="pwd" ng-model="password" value={{password}} required>
+						      <input type="password" class="form-control" id="pwd" required>
 						    </div>
 						  </div>
 						  <div class="form-group"> 
@@ -42,7 +43,7 @@
 						  </div>
 						  <div class="form-group"> 
 						    <div class="col-sm-offset-3 col-sm-10">
-						      <button type="submit" class="btn btn-primary" ng-click="">Submit</button>
+						      <button type="submit" class="btn btn-primary">Sign in</button>
 						    </div>
 						  </div>
 						</form>
@@ -60,3 +61,50 @@
 
 <!-- footer -->
 <jsp:include page="footer.jsp"/>
+<script type="text/javascript">
+$(function() {
+	
+	$("#formLogin").submit(function(e){		
+// 			alert("true");
+   		  e.preventDefault();  			
+   		  $.ajax({
+	            url: "${pageContext.request.contextPath}/login",
+	            type: "POST",
+	            data: $("#formLogin").serialize(),
+	            success: function(data) {
+	            	if(data == "User account is locked"){
+	            		alert(data);
+	            	}else if(data == "User is disabled"){
+	            		swal("LOGIN FAILED!", data, "error");
+	            	}else if(data == "Bad credentials"){
+	            		swal("LOGIN FAILED!", data, "error");
+	            	}else{
+	            		
+	            		swal({   
+	          			title: "LOGIN SUCCESSFULLY!",   
+	          			text: "THANK YOU",   
+	          			type: "success",   
+	          			confirmButtonColor: "#007d3d",   
+						closeOnConfirm: false,   
+	          			closeOnCancel: false }, 
+	          			function(isConfirm){   
+	          				if(isConfirm) {     				
+	          					window.location.href="http://localhost:8080/";
+
+	          				}else {     
+	          					swal("Cancelled", "Your imaginary file is safe :)", "error");   
+	          				} 
+	          			});
+   		  
+	            	}
+	            },
+	         	error: function(data){
+	         		console.log(data);
+	         	}
+   		  });
+		  
+	});
+	
+});
+  
+</script>

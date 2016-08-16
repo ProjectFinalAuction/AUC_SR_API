@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.khmeracademy.auction.entities.input.AddCategory;
 import org.khmeracademy.auction.entities.input.AddUser;
+import org.khmeracademy.auction.entities.input.UserLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -66,12 +67,13 @@ public class UserController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	
-	//Get User by user_id and password
-	@RequestMapping(value="/{user_name}/{password}", method = RequestMethod.POST)
-	public ResponseEntity<Map<String , Object>> findCategoryByID( @PathVariable String user_name,@PathVariable String password){
-		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/login/"+ user_name +"/"+ password, HttpMethod.POST , request , Map.class) ;
+	//Get User By UserName
+	@RequestMapping(value="/{user_name}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> getUserByName(@PathVariable String user_name){
+		UserLogin login = new UserLogin();
+		login.setUser_name(user_name);
+		HttpEntity<Object> request = new HttpEntity<Object>(login,header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-name/"+ user_name, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
