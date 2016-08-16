@@ -35,6 +35,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		registry.addViewController("/group-items").setViewName("/group-items");
 		registry.addViewController("/viewtranslate").setViewName("/viewtranslate");
 		registry.addViewController("/detail").setViewName("/detail");
+		registry.addViewController("/access-denied").setViewName("error/access-denied");
 		
 	}
 	
