@@ -41,7 +41,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/translate-angular.js"></script>
 
-<script>
+<!-- <script>
 	var arrLang = new Array();
 	arrLang['en'] = new Array();
 	arrLang['kh'] = new Array();
@@ -65,4 +65,4 @@
 			});
 		});
 	});
-</script>
+</script> -->

@@ -25,6 +25,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			
 		}).then(function(response){
 			$scope.translate = response.data.DATA;
+			$('.lang').each(function(index, element) {
+					$(this).text($scope.translate.translate);
+				});
 			
 		});
 	}
