@@ -18,7 +18,7 @@
 <div class="content-page">
 	<!-- Start content -->
 	<div class="content">
-		<div class="container">
+		<div class="container" ng-controller="myCtrl">
 
 			<!-- Page-Title -->
 			<div class="row">

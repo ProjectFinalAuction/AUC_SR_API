@@ -17,7 +17,7 @@
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
-<div class="content-page" data-ng-init="findMainCategories()">
+<div class="content-page" data-ng-init="findMainCategories()" ng-controller="myCtrl">
 	<!-- Start content -->
 	<div class="content">
 		<div class="container">

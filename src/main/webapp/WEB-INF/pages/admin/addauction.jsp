@@ -194,8 +194,6 @@
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.min.js"></script>
 
 <script type="text/javascript">
 	function clearFrm(){

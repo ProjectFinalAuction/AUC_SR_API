@@ -1,4 +1,4 @@
-<body class="fixed-left" ng-app="myApp" ng-controller="myCtrl">
+<body class="fixed-left" ng-app="myApp">
 
 	<!-- Begin page -->
 	<div id="wrapper">
