@@ -41,10 +41,10 @@ public class UserServiceImpl implements UserService{
 		login.setUser_name(user_name);
 		
 		HttpEntity<Object> request = new HttpEntity<Object>(login,header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL+"/get-user-by-name" + user_name, HttpMethod.POST , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WS_URL+"/get-user-by-name/" + user_name, HttpMethod.GET , request , Map.class) ;
 		
 		Map<String, Object> map = (HashMap<String, Object>)response.getBody();
-		
+		System.out.println(map);
 		if(map.get("DATA") != null){
 			
 			Map<String , Object> data = (HashMap<String , Object>) map.get("DATA");
@@ -59,8 +59,8 @@ public class UserServiceImpl implements UserService{
 			List<HashMap<String, Object>> dataRole = (List<HashMap<String, Object>>) data.get("roles");
 			for (Map<String , Object> datas  : dataRole) {
 				Role role = new Role();
-				role.setRole_id((Integer)datas.get("id"));
-				role.setRole_name((String) datas.get("name"));
+				role.setRole_id((Integer)datas.get("role_id"));
+				role.setRole_name((String) datas.get("role_name"));
 				roles.add(role);
 				
 				System.out.println(role.getRole_id() + role.getRole_name());

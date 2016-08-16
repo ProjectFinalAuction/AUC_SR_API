@@ -20,18 +20,18 @@
 				<div class="list-group">
 					<div class="list-group-item"><small>LOG IN</small></div>
 					<div class="list-group-item">
-						<form class="form-horizontal" id="formLogin" role="form">
+						<form class="form-horizontal" action="#ogin" method="POST" id="formLogin" role="form">
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="uname">Username</label>
 						    <div class="col-sm-8">
-						      <input type="text" class="form-control" id="uname"
+						      <input type="text" class="form-control" id="uname" name="username"
 						      placeholder="enter your username" required>
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <label class="control-label col-sm-3" for="pwd">Password</label>
 						    <div class="col-sm-8"> 
-						      <input type="password" class="form-control" id="pwd" required>
+						      <input type="password" class="form-control" id="pwd"  name="password" required>
 						    </div>
 						  </div>
 						  <div class="form-group"> 
@@ -66,9 +66,10 @@ $(function() {
 	
 	$("#formLogin").submit(function(e){		
 // 			alert("true");
-   		  e.preventDefault();  			
+   		  e.preventDefault();
+   		  console.log($("#formLogin").serialize());
    		  $.ajax({
-	            url: "${pageContext.request.contextPath}/login",
+	            url: "login",
 	            type: "POST",
 	            data: $("#formLogin").serialize(),
 	            success: function(data) {
@@ -79,7 +80,6 @@ $(function() {
 	            	}else if(data == "Bad credentials"){
 	            		swal("LOGIN FAILED!", data, "error");
 	            	}else{
-	            		
 	            		swal({   
 	          			title: "LOGIN SUCCESSFULLY!",   
 	          			text: "THANK YOU",   
@@ -89,12 +89,12 @@ $(function() {
 	          			closeOnCancel: false }, 
 	          			function(isConfirm){   
 	          				if(isConfirm) {     				
-	          					window.location.href="http://localhost:8080/";
+	          					window.location.href="http://localhost:8080/"+data;
 
 	          				}else {     
 	          					swal("Cancelled", "Your imaginary file is safe :)", "error");   
 	          				} 
-	          			});
+	          			}); 
    		  
 	            	}
 	            },

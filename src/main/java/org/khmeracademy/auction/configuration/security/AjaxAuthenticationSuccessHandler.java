@@ -42,7 +42,7 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 		if(roles.contains("ROLE_ADMIN")) {
 			return "admin";
 		}else if(roles.contains("ROLE_BIDDER")){
-			return "bidder";
+			return "index";
 		}else{
 			return "accessDenied";
 		}
