@@ -17,7 +17,7 @@
 
 <!-- Start right Content here -->
       <!-- ============================================================== -->                      
-      <div class="content-page">
+      <div class="content-page" ng-controller="addImageCtrl">
         <!-- Start content -->
         <div class="content">
           <div class="container">
@@ -296,9 +296,7 @@
    ///////////////-----------------------------------------------------------------------------------------------/////////////  
 
 			var app = angular.module('myApp', []);
-				app.controller('myCtrl', function($rootScope,$scope, $http) {
-					
-					
+				app.controller('addImageCtrl', function($rootScope,$scope, $http) {
 					
 					//TODO: auto seleted option
 		/* 			 	$scope.data = {
@@ -320,9 +318,6 @@
 					
 			       	$rootScope.addProduct=function (e) {
 						 e.preventDefault()
-						/*  alert($scope.category);
-						 alert($scope.brand);
-			       			 */
 			       			 
 			       			var frmData = new FormData();
 /* 			       			var serializeArray = $('form[name=add-product-form]').serializeArray();
@@ -353,10 +348,11 @@
 
 							// Gallery File
 			       			var gallery_files = $('input[name=image]')[0].files;
+							console.log(gallery_files.length); 
 			       			for(var i=0; i<gallery_files.length; i++){
 			       				frmData.append("images", gallery_files[i]);
 			       			}
-			       			
+			       			console.log(gallery_files.length); 
 			       			$http({
 			       				url:'http://localhost:8080/rest/product',
 			       				method: 'POST',

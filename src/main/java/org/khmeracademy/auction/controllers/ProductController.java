@@ -23,69 +23,65 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/rest/product")
 public class ProductController {
-	
+
 	@Autowired
 	private HttpHeaders header;
-	
+
 	@Autowired
 	private RestTemplate rest;
-	
+
 	@Autowired
 	private String WS_URL;
-	
-	
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String,Object>> getAllProducts(){
-		//System.out.println("Hello");
-		HttpEntity<Object> request= new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-products", HttpMethod.GET , request , Map.class) ;
-	return new ResponseEntity<Map<String,Object>>(response.getBody(), HttpStatus.OK);
+	public ResponseEntity<Map<String, Object>> getAllProducts() {
+		// System.out.println("Hello");
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-products", HttpMethod.GET, request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
-	
-	
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Map<String,Object>> addProduct(AddProduct addproduct, HttpServletRequest request){
+	public ResponseEntity<Map<String, Object>> addProduct(AddProduct addproduct, HttpServletRequest request) {
 		System.out.println("UI => " + addproduct);
 		// Header must not be JSON Content Type
 		HttpHeaders header = new HttpHeaders();
-		RestTemplate restTemplate = new RestTemplate();		
-        // Build Form Data
+		RestTemplate restTemplate = new RestTemplate();
+		// Build Form Data
 		MultiValueMap<String, Object> formData = null;
 		try {
 			formData = HrdGeneratorUI.createFormData(addproduct);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        
-		final HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(formData, header);
-		
+
+		final HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(
+				formData, header);
+
 		ResponseEntity<Map> response = null;
-		
-		try{
-			response = restTemplate.exchange(WS_URL + "/add-product", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<Map>() {});
-		}catch (Exception e){
+
+		try {
+			response = restTemplate.exchange(WS_URL + "/add-product", HttpMethod.POST, requestEntity,
+					new ParameterizedTypeReference<Map>() {
+					});
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 
 	}
-	
 
-
-	//-----------------image controller
-	@RequestMapping(value="/getimage/{product_name}" ,method = RequestMethod.GET)
-	public ResponseEntity<Map<String,Object>> getAllImages(@PathVariable String product_name){
-		//System.out.println("Hello image>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+product_name);
-		HttpEntity<Object> request= new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-image-by-product-name/"+product_name, HttpMethod.GET , request , Map.class) ;
-	return new ResponseEntity<Map<String,Object>>(response.getBody(), HttpStatus.OK);
+	// -----------------image controller
+	@RequestMapping(value = "/getimage/{product_name}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> getAllImages(@PathVariable String product_name) {
+		// System.out.println("Hello
+		// image>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+product_name);
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-image-by-product-name/" + product_name,
+				HttpMethod.GET, request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
-	
-	
-	
-	
+
 }

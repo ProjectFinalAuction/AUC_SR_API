@@ -19,7 +19,7 @@
  	  <!-- ============================================================== -->
       <!-- Start right Content here -->
       <!-- ============================================================== -->                      
-    <div class="content-page">
+    <div class="content-page" ng-controller="viewProductCtrl">
         <!-- Start content -->
         <div class="content">
           <div class="container">
@@ -103,10 +103,6 @@
 	                          <td ng-repeat="proimg in pro.gallery">
 	                          <img src={{proimg.image_path}}   class="thumb-sm" alt="product-img" />
 								
-<!-- 								<h1 ng-repeat="proimg in pro.gallery"> -->
-                       		
-<!--                        			{{proimg.image_path}} -->
-<!--                        		  </h1>			 -->
 							  </td>
 											
 	                          <td>{{pro.product_id}}</td>
@@ -139,53 +135,23 @@
         
 <script type="text/javascript">
 	var app = angular.module('myApp', []);
-		app.controller('myCtrl', function($rootScope,$scope, $http) {
+		app.controller('viewProductCtrl', function($rootScope,$scope, $http) {
 			
 			
 			//$rootScope.test="hello";
-    	$rootScope.getmethod=function(){
-    		//alert("a");
+    	$rootScope.getProductsMethod=function(){
+//     		alert("a");
            $http.get("http://localhost:8080/rest/product")
           		.then(function(response) {
           		$rootScope.products = response.data.DATA;
           		/* alert(response.data.DATA.gallery.image_path); */
 				console.log(response.data.DATA);
 				
-				/* for ( var i = 0; i < $rootScope.products.length; i++) {
-					
-			
-					$rootScope.getImg = function(){
-			    		$http.get("http://localhost:8080/rest/product/getimage/"+$rootScope.products[i].product_name)
-			      		.then(function(response) {
-			      		$scope.imgs = response.data.DATA;
-			      		
-			      			
-			      			
-			      		alert($scope.imgs.image_path);
-						console.log(response.data.DATA);
-						
-						});
-			    	}
-					$rootScope.getImg();
-					
-				} */
-				
   			});
         }
-    	$rootScope.getmethod();
+    	$rootScope.getProductsMethod();
     	
     	
-    	////////////////////////////////
-    	
-    	/* $rootScope.getImg = function(){
-    		$http.get("http://localhost:8080/rest/product/getimage/"+$rootScope.products.product_name)
-      		.then(function(response) {
-      		
-			console.log(response.data.DATA);
-			
-			});
-    	} */
-    	/*  $rootScope.getImg(); */
 	});
 
 </script>

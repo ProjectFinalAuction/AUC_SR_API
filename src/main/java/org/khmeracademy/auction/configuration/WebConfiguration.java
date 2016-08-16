@@ -14,6 +14,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @PropertySource(
 		value={"classpath:configuration.properties"}
 )
+@EnableWebMvc
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Autowired
