@@ -151,7 +151,7 @@ header .menu-list-ul .menu-list-li a:hover{
 				<div class="modal-body">
 					<form class="formlogin" id="formLogin" method="POST" role="form">
 						<fieldset>
-							<h3 class="text-success text-xs-center lang" key="welcome">Welcome</h3>
+							<h4 class="text-success text-xs-center lang" key="welcome">Welcome</h4>
 							<div class="form-group">
 								<label class="text-xs-left lang" key="username">Username</label> <input type="text"
 									class="form-control form-control-succes" name="username"
