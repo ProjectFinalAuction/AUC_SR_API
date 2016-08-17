@@ -49,6 +49,10 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	$scope.productName = "";
 	$scope.currentPage = 1;
+	
+	$scope.ac_id = $('#ac_id').val();
+//	alert($scope.ac_id);
+	
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
@@ -61,21 +65,20 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	
 	// TODO: get one record function
 	$scope.getAuctionById = function(id){
-		$rootScope.rootID = id;
+//		$rootScope.rootID = id;
 //		alert($scope.product_name);
 		$http({
-			url: 'http://localhost:8080/rest/auction/'+id,
+			url: 'http://localhost:8080/rest/auction/'+$scope.ac_id,
 			method: 'GET'
 		}).then(function(response){
 			$scope.category_name = response.data.DATA.product.category.category_name;
-			
-//			$scope.findProductsHasSupplier($scope.sup);
-			$scope.pro = response.data.DATA.product.product_id;
 			$scope.product_name = response.data.DATA.product.product_name;
-			$scope.product_condition = response.data.DATA.product_condition;
+			$scope.current_price = response.data.DATA.current_price;
 			$scope.start_price = response.data.DATA.start_price;
 			$scope.increment_price = response.data.DATA.increment_price;
 			$scope.buy_price = response.data.DATA.buy_price;
+			$scope.product_condition = response.data.DATA.product_condition;
+
 			$scope.start_date = moment(response.data.DATA.start_date).format("MM/DD/YYYY");
 			$scope.end_date = moment(response.data.DATA.end_date).format("MM/DD/YYYY");
 			$scope.status = response.data.DATA.status;
@@ -85,4 +88,5 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 
 	// load all record
 	$scope.findAllAuctions();
+	$scope.getAuctionById();
 })

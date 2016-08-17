@@ -42,14 +42,13 @@
 						alt="..." class="img-thumbnail"></a>
 					<div class="caption descript">
 						<a href="bid-detail.html" class="title">{{a.product.product_name}}</a>
-						<h5 class="lang" key="remaining_day">{{3}} Days, 7 Hours remaining</h5>
+						<h5 class="lang" key="remaining_day">7 Days, 7 Hours remaining</h5>
 						<p>
 							<span class="price">{{a.start_price | currency}}</span> <span
 								class="bid lang" key="bid">0 Bids</span>
 						</p>
 						<p>
-							<a href="${pageContext.request.contextPath}/detail"
-								ng-click="getAuctionById(a.auction_id)" class="btn btn-info"
+							<a href="${pageContext.request.contextPath}/detail?id={{a.auction_id}}" class="btn btn-info"
 								role="button"><font color="#f2f2f2" class="lang" key="bid_now">Bid Now <span
 									class="glyphicon glyphicon-chevron-right"></span></font> </a>
 						</p>
