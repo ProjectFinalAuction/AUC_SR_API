@@ -38,6 +38,9 @@ header .menu-list-ul .menu-list-li > a{
 	line-height: 90px;
 	color: gray;
 }
+header .menu-list-ul .menu-list-li > a > span{
+	font-size: 0.90vmax;
+}
 header .menu-list-ul .menu-list-li a:hover{
 	text-decoration: none;
 }

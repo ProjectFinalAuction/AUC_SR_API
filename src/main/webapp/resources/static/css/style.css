@@ -182,7 +182,7 @@ class Section Style ================ */
 }
 /* ============ Tag p in class caption Section Style ================ */
 .caption p{
-	font-size: 17px;
+	font-size: 14px;
 	color: #286090;
 	font-weight: bold;
 }
@@ -251,7 +251,7 @@ footer .navbar-nav>li>a{
 	border: none;
 	padding: 25px 15px;
 	text-align: center;
-	font-size: 1.1vmax;
+	font-size: 0.90vmax;
 	margin-top: 35px;
 	color: #2d2d2d;
 }
