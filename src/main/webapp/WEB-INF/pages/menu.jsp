@@ -54,29 +54,29 @@ header .menu-list-ul .menu-list-li a:hover{
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-				<i class="fa fa-volume-control-phone"></i><span> OUR CUSTOMER CARE +855 70 730 619</span>
+				<i class="fa fa-volume-control-phone lang" key="contact_info"></i><span> OUR CUSTOMER CARE +855 70 730 619</span>
 				</div>
 				<div id="right-head-info" class="col-md-6">
 					<sec:authorize access="!isAuthenticated()">
-						<a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+						<a class="nav-link lang" href="#" data-toggle="modal" data-target="#login" key="login">
 							Login 
 						</a>
 					</sec:authorize>
 					<span>&nbsp;|&nbsp; </span>
 					<sec:authorize access="!isAuthenticated()">
-						<a class="nav-link" href="#">Register</a>
+						<a class="nav-link lang" href="#" key="register">Register</a>
 					</sec:authorize>
 					<span>&nbsp;|&nbsp; </span>
-					<span>MY WISHLIST</span>
+					<span clas="lang" key="my_wishlist">MY WISHLIST</span>
 					<sec:authorize access="isAuthenticated()">
 						<span class="nav-item dropdown logined" style="display: none;">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
 							role="button" aria-haspopup="true" aria-expanded="false">
-								Welcome  <sec:authentication property="principal.username" />
+								<span class="lang" key="welcome">Welcome</span>  <sec:authentication property="principal.username" />
 							</a>
 							<h5 class="dropdown-menu" aria-labelledby="Preview">
-								<a href="${pageContext.request.contextPath}/logout">
-								<i class="fa fa-sign-out"></i> Logout</a>
+								<a href="${pageContext.request.contextPath}/logout" >
+								<i class="fa fa-sign-out"></i> <span class="lang" key="logout">Logout</span></a>
 							</h5>
 						</span>
 					</sec:authorize>
@@ -92,17 +92,17 @@ header .menu-list-ul .menu-list-li a:hover{
 				</div>
 				<div class="col-md-5">
 					<ul class="menu-list-ul">
-						<li class="menu-list-li"><a href="#">BEST BIDDING</a></li>
-						<li class="menu-list-li"><a href="#">BEST BRAND</a></li>
-						<li class="menu-list-li"><a href="#">CONTACT</a></li>
-						<li class="menu-list-li"><a href="about.html">ABOUT</a></li>
+						<li class="menu-list-li"><a href="#"><span class="lang" key="best_bidding">BEST BIDDING</span></a></li>
+						<li class="menu-list-li"><a href="#"><span class="lang" key="best_brand">BEST BRAND</span></a></li>
+						<li class="menu-list-li"><a href="#"><span class="lang" key="contact">CONTACT</span></a></li>
+						<li class="menu-list-li"><a href="about.html"><span class="lang" key="about">ABOUT</span></a></li>
 					</ul>
 				</div>
 				<div class="col-md-3" style="margin-top: 35px; text-align:right;">
-					LANGUAGE
+					<span class="lang" key="language">LANGUAGE</span>
 					<select>
-						<option>ENGLISH</option>
-						<option>KHMER</option>
+						<option class="translate lang" key="english" id="en">ENGLISH</option>
+						<option class="translate lang" key="khmer" id="kh">KHMER</option>
 					</select>
 				</div>
 			</div>
@@ -111,7 +111,7 @@ header .menu-list-ul .menu-list-li a:hover{
 	<div class="container" style="padding-right:0">
 			<div class="row" style="padding:0">
 				<div class="col-md-3" style="line-height:-8px;background-color: #e6e6e6;padding:2px;">
-					<div align="center" style="color:gray; margin:5px 0 0 15px;"><b>CATEGORIES</b>
+					<div align="center" style="color:gray; margin:5px 0 0 15px;"><b><span class="lang" key="categories">CATEGORIES</span></b>
 					<i class="fa fa-caret-square-o-down" aria-hidden="true" style="margin-left:80px; font-size:18px;" id="dropdownmenu"></i>
 					</div>
 				</div>
@@ -141,20 +141,20 @@ header .menu-list-ul .menu-list-li a:hover{
 				<div class="modal-body">
 					<form class="formlogin" id="formLogin" method="POST" role="form">
 						<fieldset>
-							<h3 class="text-success text-xs-center">Welcome</h3>
+							<h3 class="text-success text-xs-center lang" key="welcome">Welcome</h3>
 							<div class="form-group">
-								<label class="text-xs-left">Username</label> <input type="text"
+								<label class="text-xs-left lang" key="username">Username</label> <input type="text"
 									class="form-control form-control-succes" name="username"
 									placeholder="enter your username" required>
 							</div>
 							<div class="form-group">
-								<label class="text-xs-left">Password</label> <input
+								<label class="text-xs-left lang" key="password" >Password</label> <input
 									type="password" class="form-control form-control-succes"
 									name="password" placeholder="enter your password" required>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary"
-									>Sing in
+									><span class="lang" key="sign_in">Sign in</span>
 								</button>
 							</div>
 						</fieldset>

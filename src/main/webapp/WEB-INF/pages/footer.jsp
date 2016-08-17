@@ -10,18 +10,18 @@
 			<div class="row">
 				<div class="col-md-5">
 					<img src="${pageContext.request.contextPath}/resources/static/images/iwantlogo1.png" class="img-responsive" style="width:80%">
-					<p>&copy; 2016; Privacy Policy</p>
+					<p>&copy; <span class="lang" key="privacy">2016; Privacy Policy</span></p>
 				</div>
 				<div class="col-md-5">
 					<div class="container">
 					    <!-- Collect the nav links, forms, and other content for toggling -->
 					    <div class="navfooter">
 					      <ul class="nav navbar-nav">
-					       	<li class="active"><a href="index.html">Home</a></li>
-					        <li><a href="sell_first_step.html">Seller</a></li>
-					        <li><a href="#">Buyer</a></li>
-					        <li><a href="contact.html">Contact</a></li>
-					        <li><a href="about.html">About</a></li>
+					       	<li class="active"><a href="index.html" class="lang" key="home">Home</a></li>
+					        <li><a href="sell_first_step.html" class="lang" key="seller">Seller</a></li>
+					        <li><a href="#" class="lang" key="buyer">Buyer</a></li>
+					        <li><a href="contact.html" class="lang" key="contact">Contact</a></li>
+					        <li><a href="about.html" class="lang" key="about">About</a></li>
 					      </ul>
 					    </div><!-- /.navbar-collapse -->
 					</div><!-- /.container -->
