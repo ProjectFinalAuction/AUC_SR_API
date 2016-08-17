@@ -1,6 +1,6 @@
 
 <!-- ================ Starting Content Section ================= -->
-	<div class="container panle1" style="padding:0;" ng-controller="myCtrl">
+	<div class="container panle1" style="padding:0;" ng-controller="categoryCtrl">
 		<div class="row">
 			<!-- ============ List Categpries Section ============= -->
 			<div class="col-md-3" id="menustand">		

@@ -40,7 +40,7 @@
 								Bids</span>
 						</p>
 						<p>
-							<a href="bid-detail.html" class="btn btn-info" role="button"><font color="#f2f2f2">Bid
+							<a href="${pageContext.request.contextPath}/detail" ng-click="getAuctionById(a.auction_id)" class="btn btn-info" role="button"><font color="#f2f2f2">Bid
 								Now <span class="glyphicon glyphicon-chevron-right"></span></font>
 							</a>
 						</p>
@@ -54,4 +54,4 @@
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
