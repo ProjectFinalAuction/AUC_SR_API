@@ -57,8 +57,29 @@ header .menu-list-ul .menu-list-li a:hover{
 				<i class="fa fa-volume-control-phone"></i><span> OUR CUSTOMER CARE +855 70 730 619</span>
 				</div>
 				<div id="right-head-info" class="col-md-6">
-				<span>LOGIN / REGISTER &nbsp;|&nbsp; </span>
-				<span>MY WISHLIST</span>
+					<sec:authorize access="!isAuthenticated()">
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+							Login 
+						</a>
+					</sec:authorize>
+					<span>&nbsp;|&nbsp; </span>
+					<sec:authorize access="!isAuthenticated()">
+						<a class="nav-link" href="#">Register</a>
+					</sec:authorize>
+					<span>&nbsp;|&nbsp; </span>
+					<span>MY WISHLIST</span>
+					<sec:authorize access="isAuthenticated()">
+						<span class="nav-item dropdown logined" style="display: none;">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
+							role="button" aria-haspopup="true" aria-expanded="false">
+								Welcome  <sec:authentication property="principal.username" />
+							</a>
+							<h5 class="dropdown-menu" aria-labelledby="Preview">
+								<a href="${pageContext.request.contextPath}/logout">
+								<i class="fa fa-sign-out"></i> Logout</a>
+							</h5>
+						</span>
+					</sec:authorize>
 				</div>
 			</div>
 		</div>
@@ -105,6 +126,43 @@ header .menu-list-ul .menu-list-li a:hover{
 			</div>
 		</div>
 </header>
+
+<!--  ========  Model Login ====== -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-xs-center">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>					
+				</div>
+				<div class="modal-body">
+					<form class="formlogin" id="formLogin" method="POST" role="form">
+						<fieldset>
+							<h3 class="text-success text-xs-center">Welcome</h3>
+							<div class="form-group">
+								<label class="text-xs-left">Username</label> <input type="text"
+									class="form-control form-control-succes" name="username"
+									placeholder="enter your username" required>
+							</div>
+							<div class="form-group">
+								<label class="text-xs-left">Password</label> <input
+									type="password" class="form-control form-control-succes"
+									name="password" placeholder="enter your password" required>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary"
+									>Sing in
+								</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 <script type="text/javascript">
 $("#dropdownmenu").click(function(){
 	$("#menustand").toggle(function(){
@@ -112,4 +170,49 @@ $("#dropdownmenu").click(function(){
 	});
 });
 
+$(function() {
+	
+	$("#formLogin").submit('hidden.bs.modal',function(e){		
+		  
+   		  e.preventDefault();
+   		  console.log($("#formLogin").serialize());
+   		  $.ajax({
+	            url: "${pageContext.request.contextPath}/login",
+	            type: "POST",
+	            data: $("#formLogin").serialize(),
+	            success: function(data) {
+	            	if(data == "User account is locked"){
+	            		alert(data);
+	            	}else if(data == "User is disabled"){
+	            		swal("LOGIN FAILED!", data, "error");
+	            	}else if(data == "Bad credentials"){
+	            		swal("LOGIN FAILED!", data, "error");
+	            	}else{
+	            		swal({   
+	          			title: "LOGIN SUCCESSFULLY!",   
+	          			text: "THANK YOU",   
+	          			type: "success",   
+	          			confirmButtonColor: "#007d3d",   
+						closeOnConfirm: false,   
+	          			closeOnCancel: false }, 
+	          			function(isConfirm){   
+	          				if(isConfirm) {     				
+	          					window.location.href="http://localhost:8080/"+data;
+	          					
+
+	          				}else {     
+	          					swal("Cancelled", "Your imaginary file is safe :)", "error");   
+	          				} 
+	          			}); 
+   		  
+	            	}
+	            },
+	         	error: function(data){
+	         		console.log(data);
+	         	}
+   		  });
+		  
+	});
+	
+});
 </script>
