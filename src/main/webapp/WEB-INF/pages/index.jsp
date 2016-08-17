@@ -62,8 +62,7 @@
 	
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
+	
 
 	<!--  Static Translate  -->
 	<script>
@@ -166,3 +165,6 @@
 		});
 	});
 </script>
+
+<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
