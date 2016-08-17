@@ -51,6 +51,7 @@ header .menu-list-ul .menu-list-li a:hover{
 	cursor: pointer;
 }
 
+
 </style>
 <body ng-app="myApp">
 <header>
@@ -68,7 +69,7 @@ header .menu-list-ul .menu-list-li a:hover{
 						</a>
 						<span>&nbsp;|&nbsp; </span>
 					
-						<a class="nav-link lang" href="#" key="register">Register</a>
+						<a class="nav-link lang" href="${pageContext.request.contextPath}/register" key="register">Register</a>
 						<span>&nbsp;|&nbsp; </span>
 						
 					</sec:authorize>
@@ -106,10 +107,10 @@ header .menu-list-ul .menu-list-li a:hover{
 				</div>
 				<div class="col-md-3" style="margin-top: 35px; text-align:right;">
 					<span class="lang" key="language">LANGUAGE</span>
-					<select>
-						<option class="translate lang" key="english" id="en">ENGLISH</option>
-						<option class="translate lang" key="khmer" id="kh">KHMER</option>
-					</select>
+					<a href="" class="translate lang"><img alt="en-img" style="width:30px; height:30px; padding:0px;"
+					src="${pageContext.request.contextPath}/resources/images/en.png" ></a>
+					<a href="" class="translate lang"><img alt="kh-img" style="width:30px; height:30px; padding:0px;"
+					src="${pageContext.request.contextPath}/resources/images/kh.png"></a>
 				</div>
 			</div>
 		</div>
@@ -221,4 +222,5 @@ $(function() {
 	});
 	
 });
+
 </script>

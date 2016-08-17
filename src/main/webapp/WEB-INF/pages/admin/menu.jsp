@@ -130,12 +130,12 @@
 							<li class="hidden-xs"><a href="#"
 								class="right-bar-toggle waves-effect"><i
 									class="icon-settings"></i></a></li>
-							<li >
+						
 								<sec:authorize access="isAuthenticated()">
-									<li class="nav-item dropdown logined" style="margin-top:-10px;">
+									<li class="nav-item dropdown logined" style="margin-top:-20px;">
 										<a class="nav-link dropdown-toggle profile waves-effect" data-toggle="dropdown" href="#" 
 											aria-expanded="true">
-										<%-- <span class="lang" key="welcome"></span>  <sec:authentication property="principal.username" /> --%>
+										<span class="lang" key="welcome"></span>  <sec:authentication property="principal.username" />
 										<img src="${pageContext.request.contextPath}/resources/static/assets/images/users/avatar-1.jpg" alt="user-img"
 									class="img-circle">
 								
@@ -153,7 +153,7 @@
 										
 									</li>
 								</sec:authorize>							
-							</li>
+						
 						</ul>
 					</div>
 					<!--/.nav-collapse -->
