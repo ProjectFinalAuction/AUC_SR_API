@@ -60,8 +60,7 @@
 		<!-- ============ End Row 2 Section ============= -->
 	</div>
 	<!-- ============ End col-md-9 Section ============= -->
-	<button class="translate" id="en">English</button>
-	<button class="translate" id="kh">ខ្មែរ</button>
+	
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
 	<script type="text/javascript"
@@ -113,8 +112,8 @@
 	arrLang['en']['english'] = 'ENGLISH';
 	arrLang['kh']['english'] = 'អង់គ្លេស';
 	
-	arrLang['en']['language'] = 'KHMER';
-	arrLang['kh']['language'] = 'ខ្មែរ';
+	arrLang['en']['khmer'] = 'KHMER';
+	arrLang['kh']['khmer'] = 'ខ្មែរ';
 	
 	arrLang['en']['cateogories'] = 'CATEGORIES';
 	arrLang['kh']['cateogories'] = 'ប្រភេទ';
@@ -153,6 +152,9 @@
 	
 	arrLang['en']['buyer'] = 'Buyer';
 	arrLang['kh']['buyer'] = 'អតិថិជន';
+	
+	arrLang['en']['SELLER_ACCEPTS_WING'] = 'Seller Accepts Wing';
+	arrLang['kh']['SELLER_ACCEPTS_WING'] = 'អាជីវករព្រមទទួលការបង់ប្រាក់តាម វីង';
 	
 
 	$(document).ready(function(e) {

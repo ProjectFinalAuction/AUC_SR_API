@@ -23,7 +23,7 @@
 	<div class="container-fluid">
 		<!-- detail content information -->
 		<ul class="list-group" style="padding-left: 14px;">
-		  <li class="list-group-item sublinkcategory">HOME / {{category_name}} / DREAM 2014</li>
+		  <li class="list-group-item sublinkcategory"><span class="lang" key="home">HOME</span> / {{category_name}} / DREAM 2014</li>
 		</ul>
 			<!-- image and some detail information -->
 			<div class="row" style="margin-top:-15px;">
@@ -31,7 +31,7 @@
 				<div class="col-md-5" style="padding-right:0;">
 					<div class="list-group">
 						<div class="list-group-item">
-							<p>REMAINING TIME: <span>7 DAYS, 7 HOURS</span></p>
+							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>7 DAYS, 7 HOURS</span></p>
 						</div> <!-- end remain time -->
 						<div class="list-group-item" id="img">
 							<div class="thumbnail">
@@ -97,17 +97,17 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-							        	<td><b>Current Price</b></td>
+							        	<td><b><span class="lang" key="current_price">Current Price</span></b></td>
 							        	<td>10,000.00$</td>
 							      	</tr>
 								</thead>
 							    <tbody>
 							   		<tr>
-							        	<th>Minimum Bid</th>
+							        	<th><span class="lang" key="minimum_bid">Minimum Bid</span></th>
 							        	<td>10,050.00$ (10,000.00$ + 50.00$)</td>
 							      	</tr>
 							      	<tr>
-							        	<th>Your Maximum Proxy Bid</th>
+							        	<th><span class="lang" key="max_bid">Your Maximum Proxy Bid</span></th>
 							        	<td colspan="2">
 							        	<div class="input-group">
 									      <div class="input-group-addon">$</div>
@@ -120,37 +120,37 @@
 							      	<tr>
 							        	<th></th>
 							        	<td align="center">
-							        		<button class="btn btn-success btn-block" style="width: 50%; float: left;">Bid Now</button>
+							        		<button class="btn btn-success btn-block lang" style="width: 50%; float: left;" key="bid_now">Bid Now</button>
 							        	</td>
 							      	</tr>
 							      	<tr>
 							        	<td colspan="2">
-							      			<small>Your site name here will bid incrementally for you up to your maximum bid. Your maximum bid is kept a secret from other users.   Your bid is a contract between you and the listing creator. If you have the highest bid you will enter into a legally binding purchase contract.</small>
+							      			<small><span class="lang" key="description">Your site name here will bid incrementally for you up to your maximum bid. Your maximum bid is kept a secret from other users.   Your bid is a contract between you and the listing creator. If you have the highest bid you will enter into a legally binding purchase contract.</span></small>
 							        	</td>
 							      	</tr>
 							      	
 							      	<tr>
-							        	<th>Current Price</th>
+							        	<th><span class="lang" key="current_price">Current Price</span></th>
 							        	<td>10,000.00$</td>
 							      	</tr>
 							      	<tr>
-							        	<td style="color:red;">Reserve Price Not Met </td>
+							        	<td style="color:red;"><span class="lang" key="reserve_price">Reserve Price Not Met</span> </td>
 							        	<td></td>
 							      	</tr>
 							      	<tr>
-							        	<th>Bid History</th>
-							        	<td>0 Bids</td>
+							        	<th><span class="lang" key="bid_history">Bid History</span></th>
+							        	<td>0 <span class="lang" key="bidsy">Bids</span></td>
 							      	</tr>
 							      	<tr>
-							        	<th>End Date</th>
+							        	<th><span class="lang" key="end_date">End Date</span></th>
 							        	<td>Sunday, June 30, 2016 12:00 AM</td>
 							      	</tr>
 							      	<tr>
-							        	<th>Start Date</th>
+							        	<th><span class="lang" key="start_date">Start Date</span></th>
 							        	<td>Sunday, June 15, 2016 12:00 AM</td>
 							      	</tr>
 							      	<tr>
-							        	<th>Listed By</th>
+							        	<th><span class="lang" key="listed_by">Listed By</span></th>
 							        	<td>
 							        		<i class="fa fa-star-o" aria-hidden="true"></i>
 							        		<i class="fa fa-star-o" aria-hidden="true"></i>
@@ -171,7 +171,7 @@
 			<div class="col-md-12">
 				<!-- group description infor -->
 				<div class="list-group">
-					<div class="list-group-item">DESCRIPTION</div>
+					<div class="list-group-item"><span class="lang" key="desc">DESCRIPTION</span></div>
 					<div class="list-group-item">
 						<p>
 						Includes a moonroof, 10-speaker AM/FM/CD sound system, iDrive central control (with six programmable memory buttons), 10-way power seats, Bluetooth hands-free phone connectivity and no-charge maintenance for four years or 50,000 miles. Safety equipment includes electronic stability control plus front, front-side and two-row curtain airbags. Unique to the 535xi Sport Wagon are a dual-panel panoramic sunroof and a power liftgate.
@@ -180,11 +180,11 @@
 				</div>
 				<!-- group payment infor -->
 				<div class="list-group">
-					<div class="list-group-item">PAYMENT OPTION</div>
+					<div class="list-group-item"><span class="lang" key="payment_option">PAYMENT OPTION</span></div>
 					<div class="list-group-item">
 						<P>
-						Seller Accepts PayPal <br>
-						Seller Accepts Credit Cards
+						<span class="lang" key="SELLER_ACCEPTS_WING">Seller Accepts Wing</span> <br>
+						<span class="lang" key="SELLER_ACCEPTS_CASH">Seller Accepts Cash</span>
 						</P>
 					</div>
 				</div>
