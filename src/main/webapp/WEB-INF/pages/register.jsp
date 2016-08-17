@@ -12,7 +12,7 @@
 <jsp:include page="menu.jsp"/>
 
 	<!-- content -->
-	<div class="content" id="register">
+	<div class="content" id="register" ng-controller="myCtrl">
 		<div class="container-fluid">
 			<div class="col-md-12">
 				<div class="panel panel-default">
@@ -126,7 +126,7 @@
 					  <div class="form-group">
 					  	<div class="col-sm-2"></div>
 					  	<div class="col-sm-3">
-					    	<button type="submit" class="btn btn-primary btn-block" ng-click="addUser()" ng-disabled="#myForm.$invalided">Complete Registration</button>
+					    	<button type="button" class="btn btn-primary btn-block" ng-click="addUser()">Complete Registration</button>
 					    </div>
 					    <div class="col-sm-4"><p><small>ALL FIELDS MARKED WITH " <sup><i class="glyphicon glyphicon-star"></i></sup> " ARE REQUIRED</small></p></div>
 					  </div>						

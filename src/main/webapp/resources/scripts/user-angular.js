@@ -17,6 +17,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	
 	// add record function
 	$scope.addUser = function(){
+//		alert($scope.user_name);
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({
@@ -31,7 +32,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "dob": moment($('#datepicker').val()).format("YYYY-MM-DD"),
 	  			  "email": $scope.email,
 	  			  "first_name": $scope.first_name,
-	  			  "gender": $("input:radio[name=role]:checked").val(),
+	  			  "gender": $('.select2').val(),
 	  			  "last_name": $scope.last_name,
 	  			  "password": $scope.password,
 	  			  "photo": ($scope.photo==undefined)?'String':$scope.photo,
@@ -46,7 +47,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			    type: "success" 
 			  },
 			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewuser';
+//			    window.location.href = 'http://localhost:8080/admin/viewuser';
 			});
 			
 		});
@@ -140,6 +141,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	
 	
 	// load all record
+	
 	$scope.getAllUsers();
+	$scope.addUser();
+	
 
 })
