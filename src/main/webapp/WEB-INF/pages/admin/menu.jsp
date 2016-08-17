@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <body class="fixed-left" ng-app="myApp">
 
 	<!-- Begin page -->
@@ -128,22 +130,30 @@
 							<li class="hidden-xs"><a href="#"
 								class="right-bar-toggle waves-effect"><i
 									class="icon-settings"></i></a></li>
-							<li class="dropdown" style="margin-top:-10px;"><a href="#"
-								class="dropdown-toggle profile waves-effect"
-								data-toggle="dropdown" aria-expanded="true"> <img
-									src="${pageContext.request.contextPath}/resources/static/assets/images/users/avatar-1.jpg" alt="user-img"
+							<li >
+								<sec:authorize access="isAuthenticated()">
+									<li class="nav-item dropdown logined" style="margin-top:-10px;">
+										<a class="nav-link dropdown-toggle profile waves-effect" data-toggle="dropdown" href="#" 
+											aria-expanded="true">
+										<%-- <span class="lang" key="welcome"></span>  <sec:authentication property="principal.username" /> --%>
+										<img src="${pageContext.request.contextPath}/resources/static/assets/images/users/avatar-1.jpg" alt="user-img"
 									class="img-circle">
-							</a>
-								<ul class="dropdown-menu">
-									<li><a href="javascript:void(0)"><i
-											class="ti-user m-r-5"></i> Profile</a></li>
-									<li><a href="javascript:void(0)"><i
-											class="ti-settings m-r-5"></i> Settings</a></li>
-									<li><a href="javascript:void(0)"><i
-											class="ti-lock m-r-5"></i> Lock screen</a></li>
-									<li><a href="javascript:void(0)"><i
-											class="ti-power-off m-r-5"></i> Logout</a></li>
-								</ul></li>
+								
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="javascript:void(0)"><i
+													class="ti-user m-r-5"></i> Profile</a></li>
+											<li><a href="javascript:void(0)"><i
+													class="ti-settings m-r-5"></i> Settings</a></li>
+											<li><a href="javascript:void(0)"><i
+													class="ti-lock m-r-5"></i> Lock screen</a></li>
+											<li><a href="${pageContext.request.contextPath}/logout"><i
+													class="ti-power-off m-r-5 lang" key="logout"></i> Logout</a></li>
+										</ul>
+										
+									</li>
+								</sec:authorize>							
+							</li>
 						</ul>
 					</div>
 					<!--/.nav-collapse -->

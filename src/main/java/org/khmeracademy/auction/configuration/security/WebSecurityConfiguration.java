@@ -45,7 +45,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			
 		http
 		.formLogin()
-		.loginPage("/login")
+		.loginPage("/")
 		.usernameParameter("username")
 		.passwordParameter("password")
 		.successHandler(ajaxAuthenticationSuccessHandler)
@@ -55,7 +55,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 		.logout()
 		.logoutUrl("/logout")
-		.logoutSuccessUrl("/login?logout")
+		.logoutSuccessUrl("/")
 		.invalidateHttpSession(true)
 		.deleteCookies("JESSIONID")
 		.permitAll();	

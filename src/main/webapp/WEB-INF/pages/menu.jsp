@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <style>
 header{
 	padding:0px;
@@ -54,25 +58,28 @@ header .menu-list-ul .menu-list-li a:hover{
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-				<i class="fa fa-volume-control-phone lang" key="contact_info"></i><span> OUR CUSTOMER CARE +855 70 730 619</span>
+				<i class="fa fa-volume-control-phone" ></i><span class="lang" key="contact_info"> OUR CUSTOMER CARE +855 70 730 619</span>
 				</div>
 				<div id="right-head-info" class="col-md-6">
 					<sec:authorize access="!isAuthenticated()">
+					
 						<a class="nav-link lang" href="#" data-toggle="modal" data-target="#login" key="login">
 							Login 
 						</a>
-					</sec:authorize>
-					<span>&nbsp;|&nbsp; </span>
-					<sec:authorize access="!isAuthenticated()">
+						<span>&nbsp;|&nbsp; </span>
+					
 						<a class="nav-link lang" href="#" key="register">Register</a>
+						<span>&nbsp;|&nbsp; </span>
+						
 					</sec:authorize>
-					<span>&nbsp;|&nbsp; </span>
+					
 					<span clas="lang" key="my_wishlist">MY WISHLIST</span>
 					<sec:authorize access="isAuthenticated()">
-						<span class="nav-item dropdown logined" style="display: none;">
+						<span class="nav-item dropdown logined">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
 							role="button" aria-haspopup="true" aria-expanded="false">
 								<span class="lang" key="welcome">Welcome</span>  <sec:authentication property="principal.username" />
+								
 							</a>
 							<h5 class="dropdown-menu" aria-labelledby="Preview">
 								<a href="${pageContext.request.contextPath}/logout" >
@@ -177,7 +184,7 @@ $(function() {
    		  e.preventDefault();
    		  console.log($("#formLogin").serialize());
    		  $.ajax({
-	            url: "${pageContext.request.contextPath}/login",
+	            url: "${pageContext.request.contextPath}/",
 	            type: "POST",
 	            data: $("#formLogin").serialize(),
 	            success: function(data) {
