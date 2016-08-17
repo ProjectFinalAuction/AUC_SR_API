@@ -57,7 +57,7 @@
                   	<div class="col-sm-8">
                   		<form role="form">
                         <div class="form-group contact-search m-b-30">
-                        	<input type="text" id="search" class="form-control" placeholder="Search...">
+                        	<input type="text" id="search" class="form-control" ng-model="str_search" placeholder="Search...">
                             <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
                         </div> <!-- form-group -->
                       </form>
@@ -91,7 +91,7 @@
 					
                     <tbody>
               			
-                        <tr  ng-repeat="pro in products">
+                        <tr  ng-repeat="pro in products | filter: str_search | orderBy:'-product_id'">
                        
 	                          <td>
 	                            <div class="checkbox checkbox-primary m-r-15">
@@ -100,8 +100,9 @@
 	                            </div>
 	                          </td>
 	                          
-	                          <td ng-repeat="proimg in pro.gallery">
-	                          <img src={{proimg.image_path}}   class="thumb-sm" alt="product-img" />
+	                          <td ng-repeat="proimg in pro.gallery" ng-show="$first">
+	                         
+	                         	 <img src={{proimg.image_path}}   class="thumb-lg" alt="product-img" />
 								
 							  </td>
 											
