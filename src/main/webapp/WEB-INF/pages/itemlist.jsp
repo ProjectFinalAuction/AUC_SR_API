@@ -15,10 +15,10 @@ pageEncoding="ISO-8859-1"%>
 			color: green;
 			font-weight: bold;
 		}
-		.remaining{
+		/*.remaining{
 			color: #777574;
 			font-weight: bold;
-		}
+		}*/
 		.glyphicon-option-vertical{
 			color: #777574;
 		}
@@ -36,6 +36,26 @@ pageEncoding="ISO-8859-1"%>
 			margin-top: -15px; margin-bottom: 5px;
 		}
 		.img{float: left; margin-right: 10px; }
+		.condition, .seller, .remaining{
+			color: #BBBAB9;
+		}
+		.seller a, .condition a{
+			color: #999795;
+		}
+		.condition a:hover, a:visited, a:link, a:active
+		{
+			text-decoration: none;
+		}
+
+		.seller a:hover, a:visited, a:link, a:active
+		{
+			text-decoration: none;
+		}
+		.remaining a:hover, a:visited, a:link, a:active
+		{
+			text-decoration: none;
+		}
+
 
 	</style>
 
@@ -45,7 +65,7 @@ pageEncoding="ISO-8859-1"%>
 	<!-- left content -->
 	<jsp:include page="left-content.jsp" />
 	<!-- right content -->
-	<div class="col-md-9" ng-controller="auctionCtrl">
+	<div class="col-md-9" ng-controller="auctionCtrl" id="right-content">
 		<!-- ================ Item List ================ -->
 		<div class="container-fluid">
 
@@ -95,8 +115,8 @@ pageEncoding="ISO-8859-1"%>
 			</div>
 
 			<!-- DATA-LISTING -->
-
-			<section data-listingid="327081" style=" width: 100% ">
+			
+			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auction">
 				<!-- wrapper div -->
 				<div class="panel panel-default clearfix listing" >		
 
@@ -108,16 +128,20 @@ pageEncoding="ISO-8859-1"%>
 								<span class="img" >
 									<img src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="200">
 								</span>
-								<strong >Beautiful Home</strong>
+								<strong >{{a.product.product_name}}</strong>
 							</a>
 						</h1>
 						<!-- subtitle -->
 						<p class="subtitle">
 							<a href="#">
-								<strong> This is Beautiful Home</strong>
+								<strong>{{a.product.product_description}}</strong>
 							</a>
 						</p>
 						<!-- seller -->
+						<span class="condition">
+							Condition: <a href="#">{{a.product_condition}}</a>
+						</span><br>
+
 						<span class="seller">
 							Seller: <a href="#">Makara</a>
 						</span><br>
@@ -128,13 +152,13 @@ pageEncoding="ISO-8859-1"%>
 					<div class="col-sm-5" >
 						<span class="label label-primary status-type" style="float: right; margin-top: 5px; ">Auction</span><br><br><br><br>
 						<span style=" text-align: right; ">
-							<p class="time remaining" >
+							<p class="time remaining" > 
 								<span data-epoch="ending" data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" data-action-time="08/25/2016 00:22:49" data-end-value="Ended" data-action-milliseconds="1472059369000">9 Days, 34 Minutes</span>
 								<span class="awe-rt-Done ">remaining</span>
 							</p>
 							<p class="bids">
 								&nbsp;
-								<span class="awe-rt-CurrentPrice price NumberPart">$<span class="NumberPart">1,999.00</span></span>
+								<span class="awe-rt-CurrentPrice price NumberPart"><span class="NumberPart">{{a.start_price | currency}}</span></span>
 								<span class="glyphicon glyphicon-option-vertical"></span>
 								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">0</span>
 								Bids
@@ -154,9 +178,8 @@ pageEncoding="ISO-8859-1"%>
 		</div>
 
 
-</div>
+	</div>
 
-<!-- footer -->
-<jsp:include page="footer.jsp" />
-<%-- 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script> --%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
+	<!-- footer -->
+	<jsp:include page="footer.jsp" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/chhuon.js"></script>

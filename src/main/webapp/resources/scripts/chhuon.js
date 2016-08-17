@@ -68,6 +68,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 			method: 'GET'
 		}).then(function(response){
 			$scope.category_name = response.data.DATA.product.category.category_name;
+			$scope.product_description=response.data.DATA.product.product_description;
 			
 //			$scope.findProductsHasSupplier($scope.sup);
 			$scope.pro = response.data.DATA.product.product_id;

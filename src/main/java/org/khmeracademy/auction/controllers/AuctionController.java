@@ -49,6 +49,13 @@ public class AuctionController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-by-id/" + id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	//Get auction product by category
+	@RequestMapping(value="/{category_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findAuctionProductByCategory(@PathVariable("category_id") int id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-product-by-category-id/" + id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addAuction(@RequestBody AddAuction addAuction){
