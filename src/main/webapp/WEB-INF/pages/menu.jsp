@@ -107,9 +107,9 @@ header .menu-list-ul .menu-list-li a:hover{
 				</div>
 				<div class="col-md-3" style="margin-top: 35px; text-align:right;">
 					<span class="lang" key="language">LANGUAGE</span>
-					<a href="" class="translate lang"><img alt="en-img" style="width:30px; height:30px; padding:0px;"
+					<a href="" class="translate" id="en"><img alt="en-img" style="width:30px; height:30px; padding:0px;"
 					src="${pageContext.request.contextPath}/resources/images/en.png" ></a>
-					<a href="" class="translate lang"><img alt="kh-img" style="width:30px; height:30px; padding:0px;"
+					<a href="" class="translate" id="kh"><img alt="kh-img" style="width:30px; height:30px; padding:0px;"
 					src="${pageContext.request.contextPath}/resources/images/kh.png"></a>
 				</div>
 			</div>
