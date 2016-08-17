@@ -79,7 +79,6 @@ header .menu-list-ul .menu-list-li a:hover{
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
 							role="button" aria-haspopup="true" aria-expanded="false">
 								<span class="lang" key="welcome">Welcome</span>  <sec:authentication property="principal.username" />
-								
 							</a>
 							<h5 class="dropdown-menu" aria-labelledby="Preview">
 								<a href="${pageContext.request.contextPath}/logout" >
