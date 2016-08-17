@@ -73,13 +73,13 @@
 
 	arrLang['en']['new_arrivale'] = 'New Arrival';
 	arrLang['en']['cambodia_auction'] = 'CAMBODIA AUCTION';
-	arrLang['en']['remaining_day'] = '{{3}} Days, 7 Hours remaining';
+	arrLang['en']['remaining_day'] = '7 Days, 7 Hours remaining';
 	arrLang['en']['bid'] = 'Bids';
 	arrLang['en']['bid_now'] = 'Bid Now';
 	
 	arrLang['kh']['new_arrivale'] = 'មកដល់​ថ្មី';
 	arrLang['kh']['cambodia_auction'] = 'ការដេញថ្លៃនៅកម្ពុជា';
-	arrLang['kh']['remaining_day'] = '3 ថ្ងៃ, 7 ម៉ោងដែលនៅសល់';
+	arrLang['kh']['remaining_day'] = '7 ថ្ងៃ, 7 ម៉ោងដែលនៅសល់';
 	arrLang['kh']['bid'] = 'ដេញថ្លៃ';
 	arrLang['kh']['bid_now'] = 'ដេញថ្លៃឥឡូវនេះ';
 	
