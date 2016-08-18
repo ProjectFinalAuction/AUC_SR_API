@@ -196,7 +196,6 @@ descript Section Style ================ */
 .descript .btn-primary{
 	background-color: #286090;
 	position: relative;
-	left: 40px;
 	bottom: -20px;
 	color: #ffffff;
 }
@@ -207,13 +206,10 @@ descript Section Style ================ */
 }
 /* ============  Style Class title Section ================ */
 .title{
-	font-size: 16px;
+	font-size: 15px;
 	color: #2d2d2d;
 }
-/* ============  Style h5 in class caption Section ================ */
-.title h5{
-	font-weight: bold;
-}
+
 /* ============  Style id title in h2 Section ================ */
 h2#title{
 	margin-left: 20px;

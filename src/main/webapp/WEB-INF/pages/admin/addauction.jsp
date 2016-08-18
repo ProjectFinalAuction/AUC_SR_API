@@ -72,10 +72,11 @@
 									<select class="form-control required" name="product"
 										ng-model="product_condition" required>
 										<option value="" ng-selected="true">-- Choose Condition	--</option>
+										<option value="Very_Good">Very Good</option>
 										<option value="Good">Good</option>
-										<option value="Very Good">Very Good</option>
-										<option value="Like New">Like New</option>
+										<option value="Like_New">Like New</option>
 										<option value="New">New</option>
+										<option value="Second_Hand">Second Hand</option>
 									</select>
 								</div>
 							</div>
@@ -137,15 +138,15 @@
 
 							<div class="form-group clearfix">
 								<label class="col-lg-2 control-label">Status</label>
-								<div class="col-lg-10" ng-init="status = 'true'">
+								<div class="col-lg-10" ng-init="status = '1'">
 									<div class="radio radio-info radio-inline">
 										<input type="radio" id="status1" name="status"
-											ng-model="status" value="true"> <label for="status1">
+											ng-model="status" value="1"> <label for="status1">
 											Enable </label>
 									</div>
 									<div class="radio radio-inline">
 										<input type="radio" id="status2" name="status"
-											ng-model="status" value="false"> <label for="status2">
+											ng-model="status" value="0"> <label for="status2">
 											Disable </label>
 									</div>
 								</div>

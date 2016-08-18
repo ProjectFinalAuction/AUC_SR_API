@@ -18,7 +18,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 2 +"&page=" + currentPage + "&productName="+$scope.productName,
+			url : 'http://localhost:8080/rest/auction?limit=' + 5 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;
@@ -32,10 +32,32 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 		});
 	}
 	
+	//TODO: TO LIST ALL SUPPLIER FOR CHOOSE TO ADD
+	$scope.findSupplersInProducts = function(){		
+		$http({
+			url : 'http://localhost:8080/rest/supplier/supplier-in-product',
+			method : 'GET'
+		}).then(function(response) {
+			$scope.supplier = response.data.DATA;
+			
+		});
+	}
+	
+	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
+	$scope.findProductsHasSupplier = function(id){		
+		$http({
+			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
+			method : 'GET'
+		}).then(function(response) {
+			$scope.product = response.data.DATA;
+		});
+	}
+	
+	
 	//TODO: SEARCH BY PRODUCT NAME
 	$scope.searchProName = function(proName){
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 2 +"&page=" + currentPage + "&productName="+proName,
+			url : 'http://localhost:8080/rest/auction?limit=' + 5 +"&page=" + currentPage + "&productName="+proName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;
@@ -108,7 +130,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 				"comment" : $scope.comment,
 				"created_by" : $scope.created_by,
 				"created_date" : $scope.created_date,
-				"current_price" : $scope.current_price,
+				"current_price" : $scope.start_price,
 				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
 				"increment_price" : $scope.increment_price,
 				"product_condition" : $scope.product_condition,
@@ -129,6 +151,11 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 		});
 	}
 	
+	// DELETE AUCTION FUNCTION
+	$scope.deleteAuction = function(id){
+		
+	}
+
 
 //	$scope.alertme = function(){
 //		alert("Me");
@@ -140,6 +167,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	
 	// load all record
 	$scope.findAllAuctions();
+	$scope.findSupplersInProducts();
 })
 
 
@@ -180,7 +208,7 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 				"comment" : $scope.comment,
 				"created_by" : $scope.created_by,
 				"created_date" : $scope.created_date,
-				"current_price" : $scope.current_price,
+				"current_price" : $scope.start_price,
 				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
 				"increment_price" : $scope.increment_price,
 				"product_condition" : $scope.product_condition,
@@ -193,13 +221,16 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 			swal({ 
 				title: "Success!",
 				text: "Auction has been inserted.",
-			    type: "success" 
+			    type: "success" ,
+			    timer : 1000,
+			    showConfirmButton : false
 			  },
 			  function(){
 			    window.location.href = 'http://localhost:8080/admin/viewauction';
 			});
 		});
 	}
+	
 	
 //	function test(){
 //		var today = new Date();

@@ -94,7 +94,7 @@
 
 							<!-- Table Data-->
 <!-- 							<div class=""> -->
-								<table class="mails m-b-0 table table-striped">
+								<table class="table table-hover mails m-0 table table-actions-bar">
 <!-- 								<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"> -->
 									<thead>
 										<tr>
@@ -146,17 +146,20 @@
 											<td>{{a.start_price}}</td>
 											<td>{{a.start_date}}</td>
 											<td>{{a.end_date}}</td>
-											<td ng-if="a.status==true"><a href="#"
-												class="table-action-btn"><i class="fa fa-check" aria-hidden="true"></i></a></td>
-											<td ng-if="a.status==false"><a href="#"
-												class="table-action-btn"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+											<td ng-if="a.status=='1'"><i class="table-action-btn fa fa-check"
+												aria-hidden="true"></i></td>
+											<td ng-if="a.status=='0'"><i class="table-action-btn fa fa-times"
+												aria-hidden="true"></i></td>
 											<td><span>0 Bids</span></td>
 											<td class="action">
-												<a href="#custom-modal"><i class="fa fa-eye"
-													title="View bids"></i> </a>&nbsp;&nbsp; 
+												<a href="#"><i class="fa fa-eye"
+													title="View bids"></i></a>&nbsp;&nbsp; 
 												<a href="#" data-toggle="modal" data-target="#myModal"
 													ng-click="getAuctionById(a.auction_id)"><i
 													class="fa fa-pencil-square-o" title="Edit"></i> </a>
+												<a href="#" data-toggle="modal"
+													ng-click="deleteAuction(a.auction_id)"><i
+													class="fa fa-trash-o" title="delete"></i> </a>
 											</td>
 										</tr>
 									</tbody>
@@ -206,8 +209,8 @@
 									<select class="form-control required" name="supplier" 
 										ng-change="findProductsHasSupplier(sup)"
 										ng-model="sup" id="supplier"
-										ng-options="s.supplier_id as s.contact_name for s in supplier">
-										<option value="" style="display:none">-- Choose Supplier --</option>
+										ng-options="s.supplier_id as s.contact_name for s in supplier" value="{{contact_name}}">
+										<!-- <option value="" style="display:none">-- Choose Supplier --</option> -->
 									</select>
 								</div>
 							</div>
@@ -217,8 +220,8 @@
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
 										ng-model="pro"
-										ng-options="p.product_id as p.product_name for p in product">
-										<option value="" style="display:none">-- Choose	Product --</option>
+										ng-options="p.product_id as p.product_name for p in product" value="{{product_name}}">
+										<!-- <option value="" style="display:none">-- Choose	Product --</option> -->
 									</select>
 								</div>
 							</div>
@@ -227,11 +230,11 @@
 									Condition*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-model="product_condition" required>
-										<option value="" ng-selected="true">-- Choose Condition	--</option>
+										ng-model="product_condition" value={{product_condition}} required>
+										<!-- <option value="" ng-selected="true">-- Choose Condition	--</option> -->
+										<option value="Very_Good">Very Good</option>
 										<option value="Good">Good</option>
-										<option value="Very Good">Very Good</option>
-										<option value="Like New">Like New</option>
+										<option value="Like_New">Like New</option>
 										<option value="New">New</option>
 									</select>
 								</div>
@@ -298,12 +301,12 @@
 								<div class="col-lg-10">
 									<div class="radio radio-info radio-inline">
 										<input type="radio" id="status1" name="status"
-											ng-model="status" value="true" ng-value="true" ng-checked="status==true"> <label for="status1">
+											ng-model="status" value="1" ng-value="1" ng-checked="status==1"> <label for="status1">
 											Enable </label>
 									</div>
 									<div class="radio radio-inline">
 										<input type="radio" id="status2" name="status"
-											ng-model="status" value="false" ng-value="false" ng-checked="status==false"> <label for="status2">
+											ng-model="status" value="0" ng-value="0" ng-checked="status==0"> <label for="status2">
 											Disable </label>
 									</div>
 								</div>
