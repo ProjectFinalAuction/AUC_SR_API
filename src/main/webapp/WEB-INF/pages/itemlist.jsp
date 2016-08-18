@@ -129,8 +129,8 @@ pageEncoding="ISO-8859-1"%>
 						<!-- img & title -->
 						<h1 class="title">
 							<a href="#">
-								<span class="img" >
-									<img src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="200">
+								<span class="img" ng-repeat="proimg in a.product.gallery">
+									<img src="{{proimg.image_path}}" class="img-thumbnail" style="width: 160px; height: 170px" alt="Cinque Terre">
 								</span>
 								<strong>{{a.product.product_name}}</strong>
 							</a>
