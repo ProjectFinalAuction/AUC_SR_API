@@ -75,10 +75,10 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//TODO: Get Auction Product Brand by category 
 	$scope.getAuctionProductByCategoryID = function(id){
 		$http({
-			url: ' http://localhost:8080/rest/auction/auc-pro-category/' +$scope.loop_auc_id,
+			url: ' http://localhost:8080/rest/auction/auc-brand-category/' +$scope.loop_auc_id,
 			method: 'GET'
 		}).then(function(response){
-			$scope.auctionProduct = response.data.DATA;
+			$scope.auctionbrand = response.data.DATA;
 			$scope.category_name = response.data.DATA.product.category.category_name;
 			$scope.product_name = response.data.DATA.product.product_name;
 			$scope.product_condition = response.data.DATA.product.product_condition;
