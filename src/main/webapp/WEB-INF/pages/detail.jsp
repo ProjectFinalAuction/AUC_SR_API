@@ -38,7 +38,7 @@
 							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>7 DAYS, 7 HOURS</span></p>
 						</div> <!-- end remain time -->
 						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
-							<div class="thumbnail">
+							<div class="thumbnail" ng-repeat="proimg in gallery" ng-show="$first">
 								<a href="images/newcar1.png" data-lightbox="example-set" id="myLink">
 								<img src="{{proimg.image_path}}" class="img-responsive" width="100%" id="myImage"/></a>
 							</div>
@@ -178,9 +178,7 @@
 				<div class="list-group">
 					<div class="list-group-item"><span class="lang" key="desc">DESCRIPTION</span></div>
 					<div class="list-group-item">
-						<p>
-						Includes a moonroof, 10-speaker AM/FM/CD sound system, iDrive central control (with six programmable memory buttons), 10-way power seats, Bluetooth hands-free phone connectivity and no-charge maintenance for four years or 50,000 miles. Safety equipment includes electronic stability control plus front, front-side and two-row curtain airbags. Unique to the 535xi Sport Wagon are a dual-panel panoramic sunroof and a power liftgate.
-						</p>
+						<p>{{product_description}}</p>
 					</div>
 				</div>
 				<!-- group payment infor -->
