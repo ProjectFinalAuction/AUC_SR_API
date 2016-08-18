@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Item Information</title>
+<title>ITEM INFORMAITON</title>
+	<!-- Angular Material requires Angular.js Libraries -->
+  	<script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 <style type="text/css">
 .sublinkcategory{
 	color: gray;
@@ -19,21 +22,22 @@
 <!-- left content -->
 <jsp:include page="left-content.jsp" />
 <!-- right content -->
-<div class="col-md-9" ng-controller="auctionCtrl" style="padding: 0;" id="right-content">
+<div class="col-md-9" ng-controller="auctionCtrl" style="padding:0;" id="right-content">
 	<div class="container-fluid">
+		<input type="hidden" id="ac_id" value="${param.id}">
 		<!-- detail content information -->
 		<ul class="list-group" style="padding-left: 14px;">
-		  <li class="list-group-item sublinkcategory"><span class="lang" key="home">HOME</span> / {{category_name}} / DREAM 2014</li>
+		  <li class="list-group-item sublinkcategory"><span class="lang" key="home">HOME</span> / {{category_name | uppercase}} / {{product_name | uppercase}}</li>
 		</ul>
 			<!-- image and some detail information -->
 			<div class="row" style="margin-top:-15px;">
 				<!-- colunm for image content -->
 				<div class="col-md-5" style="padding-right:0;">
 					<div class="list-group">
-						<div class="list-group-item">
+						<div class="list-group-item" ng-controller="AuctionItemsController">
 							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>7 DAYS, 7 HOURS</span></p>
 						</div> <!-- end remain time -->
-						<div class="list-group-item" id="img">
+						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
 							<div class="thumbnail">
 								<a href="images/newcar1.png" data-lightbox="example-set" id="myLink"><img src="images/newcar1.png" class="img-responsive" width="100%" id="myImage"/></a>
 							</div>
@@ -90,21 +94,21 @@
 				<div class="col-md-7" style="padding-right:0;">
 					<div class="list-group">
 						<div class="list-group-item">
-							<h3>2009 BMW 5 Series 530i</h3>
-							<h4>Will deliver in the Tri State area!</h4>
+							<h3>{{product_name}}</h3>
+							<h4>{{product_condition}}</h4>
 						</div>
 						<div class="list-group-item" >
 							<table class="table table-hover">
 								<thead>
 									<tr>
 							        	<td><b><span class="lang" key="current_price">Current Price</span></b></td>
-							        	<td>10,000.00$</td>
+							        	<td>{{current_price | currency}}</td>
 							      	</tr>
 								</thead>
 							    <tbody>
 							   		<tr>
 							        	<th><span class="lang" key="minimum_bid">Minimum Bid</span></th>
-							        	<td>10,050.00$ (10,000.00$ + 50.00$)</td>
+							        	<td>{{start_price + increment_price | currency}} ({{start_price | currency}} + {{increment_price | currency}})</td>
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="max_bid">Your Maximum Proxy Bid</span></th>
@@ -131,7 +135,7 @@
 							      	
 							      	<tr>
 							        	<th><span class="lang" key="current_price">Current Price</span></th>
-							        	<td>10,000.00$</td>
+							        	<td>{{current_price | currency}}</td>
 							      	</tr>
 							      	<tr>
 							        	<td style="color:red;"><span class="lang" key="reserve_price">Reserve Price Not Met</span> </td>
@@ -143,11 +147,11 @@
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="end_date">End Date</span></th>
-							        	<td>Sunday, June 30, 2016 12:00 AM</td>
+							        	<td>{{end_date}}</td>
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="start_date">Start Date</span></th>
-							        	<td>Sunday, June 15, 2016 12:00 AM</td>
+							        	<td>{{start_date}}</td>
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="listed_by">Listed By</span></th>
@@ -195,4 +199,13 @@
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/category-angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#menustand").hide(function(){
+				$("#right-content").removeClass('col-md-9');
+			});
+		});
+	</script>
+	

@@ -59,7 +59,7 @@
 									*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-model="product_id" id="product"  ng-value="product_id"
+										ng-model="product_id" id="product" ng-value="product_id"
 										ng-options="p.product_id as p.product_name for p in product">
 										<option value="" style="display:none">-- Choose	Product --</option>
 									</select>

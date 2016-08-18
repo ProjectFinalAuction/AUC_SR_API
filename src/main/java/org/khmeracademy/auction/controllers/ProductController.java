@@ -83,5 +83,13 @@ public class ProductController {
 				HttpMethod.GET, request, Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/product-of-supplier/{supplier_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> findProductsHasSupplier(@PathVariable int supplier_id) {
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-products-has-supplier/" + supplier_id,
+				HttpMethod.GET, request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+	}
 
 }

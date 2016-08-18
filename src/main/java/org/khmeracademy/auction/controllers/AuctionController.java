@@ -43,14 +43,14 @@ public class AuctionController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/{auction-id}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findAuctionByID(@PathVariable("auction-id") int id){
+	@RequestMapping(value="/{auction_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findAuctionByID(@PathVariable int auction_id){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-by-id/" + id, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-by-id/" + auction_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	//Get auction product by category
-	@RequestMapping(value="/{category_id}", method = RequestMethod.GET)
+	@RequestMapping(value="/auc-pro-category/{category_id}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> findAuctionProductByCategory(@PathVariable("category_id") int id){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-product-by-category-id/" + id, HttpMethod.GET , request , Map.class) ;
@@ -63,7 +63,7 @@ public class AuctionController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-auction", HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.PUT)
 	public ResponseEntity<Map<String , Object>> updateAuction(@RequestBody AddAuction addAuction){
 		HttpEntity<Object> request = new HttpEntity<Object>(addAuction, header);

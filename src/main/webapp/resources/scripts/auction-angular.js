@@ -149,26 +149,24 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 	$scope.created_date = new Date();
 	$scope.created_by = 'admin';
 
-	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
-	$scope.findProductsHasSupplier = function(id){		
-		$http({
-			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
-			method : 'GET',
-
-		}).then(function(response) {
-			$scope.product = response.data.DATA;
-		});
-	}
-	
 	//TODO: TO LIST ALL SUPPLIER FOR CHOOSE TO ADD
 	$scope.findSupplersInProducts = function(){		
 		$http({
 			url : 'http://localhost:8080/rest/supplier/supplier-in-product',
-			method : 'GET',
-
+			method : 'GET'
 		}).then(function(response) {
 			$scope.supplier = response.data.DATA;
 			
+		});
+	}
+	
+	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
+	$scope.findProductsHasSupplier = function(id){		
+		$http({
+			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
+			method : 'GET'
+		}).then(function(response) {
+			$scope.product = response.data.DATA;
 		});
 	}
 	
@@ -203,14 +201,14 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 		});
 	}
 	
-	function test(){
-		var today = new Date();
-		var start = moment("2016-08-20");
-		var end = moment(today);
-		alert(start.diff(end, "days"));
-	}
+//	function test(){
+//		var today = new Date();
+//		var start = moment("2016-08-20");
+//		var end = moment(today);
+//		alert(start.diff(end, "days"));
+//	}
 
 	// load all record
 	$scope.findSupplersInProducts();
-	test();
+//	test();
 })

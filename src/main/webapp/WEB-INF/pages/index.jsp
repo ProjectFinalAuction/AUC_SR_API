@@ -58,6 +58,7 @@
 		</div>
 		<!-- ============ End Row 2 Section ============= -->
 	</div>
+	</div>
 	<!-- ============ End col-md-9 Section ============= -->
 	
 	<!-- footer -->
