@@ -143,6 +143,10 @@ pageEncoding="ISO-8859-1"%>
 						</p>
 						<!-- seller -->
 						<span class="condition">
+							Brand: <a href="#">{{a.product.brand.brand_name}}</a>
+						</span><br>
+						<!-- seller -->
+						<span class="condition">
 							Condition: <a href="#">{{a.product_condition}}</a>
 						</span><br>
 
