@@ -61,7 +61,7 @@ public class UserController {
 	
 	// Get User by ID
 	@RequestMapping(value="/{user_id}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findCategoryByID( @PathVariable int user_id){
+	public ResponseEntity<Map<String , Object>> getUserByID( @PathVariable int user_id){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-id/"+ user_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);

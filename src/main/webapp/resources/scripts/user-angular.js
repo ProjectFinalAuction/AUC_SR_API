@@ -25,7 +25,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			method: 'POST',
 			data:{
 				  "address": $scope.address,
-	  			  "comment": ($scope.comment==undefined)?true:$scope.comment,
+	  			  "comment": ($scope.comment==undefined)?'New':$scope.comment,
 	  			  "contact": $scope.contact,
 	  			  "created_by": $scope.created_by,
 	  			  "created_date": $scope.created_date,
@@ -113,7 +113,8 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "photo": $scope.photo,
 	  			  "status": $("input:radio[name=status]:checked").val(),
 	  			  "type": $("input:radio[name=role]:checked").val(),	  			  
-	  			  "user_name": $scope.user_name
+	  			  "user_name": $scope.user_name,
+	  			  "role_id": ($("input:radio[name=status]:checked").val()=='admin')?1:2
 			}
 		}).then(function(respone){
 			swal({ 

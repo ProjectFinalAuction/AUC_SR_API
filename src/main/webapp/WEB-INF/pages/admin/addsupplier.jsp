@@ -77,7 +77,7 @@
                           <div class="text-center p-20">
                             <button type="button" class="btn w-sm btn-default waves-effect waves-light"  ng-click="addSupplier()" ng-disabled="myForm.$invalid">
                             <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-                            <a href="${pageContext.request.contextPath}/admin"><button type="button" class="btn w-sm btn-danger waves-effect waves-light"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button></a>
+                            <a href="${pageContext.request.contextPath}/admin/viewsupplier"><button type="button" class="btn w-sm btn-danger waves-effect waves-light"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button></a>
                           </div>
                         </div>
                       </div>

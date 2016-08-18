@@ -88,7 +88,10 @@
 										<td>{{cat.category_name}}</td>
 										<td>{{cat.category_description}}</td>
 										<td>{{cat.parent_id}}</td>
-										<td>{{cat.status}}</td>
+										<td ng-if="cat.status==true"><i class="table-action-btn fa fa-check"
+												aria-hidden="true"></i></td>
+										<td ng-if="cat.status==false"><i class="table-action-btn fa fa-times"
+												aria-hidden="true"></i></td>
 										<td>
 										<!--  Update Category -->
 											<a href="#" class="table-action-btn"

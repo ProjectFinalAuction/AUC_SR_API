@@ -83,12 +83,10 @@
 										<td>{{u.first_name}}</td>
 										<td>{{u.last_name}}</td>
 										<td><a href="#">{{u.email}}</a></td>
-										<td ng-if="u.status==true"><a href="#"
-											class="table-action-btn"><i class="fa fa-check"
-												aria-hidden="true"></i></a></td>
-										<td ng-if="u.status==false"><a href="#"
-											class="table-action-btn"><i class="fa fa-times"
-												aria-hidden="true"></i></a></td>
+										<td ng-if="u.status==true"><i class="table-action-btn fa fa-check"
+												aria-hidden="true"></i></td>
+										<td ng-if="u.status==false"><i class="table-action-btn fa fa-times"
+												aria-hidden="true"></i></td>
 										<td>{{u.type}}</td>
 										<td><a href="#" data-toggle="modal" data-target=".enterData" class="table-action-btn"
 												ng-click="getUserByID(u)"><i
@@ -106,8 +104,7 @@
 		<!-- container -->
 	</div>
 	<!-- content -->
-</div>
-<!-- End Right content here -->
+
 
 <!-- Modal -->
 <div class="modal fade enterData" id="myModal" tabindex="-1"
