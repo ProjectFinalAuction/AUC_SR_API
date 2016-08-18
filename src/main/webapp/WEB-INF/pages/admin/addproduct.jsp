@@ -74,7 +74,7 @@
 
 
 
-											TODO: Auto selet after load page
+											TO<!-- DO: Auto selet after load page -->
 
 											<optgroup name="" id="">
 												<option value="">---Please select---</option>
@@ -412,6 +412,15 @@
 				}
 			}).then(function(response) {
 				console.log(response.data);
+				swal({ 
+					title: "Success!",
+					text: "Product has been inserted.",
+				    type: "success",
+				    timer : 1000,
+				    showConfirmButton : false
+				  }, function(){
+				    window.location.href = 'http://localhost:8080/admin/viewproduct';
+				});
 			}, function(error) {
 				console.log(error.data);
 				alert('failed to upload !!');
