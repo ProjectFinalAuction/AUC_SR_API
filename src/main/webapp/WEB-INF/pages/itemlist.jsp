@@ -93,9 +93,9 @@ pageEncoding="ISO-8859-1"%>
 					<div class="form-group">
 						<label class="control-label" for="ListingType">&nbsp;&nbsp;&nbsp;&nbsp;Filter</label>
 						<select class="form-control input-sm" id="ListingType" name="ListingType" placeholder="All"><option value="">All</option>
-							<option value="Auction">Auction</option>
-							<option value="FixedPrice">Fixed Price</option>
-							<option value="Classified">Classified</option>
+							<option value="Auction">Apple</option>
+							<option value="FixedPrice">Samsung</option>
+							<option value="Classified">LG</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -158,7 +158,7 @@ pageEncoding="ISO-8859-1"%>
 
 					<!-- Auction Part -->
 					<div class="col-sm-5" >
-						<span class="label label-primary status-type" style="float: right; background-color: #BBBAB9 ; margin-top: 5px; ">Auction</span><br><br><br><br>
+						<span class="label label-primary status-type" style="float: right; background-color: #BBBAB9 ; margin-top: 5px; ">Auction</span><br><br><br><br><br>
 						<span style=" text-align: right; ">
 							<p class="time remaining" > 
 								<span data-epoch="ending" data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" data-action-time="08/25/2016 00:22:49" data-end-value="Ended" data-action-milliseconds="1472059369000">9 Days, 34 Minutes</span>
