@@ -55,6 +55,9 @@ pageEncoding="ISO-8859-1"%>
 		{
 			text-decoration: none;
 		}
+		.status-type{
+			background-color: #BBBAB9;
+		}
 
 
 	</style>
@@ -66,6 +69,7 @@ pageEncoding="ISO-8859-1"%>
 	<jsp:include page="left-content.jsp" />
 	<!-- right content -->
 	<div class="col-md-9" ng-controller="auctionCtrl" id="right-content">
+		<input type="hidden" id="loop_auc_id" value="${param.id}">
 		<!-- ================ Item List ================ -->
 		<div class="container-fluid">
 
@@ -116,7 +120,7 @@ pageEncoding="ISO-8859-1"%>
 
 			<!-- DATA-LISTING -->
 			
-			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auction">
+			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auctionProduct">
 				<!-- wrapper div -->
 				<div class="panel panel-default clearfix listing" >		
 
@@ -128,13 +132,13 @@ pageEncoding="ISO-8859-1"%>
 								<span class="img" >
 									<img src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="200">
 								</span>
-								<strong >{{a.product.product_name}}</strong>
+								<strong>{{a.product.product_name}}</strong>
 							</a>
 						</h1>
 						<!-- subtitle -->
 						<p class="subtitle">
 							<a href="#">
-								<strong>{{a.product.product_description}}</strong>
+								<strong></strong>
 							</a>
 						</p>
 						<!-- seller -->
@@ -143,14 +147,14 @@ pageEncoding="ISO-8859-1"%>
 						</span><br>
 
 						<span class="seller">
-							Seller: <a href="#">Makara</a>
+							Seller: <a href="#">{{a.product.supplier.contact_name}}</a>
 						</span><br>
 						
 					</div>	<!--End image and property -->
 
 					<!-- Auction Part -->
 					<div class="col-sm-5" >
-						<span class="label label-primary status-type" style="float: right; margin-top: 5px; ">Auction</span><br><br><br><br>
+						<span class="label label-primary status-type" style="float: right; background-color: #BBBAB9 ; margin-top: 5px; ">Auction</span><br><br><br><br>
 						<span style=" text-align: right; ">
 							<p class="time remaining" > 
 								<span data-epoch="ending" data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" data-action-time="08/25/2016 00:22:49" data-end-value="Ended" data-action-milliseconds="1472059369000">9 Days, 34 Minutes</span>
@@ -158,7 +162,7 @@ pageEncoding="ISO-8859-1"%>
 							</p>
 							<p class="bids">
 								&nbsp;
-								<span class="awe-rt-CurrentPrice price NumberPart"><span class="NumberPart">{{a.start_price | currency}}</span></span>
+								<span class="awe-rt-CurrentPrice price NumberPart"><span class="NumberPart">{{a.current_price | currency}}</span></span>
 								<span class="glyphicon glyphicon-option-vertical"></span>
 								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">0</span>
 								Bids

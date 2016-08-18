@@ -47,43 +47,30 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 
 //TODO: SHOW AUCTON TO VIEW CLIENTS
 app.controller('auctionCtrl', function($scope, $http, $rootScope) {
-	$scope.productName = "";
-	$scope.currentPage = 1;
-	//TODO: select all record to display
-	$scope.findAllAuctions = function() {
-		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 8 +"&page=" + $scope.currentPage + "&productName="+$scope.productName,
-			method : 'GET'
-		}).then(function(response) {
-			$scope.auction = response.data.DATA;
-		});
-	}
+	$scope.loop_auc_id = $("#loop_auc_id").val();
+//	alert($scope.loop_auc_id);
 	
-	// TODO: get one record function
-	$scope.getAuctionById = function(id){
-		$rootScope.rootID = id;
-//		alert($scope.product_name);
+	//TODO: Get auction product by category id
+	$scope.getAuctionProductByCategoryID = function(id){
 		$http({
-			url: 'http://localhost:8080/rest/auction/'+id,
+			url: ' http://localhost:8080/rest/auction/auc-pro-category/' +$scope.loop_auc_id,
 			method: 'GET'
 		}).then(function(response){
+			$scope.auctionProduct = response.data.DATA;
 			$scope.category_name = response.data.DATA.product.category.category_name;
-			$scope.product_description=response.data.DATA.product.product_description;
-			
-//			$scope.findProductsHasSupplier($scope.sup);
-			$scope.pro = response.data.DATA.product.product_id;
 			$scope.product_name = response.data.DATA.product.product_name;
-			$scope.product_condition = response.data.DATA.product_condition;
+			$scope.product_condition = response.data.DATA.product.product_condition;
+			$scope.current_price = response.data.DATA.current_price;
 			$scope.start_price = response.data.DATA.start_price;
 			$scope.increment_price = response.data.DATA.increment_price;
-			$scope.buy_price = response.data.DATA.buy_price;
-			$scope.start_date = moment(response.data.DATA.start_date).format("MM/DD/YYYY");
-			$scope.end_date = moment(response.data.DATA.end_date).format("MM/DD/YYYY");
+//			$scope.buy_price = response.data.DATA.buy_price;
+			$scope.product_condition = response.data.DATA.product_condition;
+			$scope.start_date = moment(response.data.DATA.start_date).format("LLLL");
+			$scope.end_date = moment(response.data.DATA.end_date).format("LLLL");
 			$scope.status = response.data.DATA.status;
-			$scope.comment = response.data.DATA.comment;			
+			$scope.comment = response.data.DATA.comment;
+			alert(response.data.DATA);
 		});
 	}
-
-	// load all record
-	$scope.findAllAuctions();
+	$scope.getAuctionProductByCategoryID();
 })
