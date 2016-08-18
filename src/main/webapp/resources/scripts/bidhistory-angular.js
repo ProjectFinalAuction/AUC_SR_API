@@ -2,7 +2,6 @@
  * angular get, add, delete, update user
  */
 
-
 var AuctionApplication = angular.module("myApp", []);
 
 AuctionApplication.controller("myCtrl", [
@@ -11,23 +10,32 @@ AuctionApplication.controller("myCtrl", [
 		'$timeout',
 		'datetime',
 		function($scope, $http, $timeout, datetime) {
-			var getAuctionItems = function() {
+			var getAuctionItems = function(id) {
 
-				data = [ {
-					"Name" : "ម៉ូតូ Honda Dream",
-					"NumberOfBids" : 100,
-					"CurrentBid" : 1000,
-					"AuctionEndDateTime" : "2016-08-30 07:50:10"
-				}, {
-					"Name" : "ទូរស័ព្ទ IPhone ៧",
-					"NumberOfBids" : 1000,
-					"CurrentBid" : 999,
-					"AuctionEndDateTime" : "2016-08-20 07:50:50"
-				} ];
+				$http({
+					url : 'http://localhost:8080/rest/auction/bid/' + id,
+					method : 'GET'
+				}).then(function(response) {
+					d = response.data.DATA;
+					
+					data = [ {
+						"Name" : d.product.product_name,
+						"NumberOfBids" : d.num_bid,
+						"CurrentBid" : d.bid_current_price,
+						"AuctionEndDateTime" : d.end_date
+					} ];
+					/*
+					 * , { "Name" : "ទូរស័ព្ទ IPhone ៧", "NumberOfBids" : 1000,
+					 * "CurrentBid" : 999, "AuctionEndDateTime" : "2016-08-20
+					 * 07:50:50" }
+					 */
+					// ];
+					processAuctionItems(data);
+					//
+					$scope.auctions = data;
 
-				processAuctionItems(data);
+				});
 
-				$scope.auctions = data;
 			};
 
 			var tick = function() {
@@ -45,7 +53,8 @@ AuctionApplication.controller("myCtrl", [
 
 			$scope.currentTime = moment();
 
-			getAuctionItems();
+			// getAuctionItems();
+			getAuctionItems(1); // test
 
 			$timeout(tick, 1000);
 

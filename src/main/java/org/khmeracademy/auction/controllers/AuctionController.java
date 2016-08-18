@@ -77,4 +77,12 @@ public class AuctionController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-auction/"+auction_id, HttpMethod.DELETE , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	//=== bidding auction
+	@RequestMapping(value="/bid/{auction_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findBiddingAuctionByAuctionId(@PathVariable int auction_id){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-bidding-auction-by-auction-id/" + auction_id, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 }
