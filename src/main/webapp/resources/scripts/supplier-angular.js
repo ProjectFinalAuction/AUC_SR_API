@@ -104,7 +104,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 					method: 'DELETE'
 				}).
 				success(function(response){
-						$scope.findAllSuppliers();
+//						$scope.findAllSuppliers();
 					});
 				swal("Deleted!", "The supplier has been deleted.", "success");
 

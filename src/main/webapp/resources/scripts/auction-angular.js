@@ -155,8 +155,50 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	}
 	
 	// DELETE AUCTION FUNCTION
-	$scope.deleteAuction = function(id){
+$rootScope.deleteAuction = function(auction_id){	
+		                                                                                                                                                                                                      
+		swal({
+		title: "Are you sure?",
+		text: "Your will not be able to recover this auction!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
+		cancelButtonText: "No, cancel plx!",
+		closeOnConfirm: false,
+		closeOnCancel: false }, 
+		function(isConfirm){ 
+			if (isConfirm) {
+				$http({
+					url: 'http://localhost:8080/rest/auction/'+ auction_id,
+					
+					method: 'DELETE'
+				}).
+				success(function(response){
+//					$scope.findAllAuctions();
+				});    
+				swal({
+					title : "Deleted!", 
+					text : "The auction has been deleted.", 
+					type : "success",
+					timer : 1000,
+					showConfirmButton : false
+					
+					});
+
+				$scope.findAllAuctions();
+			} else {
+				swal({
+					title : "Cancelled", 
+					text : "Your auction is not deleted!", 
+					type : "error",
+					timer : 1000,
+					showConfirmButton : false
+					
+				});
+			}
+		});				
 		
+	
 	}
 
 
@@ -244,5 +286,6 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 
 	// load all record
 	$scope.findSupplersInProducts();
+	$scope.findAllAuctions();
 //	test();
 })
