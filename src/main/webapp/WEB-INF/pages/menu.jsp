@@ -98,7 +98,9 @@ header .menu-list-ul .menu-list-li a:hover{
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/resources/static/images/iwantlogo1.png"></a>
+					<a href="${pageContext.request.contextPath}/index">
+					<img src="${pageContext.request.contextPath}/resources/static/images/iwantlogo1.png" class="img-responsive">
+					</a>
 				</div>
 				<div class="col-md-5">
 					<ul class="menu-list-ul">

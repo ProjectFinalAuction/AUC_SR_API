@@ -49,9 +49,10 @@
 							class="bid lang" key="bid">0 Bids</span>
 					</p>
 					<p class="text-center">
-						<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE@fobEA&id={{a.auction_id}}&Ksite_source=hp&rLoPPvgSov&{{a.product.product_name}}" class="btn btn-success"
-							role="button"><font color="#f2f2f2" class="lang" key="bid_now">Bid Now <span
-								class="glyphicon glyphicon-chevron-right"></span></font> </a>
+						<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE@fobEA&id={{a.auction_id}}&Ksite_source=hp&rLoPPvgSov&{{a.product.product_name}}"
+						 class="btn btn-default"
+							role="button"><font color="black" class="lang" key="bid_now">
+							<i class="fa fa-gavel" aria-hidden="true"></i> Bid Now</font> </a>
 					</p>
 				</div>
 			</div>

@@ -129,7 +129,7 @@ pageEncoding="ISO-8859-1"%>
 						<!-- img & title -->
 						<h1 class="title">
 							<a href="#">
-								<span class="img" ng-repeat="proimg in a.product.gallery">
+								<span class="img" ng-repeat="proimg in a.product.gallery" ng-show="$first">
 									<img src="{{proimg.image_path}}" class="img-thumbnail" style="width: 160px; height: 170px" alt="Cinque Terre">
 								</span>
 								<strong>{{a.product.product_name}}</strong>

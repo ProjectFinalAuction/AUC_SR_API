@@ -35,7 +35,7 @@
 				<div class="col-md-5" style="padding-right:0;">
 					<div class="list-group">
 						<div class="list-group-item">
-							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>7 DAYS, 7 HOURS</span></p>
+							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>{{auc.remainingTime | durationview}}</span></p>
 						</div> <!-- end remain time -->
 						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
 							<div class="thumbnail" ng-repeat="proimg in gallery" ng-show="$first">
