@@ -152,14 +152,14 @@
 												aria-hidden="true"></i></td>
 											<td><span>0 Bids</span></td>
 											<td class="action">
-												<a href="#"><i class="fa fa-eye"
+												<a href="#"><i class="fa fa-eye text-primary"
 													title="View bids"></i></a>&nbsp;&nbsp; 
 												<a href="#" data-toggle="modal" data-target="#myModal"
 													ng-click="getAuctionById(a.auction_id)"><i
-													class="fa fa-pencil-square-o" title="Edit"></i> </a>
+													class="fa fa-pencil-square-o text-warning" title="Edit"></i></a>&nbsp;&nbsp;
 												<a href="#" data-toggle="modal"
 													ng-click="deleteAuction(a.auction_id)"><i
-													class="fa fa-trash-o" title="delete"></i> </a>
+													class="fa fa-trash-o text-danger" title="delete"></i> </a>
 											</td>
 										</tr>
 									</tbody>
@@ -230,12 +230,13 @@
 									Condition*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-model="product_condition" value={{product_condition}} required>
+										ng-model="product_condition" ng-value="product_condition" required>
 										<!-- <option value="" ng-selected="true">-- Choose Condition	--</option> -->
 										<option value="Very_Good">Very Good</option>
 										<option value="Good">Good</option>
 										<option value="Like_New">Like New</option>
 										<option value="New">New</option>
+										<option value="Second_Hand">Second Hand</option>
 									</select>
 								</div>
 							</div>

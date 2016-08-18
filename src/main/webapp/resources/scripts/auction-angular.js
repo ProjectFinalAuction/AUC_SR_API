@@ -103,12 +103,13 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 			url: 'http://localhost:8080/rest/auction/'+id,
 			method: 'GET'
 		}).then(function(response){
+			
 			$scope.sup = response.data.DATA.product.supplier.supplier_id;
 			
 			$scope.findProductsHasSupplier($scope.sup);
 			$scope.pro = response.data.DATA.product.product_id;
 			
-			$scope.product_condition = response.data.DATA.product_condition
+			$scope.product_condition = response.data.DATA.product_condition;
 			$scope.start_price = response.data.DATA.start_price;
 			$scope.increment_price = response.data.DATA.increment_price;
 			$scope.buy_price = response.data.DATA.buy_price;
@@ -143,7 +144,9 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 			swal({ 
 				title: "Success!",
 				text: "Auction has been updated.",
-			    type: "success" 
+			    type: "success",
+			    timer : 1000,
+			    showConfirmButton : false
 			  },
 			  function(){
 			    window.location.href = 'http://localhost:8080/admin/viewauction';

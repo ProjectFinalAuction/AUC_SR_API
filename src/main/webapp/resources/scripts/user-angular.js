@@ -44,7 +44,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			swal({ 
 				title: "Success!",
 				text: "User has been inserted.",
-			    type: "success" 
+			    type: "success",
+			    timer : 1000,
+			    showConfirmButton : false
 			  },
 			  function(){
 //			    window.location.href = 'http://localhost:8080/admin/viewuser';
@@ -120,7 +122,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			swal({ 
 				title: "Success!",
 				text: "User has been updated!",
-			    type: "success" 
+			    type: "success",
+			    timer : 1000,
+			    showConfirmButton : false
 			  },
 			  function(){
 				  $scope.getAllUsers();
