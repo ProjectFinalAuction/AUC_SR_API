@@ -56,7 +56,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 8 +"&page=" + $scope.currentPage + "&productName="+$scope.productName,
+			url : 'http://localhost:8080/rest/auction?limit=' + 15 +"&page=" + $scope.currentPage + "&productName="+$scope.productName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;

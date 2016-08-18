@@ -135,8 +135,9 @@
 														for="checkbox2"></label>
 												</div>
 											</td>
-											<td><img
-												src="${pageContext.request.contextPath}/resources/static/assets/images/products/iphone.jpg"
+											<td ng-repeat="proimg in a.product.gallery" ng-show="$first">
+												<img
+												src="{{proimg.image_path}}"
 												class="thumb-sm" alt="product-img"></td>
 											<td>{{a.product.product_id}}</td>
 											<td>{{a.product.product_name}}</td>

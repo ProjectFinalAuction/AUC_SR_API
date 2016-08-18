@@ -36,9 +36,9 @@
 			<!-- ============ thumbnail Section ============= -->
 			<div class="col-sm-6 col-md-3" style="padding-right: 1px;"
 				ng-repeat="a in auction">
-				<div class="thumbnail">
+				<div class="thumbnail" ng-repeat="proimg in a.product.gallery" ng-show="$first">
 					<a href="bid-detail.html"><img
-						src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg"
+						src="{{proimg.image_path}}"
 						alt="..." class="img-thumbnail"></a>
 					<div class="caption descript">
 						<a href="bid-detail.html" class="title">{{a.product.product_name}}</a>

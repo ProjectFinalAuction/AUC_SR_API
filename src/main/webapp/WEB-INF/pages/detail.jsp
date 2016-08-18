@@ -34,12 +34,13 @@
 				<!-- colunm for image content -->
 				<div class="col-md-5" style="padding-right:0;">
 					<div class="list-group">
-						<div class="list-group-item" ng-controller="AuctionItemsController">
+						<div class="list-group-item">
 							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>7 DAYS, 7 HOURS</span></p>
 						</div> <!-- end remain time -->
 						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
 							<div class="thumbnail">
-								<a href="images/newcar1.png" data-lightbox="example-set" id="myLink"><img src="images/newcar1.png" class="img-responsive" width="100%" id="myImage"/></a>
+								<a href="images/newcar1.png" data-lightbox="example-set" id="myLink">
+								<img src="{{proimg.image_path}}" class="img-responsive" width="100%" id="myImage"/></a>
 							</div>
 						</div>
 						<div class="list-group-item">
