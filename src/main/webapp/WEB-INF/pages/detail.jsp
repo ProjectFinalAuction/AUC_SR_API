@@ -144,7 +144,7 @@
 							    <tbody>
 							   		<tr>
 							        	<th><span class="lang" key="minimum_bid">Minimum Bid</span></th>
-							        	<td>{{start_price + increment_price | currency}} ({{start_price | currency}} + {{increment_price | currency}})</td>
+							        	<td>{{current_price + increment_price | currency}} ({{current_price | currency}} + {{increment_price | currency}})</td>
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="max_bid">Your Maximum Proxy Bid</span></th>
@@ -164,7 +164,7 @@
 							        	<sec:authorize access="isAuthenticated()">
 <!--                                             <span ng-init="findUserById()"></span>    -->
                                         	<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
-							        		key="bid_now" ng-click="getBidPrice()">Bid Now</a>
+							        		key="bid_now" ng-click="addBidPrice()">Bid Now</a>
                                         </sec:authorize>
 							        	<sec:authorize access="!isAuthenticated()">
 							        		<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 

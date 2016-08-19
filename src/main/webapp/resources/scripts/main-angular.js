@@ -36,35 +36,6 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 			$scope.brand = respone.data.DATA;
 		});
 	}
-	
-	//TODO: SELECT USER BIDDER
-//    $scope.findUserById = function (userId) {
-//        $http({
-//            method: 'GET',
-//            url: 'http://localhost:8080/rest/user/' + userId
-//        }).then(function (response) {
-//            $scope.cus = response.data.DATA;
-//        });
-//    }
-//	
-    $scope.ac_id = $('#ac_id').val();
-//    alert($scope.ac_id);
-    
-    
-	$scope.getBidPrice = function(){
-//		alert($scope.ac_id);
-		$http({
-            method: 'POST',
-            url: 'http://localhost:8080/rest/bidhistory',
-            data: {
-            	"auction_id" : $scope.ac_id,
-            	"current_price" : $('#exampleInputAmount').val()
-            }
-        }).then(function (response) {
-        	alert("success");
-        });
-	}
-	
 
 	// load all record
 	$scope.findAllCategories();
@@ -135,9 +106,26 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 				$("#titleEndStatus").text("Auction has been finished!");
 			}
 		});
-		
-		
 	}
+		
+//  $scope.ac_id = $('#ac_id').val();
+	//TODO: INSERT BID PRICE TO BID HISTORY 
+	$scope.addBidPrice = function(){
+//		alert($scope.ac_id);
+		$http({
+          method: 'POST',
+          url: 'http://localhost:8080/rest/bidhistory',
+          data: {
+          	"auction_id" : $scope.ac_id,
+          	"current_price" : $('#exampleInputAmount').val()
+          }
+      }).then(function (response) {
+      	alert("success");
+      	$scope.getAuctionById();
+      	$('#exampleInputAmount').val("");
+      });
+	}
+	
 	
     $scope.tick1 = function () {
         $scope.currentTime1 = moment();
@@ -193,77 +181,3 @@ app.filter('durationview', ['datetime', function (datetime) {
         return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
     };
 }]);
-
-//app.controller("AuctionItemsController", ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime) {
-//		    var getAuctionItems = function () {
-//			       	data = [
-//			       		{
-//			       			"Name" : "Honda Dream",
-//			       			"NumberOfBids" : 100,
-//			       			"CurrentBid" : 1000,
-//			       			"AuctionEndDateTime" : "Tuesday, August 30, 2016 12:00 AM"
-//			       		},
-//			       		{
-//			       			"Name" : "Ipad",
-//			       			"NumberOfBids" : 1000,
-//			       			"CurrentBid" : 999,
-//			       			"AuctionEndDateTime" : "2016-08-20 07:50:10"
-//			       		}
-//			       	];
-//
-//		            processAuctionItems(data);
-//
-//		            $scope.auctions = data;
-//		    };
-//		    var tick = function () {
-//		        $scope.currentTime = moment();
-//		        processAuctionItems($scope.auctions);
-//		        $timeout(tick, 1000);
-//		    }
-//		    var processAuctionItems = function (data) {
-//		        angular.forEach(data, function (item) {
-//		            item.remainingTime = datetime.getRemainigTime(item.AuctionEndDateTime);
-//		        });
-//		    }
-//
-//		    $scope.currentTime = moment();
-//
-//		    getAuctionItems();
-//
-//		    $timeout(tick, 1000);
-//
-//		    $timeout(getAuctionItems, 10000);
-//
-//		}]);
-//
-//		AuctionApplication.factory('datetime', ['$timeout', function ($timeout) {
-//		    var duration = function (timeSpan) {
-//		        var days = Math.floor(timeSpan / 86400000);
-//		        var diff = timeSpan - days * 86400000;
-//		        var hours = Math.floor(diff / 3600000);
-//		        diff = diff - hours * 3600000;
-//
-//		        var minutes = Math.floor(diff / 60000);
-//		        diff = diff - minutes * 60000;
-//
-//		        var secs = Math.floor(diff / 1000);
-//
-//		        return { 'days': days, 'hours': hours, 'minutes': minutes, 'seconds': secs };
-//		    };
-//
-//		    function getRemainigTime(referenceTime) {
-//		        var now = moment().utc();
-//		        return moment(referenceTime) - now;
-//		    }
-//		    return {
-//		        duration: duration,
-//		        getRemainigTime: getRemainigTime
-//		    };
-//		}]);
-//
-//		AuctionApplication.filter('durationview', ['datetime', function (datetime) {
-//		    return function (input, css) {
-//		        var duration = datetime.duration(input);
-//		        return duration.days + "d:" + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
-//		    };
-//		}]);
