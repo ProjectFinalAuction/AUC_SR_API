@@ -58,6 +58,12 @@ pageEncoding="ISO-8859-1"%>
 		.status-type{
 			background-color: #BBBAB9;
 		}
+		.control-label{
+			color: #999795;
+		}
+		.filter{
+			
+		}
 
 
 	</style>
@@ -90,14 +96,26 @@ pageEncoding="ISO-8859-1"%>
 							<button id="Status_IncludeCompleted" class="btn btn-sm btn-default">Completed</button>
 						</div>
 					</div>
+
+
+<%-- 					<div class="panel-collapse collapse" id="item-{{$index+1}}">
+				       <ul class="list-group">
+				         <li class="list-group-item" ng-repeat="subCategory in c.subCategories">&nbsp;&nbsp;
+				         <a href="${pageContext.request.contextPath}/itemlist?cat={{subCategory.category_name}}&&id={{subCategory.category_id}}" class="submenu"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+				         &nbsp;&nbsp;{{subCategory.category_name}}</a></li>			         
+				       </ul>
+				    </div> --%>
+
+
 					<div class="form-group">
-						<label class="control-label" for="ListingType">&nbsp;&nbsp;&nbsp;&nbsp;Filter</label>
-						<select class="form-control input-sm" id="ListingType" name="ListingType" placeholder="All"><option value="">All</option>
-							<option value="Auction">Apple</option>
-							<option value="FixedPrice">Samsung</option>
-							<option value="Classified">LG</option>
-						</select>
+						<div class="input-group">
+							<label class="input-group-addon" for="SortFilterOptions">Filter</label>
+							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0">All</option>
+								<option ng-repeat="b in auctionProduct "	> {{b.product.brand.brand_name}} </a> </option>
+							</select>
+						</div>
 					</div>
+					
 					<div class="form-group">
 						<div class="input-group">
 							<label class="input-group-addon" for="SortFilterOptions">Sort</label>
@@ -120,7 +138,7 @@ pageEncoding="ISO-8859-1"%>
 
 			<!-- DATA-LISTING -->
 			
-			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auctionProduct">
+			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auctionProduct ">
 				<!-- wrapper div -->
 				<div class="panel panel-default clearfix listing" >		
 
