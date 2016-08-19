@@ -177,12 +177,12 @@
 									<div class="col-lg-10">
 										<div class="radio radio-info radio-inline">
 											<input type="radio" id="status1" name="status"
-												ng-model="status" value="true"  ng-checked="true"> <label for="status1">
+												ng-model="status" value="1"  ng-checked="true"> <label for="status1">
 												Enable </label>
 										</div>
 										<div class="radio radio-inline">
 											<input type="radio" id="status2" name="status" 
-												ng-model="status" value="false"> <label
+												ng-model="status" value="0"> <label
 												for="status2"> Disable </label>
 										</div>
 									</div>

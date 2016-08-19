@@ -36,7 +36,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "last_name": $scope.last_name,
 	  			  "password": $scope.password,
 	  			  "photo": ($scope.photo==undefined)?'String':$scope.photo,
-	  			  "status": ($scope.status==undefined)?true:$("input:radio[name=status]:checked").val(),
+	  			  "status": ($scope.status==undefined)?'1':$("input:radio[name=status]:checked").val(),
 	  			  "type": ($scope.type == undefined)?'bidder': $("input:radio[name=role]:checked").val(),
 	  			  "user_name": $scope.user_name
 			}
@@ -80,7 +80,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		else{
 			$( "#role2" ).prop( "checked", true);
 		}
-		if(userObject.status==true){
+		if(userObject.status=='1'){
 			$( "#status1" ).prop( "checked", true);
 		}
 		else{
@@ -142,6 +142,48 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		})
 	}
 	
+	// delete supplier
+	$scope.deleteUser = function(id){	
+		
+		swal({
+		title: "Are you sure?",
+		text: "Your will not be able to recover this user!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
+		cancelButtonText: "No, cancel plx!",
+		closeOnConfirm: false,
+		closeOnCancel: false }, 
+		function(isConfirm){ 
+			if (isConfirm) {
+				$http({
+					url: 'http://localhost:8080/rest/user/'+id,
+					
+					method: 'DELETE'
+				}).
+				success(function(response){
+					$scope.getAllUsers();
+					});
+				swal({
+					title : "Deleted!", 
+					text : "The user has been deleted.", 
+					type : "success",
+					timer : 1000,
+					showConfirmButton : false
+				});
+
+				//$scope.findAllSuppliers();
+			} else {
+				swal({
+					title : "Cancelled!", 
+					text : "Your user is not deleted :)", 
+					type : "error",
+					timer : 1000,
+					showConfirmButton : false
+				});
+			}
+		});					
+	}
 	
 	// load all record
 	

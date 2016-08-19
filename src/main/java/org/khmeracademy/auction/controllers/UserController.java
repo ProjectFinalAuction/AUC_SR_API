@@ -78,10 +78,10 @@ public class UserController {
 	}
 	
 	//Delete user by id	
-//	@RequestMapping(value="/{userId}", method = RequestMethod.DELETE)
-//	public ResponseEntity<Map<String , Object>> deleteUsers(@PathVariable int userId){
-//		HttpEntity<Object> request = new HttpEntity<Object>(header);
-//		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-user/" + userId, HttpMethod.DELETE , request , Map.class, userId) ;
-//		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-//	}
+	@RequestMapping(value="/{userId}", method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String , Object>> deleteUsers(@PathVariable int userId){
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-user/" + userId, HttpMethod.DELETE , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 }

@@ -83,14 +83,16 @@
 										<td>{{u.first_name}}</td>
 										<td>{{u.last_name}}</td>
 										<td>{{u.email}}</td>
-										<td ng-if="u.status==true"><i class="fa fa-check fa-lg text-primary"
+										<td ng-if="u.status=='1'"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
-										<td ng-if="u.status==false"><i class="fa fa-times fa-lg text-danger"
+										<td ng-if="u.status=='0'"><i class="fa fa-times fa-lg text-danger"
 												aria-hidden="true"></i></td>
 										<td>{{u.type}}</td>
-										<td><a href="#" data-toggle="modal" data-target=".enterData" class="table-action-btn"
-												ng-click="getUserByID(u)">
+										<td><a href="#" data-toggle="modal" data-target=".enterData" 
+												class="table-action-btn" ng-click="getUserByID(u)">
 												<i class="md md-edit text-warning"></i></a>
+											<a href="#" class="table-action-btn" ng-click="deleteUser(u.user_id)">
+												<i class="md md-delete text-danger"></i></a>
 										</td>
 									</tr>
 								</tbody>
@@ -230,12 +232,12 @@
 						<div class="col-lg-10">
 							<div class="radio radio-info radio-inline">
 								<input type="radio" id="status1" name="status"
-									ng-model="status" value="true" > <label for="status1">
+									ng-model="status" value="1" > <label for="status1">
 									Enable </label>
 							</div>
 							<div class="radio radio-inline">
 								<input type="radio" id="status2" name="status" 
-									ng-model="status" value="false" > <label
+									ng-model="status" value="0" > <label
 									for="status2"> Disable </label>
 							</div>
 						</div>

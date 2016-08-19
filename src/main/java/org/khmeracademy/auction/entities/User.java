@@ -29,7 +29,7 @@ public class User implements UserDetails, Serializable {
 		private String contact;
 		private String photo;
 		private String type;
-		private boolean status;
+		private String status;
 		private String created_by;
 		private Date created_date;
 		private String comment;
@@ -113,10 +113,10 @@ public class User implements UserDetails, Serializable {
 		public void setType(String type) {
 			this.type = type;
 		}
-		public boolean getStatus() {
+		public String getStatus() {
 			return status;
 		}
-		public void setStatus(boolean status) {
+		public void setStatus(String status) {
 			this.status = status;
 		}
 		public String getCreated_by() {

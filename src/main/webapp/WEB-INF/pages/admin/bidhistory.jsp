@@ -91,7 +91,7 @@
 						        <th>Username</th> 
 	                           <th>Current Price</th>
 	                           <th style="width: 236px;">Bid Date</th>
-	      					   <th style=" width: 192px;">Action</th>
+	      					  <!--  <th style=" width: 192px;">Action</th> -->
 							</tr>
 						</thead>
   					
@@ -108,12 +108,12 @@
 	                            <td>{{b.user.user_name}}</td>
 	                            <td>{{b.current_price}}</td>
 	                            <td>{{b.bid_date}}</td>
-                          		<td>
+                          		<!-- <td>
 		                          	<a href="#" class="table-action-btn" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
 		                              <i class="fa fa-eye"></i>
 		                            </a>
 		                          	<a href="#" class="table-action-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                          		</td>
+                          		</td> -->
                         	</tr>                                                
                       </tbody>
                    </table>
