@@ -2,8 +2,9 @@
  * 
  */
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['angular.filter']);
 app.controller('categoryCtrl', function($scope,$http,$rootScope){
+	
 	// Get All Category
 	$scope.findAllCategories = function(){
 		$http({
@@ -76,4 +77,4 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	
 //	Load Record
 	$scope.getAuctionProductByCategoryID();	
-})
+});

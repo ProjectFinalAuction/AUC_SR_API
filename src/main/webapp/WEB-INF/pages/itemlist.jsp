@@ -111,7 +111,7 @@ pageEncoding="ISO-8859-1"%>
 						<div class="input-group">
 							<label class="input-group-addon" for="SortFilterOptions">Filter</label>
 							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0">All</option>
-								<option ng-repeat="b in auctionProduct "	> {{b.product.brand.brand_name}} </a> </option>
+								<option ng-repeat="b in auctionProduct | unique: 'product.brand.brand_id'"> {{b.product.brand.brand_name}} </a> </option>
 							</select>
 						</div>
 					</div>
@@ -208,4 +208,6 @@ pageEncoding="ISO-8859-1"%>
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
+	<!-- unique script -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.10/angular-filter.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/chhuon.js"></script>
