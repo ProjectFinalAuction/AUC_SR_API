@@ -86,9 +86,9 @@
 										<td>{{b.brand_id}}</td>
 										<td>{{b.brand_name}}</td>
 										<td>{{b.brand_description}}</td>
-										<td ng-if="b.status==true"><i class="fa fa-check fa-lg text-primary"
+										<td ng-if="b.status=='1'"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
-										<td ng-if="b.status==false"><i class="fa fa-times fa-lg text-danger"
+										<td ng-if="b.status=='0'"><i class="fa fa-times fa-lg text-danger"
 												aria-hidden="true"></i></td>
 												
 										<!--  Update Brand -->
@@ -97,10 +97,10 @@
 											ng-click="getBrandById(b)"
 										><i class="md md-edit text-warning"></i></a>
 										<!--  End Update Brand --> 
-										
-										
+																	
 										<!--  Delete Brand -->
-										<!-- 	<a href="#" class="table-action-btn" ng-click="deleteBrand(b.brand_id)"><i class="md md-close"></i></a></td> -->
+										<a href="#" class="table-action-btn" ng-click="deleteBrand(b.brand_id)">
+										<i class="md md-delete text-danger"></i></a></td>
 										<!-- End Delete Brand -->
 									</tr>
 
@@ -181,12 +181,12 @@
 							</strong></label>
 							<div class="col-sm-10">
 								<div class="radio-inline">
-									<input type="radio" id="brand_status1" value="true"
+									<input type="radio" id="brand_status1" value="1"
 										name="brand_status" ng-model="status" checked="" >
 									<label for="brand_status1"> active </label>
 								</div>
 								<div class="radio-inline">
-									<input type="radio" id="brand_status2" value="false"
+									<input type="radio" id="brand_status2" value="0"
 										name="brand_status" ng-model="status"> <label
 										for="brand_status2">inactive </label>
 								</div>

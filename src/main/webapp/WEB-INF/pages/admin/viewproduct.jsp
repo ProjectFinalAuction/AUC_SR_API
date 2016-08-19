@@ -117,8 +117,9 @@
 	                          	
 	                          
 	                          <td>
-	                          	<a href="#" data-toggle="modal" data-target=".enterData" class="table-action-btn" ng-click="getProductByID(pro,pro.gallery)"><i class="md md-edit"></i></a>
-	                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
+	                          	<a href="#" data-toggle="modal" data-target=".enterData" class="table-action-btn" 
+	                          		ng-click="getProductByID(pro,pro.gallery)"><i class="md md-edit text-warning"></i></a>
+	                          	<a href="#" class="table-action-btn"><i class="md md-delete text-danger"></i></a>
 	                          </td>
                         </tr>
                         

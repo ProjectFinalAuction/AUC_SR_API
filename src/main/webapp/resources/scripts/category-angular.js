@@ -213,7 +213,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	
 	//Delete Category
 	$scope.deleteBrand = function(brand_id){
-		alert(brand_id);
+		
 		swal({
 			title: "Are you sure?",
 			text: "Your will not be able to recover this brand!",

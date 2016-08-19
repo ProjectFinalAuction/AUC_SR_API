@@ -77,12 +77,12 @@
 										<label class="m-b-15" for="catestatus">Status <span
 											class="text-danger">*</span></label> <br />
 										<div class="radio radio-inline">
-											<input type="radio" id="catestatus1" value="true"
+											<input type="radio" id="catestatus1" value="1"
 												name="categorystatus" ng-model="status" checked="" required> <label
 												for="inlineRadio1"> active </label>
 										</div>
 										<div class="radio radio-inline">
-											<input type="radio" id="catestatus2" value="false"
+											<input type="radio" id="catestatus2" value="0"
 												name="categorystatus" ng-model="status"> <label
 												for="catestatus2">inactive </label>
 										</div>
@@ -128,12 +128,12 @@
 										<label class="m-b-15" for="brandstatus">Status <span
 											class="text-danger">*</span></label> <br />
 										<div class="radio radio-inline">
-											<input type="radio" id="brandstatus1" value="true"
+											<input type="radio" id="brandstatus1" value="1"
 												name="brandstatus" checked="" ng-model="brand_status"> <label
 												for="brandstatus1" required> active </label>
 										</div>
 										<div class="radio radio-inline">
-											<input type="radio" id="brandstatus2" value="false"
+											<input type="radio" id="brandstatus2" value="0"
 												name="brandstatus" ng-model="brand_status"> <label for="brandstatus2">
 												inactive </label>
 										</div>

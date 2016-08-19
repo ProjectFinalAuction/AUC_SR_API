@@ -5,7 +5,7 @@ public class AddCategory {
 	private String category_name;
 	private String category_description;
 	private int parent_id;
-	private boolean status;
+	private String status;
 	public int getCategory_id() {
 		return category_id;
 	}
@@ -30,12 +30,13 @@ public class AddCategory {
 	public void setParent_id(int parent_id) {
 		this.parent_id = parent_id;
 	}
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	
 	
 	

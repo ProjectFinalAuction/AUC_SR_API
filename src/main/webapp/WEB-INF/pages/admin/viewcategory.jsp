@@ -88,9 +88,9 @@
 										<td>{{cat.category_name}}</td>
 										<td>{{cat.category_description}}</td>
 										<td>{{cat.parent_id}}</td>
-										<td ng-if="cat.status==true"><i class="fa fa-check fa-lg text-primary"
+										<td ng-if="cat.status=='1'"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
-										<td ng-if="cat.status==false"><i class="fa fa-times fa-lg text-danger"
+										<td ng-if="cat.status=='0'"><i class="fa fa-times fa-lg text-danger"
 												aria-hidden="true"></i></td>
 										<td>
 										<!--  Update Category -->
@@ -201,12 +201,12 @@
 							</strong></label>
 							<div class="col-sm-10">
 								<div class="radio-inline">
-									<input type="radio" id="catestatus1" value="true"
+									<input type="radio" id="catestatus1" value="1"
 										name="categorystatus" ng-model="status" checked="" >
 									<label for="inlineRadio1"> active </label>
 								</div>
 								<div class="radio-inline">
-									<input type="radio" id="catestatus2" value="false"
+									<input type="radio" id="catestatus2" value="0"
 										name="categorystatus" ng-model="status"> <label
 										for="catestatus2">inactive </label>
 								</div>
