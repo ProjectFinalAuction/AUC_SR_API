@@ -196,7 +196,7 @@
 							        	<td><span class="lang" key="current_price"><b>Current Price</b></span></td>
 							        	<td>{{current_price | currency}}</td>
 							        	<td id='status1' ng-if="status==1" value="{{status}}" class="status"><p>Active</p></td>
-							        	<td id='status2' ng-if="status==4" value="{{status}}" class="status"><p>End</p></td>
+							        	<td id='status2' ng-if="status==3" value="{{status}}" class="status"><p>End</p></td>
 							      	</tr>
 							     	</thead>
 							     	<tbody>

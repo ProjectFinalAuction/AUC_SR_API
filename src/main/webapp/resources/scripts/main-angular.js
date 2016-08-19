@@ -116,7 +116,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 			$scope.auc_detail = response.data.DATA;
 			$scope.processAuction($scope.auc_detail);
 
-			if($scope.status==4){
+			if($scope.status==3){
 				$("#tablebidding").hide();
 				$("#titleEndStatus").text("Auction has been finished!");
 			}
