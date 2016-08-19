@@ -38,6 +38,7 @@ public class BidHistoryController {
 	}
 	*/
 	
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> addNewBidHistory(@RequestBody AddBid addBid, @AuthenticationPrincipal User user){
 		
@@ -56,7 +57,6 @@ public class BidHistoryController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	
 	//TODO: GET TOTAL BID
 	@RequestMapping(value="/total-bid-price", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> findTotalBidCurrentPrice(){
@@ -64,5 +64,4 @@ public class BidHistoryController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-total-bid-price", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
-	
 }

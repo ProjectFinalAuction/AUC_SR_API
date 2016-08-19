@@ -7,50 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ITEM INFORMAITON</title>	
-<style type="text/css">
-.sublinkcategory{
-	color: gray;
-	font-size: 12px;
-}
-#status1 p{
- 	padding: 1px 5px;
- 	margin: 0;
-	float: right;
-	background-color: blue;
-	color: white;
-	font-weight: bold;
-	border-radius: 3px;
-}
-#status2 p{
- 	padding: 1px 5px;
- 	margin: 0;
-	float: right;
-	background-color: red;
-	color: white;
-	font-weight: bold;
-	border-radius: 3px;
-}
-
-
-.choose ul li a,.productinfo p{
-                color: black;
-            }
-            .add-to-cart{
-                color:white;
-            }
-            .productinfo{
-                border:1px solid #8BC34A ;
-            }
-            .choose ul li a,.productinfo p,.category-products .panel-default .panel-heading .panel-title a,.brands-name .nav-stacked li a,.shop-menu ul li a,.mainmenu ul li a{
-                color: black;
-            }
-            .add-to-cart{
-                color:white;
-            }
-
-</style>
-
+<title>ITEM INFORMAITON</title>
+<!-- header -->
 <jsp:include page="header.jsp" />
 <!-- menu -->
 <jsp:include page="menu.jsp" />
@@ -298,9 +256,8 @@
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
-	<script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
 	
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#menustand").hide(function(){

@@ -21,13 +21,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/static/css/style.css">
+	href="${pageContext.request.contextPath}/resources/static/css/front-end-style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/css/media.css">
- <style type="text/css">
-  .panle1 .panel-group .panel+.panel,.panle1 .panel{
-    margin-top: 0px;
-  }
- </style>
 </head>
 

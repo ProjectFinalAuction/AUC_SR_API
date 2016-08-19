@@ -13,16 +13,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title class="lang" key="cambodia_auction">CAMBODIA AUCTION</title>
 <!-- header -->
-<style type="text/css">
-#title {
-	font-size: 15px;
-	font-weight: bold;
-	text-align: center;
-	color: gray;
-	margin-top: 12px;
-}
-
-</style>
 <jsp:include page="header.jsp" />
 <!-- menu -->
 <jsp:include page="menu.jsp" />
@@ -62,15 +52,10 @@
 	<!-- ============ End Row 2 Section ============= -->
 </div>
 	<!-- ============ End col-md-9 Section ============= -->
-	
-	
 
-	
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
 	
 
-
-<script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 <script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>

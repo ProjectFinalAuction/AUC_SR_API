@@ -3,77 +3,20 @@ pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>CAMBODIA AUCTION</title>
-	<!-- header -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/accordion-menu.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css">
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/accordion-menu.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/bootstrap.min.js"></script>
-	<style type="text/css">
-		.NumberPart{
-			color: green;
-			font-weight: bold;
-		}
-		/*.remaining{
-			color: #777574;
-			font-weight: bold;
-		}*/
-		.glyphicon-option-vertical{
-			color: #777574;
-		}
-		.title strong{
-			color: #777574;
-			font-size: larger;
-		}
-		.subtitle strong{
-			color: #777574;
-			font-size: medium;
-			font-weight:normal;
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CAMBODIA AUCTION</title>
 
-		}
-		.img-wraper{
-			margin-top: -15px; margin-bottom: 5px;
-		}
-		.img{float: left; margin-right: 10px; }
-		.condition, .seller, .remaining{
-			color: #BBBAB9;
-		}
-		.seller a, .condition a{
-			color: #999795;
-		}
-		.condition a:hover, a:visited, a:link, a:active
-		{
-			text-decoration: none;
-		}
-
-		.seller a:hover, a:visited, a:link, a:active
-		{
-			text-decoration: none;
-		}
-		.remaining a:hover, a:visited, a:link, a:active
-		{
-			text-decoration: none;
-		}
-		.status-type{
-			background-color: #BBBAB9;
-		}
-		.control-label{
-			color: #999795;
-		}
-		.filter{
-			
-		}
-
-
-	</style>
-
-	<jsp:include page="header.jsp" />
-	<!-- menu -->
-	<jsp:include page="menu.jsp" />
-	<!-- left content -->
-	<jsp:include page="left-content.jsp" />
-	<!-- right content -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/accordion-menu.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/accordion-menu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/bootstrap.min.js"></script>
+<!-- header -->
+<jsp:include page="header.jsp" />
+<!-- menu -->
+<jsp:include page="menu.jsp" />
+<!-- left content -->
+<jsp:include page="left-content.jsp" />
+<!-- right content -->
 	<div class="col-md-9" ng-controller="auctionCtrl" id="right-content">
 		<input type="hidden" id="loop_auc_id" value="${param.id}">
 		<!-- ================ Item List ================ -->
@@ -209,5 +152,5 @@ pageEncoding="ISO-8859-1"%>
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
 	<!-- unique script -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.10/angular-filter.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/angular-filter.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/chhuon.js"></script>

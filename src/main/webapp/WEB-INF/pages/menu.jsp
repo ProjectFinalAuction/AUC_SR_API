@@ -2,69 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<style>
-header{
-	padding:0px;
-	margin:0px;
-/* 	height:50px; */
 
-}
-header .head{
-	background-color: #e6e6e6;
-}
-header span{
-	font-family: verdana;
- 	font-size: 12px;
-}
-header #right-head-info{
-	text-align: right;
-}
-header .menu{
-	background-color: #fff;
-}
-header .menu img{
-	width: 350px;
-	padding: 25px;
-}
-header .menu-list-ul{
-	list-style-type: none;
-	margin-top: 10px;
-	padding:0px;
-}
-header .menu-list-ul .menu-list-li,
-header .menu-list-ul .menu-list-li > a{
-	display: inline;
-	padding: 5px;
-	line-height: 90px;
-	color: gray;
-}
-header .menu-list-ul .menu-list-li > a > span{
-	font-size: 0.90vmax;
-}
-header .menu-list-ul .menu-list-li a:hover{
-	text-decoration: none;
-}
-.panel-default{
-	border-bottom:1px solid white;
-	background-color: #fff;
-	padding:0;
-}
-.fa-caret-square-o-down:hover{
-	color: black;
-	cursor: pointer;
-}
-
-#menustand a{
-	text-decoration: none;
-	transition: 0.3s ease-in-out;
-}
-#menustand .submenu:hover{
-	padding-left: 10px;
-	transition: 0.3s ease-in-out;
-}
-
-
-</style>
 <body ng-app="myApp">
 <header>
 	<div class="container-fluid head">
