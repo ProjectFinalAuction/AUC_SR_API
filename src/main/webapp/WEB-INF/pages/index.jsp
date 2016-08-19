@@ -6,6 +6,7 @@
 	import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page import="org.springframework.security.core.Authentication"%>
 <%@page import="org.khmeracademy.auction.entities.User"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 	
 	<!-- ================ Starting New Item Content ================ -->
 	<div class="row" style="position: relative;">
-		<p id="title" class="lang" key="new_arrivale">NEW ARRIVAL</p>
+		<p id="title" class="lang" key="new_arrivale"><spring:message code="new_arrival"></spring:message></p>
 		<!-- ============ thumbnail Section ============= -->
 		<div class="col-sm-6 col-md-3 product" style="padding-right: 0px;"
 			ng-repeat="a in auction">
@@ -61,6 +62,9 @@
 	<!-- ============ End Row 2 Section ============= -->
 </div>
 	<!-- ============ End col-md-9 Section ============= -->
+	
+	
+
 	
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
