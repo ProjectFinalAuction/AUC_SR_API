@@ -18,7 +18,7 @@
 					    <div class="navfooter">
 					      <ul class="nav navbar-nav">
 					       	<li class="active"><a href="index.html" class="lang" key="home">Home</a></li>
-					        <li><a href="sell_first_step.html" class="lang" key="seller">Seller</a></li>
+<!-- 					        <li><a href="sell_first_step.html" class="lang" key="seller">Seller</a></li> -->
 					        <li><a href="#" class="lang" key="buyer">Buyer</a></li>
 					        <li><a href="contact.html" class="lang" key="contact">Contact</a></li>
 					        <li><a href="about.html" class="lang" key="about">About</a></li>
@@ -35,7 +35,7 @@
 		</div>
 	</footer>
 	<!-- ================ Ending Footer Section ================= -->
-	
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/static/js/jquery-2.1.3.js"></script>
 <script type="text/javascript"
@@ -53,5 +53,8 @@
 		jQuery('#datepicker').datepicker();
 	});
 </script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/jquery.bootpag.min.js"></script>
+</div>
 </body>
 </html>

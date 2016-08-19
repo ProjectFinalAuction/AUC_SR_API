@@ -4,6 +4,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <body ng-app="myApp">
+<div class="wrapper" ng-controller="auctionCtrl">
 <header>
 	<div class="container-fluid head">
 		<div class="container">
@@ -75,15 +76,20 @@
 					</div>
 				</div>
 				<div class="col-md-9" style="background-color: #e6e6e6;padding:0;">
-					<form style="padding:4px;">
+					<form style="padding:4px;" ng-submit="searchProName(proName)">
 						<div class="input-group">
-							<input type="text" placeholder="Enter keyword" style="border:none;padding-left: 20px;width:100%">
+							<input type="text" placeholder="Enter keyword" style="border:none;padding-left: 20px;width:100%" 
+							ng-model="proName" ng-change="searchProName(proName)">
 							<div class="input-group-addon" style="border:none;"><i class="fa fa-search" aria-hidden="true"></i></div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
+	
+<!-- Script use for search data	 -->
+<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
 </header>
 
 <!--  ========  Model Login ====== -->
@@ -100,11 +106,13 @@
 				<div class="modal-body">
 					<form class="formlogin" id="formLogin" method="POST" role="form">
 						<fieldset>
-							<h4 class="text-success text-xs-center lang" key="welcome">Welcome</h4>
+<!-- 							<h4 class="text-success text-xs-center lang" align="center" key="welcome">WELCOME LOGIN</h4> -->
+							<div><img src="${pageContext.request.contextPath}/resources/static/images/denhtlaiHD.png" 
+							class="img-responsive" width="350" style="margin:15px auto;"></div>
 							<div class="form-group">
 								<label class="text-xs-left lang" key="username">Username</label> <input type="text"
 									class="form-control form-control-succes" name="username"
-									placeholder="enter your username" required>
+									placeholder="enter your username" autofocus required>
 							</div>
 							<div class="form-group">
 								<label class="text-xs-left lang" key="password" >Password</label> <input
@@ -114,7 +122,8 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary"
 									><span class="lang" key="sign_in">Sign in</span>
-								</button>
+								</button>&nbsp;&nbsp;
+								<a href="${pageContext.request.contextPath}/register?bidder" id="registerLoginLink">Register Now</a>
 							</div>
 						</fieldset>
 					</form>
@@ -122,6 +131,8 @@
 			</div>
 		</div>
 	</div>
+
+		
 <script type="text/javascript">
 $("#dropdownmenu").click(function(){
 	$("#menustand").toggle(function(){

@@ -391,11 +391,13 @@ header .menu-list-ul .menu-list-li,
 header .menu-list-ul .menu-list-li > a{
 	display: inline;
 	padding: 5px;
+	margin-left:5px;
 	line-height: 90px;
 	color: gray;
 }
 header .menu-list-ul .menu-list-li > a > span{
 	font-size: 0.90vmax;
+	font-size: 13px;
 }
 header .menu-list-ul .menu-list-li a:hover{
 	text-decoration: none;
@@ -419,6 +421,15 @@ header .menu-list-ul .menu-list-li a:hover{
 	transition: 0.3s ease-in-out;
 }
 
+#registerLoginLink{
+	font-style: italic; 
+	color: gray;
+	font-family: Montserrat; 
+}
+#registerLoginLink:hover {
+	text-decoration: underline;
+}
+
 /*======================== DETAIL JSP ========================*/
 .sublinkcategory{
 	color: gray;
@@ -428,7 +439,7 @@ header .menu-list-ul .menu-list-li a:hover{
  	padding: 1px 5px;
  	margin: 0;
 	float: right;
-	background-color: blue;
+	background-color: #339bd1;
 	color: white;
 	font-weight: bold;
 	border-radius: 3px;
@@ -441,6 +452,10 @@ header .menu-list-ul .menu-list-li a:hover{
 	color: white;
 	font-weight: bold;
 	border-radius: 3px;
+}
+.bidhistory{
+	font-size: 11px;
+	float: right;
 }
 
 /*========================= ITEMLIST JSP =======================*/

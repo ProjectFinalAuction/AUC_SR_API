@@ -19,7 +19,7 @@
 <!-- left content -->
 <jsp:include page="left-content.jsp" />
 <!-- right content -->
-<div class="col-md-9" ng-controller="auctionCtrl" style="padding: 0;"
+<div class="col-md-9" style="padding: 0;"
 	id="right-content">
 	
 	<!-- ================ Starting New Item Content ================ -->
@@ -48,14 +48,19 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- ============ End Row 2 Section ============= -->
-</div>
-	<!-- ============ End col-md-9 Section ============= -->
-
-	<!-- footer -->
-	<jsp:include page="footer.jsp" />
+	</div> <!-- ============ End Row 2 Section ============= -->
 	
-
+	<!-- Pagination-->
+	<div class="col-sm-12">
+		<div id="PAGINATION" class="pull-right"></div>
+	</div>
+	<!-- End Pagination-->
+	
+	
+</div> <!-- ============ End col-md-9 Section ============= -->
+	
+<!-- footer -->
+<jsp:include page="footer.jsp" />
+	
 <script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>

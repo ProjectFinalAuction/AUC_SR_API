@@ -47,36 +47,97 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 //TODO: SHOW AUCTON TO VIEW CLIENTS
 app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope) {
 	$scope.productName = "";
-	$scope.currentPage = 1;
-	
-	$scope.ac_id = $('#ac_id').val();
-//	alert($scope.ac_id);
-	
+	var checkPagination = true;
+	var currentPage = 1;
+
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 15 +"&page=" + $scope.currentPage + "&productName="+$scope.productName,
+			url : 'http://localhost:8080/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'
 		}).then(function(response) {
-			$scope.processAuctionItems(response.data.DATA);
+			$scope.processAuctionItemsItems(response.data.DATA);
 			$scope.auction = response.data.DATA;
-		});
-		
-		
+			$scope.pages = response.data.PAGINATION.PAGE;
+			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
+			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
+			if(checkPagination){
+				$scope.setPagination(response.data.PAGINATION);
+				checkPagination = false;
+			}	
+		});	
 	}
 	
 	$scope.tick = function () {
         $scope.currentTime = moment();
-        $scope.processAuctionItems($scope.auction);
+        $scope.processAuctionItemsItems($scope.auction);
         $timeout($scope.tick, 1000);
     }
 	
-    $scope.processAuctionItems = function (data) {
+    $scope.processAuctionItemsItems = function (data) {
         angular.forEach(data, function (item) {
             item.remainingTime = datetime.getRemainigTime(item.end_date);
         });
     }
+        
+	// load all record
+	$scope.findAllAuctions();
+	$scope.currentTime = moment(); 
+	$timeout($scope.tick, 1000);
 	
+	//========================PAGINATION AND SEARCH DATA================================
+	//TODO: SEARCH BY PRODUCT NAME
+	$scope.searchProName = function(proName){
+//		alert(proName);
+		$http({
+			url : 'http://localhost:8080/rest/auction?limit=' + 10 +"&page=" + currentPage + "&productName="+proName,
+//			url: 'http://localhost:9999/api/find-all-auctions?page=1&limit=15&productName=Dream',
+			method : 'GET'
+		}).then(function(response) {
+			$scope.auction = response.data.DATA;
+			if(checkPagination){
+				$scope.setPagination(response.data.PAGINATION);
+			}
+		});
+	}
+	$scope.test = function(){
+		alert($scope.proName);
+	}
+	
+	//TODO: CTEATE PAGINATION BUTTON
+	$scope.setPagination = function(pagination){
+		console.log("PAGINATION==>", pagination);
+		$("#PAGINATION").bootpag({
+	        total: pagination.TOTAL_PAGES,
+	        page: pagination.PAGE,
+	        maxVisible: 10,
+	        leaps: true,
+	        firstLastUse: true,
+	        first: 'First',
+	        last: 'Last',
+	        wrapClass: 'pagination',
+	        activeClass: 'active',
+	        disabledClass: 'disabled',
+	        nextClass: 'next',
+	        prevClass: 'prev',
+	        lastClass: 'last',
+	        firstClass: 'first'
+	    }); 
+		$("#PAGINATION ul").addClass("pagination");
+	}
+	
+	$('#PAGINATION').bootpag().on("page", function(event, page){
+		checkPagination = false;
+		currentPage = page;
+		$scope.findAllAuctions();
+	});
+}]);
+
+
+//TODO: SHOW AUCTON TO DETAIL ITEM VIEW CLIENTS
+app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope) {	
+	$scope.ac_id = $('#ac_id').val();
+
 	// TODO: get one record function
 	$scope.getAuctionById = function(id){
 		$http({
@@ -99,7 +160,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 			$scope.comment = response.data.DATA.comment;
 			
 			$scope.auc_detail = response.data.DATA;
-			$scope.processAuction($scope.auc_detail);
+			$scope.processAuctionItems($scope.auc_detail);
 
 			if($scope.status==3){
 				$("#tablebidding").hide();
@@ -108,10 +169,8 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 		});
 	}
 		
-//  $scope.ac_id = $('#ac_id').val();
 	//TODO: INSERT BID PRICE TO BID HISTORY 
 	$scope.addBidPrice = function(){
-//		alert($scope.ac_id);
 		$http({
           method: 'POST',
           url: 'http://localhost:8080/rest/bidhistory',
@@ -127,25 +186,20 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	}
 	
 	
-    $scope.tick1 = function () {
-        $scope.currentTime1 = moment();
-        $scope.processAuction($scope.auc_detail);
-        $timeout($scope.tick1, 1000);
+    $scope.tick = function () {
+        $scope.currentTime = moment();
+        $scope.processAuctionItems($scope.auc_detail);
+        $timeout($scope.tick, 1000);
     }
-    $scope.processAuction = function (data) {
-        data.remainingTime1 = datetime.getRemainigTime(data.end_date);
+    $scope.processAuctionItems = function (data) {
+        data.remainingTime = datetime.getRemainigTime(data.end_date);
     }
     
     // load by auction id
-    $timeout($scope.tick1, 1000);
+    $timeout($scope.tick, 1000);
     $timeout($scope.auc_detail, 10000);
-	$scope.currentTime1 = moment(); 
-	$scope.getAuctionById();
-    
-	// load all record
-	$scope.findAllAuctions();
 	$scope.currentTime = moment(); 
-	$timeout($scope.tick, 1000);
+	$scope.getAuctionById();
 }]);
 
 app.factory('datetime', ['$timeout', function ($timeout) {

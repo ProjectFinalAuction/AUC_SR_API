@@ -15,7 +15,7 @@
 <!-- left content -->
 <jsp:include page="left-content.jsp" />
 <!-- right content -->
-<div class="col-md-9" ng-controller="auctionCtrl" style="padding:0;" id="right-content">
+<div class="col-md-9" ng-controller="detailCtrl" style="padding:0;" id="right-content">
 	<div class="container-fluid">
 		<input type="hidden" id="ac_id" value="${param.Aid}">
 		<!-- detail content information -->
@@ -28,7 +28,7 @@
 				<div class="col-md-5" style="padding-right:0;">
 					<div class="list-group">
 						<div class="list-group-item">
-							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>{{auc_detail.remainingTime1 | durationview}}</span></p>
+							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>{{auc_detail.remainingTime | durationview}}</span></p>
 						</div> <!-- end remain time -->
 						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
 							<div class="thumbnail" ng-repeat="proimg in gallery" ng-show="$first">
@@ -120,12 +120,11 @@
 							        	<td align="center">
 							        		
 							        	<sec:authorize access="isAuthenticated()">
-<!--                                             <span ng-init="findUserById()"></span>    -->
                                         	<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
-							        		key="bid_now" ng-click="addBidPrice()">Bid Now</a>
+							        		key="bid_now" ng-click="addBidPrice()">Submit Bid</a>
                                         </sec:authorize>
 							        	<sec:authorize access="!isAuthenticated()">
-							        		<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
+							        		<a class="btn btn-block lang" style="width: 50%; float: left; background-color: #43b3f3; color: white" 
 							        		key="bid_now" data-toggle="modal" data-target="#login">Bid Now</a>
 							        	</sec:authorize>
 							        	</td>
@@ -162,7 +161,10 @@
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="bid_history">Bid History</span></th>
-							        	<td colspan="2">0 <span class="lang" key="bidsy">Bids</span></td>
+							        	<td>0 <span class="lang" key="bidsy">Bids</span></td>
+							        	<sec:authorize access="isAuthenticated()">
+                                        	<td><input type="button" value="Bid History" class="bidhistory"></td>
+                                        </sec:authorize>
 							      	</tr>
 							      	<tr>
 							        	<th>
@@ -214,45 +216,6 @@
 			</div>
 			</div>
 	<!-- ============ End col-md-9 Section ============= -->
-
-<!--  ========  Model Login ====== -->
-	<div class="modal fade" id="login" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header text-xs-center">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>					
-				</div>
-				<div class="modal-body">
-					<form class="formlogin" id="formLogin" method="POST" role="form">
-						<fieldset>
-							<h4 class="text-success text-xs-center lang" key="welcome">Welcome</h4>
-							<div class="form-group">
-								<label class="text-xs-left lang" key="username">Username</label> <input type="text"
-									class="form-control form-control-succes" name="username"
-									placeholder="enter your username" required>
-							</div>
-							<div class="form-group">
-								<label class="text-xs-left lang" key="password" >Password</label> <input
-									type="password" class="form-control form-control-succes"
-									name="password" placeholder="enter your password" required>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary"
-									><span class="lang" key="sign_in">Sign in</span>
-								</button>
-							</div>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
