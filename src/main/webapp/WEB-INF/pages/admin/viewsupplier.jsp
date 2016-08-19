@@ -72,11 +72,13 @@
 										<th>Address</th>
 										<th>Email</th>
 										<th>Phone</th>
+										<th>Status</th>
 										<th style="min-width: 90px;">Action</th>
 									</tr>
 								</thead>
 								<tbody class="body">
-									<tr ng-repeat="s in supplier | filter:str_search |orderBy:'-supplier_id'">
+									<tr
+										ng-repeat="s in supplier | filter:str_search |orderBy:'-supplier_id'">
 										<td>
 											<div class="checkbox checkbox-primary m-r-15">
 												<input id="checkbox14" type="checkbox"> <label
@@ -88,17 +90,22 @@
 										<td>{{s.address}}</td>
 										<td>{{s.email}}</td>
 										<td>{{s.phone}}</td>
+										<td ng-if="s.status=='1'"><i
+											class="table-action-btn fa fa-check" style="color: #3498db;"
+											aria-hidden="true"></i></td>
+										<td ng-if="s.status=='0'"><i
+											class="table-action-btn fa fa-times" style="color: #e74c3c;"
+											aria-hidden="true"></i></td>
+
 										<!--  Update supplier and pass supplier_id to modal -->
 										<td><a href="#" data-toggle="modal"
-											data-target=".enterData" 
-											ng-click="findSupplierById(s.supplier_id)"
-											><i class="fa fa-pencil fa-lg text-warning" aria-hidden="true"></i></a>&nbsp;&nbsp; 
-										<!-- end update supplier --> 
-										<!--  delete supplier -->
-											<a	href="#" ng-click="deleteSupplier(s.supplier_id)">
-											<i class="fa fa-trash fa-lg text-danger" aria-hidden="true"></i></a>
-										<!--  end delete supplier -->	 
-										</td>
+											data-target=".enterData"
+											ng-click="findSupplierById(s.supplier_id)"><i
+												class="fa fa-pencil fa-lg text-warning" aria-hidden="true"></i></a>&nbsp;&nbsp;
+											<!-- end update supplier --> <!--  delete supplier --> <a
+											href="#" ng-click="deleteSupplier(s.supplier_id)"> <i
+												class="fa fa-trash fa-lg text-danger" aria-hidden="true"></i>
+										</a> <!--  end delete supplier --></td>
 									</tr>
 								</tbody>
 							</table>
@@ -132,9 +139,9 @@
 									Name<span class="text-danger">*</span>
 							</strong></label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="contact-name" ng-model="contact_name"
-									value="{{contact_name}}" placeholder="Ex: Jonh Query"
-									required>
+								<input type="text" class="form-control" id="contact-name"
+									ng-model="contact_name" value="{{contact_name}}"
+									placeholder="Ex: Jonh Query" required>
 							</div>
 						</div>
 						<!--  Phone -->
@@ -142,7 +149,8 @@
 							<label for="phone" class="col-sm-2 form-control-label"><strong>Phone<span
 									class="text-danger">*</span></strong></label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="phone" ng-model="phone"
+								<input type="text" class="form-control" id="phone"
+									ng-model="phone"
 									placeholder="Ex: 012735487 (not allow letter and space)"
 									ng-pattern="/^\d+$/" name="phone" value="{{phone}}" required>
 							</div>
@@ -152,8 +160,9 @@
 							<label for="email" class="col-sm-2 form-control-label"><strong>Email<span
 									class="text-danger">*</span></strong></label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="email" ng-model="email"
-									value="{{email}}" placeholder="Ex: example@gmail.com" required>
+								<input type="text" class="form-control" id="email"
+									ng-model="email" value="{{email}}"
+									placeholder="Ex: example@gmail.com" required>
 							</div>
 						</div>
 
@@ -168,13 +177,36 @@
 									required></textarea>
 							</div>
 						</div>
+
+						<!-- Status -->
+						<div class="form-group row">
+							<label for="status1" class="col-sm-2 form-control-label"><strong>Status<span
+									class="text-danger">*</span></strong></label>
+							<div class="col-sm-10">
+								<div class="radio radio-info radio-inline">
+									<input type="radio" id="status1" name="status"
+										ng-model="status" value="1" ng-value="1"
+										ng-checked="status==1"> <label for="status1">
+										Enable </label>
+								</div>
+								<div class="radio radio-inline">
+									<input type="radio" id="status2" name="status"
+										ng-model="status" value="0" ng-value="0"
+										ng-checked="status==0"> <label for="status2">
+										Disable </label>
+								</div>
+							</div>
+						</div>
+
+
 						<div class="form-group row">
 							<label for="" class="col-sm-2 form-control-label"></label>
 							<div class="col-sm-10">
 
-								<button type="button" class="btn btn-success btn-md" ng-model="supplier_id"
-									ng-click="updateSupplier(supplier_id)" ng-disabled="myForm.$invalid"
-									id="u_submit" data-dismiss="modal">Update</button>
+								<button type="button" class="btn btn-success btn-md"
+									ng-model="supplier_id" ng-click="updateSupplier(supplier_id)"
+									ng-disabled="myForm.$invalid" id="u_submit"
+									data-dismiss="modal">Update</button>
 							</div>
 
 						</div>

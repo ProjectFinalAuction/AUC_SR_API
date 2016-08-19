@@ -23,12 +23,13 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			url: 'http://localhost:8080/rest/supplier/'+id,
 			method: 'GET'
 			
-		}).then(function(respone){
-			$scope.contact_name = respone.data.DATA.contact_name;
-			$scope.phone=respone.data.DATA.phone;
-			$scope.email = respone.data.DATA.email;
-			$scope.address = respone.data.DATA.address;			
-			$scope.supplier_id = respone.data.DATA.supplier_id;
+		}).then(function(response){
+			$scope.contact_name = response.data.DATA.contact_name;
+			$scope.phone=response.data.DATA.phone;
+			$scope.email = response.data.DATA.email;
+			$scope.address = response.data.DATA.address;			
+			$scope.supplier_id = response.data.DATA.supplier_id;
+			$scope.status = response.data.DATA.status;
 		});
 	}
 	
@@ -44,7 +45,8 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "address": $scope.address,
 	  			  "contact_name": $scope.contact_name,
 	  			  "email": $scope.email,
-	  			  "phone": $scope.phone
+	  			  "phone": $scope.phone,
+	  			  "status": $scope.status
 	  			  
 			}
 		}).then(function(response){
@@ -77,6 +79,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				"contact_name": $scope.contact_name,
 				"email": $scope.email,
 				"phone": $scope.phone,
+				"status": $scope.status,
 				"supplier_id": id
 			},
 			method: 'PUT'
@@ -112,7 +115,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 					method: 'DELETE'
 				}).
 				success(function(response){
-//						$scope.findAllSuppliers();
+					$scope.findAllSuppliers();
 					});
 				swal({
 					title : "Deleted!", 
