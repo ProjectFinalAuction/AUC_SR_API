@@ -127,14 +127,14 @@
 												aria-hidden="true"></i></td>
 											<td><span>0 Bids</span></td>
 											<td class="action">
-												<a href="#"><i class="btn btn-primary fa fa-eye"
-													title="View bids"></i></a> 
+												<a href="#"><i class="fa fa-eye fa-lg text-primary"
+													title="View bids"></i></a>&nbsp;&nbsp;
 												<a href="#" data-toggle="modal" data-target="#myModal"
-													ng-click="getAuctionById(a.auction_id)"><i
-													class="btn btn-warning fa fa-pencil-square-o" title="Edit" style="margin: 1px 0px;"></i></a>
+													ng-click="getAuctionById(a.auction_id)">
+													<i class="fa fa-pencil fa-lg text-warning" title="Edit" style="margin: 1px 0px;"></i></a>&nbsp;
 												<a href="#" data-toggle="modal"
-													ng-click="deleteAuction(a.auction_id)"><i
-													class="btn btn-danger fa fa-trash-o" title="delete"></i> </a>
+													ng-click="deleteAuction(a.auction_id)">
+												<i class="fa fa-trash-o fa-lg text-danger" title="delete"></i></a>
 											</td>
 										</tr>
 									</tbody>

@@ -75,8 +75,8 @@
 										<th style="min-width: 90px;">Action</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr class=""
+								<tbody class="body">
+									<tr 
 										ng-repeat="cat in category | filter:str_search | orderBy:'-category_id' ">
 										<td>
 											<div class="checkbox checkbox-primary m-r-15">
@@ -88,22 +88,23 @@
 										<td>{{cat.category_name}}</td>
 										<td>{{cat.category_description}}</td>
 										<td>{{cat.parent_id}}</td>
-										<td ng-if="cat.status==true"><i class="table-action-btn fa fa-check"
+										<td ng-if="cat.status==true"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
-										<td ng-if="cat.status==false"><i class="table-action-btn fa fa-times"
+										<td ng-if="cat.status==false"><i class="fa fa-times fa-lg text-danger"
 												aria-hidden="true"></i></td>
 										<td>
 										<!--  Update Category -->
 											<a href="#" class="table-action-btn"
 											data-toggle="modal" data-target=".enterData"
-											ng-click="getCategoryByID(cat)"><i
-												class="md md-edit"></i></a> 
+											ng-click="getCategoryByID(cat)">
+											<i class="md md-edit text-warning"></i></a> 
 										<!--  end updating category -->		
 										
 										<!--  Delete Category -->		
-												<a href="#" class="table-action-btn"
-											ng-click="deleteCategory(cat.category_id)"><i
-												class="md md-close"></i></a></td>
+											<a href="#" class="table-action-btn"
+											ng-click="deleteCategory(cat.category_id)">
+											<i class="md md-delete text-danger"></i></a>
+										</td>
 										<!--  End Deleting Category -->
 									</tr>
 

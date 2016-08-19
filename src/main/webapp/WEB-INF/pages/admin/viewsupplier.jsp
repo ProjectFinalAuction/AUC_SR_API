@@ -75,9 +75,8 @@
 										<th style="min-width: 90px;">Action</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr
-										ng-repeat="s in supplier | filter:str_search |orderBy:'-supplier_id'">
+								<tbody class="body">
+									<tr ng-repeat="s in supplier | filter:str_search |orderBy:'-supplier_id'">
 										<td>
 											<div class="checkbox checkbox-primary m-r-15">
 												<input id="checkbox14" type="checkbox"> <label
@@ -87,13 +86,13 @@
 										<td>{{s.supplier_id}}</td>
 										<td>{{s.contact_name}}</td>
 										<td>{{s.address}}</td>
-										<td><a href="#">{{s.email}}</a></td>
+										<td>{{s.email}}</td>
 										<td>{{s.phone}}</td>
 										<!--  Update supplier and pass supplier_id to modal -->
 										<td><a href="#" data-toggle="modal"
 											data-target=".enterData" 
 											ng-click="findSupplierById(s.supplier_id)"
-											><i class="fa fa-pencil fa-lg text-primary" aria-hidden="true"></i></a>&nbsp;&nbsp; 
+											><i class="fa fa-pencil fa-lg text-warning" aria-hidden="true"></i></a>&nbsp;&nbsp; 
 										<!-- end update supplier --> 
 										<!--  delete supplier -->
 											<a	href="#" ng-click="deleteSupplier(s.supplier_id)">

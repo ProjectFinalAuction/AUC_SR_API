@@ -70,7 +70,7 @@
 										<th style="min-width: 90px;">Action</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody class="body">
 									<tr ng-repeat="u in user | filter:str_search | orderBy:'-user_id'">
 										<td class="text-center">
 											
@@ -82,15 +82,15 @@
 										<td>{{u.user_name}}</td>
 										<td>{{u.first_name}}</td>
 										<td>{{u.last_name}}</td>
-										<td><a href="#">{{u.email}}</a></td>
-										<td ng-if="u.status==true"><i class="table-action-btn fa fa-check"
+										<td>{{u.email}}</td>
+										<td ng-if="u.status==true"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
-										<td ng-if="u.status==false"><i class="table-action-btn fa fa-times"
+										<td ng-if="u.status==false"><i class="fa fa-times fa-lg text-danger"
 												aria-hidden="true"></i></td>
 										<td>{{u.type}}</td>
 										<td><a href="#" data-toggle="modal" data-target=".enterData" class="table-action-btn"
-												ng-click="getUserByID(u)"><i
-												class="md md-edit"></i></a>
+												ng-click="getUserByID(u)">
+												<i class="md md-edit text-warning"></i></a>
 										</td>
 									</tr>
 								</tbody>

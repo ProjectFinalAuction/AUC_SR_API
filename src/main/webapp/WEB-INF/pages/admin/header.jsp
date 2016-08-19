@@ -49,5 +49,8 @@
 #myModal .modal-header .modal-title {
     color: #f9f8f8;
 }
+.body{
+	color: #ffffff;
+}
 </style>
 </head>

@@ -15,7 +15,7 @@
  <!-- ============================================================== -->
       <!-- Start right Content here -->
       <!-- ============================================================== -->                      
-      <div class="content-page">
+      <div class="content-page" ng-controller = "bidHistory">
         <!-- Start content -->
         <div class="content">
           <div class="container">   
@@ -52,7 +52,7 @@
                     <div class="col-sm-4 col-lg-6">
                       <form role="form">
                         <div class="form-group contact-search m-b-30">
-                          <input type="text" id="search" name="search" class="form-control" placeholder="Search...">
+                          <input type="text" id="search" name="search" class="form-control" placeholder="Search..." ng-model="str_search">
                           <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
                         </div> <!-- form-group -->
                       </form>
@@ -79,45 +79,45 @@
                   <div class="table-responsive">
                     <table class="mails m-0 table table-actions-bar">
                     	<thead>
-      						      <tr>
-      							      <th >
-      								      <div class="checkbox checkbox-primary checkbox-single m-r-15">
-                              <input id="action-checkbox" type="checkbox">
-                              <label for="action-checkbox"></label>
-                            </div>
-                          </th>
-                          <th>Bid_ID</th>
-      							      <th>Auction_ID</th>
-      							      <th>Username</th> 
-                          <th>Current Price</th>
-                          <th style="width: 236px;">Bid Date</th>
-      							      <th style=" width: 192px;">Action</th>
-      						      </tr>
-      					      </thead>
+      						<tr>
+      							<th>
+      								<div class="checkbox checkbox-primary checkbox-single m-r-15">
+		                              <input id="action-checkbox" type="checkbox">
+		                              <label for="action-checkbox"></label>
+                            		</div>
+                          		</th>
+	                            <th>Bid_ID</th>
+						        <th>Auction_ID</th>
+						        <th>Username</th> 
+	                           <th>Current Price</th>
+	                           <th style="width: 236px;">Bid Date</th>
+	      					   <th style=" width: 192px;">Action</th>
+							</tr>
+						</thead>
   					
-                      <tbody>
-                        <tr class="active">
-                          <td>
-                            <div class="checkbox checkbox-primary m-r-15">
-                              <input id="checkbox2" type="checkbox" checked="">
-                              <label for="checkbox2"></label>
-                            </div>
-                          </td>
-                          <td>B001</td>
-                          <td>A001</td>
-                          <td>Sok</td>
-                          <td>$100</td>
-                          <td><span>8/17/2012 6:39:11 PM</span></td>
-                          <td>
-                          	<a href="#custom-modal" class="table-action-btn" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                          	<a href="#" class="table-action-btn"><i class="fa fa-times" aria-hidden="true"></i></a>
-                          </td>
-                        </tr>                                                
+                      	<tbody class="body">
+                        	<tr ng-repeat="b in bidHistory | filter:str_search | orderBy:'-bid_id'">
+                          		<td>
+		                            <div class="checkbox checkbox-primary m-r-15">
+		                              <input id="checkbox2" type="checkbox">
+		                              <label for="checkbox2"></label>
+		                            </div>
+                          		</td>
+	                            <td>{{b.bid_id}}</td>
+	                            <td>{{b.auction.auction_id}}</td>
+	                            <td>{{b.user.user_name}}</td>
+	                            <td>{{b.current_price}}</td>
+	                            <td>{{b.bid_date}}</td>
+                          		<td>
+		                          	<a href="#" class="table-action-btn" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
+		                              <i class="fa fa-eye"></i>
+		                            </a>
+		                          	<a href="#" class="table-action-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                          		</td>
+                        	</tr>                                                
                       </tbody>
-                    </table>
-                  </div><!-- table-responsive-->
+                   </table>
+                   </div><!-- table-responsive-->
 
                   <!-- Pagination-->
                   <div class="row">
@@ -154,4 +154,5 @@
         
 
 <!-- footer -->
-<jsp:include page="footer.jsp"></jsp:include>                
+<jsp:include page="footer.jsp"></jsp:include>  
+<script src="${pageContext.request.contextPath}/resources/scripts/bidhistory-angular.js"></script>              

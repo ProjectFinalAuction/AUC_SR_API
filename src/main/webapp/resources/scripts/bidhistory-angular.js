@@ -2,9 +2,9 @@
  * angular get, add, delete, update user
  */
 
-var AuctionApplication = angular.module("myApp", []);
+var app = angular.module("myApp", []);
 
-AuctionApplication.controller("myCtrl", [
+app.controller("myCtrl", [
 		'$scope',
 		'$http',
 		'$timeout',
@@ -62,7 +62,7 @@ AuctionApplication.controller("myCtrl", [
 
 		} ]);
 
-AuctionApplication.factory('datetime', [ '$timeout', function($timeout) {
+app.factory('datetime', [ '$timeout', function($timeout) {
 	var duration = function(timeSpan) {
 		var days = Math.floor(timeSpan / 86400000);
 		var diff = timeSpan - days * 86400000;
@@ -93,7 +93,7 @@ AuctionApplication.factory('datetime', [ '$timeout', function($timeout) {
 	};
 } ]);
 
-AuctionApplication.filter('durationview', [
+app.filter('durationview', [
 		'datetime',
 		function(datetime) {
 			return function(input, css) {
@@ -103,3 +103,21 @@ AuctionApplication.filter('durationview', [
 						+ " វិនាទី";
 			};
 		} ]);
+
+
+app.controller('bidHistory', function($scope,$http){
+	
+	// select all record to display
+	$scope.findAllBidHistory = function(){
+		$http({
+			url: 'http://localhost:8080/rest/bidhistory',
+			method: 'GET',
+			
+		}).then(function(respone){
+			$scope.bidHistory = respone.data.DATA;
+		});
+	}
+	
+	$scope.findAllBidHistory();
+})
+

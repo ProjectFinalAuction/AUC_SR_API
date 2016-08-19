@@ -74,8 +74,8 @@
 										<th style="min-width: 90px;">Action</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr class=""
+								<tbody class="body">
+									<tr 
 										ng-repeat="b in brand | filter:str_search | orderBy:'-brand_id' ">
 										<td>
 											<div class="checkbox checkbox-primary m-r-15">
@@ -86,13 +86,16 @@
 										<td>{{b.brand_id}}</td>
 										<td>{{b.brand_name}}</td>
 										<td>{{b.brand_description}}</td>
-										<td>{{b.status}}</td>
-										
+										<td ng-if="b.status==true"><i class="fa fa-check fa-lg text-primary"
+												aria-hidden="true"></i></td>
+										<td ng-if="b.status==false"><i class="fa fa-times fa-lg text-danger"
+												aria-hidden="true"></i></td>
+												
 										<!--  Update Brand -->
 										<td><a href="#" class="table-action-btn" 
 											data-toggle="modal" data-target=".enterData"
 											ng-click="getBrandById(b)"
-										><i class="md md-edit"></i></a>
+										><i class="md md-edit text-warning"></i></a>
 										<!--  End Update Brand --> 
 										
 										

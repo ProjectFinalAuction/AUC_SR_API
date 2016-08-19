@@ -43,7 +43,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			swal({ 
 				title: "Success!",
 				text: "Category has been inserted.",
-			    type: "success" 
+			    type: "success",
+			    timer : 1000,
+			    showConfirmButton : false
 			  },
 			  function(){
 			    window.location.href = 'http://localhost:8080/admin/viewcategory';
@@ -72,9 +74,22 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 					success(function(response){
 							$scope.findAllCategories();
 						});
-					swal("Deleted!", "The category has been deleted.", "success");
+					swal({  
+						title: "Deleted!",
+						text : "The category has been deleted.",
+						type: "success",
+						timer : 1000,
+						showConfirmButton : false
+					});
+				
 				} else {
-					swal("Cancelled", "Your category is not deleted :)", "error");
+					swal({
+						title: "Cancelled!",
+						text : "Your category is not deleted :)",
+						type: "error",
+						timer : 1000,
+						showConfirmButton : false					
+					});					
 				}
 			});	
 	}
@@ -99,7 +114,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			swal({ 
 				title: "Success!",
 				text: "Brand has been inserted.",
-			    type: "success" 
+			    type: "success",
+			    timer : 1000,
+				showConfirmButton : false	
 			  },
 			  function(){
 			    window.location.href = 'http://localhost:8080/admin/viewbrand';
@@ -142,16 +159,16 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				  "status": $scope.status
 	  			  
 			}
-		}).then(function(respone){
-			swal({ 
-				title: "Success!",
-				text: "Category has been updated!",
-			    type: "success" 
-			  },
-			  function(){
-				  $scope.findAllCategories();
+		}).then(function(response){
+			swal({
+				title : "Success", 
+				text : "Category has been updated!", 
+				type : "success",
+				timer : 1000,
+				showConfirmButton : false
 			});
-		});
+			$scope.findAllCategories();
+		},function(error){});
 	}
 	
 	//===================================================
@@ -184,7 +201,9 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			swal({ 
 				title: "Success!",
 				text: "Brand has been inserted.",
-			    type: "success" 
+			    type: "success",
+			    timer : 1000,
+				showConfirmButton : false
 			  },
 			  function(){
 			    window.location.href = 'http://localhost:8080/admin/viewbrand';
@@ -214,9 +233,21 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 					success(function(response){
 							$scope.findAllBrands();
 						});
-					swal("Deleted!", "The brand has been deleted.", "success");
+					swal({
+						title: "Deleted!",
+						text: "The brand has been deleted.",
+					    type: "success" ,
+					    timer : 1000,
+						showConfirmButton : false					
+					});
 				} else {
-					swal("Cancelled", "Your brand is not deleted :)", "error");
+					swal({
+						title: "Cancelled!",
+						text: "Your brand is not deleted :)",
+					    type: "error" ,
+					    timer : 1000,
+						showConfirmButton : false					
+					});
 				}
 			});	
 	}
@@ -249,16 +280,16 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				 "status": $scope.status
 	  			  
 			}
-		}).then(function(respone){
-			swal({ 
-				title: "Success!",
-				text: "Brand has been updated!",
-			    type: "success" 
-			  },
-			  function(){
-				  $scope.findAllBrands();
+		}).then(function(response){
+			swal({
+				title : "Success", 
+				text : "Brand has been updated!", 
+				type : "success",
+				timer : 1000,
+				showConfirmButton : false
 			});
-		});
+			$scope.findAllBrands();
+		},function(error){});
 	}
 	
 	

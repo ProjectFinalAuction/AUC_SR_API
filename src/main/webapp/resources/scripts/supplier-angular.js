@@ -81,7 +81,13 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			},
 			method: 'PUT'
 		}).then(function(response){
-			swal("Update Successfully!", "click this button.", "success");
+			swal({
+				title : "Success", 
+				text : "Supplier has been updated!", 
+				type : "success",
+				timer : 1000,
+				showConfirmButton : false
+			});
 			$scope.findAllSuppliers();
 		},function(error){});
 	}
@@ -108,11 +114,23 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				success(function(response){
 //						$scope.findAllSuppliers();
 					});
-				swal("Deleted!", "The supplier has been deleted.", "success");
+				swal({
+					title : "Deleted!", 
+					text : "The supplier has been deleted.", 
+					type : "success",
+					timer : 1000,
+					showConfirmButton : false
+				});
 
 				//$scope.findAllSuppliers();
 			} else {
-				swal("Cancelled", "Your supplier is not deleted :)", "error");
+				swal({
+					title : "Cancelled!", 
+					text : "Your supplier is not deleted :)", 
+					type : "error",
+					timer : 1000,
+					showConfirmButton : false
+				});
 			}
 		});				
 		

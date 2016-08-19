@@ -118,18 +118,16 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	  			  "user_name": $scope.user_name,
 	  			  "role_id": ($("input:radio[name=status]:checked").val()=='admin')?1:2
 			}
-		}).then(function(respone){
-			swal({ 
-				title: "Success!",
-				text: "User has been updated!",
-			    type: "success",
-			    timer : 1000,
-			    showConfirmButton : false
-			  },
-			  function(){
-				  $scope.getAllUsers();
+		}).then(function(response){
+			swal({
+				title : "Success", 
+				text : "User has been updated!", 
+				type : "success",
+				timer : 1000,
+				showConfirmButton : false
 			});
-		});
+			$scope.getAllUsers();
+		},function(error){});
 	}
 	
 	//Get user_name and password to login
