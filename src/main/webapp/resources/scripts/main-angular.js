@@ -38,17 +38,31 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 	}
 	
 	//TODO: SELECT USER BIDDER
-    $scope.findUserById = function (userId) {
-        $http({
-            method: 'GET',
-            url: 'http://localhost:8080/rest/user/' + userId
+//    $scope.findUserById = function (userId) {
+//        $http({
+//            method: 'GET',
+//            url: 'http://localhost:8080/rest/user/' + userId
+//        }).then(function (response) {
+//            $scope.cus = response.data.DATA;
+//        });
+//    }
+//	
+    $scope.ac_id = $('#ac_id').val();
+//    alert($scope.ac_id);
+    
+    
+	$scope.getBidPrice = function(){
+//		alert($scope.ac_id);
+		$http({
+            method: 'POST',
+            url: 'http://localhost:8080/rest/bidhistory',
+            data: {
+            	"auction_id" : $scope.ac_id,
+            	"current_price" : $('#exampleInputAmount').val()
+            }
         }).then(function (response) {
-            $scope.cus = response.data.DATA;
+        	alert("success");
         });
-    }
-	
-	$scope.test = function(){
-		alert("Test");
 	}
 	
 

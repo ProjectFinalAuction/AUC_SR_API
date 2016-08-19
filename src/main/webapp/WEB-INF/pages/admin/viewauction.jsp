@@ -66,7 +66,7 @@
 								</div>
 							</div>
 							
-							<div class="row table-responsive">
+							<div class="table-responsive">
 							<!-- Table Data-->
 								<table class="table table-hover mails m-0 table table-actions-bar">
 									<thead>
@@ -119,20 +119,22 @@
 											<td>{{a.start_price}}</td>
 											<td>{{a.start_date}}</td>
 											<td>{{a.end_date}}</td>
-											<td ng-if="a.status=='1'"><i class="table-action-btn fa fa-check"
+											<td ng-if="a.status=='1'"><i class="table-action-btn fa fa-check" style="color:#3498db;"
 												aria-hidden="true"></i></td>
-											<td ng-if="a.status=='0'"><i class="table-action-btn fa fa-times"
+											<td ng-if="a.status=='0'"><i class="table-action-btn fa fa-times" style="color:#e74c3c; "
+												aria-hidden="true"></i></td>
+											<td ng-if="a.status=='3'"><i class="table-action-btn fa fa-gavel" style="color: #2ecc71;"
 												aria-hidden="true"></i></td>
 											<td><span>0 Bids</span></td>
 											<td class="action">
-												<a href="#"><i class="fa fa-eye text-primary"
-													title="View bids"></i></a>&nbsp;&nbsp; 
+												<a href="#"><i class="btn btn-primary fa fa-eye"
+													title="View bids"></i></a> 
 												<a href="#" data-toggle="modal" data-target="#myModal"
 													ng-click="getAuctionById(a.auction_id)"><i
-													class="fa fa-pencil-square-o text-warning" title="Edit"></i></a>&nbsp;&nbsp;
+													class="btn btn-warning fa fa-pencil-square-o" title="Edit" style="margin: 1px 0px;"></i></a>
 												<a href="#" data-toggle="modal"
 													ng-click="deleteAuction(a.auction_id)"><i
-													class="fa fa-trash-o text-danger" title="delete"></i> </a>
+													class="btn btn-danger fa fa-trash-o" title="delete"></i> </a>
 											</td>
 										</tr>
 									</tbody>

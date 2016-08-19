@@ -2,6 +2,7 @@ package org.khmeracademy.auction.controllers;
 
 import java.util.Map;
 
+import org.khmeracademy.auction.entities.User;
 import org.khmeracademy.auction.entities.input.AddAuction;
 import org.khmeracademy.auction.filtering.AuctionFilter;
 import org.khmeracademy.auction.utils.Pagination;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +34,8 @@ public class AuctionController {
 	private String WS_URL;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findAllAuctions(AuctionFilter filter, Pagination pagination){
+	public ResponseEntity<Map<String , Object>> findAllAuctions(AuctionFilter filter, Pagination pagination, @AuthenticationPrincipal User user){
+		
 		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-auctions")
 						.queryParam("page",pagination.getPage())
 						.queryParam("limit", pagination.getLimit())

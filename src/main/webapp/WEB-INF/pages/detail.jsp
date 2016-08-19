@@ -162,9 +162,9 @@
 							        	<td align="center">
 							        		
 							        	<sec:authorize access="isAuthenticated()">
-                                            <span ng-init="findUserById()"></span>   
+<!--                                             <span ng-init="findUserById()"></span>    -->
                                         	<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
-							        		key="bid_now" ng-click="test()">Bid Now</a>
+							        		key="bid_now" ng-click="getBidPrice()">Bid Now</a>
                                         </sec:authorize>
 							        	<sec:authorize access="!isAuthenticated()">
 							        		<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 

@@ -76,8 +76,6 @@
 									</tr>
 								</thead>
 								<tbody>
-
-
 									<tr
 										ng-repeat="s in supplier | filter:str_search |orderBy:'-supplier_id'">
 										<td>
@@ -92,13 +90,14 @@
 										<td><a href="#">{{s.email}}</a></td>
 										<td>{{s.phone}}</td>
 										<!--  Update supplier and pass supplier_id to modal -->
-										<td><a href="#" class="table-action-btn" data-toggle="modal"
+										<td><a href="#" data-toggle="modal"
 											data-target=".enterData" 
 											ng-click="findSupplierById(s.supplier_id)"
-											><i	class="md md-edit"></i></a> 
+											><i class="fa fa-pencil fa-lg text-primary" aria-hidden="true"></i></a>&nbsp;&nbsp; 
 										<!-- end update supplier --> 
 										<!--  delete supplier -->
-											<a	href="#" class="table-action-btn" ng-click="deleteSupplier(s.supplier_id)"><i class="md md-close"></i></a>
+											<a	href="#" ng-click="deleteSupplier(s.supplier_id)">
+											<i class="fa fa-trash fa-lg text-danger" aria-hidden="true"></i></a>
 										<!--  end delete supplier -->	 
 										</td>
 									</tr>
