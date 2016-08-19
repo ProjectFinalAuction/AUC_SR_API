@@ -14,7 +14,7 @@
 				     <div class="panel-collapse collapse" id="item-{{$index+1}}">
 				       <ul class="list-group">
 				         <li class="list-group-item" ng-repeat="subCategory in c.subCategories">&nbsp;&nbsp;
-				         <a href="${pageContext.request.contextPath}/itemlist?cat={{subCategory.category_name}}&&id={{subCategory.category_id}}"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+				         <a href="${pageContext.request.contextPath}/itemlist?cat={{subCategory.category_name}}&&id={{subCategory.category_id}}" class="submenu"><i class="fa fa-chevron-right" aria-hidden="true"></i>
 				         &nbsp;&nbsp;{{subCategory.category_name}}</a></li>			         
 				       </ul>
 				     </div>

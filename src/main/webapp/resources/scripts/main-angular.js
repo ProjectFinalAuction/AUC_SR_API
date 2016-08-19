@@ -37,6 +37,20 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 		});
 	}
 	
+	//TODO: SELECT USER BIDDER
+    $scope.findUserById = function (userId) {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:8080/rest/user/' + userId
+        }).then(function (response) {
+            $scope.cus = response.data.DATA;
+        });
+    }
+	
+	$scope.test = function(){
+		alert("Test");
+	}
+	
 
 	// load all record
 	$scope.findAllCategories();
@@ -83,10 +97,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 		$http({
 			url: 'http://localhost:8080/rest/auction/' + $scope.ac_id,
 			method: 'GET'
-		}).then(function(response){
-			$scope.processAuctionItems(response.data.DATA);
-			$scope.auc = response.data.DATA;
-			
+		}).then(function(response){			
 			$scope.category_name = response.data.DATA.product.category.category_name;
 			$scope.gallery = response.data.DATA.product.gallery;
 			$scope.product_name = response.data.DATA.product.product_name;
@@ -97,19 +108,41 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 //			$scope.buy_price = response.data.DATA.buy_price;
 			$scope.product_condition = response.data.DATA.product_condition;
 			$scope.start_date = moment(response.data.DATA.start_date).format("LLLL");
-//			$scope.end_date = moment(response.data.DATA.end_date).format("LLLL");
+			$scope.end_date = moment(response.data.DATA.end_date).format("LLLL");
 			$scope.product_description = response.data.DATA.product.product_description;
 			$scope.status = response.data.DATA.status;
-			$scope.comment = response.data.DATA.comment;			
-		});
-	}
+			$scope.comment = response.data.DATA.comment;
+			
+			$scope.auc_detail = response.data.DATA;
+			$scope.processAuction($scope.auc_detail);
 
+			if($scope.status==4){
+				$("#tablebidding").hide();
+				$("#titleEndStatus").text("Auction has been finished!");
+			}
+		});
+		
+		
+	}
+	
+    $scope.tick1 = function () {
+        $scope.currentTime1 = moment();
+        $scope.processAuction($scope.auc_detail);
+        $timeout($scope.tick1, 1000);
+    }
+    $scope.processAuction = function (data) {
+        data.remainingTime1 = datetime.getRemainigTime(data.end_date);
+    }
+    
+    // load by auction id
+    $timeout($scope.tick1, 1000);
+    $timeout($scope.auc_detail, 10000);
+	$scope.currentTime1 = moment(); 
+	$scope.getAuctionById();
+    
 	// load all record
 	$scope.findAllAuctions();
-	$scope.getAuctionById();
-	
 	$scope.currentTime = moment(); 
-	
 	$timeout($scope.tick, 1000);
 }]);
 
@@ -143,7 +176,7 @@ app.filter('durationview', ['datetime', function (datetime) {
     return function (input, css) {
         var duration = datetime.duration(input);
         
-        return duration.days + "d:" + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
+        return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
     };
 }]);
 

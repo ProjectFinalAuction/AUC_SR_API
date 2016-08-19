@@ -68,7 +68,7 @@ public class UserController {
 	}
 	
 	//Get User By UserName
-	@RequestMapping(value="/{user_name}", method = RequestMethod.GET)
+	@RequestMapping(value="/user-name/{user_name}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String , Object>> getUserByName(@PathVariable String user_name){
 		UserLogin login = new UserLogin();
 		login.setUser_name(user_name);

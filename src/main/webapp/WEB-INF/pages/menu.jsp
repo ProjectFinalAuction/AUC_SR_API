@@ -54,6 +54,15 @@ header .menu-list-ul .menu-list-li a:hover{
 	cursor: pointer;
 }
 
+#menustand a{
+	text-decoration: none;
+	transition: 0.3s ease-in-out;
+}
+#menustand .submenu:hover{
+	padding-left: 10px;
+	transition: 0.3s ease-in-out;
+}
+
 
 </style>
 <body ng-app="myApp">

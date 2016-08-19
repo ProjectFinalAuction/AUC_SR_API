@@ -38,18 +38,18 @@
 		<div class="col-sm-6 col-md-3 product" style="padding-right: 0px;"
 			ng-repeat="a in auction">
 			<div class="thumbnail" ng-repeat="proimg in a.product.gallery" ng-show="$first" style="position: relative;">
-				<a href="bid-detail.html"><img
+				<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}"><img
 					src="{{proimg.image_path}}"
 					alt="..." class="img-thumbnail" style="height: 180px;"></a>
 				<div class="caption descript">
-					<a href="bid-detail.html" class="title">{{a.product.product_name}}</a>
+					<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}" class="title">{{a.product.product_name}}</a>
 					<h5 class="lang" key="remaining_day">{{a.remainingTime | durationview}}</h5>
 					<p>
 						<span class="price">{{a.start_price | currency}}</span> <span
 							class="bid lang" key="bid">0 Bids</span>
 					</p>
 					<p class="text-center">
-						<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE@fobEA&id={{a.auction_id}}&Ksite_source=hp&rLoPPvgSov&{{a.product.product_name}}"
+						<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}"
 						 class="btn btn-default"
 							role="button"><font color="black" class="lang" key="bid_now">
 							<i class="fa fa-gavel" aria-hidden="true"></i> Bid Now</font> </a>

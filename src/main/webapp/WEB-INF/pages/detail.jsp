@@ -4,15 +4,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ITEM INFORMAITON</title>
-	<!-- Angular Material requires Angular.js Libraries -->
-  	<script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-  	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<title>ITEM INFORMAITON</title>	
 <style type="text/css">
 .sublinkcategory{
 	color: gray;
 	font-size: 12px;
 }
+#status1 p{
+ 	padding: 1px 5px;
+ 	margin: 0;
+	float: right;
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	border-radius: 3px;
+}
+#status2 p{
+ 	padding: 1px 5px;
+ 	margin: 0;
+	float: right;
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	border-radius: 3px;
+}
+
+
+.choose ul li a,.productinfo p{
+                color: black;
+            }
+            .add-to-cart{
+                color:white;
+            }
+            .productinfo{
+                border:1px solid #8BC34A ;
+            }
+            .choose ul li a,.productinfo p,.category-products .panel-default .panel-heading .panel-title a,.brands-name .nav-stacked li a,.shop-menu ul li a,.mainmenu ul li a{
+                color: black;
+            }
+            .add-to-cart{
+                color:white;
+            }
 
 </style>
 
@@ -24,7 +56,7 @@
 <!-- right content -->
 <div class="col-md-9" ng-controller="auctionCtrl" style="padding:0;" id="right-content">
 	<div class="container-fluid">
-		<input type="hidden" id="ac_id" value="${param.id}">
+		<input type="hidden" id="ac_id" value="${param.Aid}">
 		<!-- detail content information -->
 		<ul class="list-group" style="padding-left: 14px;">
 		  <li class="list-group-item sublinkcategory"><span class="lang" key="home">HOME</span> / {{category_name | uppercase}} / {{product_name | uppercase}}</li>
@@ -35,7 +67,7 @@
 				<div class="col-md-5" style="padding-right:0;">
 					<div class="list-group">
 						<div class="list-group-item">
-							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>{{auc.remainingTime | durationview}}</span></p>
+							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>{{auc_detail.remainingTime1 | durationview}}</span></p>
 						</div> <!-- end remain time -->
 						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
 							<div class="thumbnail" ng-repeat="proimg in gallery" ng-show="$first">
@@ -92,7 +124,7 @@
 <!-- ==================== end image ========================= -->
 
 				<!-- colunm for information content -->
-				<div class="col-md-7" style="padding-right:0;">
+				<div class="col-md-7" style="padding-right:0; margin-bottom: -10px;" id="tablebidding">
 					<div class="list-group">
 						<div class="list-group-item">
 							<h3>{{product_name}}</h3>
@@ -125,7 +157,23 @@
 							      	<tr>
 							        	<th></th>
 							        	<td align="center">
-							        		<button class="btn btn-success btn-block lang" style="width: 50%; float: left;" key="bid_now">Bid Now</button>
+<!-- 							        		<security:authorize access="isAuthenticated()"> -->
+<%--                                                     <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>     --%>
+<!--                                                     <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a> -->
+<!--                                                 </security:authorize> -->
+
+<!--                                                 <security:authorize access="isAnonymous()"> -->
+<!--                                                     <a href="/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a> -->
+<!--                                                 </security:authorize>  -->
+							        	<sec:authorize access="isAuthenticated()">
+                                            <span ng-init="findUserById(<sec:authorize property="principal.id"/>)"></span>   
+                                        	<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
+							        		key="bid_now" ng-click="test()">Bid Now</a>
+                                        </sec:authorize>
+							        	<sec:authorize access="isAnonymous()">
+							        		<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
+							        		key="bid_now" data-toggle="modal" data-target="#login">Bid Now</a>
+							        	</sec:authorize>
 							        	</td>
 							      	</tr>
 							      	<tr>
@@ -133,30 +181,46 @@
 							      			<small><span class="lang" key="description">Your site name here will bid incrementally for you up to your maximum bid. Your maximum bid is kept a secret from other users.   Your bid is a contract between you and the listing creator. If you have the highest bid you will enter into a legally binding purchase contract.</span></small>
 							        	</td>
 							      	</tr>
+							      	</tbody>
+							     </table>
+							</div>
+						</div>
+					</div>
+					<div id="titleEndStatus" style="color: red; padding:10px; text-align: center"></div>
+					<div class="col-md-7" style="padding-right:0; margin-bottom: 20px;" id="tablebidend">
+<!-- 						<div class="list-group"> -->
+							<div class="list-group-item" >
+							     <table class="table table-hover">	
+							     	<thead>
+							     	<tr>
+							        	<td><span class="lang" key="current_price"><b>Current Price</b></span></td>
+							        	<td>{{current_price | currency}}</td>
+							        	<td id='status1' ng-if="status==1" value="{{status}}" class="status"><p>Active</p></td>
+							        	<td id='status2' ng-if="status==4" value="{{status}}" class="status"><p>End</p></td>
+							      	</tr>
+							     	</thead>
+							     	<tbody>
 							      	
 							      	<tr>
-							        	<th><span class="lang" key="current_price">Current Price</span></th>
-							        	<td>{{current_price | currency}}</td>
-							      	</tr>
-							      	<tr>
 							        	<td style="color:red;"><span class="lang" key="reserve_price">Reserve Price Not Met</span> </td>
-							        	<td></td>
+							        	<td colspan="2"></td>
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="bid_history">Bid History</span></th>
-							        	<td>0 <span class="lang" key="bidsy">Bids</span></td>
+							        	<td colspan="2">0 <span class="lang" key="bidsy">Bids</span></td>
 							      	</tr>
 							      	<tr>
-							        	<th><span class="lang" key="end_date">End Date</span></th>
-							        	<td>{{end_date}}</td>
+							        	<th>
+							        	<span class="lang" key="end_date">End Date</span></th>
+							        	<td colspan="2">{{end_date}}</td>
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="start_date">Start Date</span></th>
-							        	<td>{{start_date}}</td>
+							        	<td colspan="2">{{start_date}}</td>
 							      	</tr>
 							      	<tr>
 							        	<th><span class="lang" key="listed_by">Listed By</span></th>
-							        	<td>
+							        	<td colspan="2">
 							        		<i class="fa fa-star-o" aria-hidden="true"></i>
 							        		<i class="fa fa-star-o" aria-hidden="true"></i>
 							        		<i class="fa fa-star-o" aria-hidden="true"></i>
@@ -196,8 +260,48 @@
 			</div>
 	<!-- ============ End col-md-9 Section ============= -->
 
+<!--  ========  Model Login ====== -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-xs-center">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>					
+				</div>
+				<div class="modal-body">
+					<form class="formlogin" id="formLogin" method="POST" role="form">
+						<fieldset>
+							<h4 class="text-success text-xs-center lang" key="welcome">Welcome</h4>
+							<div class="form-group">
+								<label class="text-xs-left lang" key="username">Username</label> <input type="text"
+									class="form-control form-control-succes" name="username"
+									placeholder="enter your username" required>
+							</div>
+							<div class="form-group">
+								<label class="text-xs-left lang" key="password" >Password</label> <input
+									type="password" class="form-control form-control-succes"
+									name="password" placeholder="enter your password" required>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary"
+									><span class="lang" key="sign_in">Sign in</span>
+								</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
+	<script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
 	
 	<script type="text/javascript">
@@ -205,6 +309,8 @@
 			$("#menustand").hide(function(){
 				$("#right-content").removeClass('col-md-9');
 			});
+
+			
 		});
 	</script>
 	
