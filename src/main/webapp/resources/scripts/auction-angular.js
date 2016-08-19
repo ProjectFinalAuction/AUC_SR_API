@@ -155,7 +155,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	}
 	
 	// DELETE AUCTION FUNCTION
-$rootScope.deleteAuction = function(auction_id){	
+	$scope.deleteAuction = function(auction_id){	
 		                                                                                                                                                                                                      
 		swal({
 		title: "Are you sure?",
@@ -174,7 +174,7 @@ $rootScope.deleteAuction = function(auction_id){
 					method: 'DELETE'
 				}).
 				success(function(response){
-//					$scope.findAllAuctions();
+					$scope.findAllAuctions();
 				});    
 				swal({
 					title : "Deleted!", 
@@ -185,7 +185,7 @@ $rootScope.deleteAuction = function(auction_id){
 					
 					});
 
-				$scope.findAllAuctions();
+				//$scope.findAllAuctions();
 			} else {
 				swal({
 					title : "Cancelled", 
@@ -286,6 +286,6 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 
 	// load all record
 	$scope.findSupplersInProducts();
-	$scope.findAllAuctions();
+
 //	test();
 })

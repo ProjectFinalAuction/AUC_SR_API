@@ -217,8 +217,13 @@ $(function() {
 						closeOnConfirm: false,   
 	          			closeOnCancel: false }, 
 	          			function(isConfirm){   
-	          				if(isConfirm) {     				
-	          					window.location.href="http://localhost:8080/"+data;
+	          				if(isConfirm) {     		
+	          					if(data=='admin'){
+	          						window.location.href="http://localhost:8080/"+data;	
+	          					}else{
+	          						window.location.href = window.location.href	
+	          					}
+	          					
 	          					
 
 	          				}else {     

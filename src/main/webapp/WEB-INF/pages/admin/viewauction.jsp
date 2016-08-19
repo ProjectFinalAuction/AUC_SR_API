@@ -47,21 +47,6 @@
 					<div class="col-lg-12">
 						<div class="card-box">
 							<div class="row m-t-10 m-b-10">
-<!-- 								Select Limit Row -->
-<!-- 								<div class="col-sm-4 col-lg-2"> -->
-<!-- 									<div class="dataTables_length" id="datatable-editable_length"> -->
-<!-- 										<label>Show <select name="datatable-editable_length" -->
-<!-- 											aria-controls="datatable-editable" -->
-<!-- 											class="form-control input-sm" style="height: 38px;"> -->
-<!-- 												<option value="10">10</option> -->
-<!-- 												<option value="25">25</option> -->
-<!-- 												<option value="50">50</option> -->
-<!-- 												<option value="100">100</option> -->
-<!-- 										</select> entries -->
-<!-- 										</label> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								Form Search -->
 								<div class="col-sm-4 col-lg-6">
 									<form role="form">
 										<div class="form-group contact-search m-b-30">
@@ -71,31 +56,19 @@
 												<i class="fa fa-search"></i>
 											</button>
 										</div>
-<!-- 										form-group -->
 									</form>
 								</div>
-<!-- 								Option Sort -->
-<!-- 								<div class="col-sm-4 col-lg-4"> -->
-<!-- 									<div class="h5 m-0"> -->
-<!-- 										<span class="vertical-middle">Sort By:</span> -->
-<!-- 										<div class="btn-group vertical-middle" data-toggle="buttons"> -->
-<!-- 											<label class="btn btn-white btn-md waves-effect active"> -->
-<!-- 												<input type="radio" autocomplete="off" checked=""> -->
-<!-- 												Status -->
-<!-- 											</label> <label class="btn btn-white btn-md waves-effect"> <input -->
-<!-- 												type="radio" autocomplete="off"> Type -->
-<!-- 											</label> <label class="btn btn-white btn-md waves-effect"> <input -->
-<!-- 												type="radio" autocomplete="off"> Name -->
-<!-- 											</label> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-
+								<div class="col-sm-2 col-lg-6">
+									<a href="${pageContext.request.contextPath}/admin/addauction"
+										class="btn btn-default btn-md waves-effect waves-light m-b-30"><i
+										class="md md-add"></i> Add Auction
+									</a>
+								</div>
+							</div>
+							
+							<div class="row table-responsive">
 							<!-- Table Data-->
-<!-- 							<div class=""> -->
 								<table class="table table-hover mails m-0 table table-actions-bar">
-<!-- 								<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"> -->
 									<thead>
 										<tr>
 											<th>
