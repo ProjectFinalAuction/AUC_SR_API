@@ -24,7 +24,7 @@ header .menu{
 }
 header .menu img{
 	width: 350px;
-	padding: 10px;
+	padding: 25px;
 }
 header .menu-list-ul{
 	list-style-type: none;
@@ -108,7 +108,7 @@ header .menu-list-ul .menu-list-li a:hover{
 			<div class="row">
 				<div class="col-md-4">
 					<a href="${pageContext.request.contextPath}/index">
-					<img src="${pageContext.request.contextPath}/resources/static/images/iwantlogo1.png" class="img-responsive">
+					<img src="${pageContext.request.contextPath}/resources/static/images/denhtlaiHD.png" class="img-responsive">
 					</a>
 				</div>
 				<div class="col-md-5">

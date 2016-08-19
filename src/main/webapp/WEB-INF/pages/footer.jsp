@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5">
-					<img src="${pageContext.request.contextPath}/resources/static/images/iwantlogo1.png" class="img-responsive" style="width:80%">
+					<img src="${pageContext.request.contextPath}/resources/static/images/denhtlai.png" class="img-responsive" style="width:80%">
 					<p>&copy; <span class="lang" key="privacy">2016; Privacy Policy</span></p>
 				</div>
 				<div class="col-md-5">
