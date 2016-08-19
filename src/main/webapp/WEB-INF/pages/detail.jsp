@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>`
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -158,7 +161,7 @@
 							        	<th></th>
 							        	<td align="center">
 <!-- 							        		<security:authorize access="isAuthenticated()"> -->
-<%--                                                     <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>     --%>
+<%--                                                     <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>Â Â Â Â  --%>
 <!--                                                     <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a> -->
 <!--                                                 </security:authorize> -->
 
@@ -166,7 +169,7 @@
 <!--                                                     <a href="/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a> -->
 <!--                                                 </security:authorize>  -->
 							        	<sec:authorize access="isAuthenticated()">
-                                            <span ng-init="findUserById(<sec:authorize property="principal.id"/>)"></span>   
+                                            <span ng-init="findUserById(<sec:authorize property="principal.id"/>)"></span>Â Â Â 
                                         	<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
 							        		key="bid_now" ng-click="test()">Bid Now</a>
                                         </sec:authorize>
