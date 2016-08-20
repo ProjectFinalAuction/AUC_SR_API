@@ -4,6 +4,16 @@
 <html>
 <head>
 
+
+
+
+<!--Stylesheets-->
+	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
@@ -19,7 +29,7 @@
  	  <!-- ============================================================== -->
       <!-- Start right Content here -->
       <!-- ============================================================== -->                      
-    <div class="content-page" ng-controller="viewProductCtrl">
+    <div class="content-page" ng-controller="viewProductCtrl" >
         <!-- Start content -->
         <div class="content">
           <div class="container">
@@ -214,6 +224,41 @@
 						</div>
 					</div>
 					
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+					
+					  
+    <div id="content">
+        <span ng-repeat="s in sample" my-filter style="display:none">&nbsp;</span>
+        <input type="file" name="files[]" id="gallery" multiple="multiple">
+    </div>	
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					<div class="form-group row">
 						<label for="" class="col-sm-2 form-control-label"></label>
 						<div class="col-sm-10">	
@@ -302,20 +347,32 @@
        
            
     	$scope.getProductByID = function(proObject,progallery){
+    		
+    		/* $scope.sample = [];
+    		var image = {};
+    		$.each(progallery, function(index, item){
+    			var image = {
+	    			name : item.image_path,
+	    			type : 'image/jpg',
+	    			size :  '',
+	    			file : item.image_path,
+    			};
+    			sample.push(image);
+    		}); */
+    		
     		var frmData = new FormData();
-    		///*********
+    		
+    		
+    		///**********
     		$scope.productObj = proObject;
     		
     		//to get That product's category id
     		$scope.thisPro_category_id = $scope.productObj.category.category_id
-    		
     		$scope.proid = proObject.product_id;
     		$scope.proname = proObject.product_name;
     		$scope.prodescription = proObject.product_description;
     		$scope.prosupplier= proObject.supplier.contact_name;
-    		
     		$scope.thisPro_category_name = proObject.category.category_name;
-    		
     		$scope.proqty = proObject.qty;
     		$scope.probrand = proObject.brand.brand_name;
     		$scope.prostatus = proObject.status;
@@ -329,13 +386,25 @@
 // 				frmData.append("images", progallery[i]);
 // 				alert(frmData.values("images"));
 // 			}
+
+/*     		$rootScope.getProductsMethod=function(){
+               $http.get("http://localhost:8080/rest/product")
+              		.then(function(response) {
+              		$rootScope.products = response.data.DATA;
+              		console.log('All', $rootScope.products);
+              		// alert(response.data.DATA.gallery.image_path); 
+    				console.log(response.data.DATA);
+    				
+      			});
+            }
+        	$rootScope.getProductsMethod(); */
     		
     	}
     	
     	
     	//**************Update Product
     	$rootScope.updateProduct = function(){
-    		
+  
     		
     		if ($scope.pro_category_to_update == undefined) {
 				//alert("category no update");
@@ -395,14 +464,53 @@
 			
 		});
     	}
-    	
+    	//////////--------------------------------------Manage Images------------------------------------////////////
+    	 $scope.sample = [
+    	                  {
+    	                      name: "1",
+    	                      type: "image/jpg",
+    	                      size: '',
+    	                      file: "http://www.gettyimages.com/gi-resources/images/Homepage/Hero/US/MAR2016/prestige-587705839_full.jpg"
+    	                  },
+    	                  {
+    	                      name: "2",
+    	                      size: '',
+    	                      type: "image/jpg",
+    	                      file: "http://i.imgur.com/RRUe0Mo.png"
+    	                  }
+    	              ];
+
+    	              $scope.show = function(){
+    	                  console.log('File To Send', validatedFiles);
+    	                  console.log('Image Name to Delete', deletedImageName);
+    	              }
     	
 	});
+		
+		
+		app.directive('myFilter', [function() {
+            return {
+                restrict: 'A',       
+                link: function(scope, element) {
+                    // wait for the last item in the ng-repeat then call init
+                    if(scope.$last) {
+                        initJqueryFiler('#gallery', scope.sample);
+                    }
+                }
+            };
+            /**** Usable array ****/
+            // => validatedFiles
+            // => deletedImageName
+
+        }]);
 
 </script>
 
 <!-- footer -->
-<jsp:include page="footer.jsp"></jsp:include>     
+<jsp:include page="footer.jsp"></jsp:include>
+<!--jQuery-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/jquery.filer.min.js?v=1.0.5"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/custom.js?v=1.0.5"></script>     
  
  
         
