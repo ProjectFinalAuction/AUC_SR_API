@@ -31,7 +31,7 @@
 						<span class="nav-item dropdown logined">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
 							role="button" aria-haspopup="true" aria-expanded="false">
-								<spring:message code="welcome"></spring:message>Welcome  <sec:authentication property="principal.username" />
+								<spring:message code="welcome"></spring:message>  <sec:authentication property="principal.username" />
 							</a>
 							<h5 class="dropdown-menu" aria-labelledby="Preview">
 								<a href="${pageContext.request.contextPath}/logout" >
@@ -51,7 +51,7 @@
 					<img src="${pageContext.request.contextPath}/resources/static/images/denhtlaiHD.png" class="img-responsive">
 					</a>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<ul class="menu-list-ul">
 						<li class="menu-list-li"><a href="#"><spring:message code="best_bidding"></spring:message></a></li>
 						<li class="menu-list-li"><a href="#"><spring:message code="best_brand"></spring:message></a></li>
@@ -59,7 +59,7 @@
 						<li class="menu-list-li"><a href="about.html"><spring:message code="about"></spring:message></a></li>
 					</ul>
 				</div>
-				<div class="col-md-3" style="margin-top: 35px; text-align:right;">
+				<div class="col-md-2" style="margin-top: 35px; text-align:right;">
 					<spring:message code="language"></spring:message>
 					<a href="/language?language=en" class="translate" id="en"><img alt="en-img" style="width:30px; height:30px; padding:0px;"
 					src="${pageContext.request.contextPath}/resources/images/en.png" ></a>
