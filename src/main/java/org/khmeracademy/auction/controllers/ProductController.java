@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import groovy.transform.Undefined;
+
 @RestController
 @RequestMapping("/rest/product")
 public class ProductController {
@@ -46,6 +48,8 @@ public class ProductController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> addProduct(AddProduct addproduct, HttpServletRequest request) {
 		System.out.println("UI => " + addproduct);
+		
+		
 		// Header must not be JSON Content Type
 		HttpHeaders header = new HttpHeaders();
 		RestTemplate restTemplate = new RestTemplate();

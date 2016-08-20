@@ -18,7 +18,16 @@ public class AddProduct {
 	private int category_id;
 	private int qty;
 	private int brand_id;
-	private boolean status;
+	private int status;
+	
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	private List<MultipartFile> images;
 	
 	
@@ -70,12 +79,7 @@ public class AddProduct {
 	public void setBrand_id(int brand_id) {
 		this.brand_id = brand_id;
 	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+	
 	@Override
 	public String toString() {
 		return "AddProduct [product_id=" + product_id + ", product_name=" + product_name + ", product_description="

@@ -384,10 +384,11 @@
 			frmData.append('category_id',  $scope.pro_category);
 			frmData.append('qty',  $scope.pro_quantity);
 			frmData.append('brand_id',  $scope.pro_brand);
+			alert(frmData.get("supplier_id"));
 			if ($scope.pro_status == 'active') {
-				$scope.tf=true;
+				$scope.tf= 1;
 			}else{
-				$scope.tf=false;
+				$scope.tf= 0;
 			}
 // 			frmData.append('status', ($scope.pro_status == 'active' ?true:!false));
 			frmData.append('status', $scope.tf );
@@ -423,7 +424,15 @@
 				});
 			}, function(error) {
 				console.log(error.data);
-				alert('failed to upload !!');
+				swal({ 
+					title: "Unsucees!",
+					text: "Product has not been inserted.",
+					 type: "warning",
+				    timer : 1000,
+				    showConfirmButton : false
+				  }, function(){
+				    window.location.href = 'http://localhost:8080/admin/addproduct';
+				});
 			});
 			}
 			/******************/
