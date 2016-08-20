@@ -1,12 +1,13 @@
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/assets/images/auction.ico">
 
 <!-- angular -->
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/static/assets/js/angular.min.js"></script>
 	
 <!-- Sweet Alert CSS -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/sweetalert.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/sweetalert-dev.js"></script>
+
 <!-- Style Circliful Chart-->
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 
@@ -41,7 +42,7 @@
 	ga('create', 'UA-69506598-1', 'auto');
 	ga('send', 'pageview');
 </script> -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/static/css/select2.min.css" rel="stylesheet" />
 <style type="text/css">
 #myModal .modal-content{
 	background-color: #36404a;
