@@ -129,7 +129,7 @@
 					  	<div class="col-sm-3">
 					    	<button type="button" class="btn btn-primary btn-block" ng-click="addUser()"><spring:message code="complete_registration"></spring:message></button>
 					    </div>
-					    <div class="col-sm-4"><p><small><spring:message code="all_fields_marked_with"></spring:message> " <sup><i class="glyphicon glyphicon-star"></i></sup> " <spring:message code="are_required"></spring:message>ARE REQUIRED</small></p></div>
+					    <div class="col-sm-4"><p><small><spring:message code="all_fields_marked_with"></spring:message> " <sup><i class="glyphicon glyphicon-star"></i></sup> " <spring:message code="are_required"></spring:message></small></p></div>
 					  </div>						
 					</div>
 				</div>
