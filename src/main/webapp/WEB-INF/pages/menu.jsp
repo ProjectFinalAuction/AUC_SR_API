@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <body ng-app="myApp">
 <div class="wrapper" ng-controller="auctionCtrl">
@@ -10,7 +11,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-				<i class="fa fa-volume-control-phone" ></i> <spring:message code="contact_info"></spring:message>OUR CUSTOMER CARE +855 70 730 619
+				<i class="fa fa-volume-control-phone" ></i> <spring:message code="contact_info"></spring:message>
 				</div>
 				<div id="right-head-info" class="col-md-6">
 					<sec:authorize access="!isAuthenticated()">
@@ -54,7 +55,7 @@
 					<ul class="menu-list-ul">
 						<li class="menu-list-li"><a href="#"><spring:message code="best_bidding"></spring:message></a></li>
 						<li class="menu-list-li"><a href="#"><spring:message code="best_brand"></spring:message></a></li>
-						<li class="menu-list-li"><a href="#"><spring:message code="contact"></spring:message>CONTACT</a></li>
+						<li class="menu-list-li"><a href="#"><spring:message code="contact"></spring:message></a></li>
 						<li class="menu-list-li"><a href="about.html"><spring:message code="about"></spring:message></a></li>
 					</ul>
 				</div>

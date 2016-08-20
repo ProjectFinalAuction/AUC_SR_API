@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
  <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -160,7 +161,7 @@
 							        	<td colspan="2"></td>
 							      	</tr>
 							      	<tr>
-							        	<th><spring:message code="bid_history"></spring:message>Bid History</th>
+							        	<th><spring:message code="bid_history"></spring:message></th>
 							        	<td>0 <spring:message code="bids"></spring:message></td>
 							        	<sec:authorize access="isAuthenticated()">
                                         	<td><input type="button" value="Bid History" class="bidhistory"></td>
