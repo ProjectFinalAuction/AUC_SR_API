@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
 								<span class="img" ng-repeat="proimg in a.product.gallery" ng-show="$first">
 									<img src="{{proimg.image_path}}" class="img-thumbnail" style="width: 160px; height: 170px" alt="Cinque Terre">
 								</span>
-								<strong>{{a.product.product_name}}</strong>
+								<strong>{{b.product.product_name}}</strong>
 							</a>
 						</h1>
 						<!-- subtitle -->

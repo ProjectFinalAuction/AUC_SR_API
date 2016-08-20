@@ -55,8 +55,8 @@
 					<ul class="menu-list-ul">
 						<li class="menu-list-li"><a href="#"><spring:message code="best_bidding"></spring:message></a></li>
 						<li class="menu-list-li"><a href="#"><spring:message code="best_brand"></spring:message></a></li>
-						<li class="menu-list-li"><a href="#"><spring:message code="contact"></spring:message></a></li>
-						<li class="menu-list-li"><a href="about.html"><spring:message code="about"></spring:message></a></li>
+						<li class="menu-list-li"><a href="${pageContext.request.contextPath}/contactus"><spring:message code="contact"></spring:message></a></li>
+						<li class="menu-list-li"><a href="${pageContext.request.contextPath}/aboutus"><spring:message code="about"></spring:message></a></li>
 					</ul>
 				</div>
 				<div class="col-md-2" style="margin-top: 35px; text-align:right;">
