@@ -118,6 +118,7 @@
 							<h4>{{product_condition}}</h4>
 						</div>
 						<div class="list-group-item">
+							<form action="">
 							<table class="table table-hover">
 								<thead>
 									<tr>
@@ -137,7 +138,7 @@
 										<td colspan="2">
 											<div class="input-group">
 												<div class="input-group-addon">$</div>
-												<input type="number" class="form-control" ng-model="x"
+												<input type="number" class="form-control" ng-model="price"
 													id="exampleInputAmount" placeholder="Amount">
 												<div class="input-group-addon">.00</div>
 											</div> <!-- <input type="text" class="form-control"> -->
@@ -147,10 +148,10 @@
 										<th></th>
 										<td align="center"><sec:authorize
 												access="isAuthenticated()">
-												<a class="btn btn-success btn-block"
+												<button class="btn btn-success btn-block" type="button"
 													style="width: 50%; float: left;" ng-click="addBidPrice()" 
-													ng-disabled="x < (current_price + increment_price)"><spring:message
-														code="submit_bid"></spring:message></a>
+													ng-disabled="price < (current_price + increment_price) || !(!!price)"><spring:message
+														code="submit_bid"></spring:message></button>
 											</sec:authorize> <sec:authorize access="!isAuthenticated()">
 												<a class="btn btn-block"
 													style="width: 50%; float: left; background-color: #43b3f3; color: white"
@@ -170,6 +171,7 @@
 									</tr>
 								</tbody>
 							</table>
+							</form>
 						</div>
 					</div>
 
@@ -276,6 +278,5 @@
 		$("#menustand").hide(function() {
 			$("#right-content").removeClass('col-md-9');
 		});
-
 	});
 </script>

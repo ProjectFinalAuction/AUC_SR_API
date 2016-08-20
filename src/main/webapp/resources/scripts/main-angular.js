@@ -90,7 +90,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	$scope.searchProName = function(proName){
 //		alert(proName);
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 10 +"&page=" + currentPage + "&productName="+proName,
+			url : 'http://localhost:8080/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+proName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;
@@ -170,6 +170,20 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 	}
 	
 
+/*	$scope.checkingEndingAmount = function(){
+		$http({
+	          method: 'GET',
+	          url: 'http://localhost:9999/api/10/checking-ending-amount/'
+	         
+	      }).then(function (response) {
+	      	if(response.data.CODE=="0000"){
+	      		alert(response.data.MESSAGE);
+	      	}else if(response.data.CODE=="9999"){
+	      		
+	      	}
+	      });
+		
+	}*/
 		
 	//TODO: INSERT BID PRICE TO BID HISTORY 
 	$scope.addBidPrice = function(){
@@ -181,9 +195,13 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
           	"current_price" : $('#exampleInputAmount').val()
           }
       }).then(function (response) {
-      	alert("success");
-      	$scope.getAuctionById();
-      	$('#exampleInputAmount').val("");
+    	  	if(response.data.CODE=="0000"){
+    	  		alert("YOU CANNOT BID MORE. YOUR AMOUNT HAS ONLY " + response.data.DATA);
+    	  	}else{
+    	  		alert(response.data.MESSAGE);
+    	  	}
+    	  	$scope.getAuctionById();
+    	  	$('#exampleInputAmount').val("");
       });
 	}
 	

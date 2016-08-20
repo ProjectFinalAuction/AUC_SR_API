@@ -69,7 +69,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container" style="padding-right:0">
+	<div class="container" style="padding-right:0" id="searchPanel">
 			<div class="row" style="padding:0">
 				<div class="col-md-3" style="line-height:-8px;background-color: #e6e6e6;padding:2px;">
 					<div align="center" style="color:gray; margin:5px 0 0 15px;"><b><spring:message code="categories"></spring:message></b>

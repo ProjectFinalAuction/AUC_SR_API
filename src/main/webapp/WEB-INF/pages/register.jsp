@@ -171,6 +171,14 @@
 			$("#conemail").text("Email matched!");
 		}
 	}
+	
+	
+	$(document).ready(function(){
+		$("#menustand").hide(function(){
+			$("#right-content").removeClass('col-md-9');
+		});
+		$('#searchPanel').hide();
+	});
 </script>
 	
 	

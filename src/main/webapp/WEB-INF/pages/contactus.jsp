@@ -152,7 +152,7 @@ pageEncoding="UTF-8"%>
 			$("#menustand").hide(function(){
 				$("#right-content").removeClass('col-md-9');
 			});
-
-			
+			$('#searchPanel').hide();
 		});
+		
 	</script>

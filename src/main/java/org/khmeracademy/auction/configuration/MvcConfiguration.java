@@ -50,7 +50,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/viewbidhistory").setViewName("viewbidhistory");
 		registry.addViewController("/contactus").setViewName("/contactus");
 		registry.addViewController("/aboutus").setViewName("/aboutus");
-
+		registry.addViewController("/userprofile").setViewName("/user/userprofile");
 	}
 
 }
