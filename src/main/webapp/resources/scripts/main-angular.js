@@ -65,7 +65,6 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 				$scope.setPagination(response.data.PAGINATION);
 				checkPagination = false;
 			}
-			$scope.all = $scope.auction;
 		});	
 	}
 	
@@ -89,6 +88,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	//========================PAGINATION AND SEARCH DATA================================
 	//TODO: SEARCH BY PRODUCT NAME
 	$scope.searchProName = function(proName){
+//		alert(proName);
 		$http({
 			url : 'http://localhost:8080/rest/auction?limit=' + 10 +"&page=" + currentPage + "&productName="+proName,
 			method : 'GET'
@@ -99,9 +99,9 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 			}
 		});
 	}
-	$scope.test = function(){
-		alert($scope.proName);
-	}
+//	$scope.test = function(){
+//		alert($scope.proName);
+//	}
 	
 	//TODO: CTEATE PAGINATION BUTTON
 	$scope.setPagination = function(pagination){

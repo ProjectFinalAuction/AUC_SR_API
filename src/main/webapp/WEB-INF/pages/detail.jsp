@@ -137,7 +137,7 @@
 										<td colspan="2">
 											<div class="input-group">
 												<div class="input-group-addon">$</div>
-												<input type="text" class="form-control"
+												<input type="number" class="form-control" ng-model="x"
 													id="exampleInputAmount" placeholder="Amount">
 												<div class="input-group-addon">.00</div>
 											</div> <!-- <input type="text" class="form-control"> -->
@@ -148,7 +148,8 @@
 										<td align="center"><sec:authorize
 												access="isAuthenticated()">
 												<a class="btn btn-success btn-block"
-													style="width: 50%; float: left;" ng-click="addBidPrice()"><spring:message
+													style="width: 50%; float: left;" ng-click="addBidPrice()" 
+													ng-disabled="x < (current_price + increment_price)"><spring:message
 														code="submit_bid"></spring:message></a>
 											</sec:authorize> <sec:authorize access="!isAuthenticated()">
 												<a class="btn btn-block"

@@ -26,7 +26,7 @@
 	<div class="row" style="position: relative;">
 		<p id="title"><spring:message code="new_arrival"></spring:message></p>
 		<!-- ============ thumbnail Section ============= -->
-		<div class="col-sm-6 col-md-3 product" style="padding-right: 0px;" ng-repeat="a in all">
+		<div class="col-sm-6 col-md-3 product" style="padding-right: 0px;" ng-repeat="a in auction">
 			<div class="thumbnail" ng-repeat="proimg in a.product.gallery" ng-show="$first" style="position: relative;">
 				<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}"><img
 					src="{{proimg.image_path}}"
