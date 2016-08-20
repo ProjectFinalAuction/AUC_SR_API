@@ -64,7 +64,8 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 			if(checkPagination){
 				$scope.setPagination(response.data.PAGINATION);
 				checkPagination = false;
-			}	
+			}
+			$scope.all = $scope.auction;
 		});	
 	}
 	
@@ -84,14 +85,12 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	$scope.findAllAuctions();
 	$scope.currentTime = moment(); 
 	$timeout($scope.tick, 1000);
-	
+
 	//========================PAGINATION AND SEARCH DATA================================
 	//TODO: SEARCH BY PRODUCT NAME
 	$scope.searchProName = function(proName){
-//		alert(proName);
 		$http({
 			url : 'http://localhost:8080/rest/auction?limit=' + 10 +"&page=" + currentPage + "&productName="+proName,
-//			url: 'http://localhost:9999/api/find-all-auctions?page=1&limit=15&productName=Dream',
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;
@@ -158,6 +157,7 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 			$scope.product_description = response.data.DATA.product.product_description;
 			$scope.status = response.data.DATA.status;
 			$scope.comment = response.data.DATA.comment;
+			$scope.num_bid = response.data.DATA.num_bid;
 			
 			$scope.auc_detail = response.data.DATA;
 			$scope.processAuctionItems($scope.auc_detail);
@@ -168,6 +168,8 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 			}
 		});
 	}
+	
+
 		
 	//TODO: INSERT BID PRICE TO BID HISTORY 
 	$scope.addBidPrice = function(){
@@ -200,6 +202,7 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
     $timeout($scope.auc_detail, 10000);
 	$scope.currentTime = moment(); 
 	$scope.getAuctionById();
+//	$scope.findTotalBidCurrentPrice();
 }]);
 
 app.factory('datetime', ['$timeout', function ($timeout) {

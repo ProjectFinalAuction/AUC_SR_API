@@ -188,7 +188,7 @@
 										class="status"><p>
 											<spring:message code="active"></spring:message>
 										</p></td>
-									<td id='status2' ng-if="status==4" value="{{status}}"
+									<td id='status2' ng-if="status==3" value="{{status}}"
 										class="status"><p>
 											<spring:message code="end"></spring:message>
 										</p></td>
@@ -203,7 +203,7 @@
 								</tr>
 								<tr>
 									<th><spring:message code="bid_history"></spring:message></th>
-									<td>0 <spring:message code="bids"></spring:message></td>
+									<td>{{num_bid}} <spring:message code="bids"></spring:message></td>
 									<sec:authorize access="isAuthenticated()">
 										<td class="text-right"><input type="button"
 											class="btn btn-default bidhistory" value="Bid History"></td>
@@ -275,5 +275,6 @@
 		$("#menustand").hide(function() {
 			$("#right-content").removeClass('col-md-9');
 		});
+
 	});
 </script>
