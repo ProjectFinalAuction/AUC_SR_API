@@ -10,18 +10,18 @@
 			<div class="row">
 				<div class="col-md-5">
 					<img src="${pageContext.request.contextPath}/resources/static/images/denhtlai.png" class="img-responsive" style="width:80%">
-					<p>&copy; <span class="lang" key="privacy">2016; Privacy Policy</span></p>
+					<p>&copy; <spring:message code="2016_privacy_policy"></spring:message></p>
 				</div>
 				<div class="col-md-5">
 					<div class="container">
 					    <!-- Collect the nav links, forms, and other content for toggling -->
 					    <div class="navfooter">
 					      <ul class="nav navbar-nav">
-					       	<li class="active"><a href="index.html" class="lang" key="home">Home</a></li>
+					       	<li class="active"><a href="index.html"><spring:message code="home"></spring:message></a></li>
 <!-- 					        <li><a href="sell_first_step.html" class="lang" key="seller">Seller</a></li> -->
-					        <li><a href="#" class="lang" key="buyer">Buyer</a></li>
-					        <li><a href="contact.html" class="lang" key="contact">Contact</a></li>
-					        <li><a href="about.html" class="lang" key="about">About</a></li>
+					        <li><a href="#"><spring:message code="buyer"></spring:message></a></li>
+					        <li><a href="contact.html"><spring:message code="contact_s"></spring:message></a></li>
+					        <li><a href="about.html"><spring:message code="about"></spring:message></a></li>
 					      </ul>
 					    </div><!-- /.navbar-collapse -->
 					</div><!-- /.container -->

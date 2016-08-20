@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>CAMBODIA AUCTION</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><spring:message code="cambodia_auction"></spring:message>CAMBODIA AUCTION</title>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/accordion-menu.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css">
@@ -35,8 +35,8 @@ pageEncoding="ISO-8859-1"%>
 					</div>
 					<div class="form-group">
 						<div class="btn-group">
-							<button id="Status_IncludeActive" class="btn btn-sm btn-primary">Active</button>
-							<button id="Status_IncludeCompleted" class="btn btn-sm btn-default">Completed</button>
+							<button id="Status_IncludeActive" class="btn btn-sm btn-primary"><spring:message code="cambodia_auction"></spring:message>Active</button>
+							<button id="Status_IncludeCompleted" class="btn btn-sm btn-default"><spring:message code="cambodia_auction"></spring:message>Completed</button>
 						</div>
 					</div>
 
@@ -52,8 +52,8 @@ pageEncoding="ISO-8859-1"%>
 
 					<div class="form-group">
 						<div class="input-group">
-							<label class="input-group-addon" for="SortFilterOptions">Filter</label>
-							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0">All</option>
+							<label class="input-group-addon" for="SortFilterOptions"><spring:message code="cambodia_auction"></spring:message>Filter</label>
+							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0"><spring:message code="cambodia_auction"></spring:message>All</option>
 								<option ng-repeat="b in auctionProduct | unique: 'product.brand.brand_id'"> {{b.product.brand.brand_name}} </a> </option>
 							</select>
 						</div>
@@ -61,17 +61,17 @@ pageEncoding="ISO-8859-1"%>
 					
 					<div class="form-group">
 						<div class="input-group">
-							<label class="input-group-addon" for="SortFilterOptions">Sort</label>
-							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0">Ending Soon</option>
-								<option value="1">Newest</option>
-								<option value="2">Price, Low to High</option>
-								<option value="3">Price, High to Low</option>
-								<option value="4">Title, A to Z</option>
-								<option value="5">Title, Z to A</option>
-								<option value="6">Listing ID, 0 to 9</option>
-								<option value="7">Listing ID, 9 to 0</option>
-								<option value="8">Activity, High to Low</option>
-								<option value="9">Activity, Low to High</option>
+							<label class="input-group-addon" for="SortFilterOptions"><spring:message code="cambodia_auction"></spring:message>Sort</label>
+							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0"><spring:message code="cambodia_auction"></spring:message>Ending Soon</option>
+								<option value="1"><spring:message code="cambodia_auction"></spring:message>Newest</option>
+								<option value="2"><spring:message code="cambodia_auction"></spring:message>Price, Low to High</option>
+								<option value="3"><spring:message code="cambodia_auction"></spring:message>Price, High to Low</option>
+								<option value="4"><spring:message code="cambodia_auction"></spring:message>Title, A to Z</option>
+								<option value="5"><spring:message code="cambodia_auction"></spring:message>Title, Z to A</option>
+								<option value="6"><spring:message code="cambodia_auction"></spring:message>Listing ID, 0 to 9</option>
+								<option value="7"><spring:message code="cambodia_auction"></spring:message>Listing ID, 9 to 0</option>
+								<option value="8"><spring:message code="cambodia_auction"></spring:message>Activity, High to Low</option>
+								<option value="9"><spring:message code="cambodia_auction"></spring:message>Activity, Low to High</option>
 							</select>
 						</div>
 					</div>
@@ -104,15 +104,15 @@ pageEncoding="ISO-8859-1"%>
 						</p>
 						<!-- seller -->
 						<span class="condition">
-							Brand: <a href="#">{{a.product.brand.brand_name}}</a>
+							<spring:message code="cambodia_auction"></spring:message>Brand: <a href="#">{{a.product.brand.brand_name}}</a>
 						</span><br>
 						<!-- seller -->
 						<span class="condition">
-							Condition: <a href="#">{{a.product_condition}}</a>
+							<spring:message code="cambodia_auction"></spring:message>Condition: <a href="#">{{a.product_condition}}</a>
 						</span><br>
 
 						<span class="seller">
-							Seller: <a href="#">{{a.product.supplier.contact_name}}</a>
+							<spring:message code="cambodia_auction"></spring:message>Seller: <a href="#">{{a.product.supplier.contact_name}}</a>
 						</span><br>
 						
 					</div>	<!--End image and property -->
@@ -123,16 +123,16 @@ pageEncoding="ISO-8859-1"%>
 						<span style=" text-align: right; ">
 							<p class="time remaining" > 
 								<span data-epoch="ending" data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" data-action-time="08/25/2016 00:22:49" data-end-value="Ended" data-action-milliseconds="1472059369000">9 Days, 34 Minutes</span>
-								<span class="awe-rt-Done ">remaining</span>
+								<span class="awe-rt-Done "><spring:message code="cambodia_auction"></spring:message>remaining</span>
 							</p>
 							<p class="bids">
 								&nbsp;
 								<span class="awe-rt-CurrentPrice price NumberPart"><span class="NumberPart">{{a.current_price | currency}}</span></span>
 								<span class="glyphicon glyphicon-option-vertical"></span>
 								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">0</span>
-								Bids
+								<spring:message code="cambodia_auction"></spring:message>Bids
 								&nbsp;
-								<a href="#" class="btn btn-primary awe-rt-Active awe-rt-Done">Bid Now 
+								<a href="#" class="btn btn-primary awe-rt-Active awe-rt-Done"><spring:message code="cambodia_auction"></spring:message>Bid Now 
 									<span class="glyphicon glyphicon-chevron-right"></span>
 								</a>
 							</p>

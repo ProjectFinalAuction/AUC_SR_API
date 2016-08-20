@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ITEM INFORMAITON</title>
+<title><spring:message code="item_information"></spring:message></title>
 <!-- header -->
 <jsp:include page="header.jsp" />
 <!-- menu -->
@@ -20,7 +20,7 @@
 		<input type="hidden" id="ac_id" value="${param.Aid}">
 		<!-- detail content information -->
 		<ul class="list-group" style="padding-left: 14px;">
-		  <li class="list-group-item sublinkcategory"><span class="lang" key="home">HOME</span> / {{category_name | uppercase}} / {{product_name | uppercase}}</li>
+		  <li class="list-group-item sublinkcategory"><spring:message code="home"></spring:message> / {{category_name | uppercase}} / {{product_name | uppercase}}</li>
 		</ul>
 			<!-- image and some detail information -->
 			<div class="row" style="margin-top:-15px;">
@@ -28,7 +28,7 @@
 				<div class="col-md-5" style="padding-right:0;">
 					<div class="list-group">
 						<div class="list-group-item">
-							<p><span class="lang" key="remainin_time">REMAINING TIME</span>: <span>{{auc_detail.remainingTime | durationview}}</span></p>
+							<p><spring:message code="remaining_time"></spring:message>: <span>{{auc_detail.remainingTime | durationview}}</span></p>
 						</div> <!-- end remain time -->
 						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
 							<div class="thumbnail" ng-repeat="proimg in gallery" ng-show="$first">
@@ -95,17 +95,17 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-							        	<td><b><span class="lang" key="current_price">Current Price</span></b></td>
+							        	<td><b><spring:message code="current_price"></spring:message></b></td>
 							        	<td>{{current_price | currency}}</td>
 							      	</tr>
 								</thead>
 							    <tbody>
 							   		<tr>
-							        	<th><span class="lang" key="minimum_bid">Minimum Bid</span></th>
+							        	<th><spring:message code="minimum_bid"></spring:message></th>
 							        	<td>{{current_price + increment_price | currency}} ({{current_price | currency}} + {{increment_price | currency}})</td>
 							      	</tr>
 							      	<tr>
-							        	<th><span class="lang" key="max_bid">Your Maximum Proxy Bid</span></th>
+							        	<th><spring:message code="max_bid"></spring:message></th>
 							        	<td colspan="2">
 							        	<div class="input-group">
 									      <div class="input-group-addon">$</div>
@@ -120,12 +120,12 @@
 							        	<td align="center">
 							        		
 							        	<sec:authorize access="isAuthenticated()">
-                                        	<a class="btn btn-success btn-block lang" style="width: 50%; float: left;" 
-							        		key="bid_now" ng-click="addBidPrice()">Submit Bid</a>
+                                        	<a class="btn btn-success btn-block" style="width: 50%; float: left;" 
+							        		 ng-click="addBidPrice()"><spring:message code="submit_bid"></spring:message></a>
                                         </sec:authorize>
 							        	<sec:authorize access="!isAuthenticated()">
-							        		<a class="btn btn-block lang" style="width: 50%; float: left; background-color: #43b3f3; color: white" 
-							        		key="bid_now" data-toggle="modal" data-target="#login">Bid Now</a>
+							        		<a class="btn btn-block" style="width: 50%; float: left; background-color: #43b3f3; color: white" 
+							        		 data-toggle="modal" data-target="#login"><spring:message code="bid_now"></spring:message></a>
 							        	</sec:authorize>
 							        	</td>
 							        							        	
@@ -147,36 +147,36 @@
 							     <table class="table table-hover">	
 							     	<thead>
 							     	<tr>
-							        	<td><span class="lang" key="current_price"><b>Current Price</b></span></td>
+							        	<td><b><spring:message code="current_price"></spring:message></b></td>
 							        	<td>{{current_price | currency}}</td>
-							        	<td id='status1' ng-if="status==1" value="{{status}}" class="status"><p>Active</p></td>
-							        	<td id='status2' ng-if="status==4" value="{{status}}" class="status"><p>End</p></td>
+							        	<td id='status1' ng-if="status==1" value="{{status}}" class="status"><p><spring:message code="active"></spring:message></p></td>
+							        	<td id='status2' ng-if="status==4" value="{{status}}" class="status"><p><spring:message code="end"></spring:message></p></td>
 							      	</tr>
 							     	</thead>
 							     	<tbody>
 							      	
 							      	<tr>
-							        	<td style="color:red;"><span class="lang" key="reserve_price">Reserve Price Not Met</span> </td>
+							        	<td style="color:red;"><spring:message code="reserve_price_not_met"></spring:message> </td>
 							        	<td colspan="2"></td>
 							      	</tr>
 							      	<tr>
-							        	<th><span class="lang" key="bid_history">Bid History</span></th>
-							        	<td>0 <span class="lang" key="bidsy">Bids</span></td>
+							        	<th><spring:message code="bid_history"></spring:message>Bid History</th>
+							        	<td>0 <spring:message code="bids"></spring:message></td>
 							        	<sec:authorize access="isAuthenticated()">
                                         	<td><input type="button" value="Bid History" class="bidhistory"></td>
                                         </sec:authorize>
 							      	</tr>
 							      	<tr>
 							        	<th>
-							        	<span class="lang" key="end_date">End Date</span></th>
+							        	<spring:message code="end_date"></spring:message></th>
 							        	<td colspan="2">{{end_date}}</td>
 							      	</tr>
 							      	<tr>
-							        	<th><span class="lang" key="start_date">Start Date</span></th>
+							        	<th><spring:message code="start_date"></spring:message></th>
 							        	<td colspan="2">{{start_date}}</td>
 							      	</tr>
 							      	<tr>
-							        	<th><span class="lang" key="listed_by">Listed By</span></th>
+							        	<th><spring:message code="listed_by"></spring:message></th>
 							        	<td colspan="2">
 							        		<i class="fa fa-star-o" aria-hidden="true"></i>
 							        		<i class="fa fa-star-o" aria-hidden="true"></i>
@@ -197,18 +197,18 @@
 			<div class="col-md-12">
 				<!-- group description infor -->
 				<div class="list-group">
-					<div class="list-group-item"><span class="lang" key="desc">DESCRIPTION</span></div>
+					<div class="list-group-item"><spring:message code="description"></spring:message></div>
 					<div class="list-group-item">
 						<p>{{product_description}}</p>
 					</div>
 				</div>
 				<!-- group payment infor -->
 				<div class="list-group">
-					<div class="list-group-item"><span class="lang" key="payment_option">PAYMENT OPTION</span></div>
+					<div class="list-group-item"><spring:message code="payment_option"></spring:message></div>
 					<div class="list-group-item">
 						<P>
-						<span class="lang" key="SELLER_ACCEPTS_WING">Seller Accepts Wing</span> <br>
-						<span class="lang" key="SELLER_ACCEPTS_CASH">Seller Accepts Cash</span>
+						<spring:message code="seller_accepts_wind"></spring:message> <br>
+						<spring:message code="seller_accepts_cash"></spring:message>
 						</P>
 					</div>
 				</div>

@@ -10,31 +10,31 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-				<i class="fa fa-volume-control-phone" ></i><span class="lang" key="contact_info"> OUR CUSTOMER CARE +855 70 730 619</span>
+				<i class="fa fa-volume-control-phone" ></i> <spring:message code="contact_info"></spring:message>OUR CUSTOMER CARE +855 70 730 619
 				</div>
 				<div id="right-head-info" class="col-md-6">
 					<sec:authorize access="!isAuthenticated()">
 					
-						<a class="nav-link lang" href="#" data-toggle="modal" data-target="#login" key="login">
-							Login 
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+							<spring:message code="login"></spring:message> 
 						</a>
 						<span>&nbsp;|&nbsp; </span>
 					
-						<a class="nav-link lang" href="${pageContext.request.contextPath}/register" key="register">Register</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/register"><spring:message code="register"></spring:message></a>
 						<span>&nbsp;|&nbsp; </span>
 						
 					</sec:authorize>
 					
-					<span clas="lang" key="my_wishlist">MY WISHLIST</span>
+					<span clas="lang" key="my_wishlist"><spring:message code="my_wishlist"></spring:message></span>
 					<sec:authorize access="isAuthenticated()">
 						<span class="nav-item dropdown logined">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
 							role="button" aria-haspopup="true" aria-expanded="false">
-								<span class="lang" key="welcome">Welcome</span>  <sec:authentication property="principal.username" />
+								<spring:message code="welcome"></spring:message>Welcome  <sec:authentication property="principal.username" />
 							</a>
 							<h5 class="dropdown-menu" aria-labelledby="Preview">
 								<a href="${pageContext.request.contextPath}/logout" >
-								<i class="fa fa-sign-out"></i> <span class="lang" key="logout">Logout</span></a>
+								<i class="fa fa-sign-out"></i> <spring:message code="logout"></spring:message></a>
 							</h5>
 						</span>
 					</sec:authorize>
@@ -52,14 +52,14 @@
 				</div>
 				<div class="col-md-5">
 					<ul class="menu-list-ul">
-						<li class="menu-list-li"><a href="#"><span class="lang" key="best_bidding">BEST BIDDING</span></a></li>
-						<li class="menu-list-li"><a href="#"><span class="lang" key="best_brand">BEST BRAND</span></a></li>
-						<li class="menu-list-li"><a href="#"><span class="lang" key="contact">CONTACT</span></a></li>
-						<li class="menu-list-li"><a href="about.html"><span class="lang" key="about">ABOUT</span></a></li>
+						<li class="menu-list-li"><a href="#"><spring:message code="best_bidding"></spring:message></a></li>
+						<li class="menu-list-li"><a href="#"><spring:message code="best_brand"></spring:message></a></li>
+						<li class="menu-list-li"><a href="#"><spring:message code="contact"></spring:message>CONTACT</a></li>
+						<li class="menu-list-li"><a href="about.html"><spring:message code="about"></spring:message></a></li>
 					</ul>
 				</div>
 				<div class="col-md-3" style="margin-top: 35px; text-align:right;">
-					<span class="lang" key="language">LANGUAGE</span>
+					<spring:message code="language"></spring:message>
 					<a href="/language?language=en" class="translate" id="en"><img alt="en-img" style="width:30px; height:30px; padding:0px;"
 					src="${pageContext.request.contextPath}/resources/images/en.png" ></a>
 					<a href="/language?language=kh" class="translate" id="kh"><img alt="kh-img" style="width:30px; height:30px; padding:0px;"
@@ -71,7 +71,7 @@
 	<div class="container" style="padding-right:0">
 			<div class="row" style="padding:0">
 				<div class="col-md-3" style="line-height:-8px;background-color: #e6e6e6;padding:2px;">
-					<div align="center" style="color:gray; margin:5px 0 0 15px;"><b><span class="lang" key="categories">CATEGORIES</span></b>
+					<div align="center" style="color:gray; margin:5px 0 0 15px;"><b><spring:message code="categories"></spring:message></b>
 					<i class="fa fa-caret-square-o-down" aria-hidden="true" style="margin-left:80px; font-size:18px;" id="dropdownmenu"></i>
 					</div>
 				</div>
@@ -110,20 +110,20 @@
 							<div><img src="${pageContext.request.contextPath}/resources/static/images/denhtlaiHD.png" 
 							class="img-responsive" width="350" style="margin:15px auto;"></div>
 							<div class="form-group">
-								<label class="text-xs-left lang" key="username">Username</label> <input type="text"
+								<label class="text-xs-left"><spring:message code="username"></spring:message></label> <input type="text"
 									class="form-control form-control-succes" name="username"
 									placeholder="enter your username" autofocus required>
 							</div>
 							<div class="form-group">
-								<label class="text-xs-left lang" key="password" >Password</label> <input
+								<label class="text-xs-left" ><spring:message code="password"></spring:message></label> <input
 									type="password" class="form-control form-control-succes"
 									name="password" placeholder="enter your password" required>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary"
-									><span class="lang" key="sign_in">Sign in</span>
+									><spring:message code="sign_in"></spring:message>
 								</button>&nbsp;&nbsp;
-								<a href="${pageContext.request.contextPath}/register?bidder" id="registerLoginLink">Register Now</a>
+								<a href="${pageContext.request.contextPath}/register?bidder" id="registerLoginLink"><spring:message code="register_now"></spring:message></a>
 							</div>
 						</fieldset>
 					</form>
