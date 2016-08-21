@@ -7,7 +7,7 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 	// Get All Category
 	$scope.findAllCategories = function(){
 		$http({
-			url: 'http://localhost:8080/rest/category',
+			url: '/rest/category',
 			method: 'GET',
 			
 		}).then(function(respone){
@@ -18,7 +18,7 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 	//Select Main Category
 	$scope.findMainCategories = function(){
 		$http({
-			url: 'http://localhost:8080/rest/category/find-main-category',
+			url: '/rest/category/find-main-category',
 			method: 'GET',
 			
 		}).then(function(respone){
@@ -29,7 +29,7 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 	//Get Brand
 	$scope.findAllBrands = function(){
 		$http({
-			url: 'http://localhost:8080/rest/brand',
+			url: '/rest/brand',
 			method: 'GET',
 			
 		}).then(function(respone){
@@ -53,11 +53,13 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+$scope.productName,
+			url : '/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.processAuctionItemsItems(response.data.DATA);
 			$scope.auction = response.data.DATA;
+			
+			console.log("CONSOLE==>", $scope.auction);
 			$scope.pages = response.data.PAGINATION.PAGE;
 			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
 			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
@@ -90,7 +92,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	$scope.searchProName = function(proName){
 //		alert(proName);
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+proName,
+			url : '/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+proName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;
@@ -140,7 +142,7 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 	// TODO: get one record function
 	$scope.getAuctionById = function(id){
 		$http({
-			url: 'http://localhost:8080/rest/auction/' + $scope.ac_id,
+			url: '/rest/auction/' + $scope.ac_id,
 			method: 'GET'
 		}).then(function(response){			
 			$scope.category_name = response.data.DATA.product.category.category_name;
@@ -189,7 +191,7 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 	$scope.addBidPrice = function(){
 		$http({
           method: 'POST',
-          url: 'http://localhost:8080/rest/bidhistory',
+          url: '/rest/bidhistory',
           data: {
           	"auction_id" : $scope.ac_id,
           	"current_price" : $('#exampleInputAmount').val()
