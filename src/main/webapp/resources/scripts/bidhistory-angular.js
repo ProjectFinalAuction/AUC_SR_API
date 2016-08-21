@@ -126,22 +126,81 @@ app.controller('bidHistory', function($scope,$http){
 })
 
 
-app.controller('userBidHistory', function($scope,$http){
+app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
 	
-	
+	// Show or Hide Panel
+	$scope.controlPanel = function(){
+        $scope.credit = 'true';
+       
+     }
 	
 	// select Bid History By UserName to display
 	$scope.findBidByUserId = function(user_id){
 		
 		$http({
 			url: 'http://localhost:8080/rest/bidhistory/' + user_id,
-		}).then(function(respone){
-			$scope.userBidHistory = respone.data.DATA;
-			console.log($scope.userBidHistory );
+		}).then(function(response){
+			$scope.userBidHistory = response.data.DATA;
+			$scope.processAuctionItems($scope.userBidHistory);
 		});
 	}
+
+    $scope.tick = function () {
+        $scope.currentTime = moment();
+        $scope.processAuctionItems($scope.userBidHistory);
+        $timeout($scope.tick, 1000);
+    }
+    
+    $scope.processAuctionItems = function (data) {
+        data.remainingTime = datetime.getRemainigTime(data.auction.end_date);
+    }
+    
+    $timeout($scope.tick, 1000);
+    $timeout($scope.userBidHistory, 10000);
+	$scope.currentTime = moment(); 
 	
 	$scope.findBidByUserId(USER_ID);
 	
-})
+	
+	
+	
+	
+}]);
+
+app.factory('datetime', ['$timeout', function ($timeout) {
+	
+    var duration = function (timeSpan) {
+        var days = Math.floor(timeSpan / 86400000);
+        var diff = timeSpan - days * 86400000;
+        var hours = Math.floor(diff / 3600000);
+        diff = diff - hours * 3600000;
+
+        var minutes = Math.floor(diff / 60000);
+        diff = diff - minutes * 60000;
+
+        var secs = Math.floor(diff / 1000);
+
+        return { 'days': days, 'hours': hours, 'minutes': minutes, 'seconds': secs };
+    };
+
+    function getRemainigTime(referenceTime) {
+        var now = moment().utc();
+        return moment(referenceTime) - now;
+    }
+    return {
+        duration: duration,
+        getRemainigTime: getRemainigTime
+    };
+}]);
+
+app.filter('durationview', ['datetime', function (datetime) {
+    return function (input, css) {
+        var duration = datetime.duration(input);
+        
+        return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
+    };
+}]);
+
+
+
 

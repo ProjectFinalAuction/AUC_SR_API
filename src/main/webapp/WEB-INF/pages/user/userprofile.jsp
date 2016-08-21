@@ -52,7 +52,18 @@
 	padding-right: 0px;
 	margin-left: 15px;
 }
+.userprofile .nav-pills>li.active>a,.userprofile
+.userprofile .nav-pills>li.active>a:focus, 
+.userprofile .nav-pills>li.active>a:hover{
+	background-color: #238fc7;
+}
 
+#credit{
+	position: absolute;
+	top:0;
+	width: 97%;
+	display : none;
+}
 </style>
 </head>
 <!--  style="width: 77%;" -->
@@ -70,9 +81,9 @@
 					<h3 class="panel-title">Bidding</h3>
 				</div>
 				<ul class="nav nav-pills nav-stacked" style="padding: 1px 3px;">
-					<li class="active"><a href="#" >Active</a></li>
-					<li><a href="#">Won</a></li>
-					<li><a href="#">Not Won</a></li>
+					<li class="active"><a href="" onclick="onBid()">Active</a></li>
+					<li class="active"><a href="" onclick="onBid()">Won</a></li>
+					<li class="active"><a href="" onclick="onBid()">Not Won</a></li>
 					<li><a href="#">WishList</a></li>
 					<li><a href="#">Invoice</a></li>
 				</ul>
@@ -84,12 +95,12 @@
 				<ul class="nav nav-pills nav-stacked" style="padding: 1px 3px;">
 					<li><a href="#">Details</a></li>
 					<li><a href="#">Password</a></li>
-					<li><a href="#tab8" data-toggle="tab">Credit</a></li>
+					<li><a href="" onclick="onCredit()">Credit</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="col-md-10 col-xs-12 myaccount main">
-			<div class="panel panel-default">
+			<div class="panel panel-default" id="bid">
 				<div class="list clearfix" ng-repeat="ub in userBidHistory">
 					<div class="row">
 						<div class="col-sm-2">
@@ -103,7 +114,7 @@
 							</p>
 							<p>Current Price$ {{ub.auction.current_price}} &nbsp;&nbsp;||&nbsp;&nbsp;Your Bid $ {{ub.user_latest_current_price}}</p>
 						</div>
-						<div class="col-sm-3 text-right">{{ub.auction.end_date}}</div>
+						<div class="col-sm-3 text-right">{{ub.remainingTime | durationview}}</div>
 					</div>
 					<button class="btn btn-default contact">Contact</button>
 				</div>
@@ -111,9 +122,9 @@
 			</div>
 
 			<!-- ======================= TOP UP ==================== -->
-			<!-- <div class="panel panel-default" id="tab8">
+			<div class="panel panel-default" id="credit">
 
-				<div class="panel-heading">Information Topup</div>
+				<div class="panel-heading">Information</div>
 				<div class="panel-body">
 					<div class="tab-content">
 						<div class="tab-panel" >
@@ -143,7 +154,7 @@
 						</div>
 					</div>
 				</div>
-			</div> -->
+			</div>
 
 		</div>
 	</div>
@@ -171,23 +182,16 @@
 		$('#searchPanel').hide();
 	});
 	
-	/* var app = angular.module("myApp", []);
-	app.controller('userBidHistory', function($scope,$http){
+	function onCredit() {
+	    document.getElementById("credit").style.display = "block";
+	    document.getElementById("bid").style.display = "none";
+	    
+	}
+	
+	function onBid() {
+	    document.getElementById("credit").style.display = "none";
+	    document.getElementById("bid").style.display = "block";
+	    
+	}
 
-		// select Bid History By UserName to display
-		$scope.findBidByUserId = function(user_id){
-			alert(user_id);
-			$http({
-				url: 'http://localhost:8080/rest/bidhistory/' + user_id,
-				method: 'GET',
-				
-			}).then(function(respone){
-				$scope.userBidHistory = respone.data.DATA;
-				cosole.log($scope.userBidHistory );
-			});
-		}
-		
-		$scope.findBidByUserId(user_id);
-		
-	}) */
 </script>
