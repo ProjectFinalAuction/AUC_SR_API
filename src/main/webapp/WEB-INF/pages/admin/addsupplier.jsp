@@ -12,15 +12,6 @@
 <!-- left content -->
 <jsp:include page="left-content.jsp"></jsp:include>
 
-<!-- header -->
-<jsp:include page="header.jsp"></jsp:include>
-<!-- menu -->
-<jsp:include page="menu.jsp"></jsp:include>
-<!-- left content -->
-<jsp:include page="left-content.jsp"></jsp:include>
-
-
-
 
 <!-- ============================================================== -->
 <!-- Start right Content here -->
@@ -34,7 +25,7 @@
 				<div class="col-sm-12">
 					<h4 class="page-title">Supplier Management</h4>
 					<ol class="breadcrumb">
-						<li><a href="">iWant Auction</a></li>
+						<li><a href="">DENH TLAI</a></li>
 						<li><a href="">Supplier Management</a></li>
 						<li class="active">Add/Edit Supplier</li>
 					</ol>

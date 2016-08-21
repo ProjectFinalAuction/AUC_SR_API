@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,7 @@ pageEncoding="UTF-8"%>
 		
 		<div class="col-xs-12">
 		    <div class="well well-sm section-title text-muted">
-		        <span><strong>About Us</strong></span>
+		        <span><strong><spring:message code="about_us"></spring:message></strong></span>
 		    </div>
 		    <div class="panel panel-default"><br>
 		        <div class="row" style=" background-color: ">
@@ -62,16 +63,12 @@ pageEncoding="UTF-8"%>
 					        	<!--TODO: Article -->
 					            <p>  
 					            	<strong> 
-				                   		<a href="#">
-				                   			<span style="color:#238FC7 " > DENH</span>
-				                   			<span style="color:#515153" >TLAI</span> 
+				                   		<a href="${pageContext.request.contextPath}/index">
+				                   			<span style="color:#238FC7 "> <spring:message code="denh"></spring:message></span>
+				                   			<span style="color:#515153"><spring:message code="tlai"></spring:message></span> 
 				                   		</a>
 				                   	</strong>
-				                   	is the first Cambodian Online Auction System.
-				                   	We offer online service in which people can exchange their products by means of bidding. 
-				                   	We browse the items from all around to into a single platform. 
-				                   	The system is found in 2016 with the aiming at improving online transaction and participating the country’s development and its business environment in Cambodia. 
-				                   	Cambodian people is our target user. 
+				                   	<spring:message code="about_us_description"></spring:message>
 				                   	
 				                   	<!--
 				                   	DENH TLAI គឺជាសេវាកម្មដេញថ្លៃដំបូងគេបំផុតក្នុងប្រទេសកម្ពុជា។ យើងផ្តល់ឱកាសអោយអ្នកប្រើប្រាស់អាចទិញ រឺ ដាក់លក់ទំនិញរបស់ខ្លួនតាមរយៈការដេញថ្លៃ។ 
@@ -89,23 +86,23 @@ pageEncoding="UTF-8"%>
 											<a href="#">
 		          								<span class="glyphicon glyphicon-map-marker"></span>
 		        							</a>
-											Address: #12, St 323, Sangkat Boeung Kak II, KhanToul Kork, Phnom Penh, Cambodia.
+											<spring:message code="about_us_address"></spring:message>
 										</li>
 										<li>
 											<a href="#">
 		          								<span class="glyphicon glyphicon-earphone"></span>
 		        							</a>
-											<span class="pi-weight-600 pi-text-white">Tel:&nbsp;&nbsp;</span> (855)97 989 9689</li>
-										<li><span class="pi-weight-600 pi-text-white">&nbsp; &nbsp; &nbsp;</span>(855)77 77 12 36 (Khmer, English) </li>
-										<li><span class="pi-weight-600 pi-text-white">&nbsp; &nbsp; &nbsp;</span>(855)15 4 5555 2 (Khmer, English) </li>
-										<li><span class="pi-weight-600 pi-text-white">&nbsp; &nbsp; &nbsp;</span>(855)17 52 81 69(Korean, English) </li>
+											<span class="pi-weight-600 pi-text-white"><spring:message code="tel"></spring:message>:&nbsp;&nbsp;</span> (855)97 989 9689</li>
+										<li><span class="pi-weight-600 pi-text-white">&nbsp; &nbsp; &nbsp;</span>(855)77 77 12 36 (<spring:message code="khmer"></spring:message>, <spring:message code="english"></spring:message>) </li>
+										<li><span class="pi-weight-600 pi-text-white">&nbsp; &nbsp; &nbsp;</span>(855)15 4 5555 2 (<spring:message code="khmer"></spring:message>, <spring:message code="english"></spring:message>) </li>
+										<li><span class="pi-weight-600 pi-text-white">&nbsp; &nbsp; &nbsp;</span>(855)17 52 81 69(<spring:message code="korean"></spring:message>, <spring:message code="english"></spring:message>) </li>
 										
 										<li>
 											<a href="#">
 		          								<span class="glyphicon glyphicon-envelope"></span>
 		        							</a>
 											
-											<span class="pi-weight-600 pi-text-white">Email:</span> 
+											<span class="pi-weight-600 pi-text-white"><spring:message code="email"></spring:message>:</span> 
 											<a href="mailto:info.denhtlai@gmail.com">info.denhtlai@gmail.com</a>
 										</li>
 									</ul>
