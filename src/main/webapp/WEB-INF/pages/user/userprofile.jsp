@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix='sec'
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,9 @@
 .left .nav a, .left .panel-title {
 	color: gray;
 }
-
+.userprofile .panel.panel-default.panel-body, .userprofile .table{
+padding: 5px;
+}
 .myaccount .list, .myaccount .won-list {
 	background-color: #fff;
 	border: 1px solid #ebebeb;
@@ -34,7 +37,7 @@
 	right: 0;
 }
 
-.main .img-responsive {
+#bid .img-responsive {
 	border: 4px solid #fff;
 	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .15);
 	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .15);
@@ -52,17 +55,27 @@
 	padding-right: 0px;
 	margin-left: 15px;
 }
-.userprofile .nav-pills>li.active>a,.userprofile
-.userprofile .nav-pills>li.active>a:focus, 
-.userprofile .nav-pills>li.active>a:hover{
+
+.userprofile .nav-pills>li.active>a, .userprofile
+.userprofile .nav-pills>li.active>a:focus, .userprofile .nav-pills>li.active>a:hover
+	{
 	background-color: #238fc7;
 }
 
-#credit{
+#credit, #invoice {
 	position: absolute;
-	top:0;
+	top: 0;
 	width: 97%;
-	display : none;
+	display: none;
+}
+#invoice {
+	position: relative;
+	top: 0;
+	width: 97%;
+	display: none;
+}
+#invoice hr {
+	padding: 20px 0px;
 }
 </style>
 </head>
@@ -85,7 +98,7 @@
 					<li class="active"><a href="" onclick="onBid()">Won</a></li>
 					<li class="active"><a href="" onclick="onBid()">Not Won</a></li>
 					<li><a href="#">WishList</a></li>
-					<li><a href="#">Invoice</a></li>
+					<li><a href="" onclick="onInvoice()">Invoice</a></li>
 				</ul>
 			</div>
 			<div class="panel panel-default">
@@ -104,22 +117,131 @@
 				<div class="list clearfix" ng-repeat="ub in userBidHistory">
 					<div class="row">
 						<div class="col-sm-2">
-							<a href="${pageContext.request.contextPath}/detail?Aid={{ub.auction.auction_id}}"> <img alt="" src="{{ub.image_path}}"
-								class="img-responsive" style="width:149px; height:130px;">
+							<a
+								href="${pageContext.request.contextPath}/detail?Aid={{ub.auction.auction_id}}">
+								<img alt="" src="{{ub.image_path}}" class="img-responsive"
+								style="width: 149px; height: 130px;">
 							</a>
 						</div>
 						<div class="col-sm-6">
 							<p>
 								<strong><a href="#">{{ub.auction.product.product_name}}</a></strong>
 							</p>
-							<p>Current Price$ {{ub.auction.current_price}} &nbsp;&nbsp;||&nbsp;&nbsp;Your Bid $ {{ub.user_latest_current_price}}</p>
+							<p>Current Price$ {{ub.auction.current_price}}
+								&nbsp;&nbsp;||&nbsp;&nbsp;Your Bid $
+								{{ub.user_latest_current_price}}</p>
 						</div>
-						<div class="col-sm-3 text-right">{{ub.remainingTime | durationview}}</div>
+						<div class="col-sm-3 text-right">{{ub.remainingTime |
+							durationview}}</div>
 					</div>
 					<button class="btn btn-default contact">Contact</button>
 				</div>
+
+			</div>
+
+
+			<!-- ============================ Invoice ===================== -->
+			<div class="panel panel-default" id="invoice">
+				<div class="panel-heading">
+					Invoices
+					<div class="btn-group pull-right">
+						<button class="btn btn-default btn-xs">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>Back
+						</button>
+					</div>
+				</div>
+				<div class="panel-body" id="printInvoice" >
+					<div class="row">
+						<div class="col-sm-5 pull-left">
+							<img alt=""
+								src="${pageContext.request.contextPath}/resources/static/images/denhtlai.png"
+								class="img-responsive" style="width: 80%">
+						</div>
+						<div class="col-sm-4 pull-right">
+							<h5>
+								Invoice # <br> <br> <strong>2015-04-23654789</strong>
+							</h5>
+						</div>
+					</div>
+					<hr>
+					<div class="row" style="padding-bottom: 150px;">
+						<div class="col-sm-4 text-center">
+							<strong>Bidder Info</strong><br> <span>Bidder: <sec:authentication
+									property="principal.user_name" /></span><br> <span>Address:
+								<sec:authentication property="principal.address" />
+							</span>
+						</div>
+						<div class="col-sm-5 text-center">
+							<strong>Created Date</strong><br> <span>20/08/2016</span>
+
+						</div>
+						<div class="col-sm-3 text-center">
+							<img alt=""
+								src="${pageContext.request.contextPath}/resources/static/images/paidStamp.png">
+						</div>
+					</div>
+					<table class="table">
+					<tbody>
+						<tr class="active">
+							<th>#</th>
+							<th>Items</th>
+							<th class="hidden-xs">Unit Price</th>
+							<th class="hidden-xs">Quantity</th>
+							<th>Total</th>
+							<td class="hidden-xs"></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td><a href="">LARGE
+									Sisatchanalai celadon dish Ser. No. RN-1642 (342697)</a>
+							</td>
+							<td class="hidden-xs">$580.00</td>
+							<td class="hidden-xs">3</td>
+							<td class="text-right">$1,740.00</td>
+						</tr>
+						<tr>
+							
+							<td colspan="3"></td>
+							<td><label>Subtotal</label></td>
+							<td>$1,740.00</td>
+							<td class="hidden-xs"></td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<td><label>Sales Tax</label></td>
+							<td>$0.00</td>
+							<td class="hidden-xs"></td>
+						</tr>
+						<tr class="success">
+							<td colspan="3"></td>
+							<td><label>Total</label></td>
+							<td><strong>$1,740.00</strong></td>
+							<td class="hidden-xs"></td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<td>
+								<div class="btn-group pull-right">
+									<button class="btn btn-default" style="margin-top: 25px;" id="print" 
+									onclick="printDiv('printInvoice')">
+										<i class="fa fa-print" aria-hidden="true"></i>
+									</button>
+								</div>
+							</td>
+							<td>
+								<div class="btn-group">
+									<button class="btn btn-default" style="margin-top: 25px;">
+										Submit
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
 				
 			</div>
+
 
 			<!-- ======================= TOP UP ==================== -->
 			<div class="panel panel-default" id="credit">
@@ -127,18 +249,21 @@
 				<div class="panel-heading">Information</div>
 				<div class="panel-body">
 					<div class="tab-content">
-						<div class="tab-panel" >
+						<div class="tab-panel">
 							<form class="form-horizontal" role="form">
 								<div class="form-group">
 									<label class="control-label col-sm-3">Topup Amount: </label>
 									<div class="col-sm-4">
 										<select class="form-control" id="curr" ng-model="curr">
-											<option value="" ng-selected="true">-- Choose Currency --</option>
-										    <option value="USD">US Dollar</option>
-										    <option value="KHR">Cambodian Riel</option>
+											<option value="" ng-selected="true">-- Choose
+												Currency --</option>
+											<option value="USD">US Dollar</option>
+											<option value="KHR">Cambodian Riel</option>
 										</select>
 									</div>
-									<label class="control-label col-sm-4">Total Amount: <font color="#238fc7">5000</font> Credit</label>
+									<label class="control-label col-sm-4">Total Amount: <font
+										color="#238fc7">5000</font> Credit
+									</label>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-4">
@@ -148,14 +273,18 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-3">
-										<button type="submit" class="btn btn-default" ng-disabled="balance < 1 || !(!!balance)">
-										<i class="fa fa-plus" aria-hidden="true"></i> Topup</button>
+										<button type="submit" class="btn btn-default"
+											ng-disabled="balance < 1 || !(!!balance)">
+											<i class="fa fa-plus" aria-hidden="true"></i> Topup
+										</button>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
+					
 				</div>
+
 			</div>
 
 		</div>
@@ -169,14 +298,16 @@
 <jsp:include page="../footer.jsp" />
 
 
-<sec:authentication property="principal.user_id" var="USER_ID"/>
-
-<script type="text/javascript"> var USER_ID = "${USER_ID}"; </script>
-
-<script src="${pageContext.request.contextPath}/resources/scripts/bidhistory-angular.js"></script>
+<sec:authentication property="principal.user_id" var="USER_ID" />
 
 <script type="text/javascript">
-	
+	var USER_ID = "${USER_ID}";
+</script>
+
+<script
+	src="${pageContext.request.contextPath}/resources/scripts/bidhistory-angular.js"></script>
+
+<script type="text/javascript">
 	$(document).ready(function() {
 		$("#menustand").hide(function() {
 			$("#right-content").removeClass('col-md-9');
@@ -184,16 +315,36 @@
 		$('#searchPanel').hide();
 	});
 	
+	 function printDiv(divName) {
+	     var printContents = document.getElementById(divName).innerHTML;
+	     var originalContents = document.body.innerHTML;
+
+	     document.body.innerHTML = printContents;
+
+	     window.print();
+
+	     document.body.innerHTML = originalContents;
+	 }
+	 
 	function onCredit() {
-	    document.getElementById("credit").style.display = "block";
-	    document.getElementById("bid").style.display = "none";
-	    
-	}
-	
-	function onBid() {
-	    document.getElementById("credit").style.display = "none";
-	    document.getElementById("bid").style.display = "block";
-	    
+		document.getElementById("credit").style.display = "block";
+		document.getElementById("bid").style.display = "none";
+		document.getElementById("invoice").style.display = "none";
+		
+
 	}
 
+	function onBid() {
+		document.getElementById("credit").style.display = "none";
+		document.getElementById("bid").style.display = "block";
+		document.getElementById("invoice").style.display = "none";
+
+	}
+	
+	function onInvoice() {
+		document.getElementById("credit").style.display = "none";
+		document.getElementById("bid").style.display = "none";
+		document.getElementById("invoice").style.display = "block";
+
+	}
 </script>
