@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<title>Register New Account</title>
+<title>Test WebSocket</title>
 <!-- header -->
 <jsp:include page="header.jsp" />
 
@@ -15,21 +15,23 @@
 
 <!-- content -->
 <div class="content" id="register">
-	<div class="container-fluid">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<small>CREATE AN ACCOUNT</small>
-				</div>
+	<div onload="disconnect()" class="container-fluid">
+		<noscript>
+			<h2 style="color: #ff0000">Seems your browser doesn't support
+				Javascript! Websocket relies on Javascript being enabled. Please
+				enable Javascript and reload this page!</h2>
+		</noscript>
+		<div>
+			<div>
+				<button id="connect" onclick="connect();">Connect</button>
+				<button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+			</div>
+			<div id="conversationDiv">
+				<label>What is your name?</label><input type="text" id="name" />
+				<button id="sendName" onclick="sendName();">Send</button>
+				<p id="response"></p>
 			</div>
 		</div>
-		<button class="translate" id="en">English</button>
-		<button class="translate" id="kh">ខ្មែរ</button>
-		<ul>
-			<li class="lang" key="home">Home</li>
-			<li class="lang" key="about">About Us</li>
-			<li class="lang" key="contact">Contact Us</li>
-		</ul>
 
 	</div>
 	<!-- end div container -->
@@ -38,31 +40,54 @@
 
 <!-- footer -->
 <jsp:include page="footer.jsp" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/scripts/translate-angular.js"></script>
 
-<!-- <script>
-	var arrLang = new Array();
-	arrLang['en'] = new Array();
-	arrLang['kh'] = new Array();
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/sockjs-0.3.4.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/stomp.js"></script>
+<script type="text/javascript">
+	var stompClient = null;
 
-	arrLang['en']['home'] = 'Home';
-	arrLang['en']['about'] = 'About Us';
-	arrLang['en']['contact'] = 'Contact Us';
-	arrLang['en']['desc'] = 'This is my description';
+	function setConnected(connected) {
+		document.getElementById('connect').disabled = connected;
+		document.getElementById('disconnect').disabled = !connected;
+		document.getElementById('conversationDiv').style.visibility = connected ? 'visible'
+				: 'hidden';
+		document.getElementById('response').innerHTML = '';
+	}
 
-	arrLang['kh']['home'] = 'ទំព័រដើម';
-	arrLang['kh']['about'] = 'អំពីយើង';
-	arrLang['kh']['contact'] = 'ទំនាក់ទំនង';
-	arrLang['kh']['desc'] = 'នេះគឺជាអត្ធបទ';
-
-	$(document).ready(function(e) {
-		$('.translate').click(function() {
-			var lang = $(this).attr('id');
-
-			$('.lang').each(function(index, element) {
-				$(this).text(arrLang[lang][$(this).attr('key')]);
+	function connect() {
+		var socket = new SockJS('/hello');
+		stompClient = Stomp.over(socket);
+		stompClient.connect({}, function(frame) {
+			setConnected(true);
+			console.log('Connected: ' + frame);
+			stompClient.subscribe('/topic/greetings', function(greeting) {
+				showGreeting(JSON.parse(greeting.body).content);
 			});
 		});
-	});
-</script> -->
+	}
+
+	function disconnect() {
+		if (stompClient != null) {
+			stompClient.disconnect();
+		}
+		setConnected(false);
+		console.log("Disconnected");
+	}
+
+	function sendName() {
+		var name = document.getElementById('name').value;
+		stompClient.send("/app/hello", {}, JSON.stringify({
+			'name' : name
+		}));
+	}
+
+	function showGreeting(message) {
+		var response = document.getElementById('response');
+		var p = document.createElement('p');
+		p.style.wordWrap = 'break-word';
+		p.appendChild(document.createTextNode(message));
+		response.appendChild(p);
+	}
+</script>
