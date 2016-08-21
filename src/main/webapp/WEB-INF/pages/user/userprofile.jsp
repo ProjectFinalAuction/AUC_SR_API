@@ -132,21 +132,23 @@
 								<div class="form-group">
 									<label class="control-label col-sm-3">Topup Amount: </label>
 									<div class="col-sm-4">
-										<select class="form-control" id="curr">
-										    <option>US Dollar</option>
-										    <option>Cambodian Riel</option>
+										<select class="form-control" id="curr" ng-model="curr">
+											<option value="" ng-selected="true">-- Choose Currency --</option>
+										    <option value="USD">US Dollar</option>
+										    <option value="KHR">Cambodian Riel</option>
 										</select>
 									</div>
+									<label class="control-label col-sm-4">Total Amount: <font color="#238fc7">5000</font> Credit</label>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-4">
-										<input ng-model="x" type="number" class="form-control"
+										<input ng-model="balance" type="number" class="form-control"
 											placeholder="Type your balance">
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-3">
-										<button type="submit" class="btn btn-default" ng-disabled="!(!!x)">
+										<button type="submit" class="btn btn-default" ng-disabled="balance < 1 || !(!!balance)">
 										<i class="fa fa-plus" aria-hidden="true"></i> Topup</button>
 									</div>
 								</div>
