@@ -67,11 +67,11 @@ public class BidHistoryController {
 	}
 	
 	// Get Bid History By UserName
-	@RequestMapping(value="/{user_name}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String, Object>> findBidHistoryByUserName(@PathVariable String user_name){
+	@RequestMapping(value="/{user_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> findBidByUserId(@PathVariable int user_id){
+		
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-bid-history-by-user-name/" + user_name, HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find_number_bid_by_user_id_for_each_auction_in_details/" + user_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}
-	
+	}	
 }

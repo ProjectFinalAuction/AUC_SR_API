@@ -4,6 +4,10 @@
 
 var app = angular.module("myApp", []);
 
+app.controller("auctionCtrl", function(){
+	
+});
+
 app.controller("myCtrl", [
 		'$scope',
 		'$http',
@@ -121,25 +125,23 @@ app.controller('bidHistory', function($scope,$http){
 	$scope.findAllBidHistory();
 })
 
+
 app.controller('userBidHistory', function($scope,$http){
 	
 	
 	
 	// select Bid History By UserName to display
-	$scope.findBidHistoryByUserName = function(user_name){
-		alert(user_name);
+	$scope.findBidByUserId = function(user_id){
+		
 		$http({
-			url: 'http://localhost:8080/rest/bidhistory/' + user_name,
-			method: 'GET',
-			
+			url: 'http://localhost:8080/rest/bidhistory/' + user_id,
 		}).then(function(respone){
 			$scope.userBidHistory = respone.data.DATA;
-			cosole.log($scope.userBidHistory );
+			console.log($scope.userBidHistory );
 		});
 	}
 	
-	$scope.findBidHistoryByUserName("Meng");
-	
+	$scope.findBidByUserId(USER_ID);
 	
 })
 

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix='sec' uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><spring:message code="cambodia_auction"></spring:message></title>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <!-- header -->
 <jsp:include page="../header.jsp" />
 <!-- menu -->
@@ -52,6 +52,7 @@
 	padding-right: 0px;
 	margin-left: 15px;
 }
+
 </style>
 </head>
 <!--  style="width: 77%;" -->
@@ -69,7 +70,7 @@
 					<h3 class="panel-title">Bidding</h3>
 				</div>
 				<ul class="nav nav-pills nav-stacked" style="padding: 1px 3px;">
-					<li><a href="#">Active</a></li>
+					<li class="active"><a href="#" >Active</a></li>
 					<li><a href="#">Won</a></li>
 					<li><a href="#">Not Won</a></li>
 					<li><a href="#">WishList</a></li>
@@ -88,51 +89,34 @@
 			</div>
 		</div>
 		<div class="col-md-10 col-xs-12 myaccount main">
-			<!-- 			<div class="panel panel-default"> -->
-			<!-- 				<div class="list clearfix" ng-repeat="ub in userBidHistory"> -->
-			<!-- 					<div class="row"> -->
-			<!-- 						<div class="col-sm-2"> -->
-			<!-- 							<a href="#" ng-repeat="proimg in ub.auction.product.gallery" -->
-			<!-- 								ng-show="$first"> <img alt="" src="{{proimg.image_path}}" -->
-			<!-- 								class="img-responsive"> -->
-			<!-- 							</a> -->
-			<!-- 						</div> -->
-			<!-- 						<div class="col-sm-6"> -->
-			<!-- 							<p> -->
-			<!-- 								<strong><a href="#">{{ub.auction.product.product_name}}</a></strong> -->
-			<!-- 							</p> -->
-			<!-- 							<p>{{ub.auction.current_price}} &nbsp;&nbsp;||&nbsp;&nbsp;</p> -->
-			<!-- 						</div> -->
-			<!-- 						<div class="col-sm-3 text-right">{{ub.auction.end_date}}</div> -->
-			<!-- 					</div> -->
-			<!-- 					<button class="btn btn-default contact">Contact</button> -->
-			<!-- 				</div> -->
-			<%-- 				<div class="list clearfix">
-<%-- 					<div class="row"> --%>
-			<%-- 						<div class="col-sm-2"> --%>
-			<%-- 							<a> --%>
-			<%-- 								<img alt="" src="${pageContext.request.contextPath}/resources/static/images/pophome.jpg" class="img-responsive"> --%>
-			<%-- 							</a> --%>
-			<%-- 						</div> --%>
-			<%-- 						<div class="col-sm-6"> --%>
-			<%-- 							<p></p> --%>
-			<%-- 							<p></p> --%>
-			<%-- 						</div> --%>
-			<%-- 						<div class="col-sm-3 text-right"> --%>
-			<%-- 							2 Days, 10 Hours --%>
-			<%-- 						</div> --%>
-			<%-- 					</div> --%>
-			<%-- 					<button class="btn btn-default contact">Contact</button> --%>
-			<%-- 				</div> --%>
-			<!-- 			</div> -->
-
-
 			<div class="panel panel-default">
+				<div class="list clearfix" ng-repeat="ub in userBidHistory">
+					<div class="row">
+						<div class="col-sm-2">
+							<a href="${pageContext.request.contextPath}/detail?Aid={{ub.auction.auction_id}}"> <img alt="" src="{{ub.image_path}}"
+								class="img-responsive" style="width:149px; height:130px;">
+							</a>
+						</div>
+						<div class="col-sm-6">
+							<p>
+								<strong><a href="#">{{ub.auction.product.product_name}}</a></strong>
+							</p>
+							<p>Current Price$ {{ub.auction.current_price}} &nbsp;&nbsp;||&nbsp;&nbsp;Your Bid $ {{ub.user_latest_current_price}}</p>
+						</div>
+						<div class="col-sm-3 text-right">{{ub.auction.end_date}}</div>
+					</div>
+					<button class="btn btn-default contact">Contact</button>
+				</div>
+				
+			</div>
 
-				<div class="panel-heading">Information</div>
+			<!-- ======================= TOP UP ==================== -->
+			<!-- <div class="panel panel-default" id="tab8">
+
+				<div class="panel-heading">Information Topup</div>
 				<div class="panel-body">
 					<div class="tab-content">
-						<div class="tab-pane" id="tab8">
+						<div class="tab-panel" >
 							<form class="form-horizontal" role="form">
 								<div class="form-group">
 									<label class="control-label col-sm-3">Topup Amount: </label>
@@ -159,7 +143,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
+
 		</div>
 	</div>
 </div>
@@ -169,35 +154,40 @@
 
 <!-- footer -->
 <jsp:include page="../footer.jsp" />
-<script
-	src="${pageContext.request.contextPath}/resources/scripts/bidhistory-angular.js"></script>
-<script>
-	app.controller('userBidHistory', function($scope, $http) {
 
-		alert($("#username").text());
 
-		// select Bid History By UserName to display
-		$scope.findBidHistoryByUserName = function(user_name) {
+<sec:authentication property="principal.user_id" var="USER_ID"/>
 
-			$http({
-				url : 'http://localhost:8080/rest/bidhistory/' + user_name,
-				method : 'GET',
+<script type="text/javascript"> var USER_ID = "${USER_ID}"; </script>
 
-			}).then(function(respone) {
-				$scope.userBidHistory = respone.data.DATA;
-				cosole.log($scope.userBidHistory);
-			});
-		}
+<script src="${pageContext.request.contextPath}/resources/scripts/bidhistory-angular.js"></script>
 
-		$scope.findBidHistoryByUserName("Meng");
-
-	})
-</script>
 <script type="text/javascript">
+	
 	$(document).ready(function() {
 		$("#menustand").hide(function() {
 			$("#right-content").removeClass('col-md-9');
 		});
 		$('#searchPanel').hide();
 	});
+	
+	/* var app = angular.module("myApp", []);
+	app.controller('userBidHistory', function($scope,$http){
+
+		// select Bid History By UserName to display
+		$scope.findBidByUserId = function(user_id){
+			alert(user_id);
+			$http({
+				url: 'http://localhost:8080/rest/bidhistory/' + user_id,
+				method: 'GET',
+				
+			}).then(function(respone){
+				$scope.userBidHistory = respone.data.DATA;
+				cosole.log($scope.userBidHistory );
+			});
+		}
+		
+		$scope.findBidByUserId(user_id);
+		
+	}) */
 </script>

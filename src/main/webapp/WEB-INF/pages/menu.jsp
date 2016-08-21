@@ -34,6 +34,9 @@
 								<spring:message code="welcome"></spring:message>  <sec:authentication property="principal.username" />
 							</a>
 							<h5 class="dropdown-menu" aria-labelledby="Preview">
+								<a href="${pageContext.request.contextPath}/userprofile" style="padding-bottom: 1px;">						
+								<i class="fa fa-user"></i> <spring:message code="my_account"></spring:message></a><br/><br/>
+								
 								<a href="${pageContext.request.contextPath}/logout" >
 								<i class="fa fa-sign-out"></i> <spring:message code="logout"></spring:message></a>
 							</h5>
