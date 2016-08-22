@@ -52,6 +52,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
+		
 		$http({
 			url : '/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'

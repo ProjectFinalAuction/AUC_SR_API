@@ -60,5 +60,14 @@
 <!-- footer -->
 <jsp:include page="footer.jsp" />
 	
+	
+<!--  Web Socket -->
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/sockjs-0.3.4.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/stomp.js"></script>
+<!-- End Web Socket -->		
+	
+	
 <script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>

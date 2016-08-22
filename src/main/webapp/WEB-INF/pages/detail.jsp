@@ -299,6 +299,10 @@
                     //showGreeting(JSON.parse(greeting.body).content);
                     // Call getAuctionById() after user bidding
                 	angular.element(document.getElementById('right-content')).scope().getAuctionById();
+                    
+                    //Call find all auctions to show real-time data for visitor who view our main page without click on specific product yet
+                	angular.element(document.getElementById('img')).scope().findAllAuctions();
+                    
                 });
             });
             
