@@ -41,7 +41,7 @@
 							</p>
 						</div>
 						<!-- end remain time -->
-						<div class="list-group-item" id="img" ng-controller="auctionCtrl">
+						<div class="list-group-item" id="img">
 							<div class="thumbnail" ng-repeat="proimg in gallery"
 								ng-show="$first">
 								<a href="images/newcar1.png" data-lightbox="example-set"
