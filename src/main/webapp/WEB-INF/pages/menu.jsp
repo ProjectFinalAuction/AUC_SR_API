@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <body ng-app="myApp">
-<div class="wrapper" ng-controller="auctionCtrl" id="mainPage">
+<div class="wrapper" ng-controller="auctionCtrl" id="mainMenuPage">
 <header>
 	<div class="container-fluid head">
 		<div class="container">
@@ -135,7 +135,9 @@
 			</div>
 		</div>
 	</div>
-
+<!-- Web Socket - create a button to call the function sendName when user bids product on the other page. This button is a trigger and it runs when user bids, and then it gets data after 1 second-->
+<button type="button" onclick="sendName()" id="wsButton" style="display:none">Web Socket</button>
+<!-- End test web socket -->
 		
 <script type="text/javascript">
 $("#dropdownmenu").click(function(){
@@ -196,5 +198,61 @@ $(function() {
 });
 
 </script>
+<!--  Web Socket -->
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/sockjs-0.3.4.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/stomp.js"></script>
+<script type="text/javascript">
+        var stompClient = null;
+        
+        function disconnect() {
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+            console.log("Disconnected");
+        }
+        
+        function connect() {
+        	if (stompClient != null) {
+                stompClient.disconnect();
+            }
+        	var socket = new SockJS('/hello');
+            stompClient = Stomp.over(socket);            
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/greetings', function(greeting){
+                    //showGreeting(JSON.parse(greeting.body).content);
+                    // Call getAuctionById() after user bidding
+                	//angular.element(document.getElementById('right-content')).scope().getAuctionById();
+                    
+                    //Call find all auctions to show real-time data for visitor who view our main page without click on specific product yet
+                	angular.element(document.getElementById('mainMenuPage')).scope().findAllAuctions();
+                    
+                });
+            });
+            
+        }
+        
+        
+        function sendName() {
+        	
+//         	alert("HELLO SEND NAME");
+            var name = "Hello"
+            stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
 
-	<!-- <!--  Static Translate  -->
+        }
+        
+        function showGreeting(message) {
+            alert(message);
+        }
+        
+        $(function(){    
+            setTimeout(function() {
+               $("wsButton").trigger('click');
+            },1);
+         });
+        
+ </script>
+ <!-- End WebSocket -->
+	

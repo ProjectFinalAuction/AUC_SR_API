@@ -68,6 +68,8 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 				$scope.setPagination(response.data.PAGINATION);
 				checkPagination = false;
 			}
+			
+			
 		});	
 	}
 	

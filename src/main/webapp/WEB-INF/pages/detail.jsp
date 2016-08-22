@@ -301,8 +301,8 @@
                 	angular.element(document.getElementById('right-content')).scope().getAuctionById();
                     
                     //Call find all auctions to show real-time data for visitor who view our main page without click on specific product yet
-                	angular.element(document.getElementById('img')).scope().findAllAuctions();
-                    
+                	//angular.element(document.getElementById('mainMenuPage')).scope().findAllAuctions();
+                    // we cannot call above function to work correctly, so we have to create a button on menu.jsp to be a trigger when user click on bid button
                 });
             });
             
