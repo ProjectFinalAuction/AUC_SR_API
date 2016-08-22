@@ -35,6 +35,7 @@ public class TopUpController {
 	public ResponseEntity<Map<String, Object>> addTopUp(@RequestBody AddTopUp addTopUp, @AuthenticationPrincipal User user){
 		
 		System.out.println(user.getUser_id());
+		addTopUp.setUser_id(user.getUser_id());
 		HttpEntity<AddTopUp> requst = new HttpEntity<AddTopUp>(addTopUp, header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-top-up", HttpMethod.POST, requst, Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), response.getStatusCode());

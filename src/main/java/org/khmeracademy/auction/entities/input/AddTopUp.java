@@ -4,7 +4,7 @@ import org.khmeracademy.auction.entities.User;
 
 public class AddTopUp {
 	private int top_up_id;
-	private User user;     // user object
+	private int user_id;     // user object
 	private String currency;
 	private double amount;
 
@@ -14,11 +14,11 @@ public class AddTopUp {
 	public void setTop_up_id(int top_up_id) {
 		this.top_up_id = top_up_id;
 	}
-	public User getUser() {
-		return user;
+	public int getUser_id() {
+		return user_id;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	public String getCurrency() {
 		return currency;

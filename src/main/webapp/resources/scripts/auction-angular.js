@@ -18,7 +18,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 5 +"&page=" + currentPage + "&productName="+$scope.productName,
+			url : '/rest/auction?limit=' + 5 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;
@@ -35,7 +35,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//TODO: TO LIST ALL SUPPLIER FOR CHOOSE TO ADD
 	$scope.findSupplersInProducts = function(){		
 		$http({
-			url : 'http://localhost:8080/rest/supplier/supplier-in-product',
+			url : '/rest/supplier/supplier-in-product',
 			method : 'GET'
 		}).then(function(response) {
 			$scope.supplier = response.data.DATA;
@@ -46,7 +46,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
 	$scope.findProductsHasSupplier = function(id){		
 		$http({
-			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
+			url : '/rest/product/product-of-supplier/'+id,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.product = response.data.DATA;
@@ -57,7 +57,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//TODO: SEARCH BY PRODUCT NAME
 	$scope.searchProName = function(proName){
 		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 5 +"&page=" + currentPage + "&productName="+proName,
+			url : '/rest/auction?limit=' + 5 +"&page=" + currentPage + "&productName="+proName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;
@@ -100,7 +100,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	$scope.getAuctionById = function(id){
 		$rootScope.rootID = id;
 		$http({
-			url: 'http://localhost:8080/rest/auction/'+id,
+			url: '/rest/auction/'+id,
 			method: 'GET'
 		}).then(function(response){
 			
@@ -123,7 +123,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	//	TODO: UPDATE FUNCTION 
 	$scope.updateAuction = function(){
 		$http({
-			url: 'http://localhost:8080/rest/auction',
+			url: '/rest/auction',
 			method: 'PUT',
 			data:{
 				"auction_id" : $rootScope.rootID,
@@ -149,7 +149,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 			    showConfirmButton : false
 			  },
 			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewauction';
+			    window.location.href = '/admin/viewauction';
 			});
 		});
 	}
@@ -169,7 +169,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 		function(isConfirm){ 
 			if (isConfirm) {
 				$http({
-					url: 'http://localhost:8080/rest/auction/'+ auction_id,
+					url: '/rest/auction/'+ auction_id,
 					
 					method: 'DELETE'
 				}).
@@ -225,7 +225,7 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 	//TODO: TO LIST ALL SUPPLIER FOR CHOOSE TO ADD
 	$scope.findSupplersInProducts = function(){		
 		$http({
-			url : 'http://localhost:8080/rest/supplier/supplier-in-product',
+			url : '/rest/supplier/supplier-in-product',
 			method : 'GET'
 		}).then(function(response) {
 			$scope.supplier = response.data.DATA;
@@ -236,7 +236,7 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 	//TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD
 	$scope.findProductsHasSupplier = function(id){		
 		$http({
-			url : 'http://localhost:8080/rest/product/product-of-supplier/'+id,
+			url : '/rest/product/product-of-supplier/'+id,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.product = response.data.DATA;
@@ -246,7 +246,7 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 	// TODO: add record function
 	$scope.addAuction = function() {
 		$http({
-			url : 'http://localhost:8080/rest/auction',
+			url : '/rest/auction',
 			method : 'POST',
 			data : {
 				"buy_price" : $scope.buy_price,
@@ -254,11 +254,11 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 				"created_by" : $scope.created_by,
 				"created_date" : $scope.created_date,
 				"current_price" : $scope.start_price,
-				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
+				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD HH:mm:ss"),
 				"increment_price" : $scope.increment_price,
 				"product_condition" : $scope.product_condition,
 				"product_id" : $scope.product_id,
-				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD"),
+				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD HH:mm:ss"),
 				"start_price" : $scope.start_price,
 				"status" : $scope.status
 			}
@@ -271,7 +271,7 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 			    showConfirmButton : false
 			  },
 			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewauction';
+			    window.location.href = '/admin/viewauction';
 			});
 		});
 	}
