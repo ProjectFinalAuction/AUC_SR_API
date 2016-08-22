@@ -3,6 +3,13 @@
  */
 
 var app = angular.module('myApp', []);
+
+
+app.controller('auctionCtrl', function(){
+	
+})
+
+
 app.controller('myCtrl', function($scope,$http,$rootScope){
 	// select all record to display
 	$scope.getAllUsers = function(){
@@ -17,7 +24,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	
 	// add record function
 	$scope.addUser = function(){
-//		alert($scope.user_name);
+		alert(1);
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({

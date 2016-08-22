@@ -40,6 +40,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/admin/viewauction").setViewName("/admin/viewauction");
 		registry.addViewController("/admin/updateauction").setViewName("/admin/update-auction");
 		registry.addViewController("/admin/bidhistory").setViewName("/admin/bidhistory");
+		registry.addViewController("/admin/topuphistory").setViewName("/admin/topuphistory");
+		registry.addViewController("/admin/addtopup").setViewName("/admin/addtopup");
 		registry.addViewController("/admin/uploadImage").setViewName("/admin/uploadImage");
 		registry.addViewController("/admin/update-supplier").setViewName("/admin/update-supplier");
 		registry.addViewController("/itemlist").setViewName("/itemlist");

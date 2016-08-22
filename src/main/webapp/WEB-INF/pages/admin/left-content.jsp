@@ -15,8 +15,12 @@
 							Supplier Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="${pageContext.request.contextPath}/admin/viewsupplier">Supplier List</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/addsupplier">Add Suppliers</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/viewsupplier">Supplier
+								List</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/addsupplier">Add
+								Suppliers</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
@@ -24,26 +28,28 @@
 							User Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li>
-							<a href="${pageContext.request.contextPath}/admin/viewuser">
-							Users List
-							</a>
-						</li>
-						<li>
-							<a href="${pageContext.request.contextPath}/admin/adduser">Add Users</a>
-						</li>
-					</ul>
-				</li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/viewuser">
+								Users List </a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/adduser">Add
+								Users</a></li>
+					</ul></li>
 
-				<li class="has_sub"><a href="javascript:void(0)" class="waves-effect"> 
-					<i class="fa fa-th" aria-hidden="true"></i>
-					<span>Category Management</span> 
-					<span class="menu-arrow"></span>
+				<li class="has_sub"><a href="javascript:void(0)"
+					class="waves-effect"> <i class="fa fa-th" aria-hidden="true"></i>
+						<span>Category Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="${pageContext.request.contextPath}/admin/viewcategory">Category List</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/viewbrand">Brand List</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/addcategory">Add Category & Brand</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/viewcategory">Category
+								List</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/viewbrand">Brand
+								List</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/addcategory">Add
+								Category & Brand</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
@@ -52,8 +58,12 @@
 						class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="${pageContext.request.contextPath}/admin/viewproduct">Products List</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/addproduct">Add Products</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/viewproduct">Products
+								List</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/addproduct">Add
+								Products</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
@@ -61,8 +71,12 @@
 							Auction Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="${pageContext.request.contextPath}/admin/viewauction">Auction List</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/addauction">Add Auction</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/viewauction">Auction
+								List</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/addauction">Add
+								Auction</a></li>
 					</ul></li>
 
 				<li class="has_sub"><a href="javascript:void(0)"
@@ -70,8 +84,24 @@
 						aria-hidden="true"></i><span> Bids</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
-						<li><a href="${pageContext.request.contextPath}/admin/bidhistory">Bid History</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/bidhistory">Bid
+								History</a></li>
 					</ul></li>
+				<li class="has_sub"><a href="javascript:void(0)"
+					class="waves-effect"> <i class="fa fa-cart-arrow-down"
+						aria-hidden="true"></i><span> TopUp Management</span> <span class="menu-arrow"></span>
+				</a>
+					<ul class="list-unstyled">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/topuphistory">TopUp
+								History</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/addtopup">Add TopUp
+							</a>
+						</li>
+					</ul>
+				</li>
 			</ul>
 			<div class="clearfix"></div>
 		</div>

@@ -16,9 +16,11 @@
 .left .nav a, .left .panel-title {
 	color: gray;
 }
-.userprofile .panel.panel-default.panel-body, .userprofile .table{
-padding: 5px;
+
+.userprofile .panel.panel-default.panel-body, .userprofile .table {
+	padding: 5px;
 }
+
 .myaccount .list, .myaccount .won-list {
 	background-color: #fff;
 	border: 1px solid #ebebeb;
@@ -37,7 +39,7 @@ padding: 5px;
 	right: 0;
 }
 
-#bid .img-responsive {
+#bid .img-responsive, #won .img-responsive {
 	border: 4px solid #fff;
 	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .15);
 	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .15);
@@ -56,9 +58,8 @@ padding: 5px;
 	margin-left: 15px;
 }
 
-.userprofile .nav-pills>li.active>a, .userprofile
-.userprofile .nav-pills>li.active>a:focus, .userprofile .nav-pills>li.active>a:hover
-	{
+.userprofile .nav-pills>li.active>a, .userprofile .nav-pills>li.active>a:focus,
+	.userprofile .nav-pills>li.active>a:hover {
 	background-color: #238fc7;
 }
 
@@ -68,14 +69,23 @@ padding: 5px;
 	width: 97%;
 	display: none;
 }
+
 #invoice {
 	position: relative;
 	top: 0;
 	width: 97%;
 	display: none;
 }
+
 #invoice hr {
 	padding: 20px 0px;
+}
+
+#won {
+	position: relative;
+	top: 0;
+	width: 97%;
+	display: none;
 }
 </style>
 </head>
@@ -95,8 +105,8 @@ padding: 5px;
 				</div>
 				<ul class="nav nav-pills nav-stacked" style="padding: 1px 3px;">
 					<li class="active"><a href="" onclick="onBid()">Active</a></li>
-					<li class="active"><a href="" onclick="onBid()">Won</a></li>
-					<li class="active"><a href="" onclick="onBid()">Not Won</a></li>
+					<li><a href="" onclick="onWon()">Won</a></li>
+					<li><a href="">Not Won</a></li>
 					<li><a href="#">WishList</a></li>
 					<li><a href="" onclick="onInvoice()">Invoice</a></li>
 				</ul>
@@ -113,8 +123,20 @@ padding: 5px;
 			</div>
 		</div>
 		<div class="col-md-10 col-xs-12 myaccount main">
+
+			<!-- ============================ BID ACTIVE ===================== -->
 			<div class="panel panel-default" id="bid">
-				<div class="list clearfix" ng-repeat="ub in userBidHistory">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-sm-2 hidden-xs"></div>
+						<div class="col-sm-6">
+							Title<br>Current Price &nbsp;|&nbsp; My Bid
+						</div>
+						<div class="col-sm-3">Remaining Time</div>
+					</div>
+				</div>
+				<div class="list clearfix" ng-repeat="ub in userBidHistory"
+					ng-if="ub.auction.status=='1'">
 					<div class="row">
 						<div class="col-sm-2">
 							<a
@@ -128,7 +150,7 @@ padding: 5px;
 								<strong><a href="#">{{ub.auction.product.product_name}}</a></strong>
 							</p>
 							<p>Current Price$ {{ub.auction.current_price}}
-								&nbsp;&nbsp;||&nbsp;&nbsp;Your Bid $
+								&nbsp;&nbsp;|&nbsp;&nbsp;Your Bid $
 								{{ub.user_latest_current_price}}</p>
 						</div>
 						<div class="col-sm-3 text-right">{{ub.remainingTime |
@@ -137,6 +159,51 @@ padding: 5px;
 					<button class="btn btn-default contact">Contact</button>
 				</div>
 
+			</div>
+
+
+			<!-- ============================ BID WON ===================== -->
+			<div class="panel panel-default" id="won">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-sm-2 hidden-xs"></div>
+						<div class="col-sm-8">
+							Title<br>Won DateTime
+							<div class="row">
+								<div class="col-sm-4" id="qty">Quantity</div>
+								<div class="col-sm-4">Price</div>
+								<div class="col-sm-4">Total</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list clearfix" ng-repeat="ub in userBidHistory"
+					ng-if="ub.auction.status=='3'">
+					<div class="row">
+						<div class="col-sm-2">
+							<a
+								href="${pageContext.request.contextPath}/detail?Aid={{ub.auction.auction_id}}">
+								<img alt="" src="{{ub.image_path}}" class="img-responsive"
+								style="width: 149px; height: 130px;">
+							</a>
+						</div>
+						<div class="col-sm-8">
+							<p>
+								<strong><a href="#">{{ub.auction.product.product_name}}</a></strong><br>
+								{{ub.auction.end_date}}
+							</p>
+							<div class="row">
+								<div class="col-sm-4">1</div>
+								<div class="col-sm-4">
+									<strong>$ {{ub.auction.current_price}}</strong>
+								</div>
+								<div class="col-sm-4">$ {{ub.auction.current_price * 1}}</div>
+							</div>
+
+						</div>
+					</div>
+					<button class="btn btn-default contact" ng-click="checkOut(ub)">Checkout</button>
+				</div>
 			</div>
 
 
@@ -150,7 +217,7 @@ padding: 5px;
 						</button>
 					</div>
 				</div>
-				<div class="panel-body" id="printInvoice" >
+				<div class="panel-body" id="printInvoice">
 					<div class="row">
 						<div class="col-sm-5 pull-left">
 							<img alt=""
@@ -165,14 +232,14 @@ padding: 5px;
 					</div>
 					<hr>
 					<div class="row" style="padding-bottom: 150px;">
-						<div class="col-sm-4 text-center">
+						<div class="col-sm-4 ">
 							<strong>Bidder Info</strong><br> <span>Bidder: <sec:authentication
-									property="principal.user_name" /></span><br> <span>Address:
-								<sec:authentication property="principal.address" />
-							</span>
+									property="principal.user_name" />
+							</span><br> 
+							Address: <span id="address"></span>
 						</div>
 						<div class="col-sm-5 text-center">
-							<strong>Created Date</strong><br> <span>20/08/2016</span>
+							<strong>Created Date</strong><br> <span id="created-date">20/08/2016</span>
 
 						</div>
 						<div class="col-sm-3 text-center">
@@ -181,65 +248,63 @@ padding: 5px;
 						</div>
 					</div>
 					<table class="table">
-					<tbody>
-						<tr class="active">
-							<th>#</th>
-							<th>Items</th>
-							<th class="hidden-xs">Unit Price</th>
-							<th class="hidden-xs">Quantity</th>
-							<th>Total</th>
-							<td class="hidden-xs"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><a href="">LARGE
-									Sisatchanalai celadon dish Ser. No. RN-1642 (342697)</a>
-							</td>
-							<td class="hidden-xs">$580.00</td>
-							<td class="hidden-xs">3</td>
-							<td class="text-right">$1,740.00</td>
-						</tr>
-						<tr>
-							
-							<td colspan="3"></td>
-							<td><label>Subtotal</label></td>
-							<td>$1,740.00</td>
-							<td class="hidden-xs"></td>
-						</tr>
-						<tr>
-							<td colspan="3"></td>
-							<td><label>Sales Tax</label></td>
-							<td>$0.00</td>
-							<td class="hidden-xs"></td>
-						</tr>
-						<tr class="success">
-							<td colspan="3"></td>
-							<td><label>Total</label></td>
-							<td><strong>$1,740.00</strong></td>
-							<td class="hidden-xs"></td>
-						</tr>
-						<tr>
-							<td colspan="3"></td>
-							<td>
-								<div class="btn-group pull-right">
-									<button class="btn btn-default" style="margin-top: 25px;" id="print" 
-									onclick="printDiv('printInvoice')">
-										<i class="fa fa-print" aria-hidden="true"></i>
-									</button>
-								</div>
-							</td>
-							<td>
-								<div class="btn-group">
-									<button class="btn btn-default" style="margin-top: 25px;">
-										Submit
-									</button>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+						<tbody>
+							<tr class="active">
+								<th>#</th>
+								<th>Items</th>
+								<th class="hidden-xs">Quantity</th>
+								<th class="hidden-xs">Unit Price</th>
+								<th>Total</th>
+								<td class="hidden-xs"></td>
+
+							</tr>
+							<tr>
+								<td>1</td>
+								<td><a href=""><span id="item-name"></span></a></td>
+								<td class="hidden-xs">1</td>
+								<td class="hidden-xs">$ <span id="unit-price"></span></td>
+								<td class="hidden-xs">$ <span id="total-price"></span></td>
+							</tr>
+							<tr>
+
+								<td colspan="3"></td>
+								<td><label>Subtotal</label></td>
+								<td>$ <span id="sub-total"></span></td>
+								<td class="hidden-xs"></td>
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+								<td><label>Sales Tax</label></td>
+								<td>$0.00</td>
+								<td class="hidden-xs"></td>
+							</tr>
+							<tr class="success">
+								<td colspan="3"></td>
+								<td><label>Total</label></td>
+								<td>$ <strong id="total"></strong></td>
+								<td class="hidden-xs"></td>
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+								<td>
+									<div class="btn-group pull-right">
+										<button class="btn btn-default" style="margin-top: 25px;"
+											id="print" onclick="printDiv('printInvoice')">
+											<i class="fa fa-print" aria-hidden="true"></i>
+										</button>
+									</div>
+								</td>
+								<td>
+									<div class="btn-group">
+										<button class="btn btn-default" style="margin-top: 25px;">
+											Submit</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				
+
 			</div>
 
 
@@ -282,7 +347,7 @@ padding: 5px;
 							</form>
 						</div>
 					</div>
-					
+
 				</div>
 
 			</div>
@@ -314,23 +379,23 @@ padding: 5px;
 		});
 		$('#searchPanel').hide();
 	});
-	
-	 function printDiv(divName) {
-	     var printContents = document.getElementById(divName).innerHTML;
-	     var originalContents = document.body.innerHTML;
 
-	     document.body.innerHTML = printContents;
+	function printDiv(divName) {
+		var printContents = document.getElementById(divName).innerHTML;
+		var originalContents = document.body.innerHTML;
 
-	     window.print();
+		document.body.innerHTML = printContents;
 
-	     document.body.innerHTML = originalContents;
-	 }
-	 
+		window.print();
+
+		document.body.innerHTML = originalContents;
+	}
+
 	function onCredit() {
 		document.getElementById("credit").style.display = "block";
 		document.getElementById("bid").style.display = "none";
 		document.getElementById("invoice").style.display = "none";
-		
+		document.getElementById("won").style.display = "none";
 
 	}
 
@@ -338,13 +403,21 @@ padding: 5px;
 		document.getElementById("credit").style.display = "none";
 		document.getElementById("bid").style.display = "block";
 		document.getElementById("invoice").style.display = "none";
+		document.getElementById("won").style.display = "none";
 
 	}
-	
+
 	function onInvoice() {
 		document.getElementById("credit").style.display = "none";
 		document.getElementById("bid").style.display = "none";
 		document.getElementById("invoice").style.display = "block";
+		document.getElementById("won").style.display = "none";
+	}
 
+	function onWon() {
+		document.getElementById("credit").style.display = "none";
+		document.getElementById("bid").style.display = "none";
+		document.getElementById("invoice").style.display = "none";
+		document.getElementById("won").style.display = "block";
 	}
 </script>

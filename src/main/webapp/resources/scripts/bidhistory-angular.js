@@ -8,7 +8,7 @@ app.controller("auctionCtrl", function(){
 	
 });
 
-app.controller("myCtrl", [
+/*app.controller("myCtrl", [
 		'$scope',
 		'$http',
 		'$timeout',
@@ -28,11 +28,11 @@ app.controller("myCtrl", [
 						"CurrentBid" : d.bid_current_price,
 						"AuctionEndDateTime" : d.end_date
 					} ];
-					/*
+					
 					 * , { "Name" : "ទូរស័ព្ទ IPhone ៧", "NumberOfBids" : 1000,
 					 * "CurrentBid" : 999, "AuctionEndDateTime" : "2016-08-20
 					 * 07:50:50" }
-					 */
+					 
 					// ];
 					processAuctionItems(data);
 					//
@@ -107,8 +107,9 @@ app.filter('durationview', [
 						+ " វិនាទី";
 			};
 		} ]);
+*/
 
-
+// TODO: =========BID HISTORY FOR BACK-END============
 app.controller('bidHistory', function($scope,$http){
 	
 	// select all record to display
@@ -125,7 +126,7 @@ app.controller('bidHistory', function($scope,$http){
 	$scope.findAllBidHistory();
 })
 
-
+// TODO: =========BID HISTORY BY USER_ID FOR FRONT-END============
 app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
 	
 	// Show or Hide Panel
@@ -144,8 +145,20 @@ app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', func
 			$scope.processAuctionItems($scope.userBidHistory);
 		});
 	}
+	
+	/*checkout*/
+	$scope.checkOut = function(item){
+		onInvoice();
+		$('#created-date').html(item.auction.end_date);
+		$('#item-name').html(item.auction.product.product_name);
+		$('#unit-price').html(item.auction.current_price);
+		$('#total-price').html(item.auction.current_price);
+		$('#sub-total').html(item.auction.current_price);
+		$('#total').html(item.auction.current_price);
+		$('#address').html(item.user.address);
+	}
 
-    $scope.tick = function () {
+    /*$scope.tick = function () {
         $scope.currentTime = moment();
         $scope.processAuctionItems($scope.userBidHistory);
         $timeout($scope.tick, 1000);
@@ -157,14 +170,10 @@ app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', func
     
     $timeout($scope.tick, 1000);
     $timeout($scope.userBidHistory, 10000);
-	$scope.currentTime = moment(); 
+	$scope.currentTime = moment();*/ 
 	
 	$scope.findBidByUserId(USER_ID);
-	
-	
-	
-	
-	
+		
 }]);
 
 app.factory('datetime', ['$timeout', function ($timeout) {

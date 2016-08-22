@@ -66,7 +66,7 @@ public class BidHistoryController {
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	
-	// Get Bid History By UserName
+	// Get Bid History By User_Id
 	@RequestMapping(value="/{user_id}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> findBidByUserId(@PathVariable int user_id){
 		
