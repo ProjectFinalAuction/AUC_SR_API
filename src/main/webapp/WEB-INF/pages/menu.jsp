@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <body ng-app="myApp">
-<div class="wrapper" ng-controller="auctionCtrl">
+<div class="wrapper" ng-controller="auctionCtrl" id="mainPage">
 <header>
 	<div class="container-fluid head">
 		<div class="container">
