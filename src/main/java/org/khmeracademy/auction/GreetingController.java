@@ -27,15 +27,16 @@ public class GreetingController {
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(HelloMessage message) throws Exception {
-        Thread.sleep(3000); // simulated delay
+        Thread.sleep(1000); // simulated delay
         
         
         
-        HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-by-id/" + 1, HttpMethod.GET , request , Map.class) ;
+//        HttpEntity<Object> request = new HttpEntity<Object>(header);
+//		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-by-id/" + 1, HttpMethod.GET , request , Map.class) ;
 		//return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		
-		return new Greeting("Hello, " + message.getName() + response.getBody().toString() + "!");
+		//return new Greeting("Hello, " + message.getName() + response.getBody().toString() + "!");
+        return new Greeting("Hello, " + message.getName()  + "!");
     }
     
     /*@RequestMapping(value="/{auction_id}", method = RequestMethod.GET)

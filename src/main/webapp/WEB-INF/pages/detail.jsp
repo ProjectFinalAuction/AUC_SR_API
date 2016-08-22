@@ -271,6 +271,60 @@
 <!-- footer -->
 <jsp:include page="footer.jsp" />
 
+
+<!--  Web Socket -->
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/sockjs-0.3.4.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/static/js/stomp.js"></script>
+<script type="text/javascript">
+        var stompClient = null;
+        
+        function disconnect() {
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+            console.log("Disconnected");
+        }
+        
+        function connect() {
+        	if (stompClient != null) {
+                stompClient.disconnect();
+            }
+        	var socket = new SockJS('/hello');
+            stompClient = Stomp.over(socket);            
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/greetings', function(greeting){
+                    //showGreeting(JSON.parse(greeting.body).content);
+                    // Call getAuctionById() after user bidding
+                	angular.element(document.getElementById('right-content')).scope().getAuctionById();
+                });
+            });
+            
+        }
+        
+        
+        function sendName() {
+        	
+//         	alert("HELLO SEND NAME");
+            var name = "Hello"
+            stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+
+        }
+        
+        function showGreeting(message) {
+            alert(message);
+        }
+        
+ </script>
+ <!-- End WebSocket -->
+
+
+
+
+
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
 <script type="text/javascript">
@@ -280,3 +334,4 @@
 		});
 	});
 </script>
+

@@ -202,7 +202,10 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
     	  	}else{
     	  		alert(response.data.MESSAGE);
     	  	}
-    	  	$scope.getAuctionById();
+    	  	// Web Socket
+    	  	sendName();
+    	  	// return web socket
+    	  	//$scope.getAuctionById();   -- No need to call because we call in sendName() of web socket (page detail.jsp)
     	  	$('#exampleInputAmount').val("");
       });
 	}
@@ -258,3 +261,6 @@ app.filter('durationview', ['datetime', function (datetime) {
         return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
     };
 }]);
+
+// connect Web Socket
+connect();
