@@ -220,9 +220,13 @@
 
 
 												<input
-													class="fileupload btn btn-purple btn-md w-md waves-effect waves-light"
-													type="file" name="image" id="image-input" multiple />
-
+													class=" btn btn-purple btn-md waves-effect waves-light"
+													type="file" name="image" id="image-input" multiple /><br/><br/>
+												<button class="btn  btn-default waves-effect waves-light" id="Reset" onclick="resetImage()">
+													Cancel 
+												</button>
+											
+												
 
 											</div>
 
@@ -243,12 +247,11 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="text-center p-20">
-						<button type="button" class="btn w-sm btn-white waves-effect">Cancel</button>
+						<button type="button" class="btn w-sm btn-white waves-effect" onclick="resetForm()">Reset</button>
 						<button type="button"
 							class="btn w-sm btn-default waves-effect waves-light"
 							ng-click="addProduct($event)" id="save_button">Save</button>
-						<button type="button" class="btn w-sm btn-white waves-effect"
-							ng-click="testMethod()">test</button>
+							
 
 					</div>
 				</div>
@@ -277,6 +280,7 @@
 	var app = angular.module('myApp', []);
 	app.controller('addImageCtrl', function($rootScope, $scope, $http) {
 	
+//		======================================get brand======================================
 		$rootScope.getBrand=function(){
 	    		//alert("a");
 	           $http.get("http://localhost:8080/rest/brand")
@@ -291,7 +295,7 @@
 	    	
 	    	
 	    	
-//------------------------get category
+//======================================get category======================================
 				 $rootScope.getCategory=function(){
 			    		
 				           $http.get("http://localhost:8080/rest/category/find-main-category")
@@ -307,7 +311,7 @@
 				    	$rootScope.getCategory();
 				
 				    	
-//------------------------get Supplier
+//======================================get Supplier======================================
 
 	 				$rootScope.getSupplier = function(){
 						
@@ -325,13 +329,17 @@
 		
 		
 // 	---------------------------------View Images after select images--------------------------------------//
+		
+			
+			
 			
 		var inputLocalFont = document.getElementById("image-input");
 		inputLocalFont.addEventListener("change",previewImages,false); //bind the function to the input
 
 		function previewImages(){
-		    var fileList = this.files;
 
+		    var fileList = this.files;
+			
 		    var anyWindow = window.URL || window.webkitURL;
 
 		        for(var i = 0; i < fileList.length; i++){
@@ -344,16 +352,18 @@
 		          document.getElementById("preview_area").style.border = "2px solid white";
 		          
 		        }
+					// 		        alert(this.files[0].size);
 
 
 		}
-//	 	------------------End---------------View Images after select images--------------------End------------------//	
+		
+	
 
 
 
 
 		
-//---------------add product funtion 
+//========================================add product funtion=================================
 		
 		
 		
@@ -444,9 +454,82 @@
 
 
 	});
+	
+	
+	
+	
 </script>
+
+
+
+
+
+
+
+<script>
+
+// function ValidateFileUpload() {
+
+// var fuData = document.getElementById('fileChooser');
+// var FileUploadPath = fuData.value;
+// var MAX_SIZE = 5242880;
+
+// if (FileUploadPath == '') {
+//     alert("Please upload an image");
+
+// } else {
+//     var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+
+
+//     if (Extension == "gif" || Extension == "png" || Extension == "bmp"
+//                 || Extension == "jpeg" || Extension == "jpg") {
+
+
+//             if (fuData.files && fuData.files[0]) {
+
+//                 var size = fuData.files[0].size;
+
+//                 if(size > MAX_SIZE){
+//                     alert("Maximum file size exceeds");
+//                     return;
+//                 }else{
+//                     var reader = new FileReader();
+
+//                     reader.onload = function(e) {
+//                         $('#blah').attr('src', e.target.result);
+//                     }
+
+//                     reader.readAsDataURL(fuData.files[0]);
+//                 }
+//             }
+
+//     } 
+
+
+// else {
+//         alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
+//     }
+// }}
+
+
+
+</script>
+
+
+
+
 
 
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
+<script type="text/javascript">
+function resetImage(){
+ 	$('#preview_area').html('');
+}
+function resetForm(){
+	 $("form")[0].reset();
+	 $('#preview_area').html('');
+}
+</script>
