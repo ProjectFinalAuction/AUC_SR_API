@@ -19,6 +19,9 @@ public class AddProduct {
 	private int qty;
 	private int brand_id;
 	private int status;
+	private List<MultipartFile> images;
+	
+	
 	
 	
 	public int getStatus() {
@@ -28,7 +31,7 @@ public class AddProduct {
 		this.status = status;
 	}
 
-	private List<MultipartFile> images;
+	
 	
 	
 	public List<MultipartFile> getImages() {
