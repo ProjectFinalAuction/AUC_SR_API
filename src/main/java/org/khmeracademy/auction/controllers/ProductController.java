@@ -146,6 +146,8 @@ public class ProductController {
 					for (Integer i : deletedImageId){
 						formData.add("imageDelete", i);						
 					}
+				}else{
+					formData.add("imageDelete", 0);
 				}
 				
 				formData.add("json_string", URLEncoder.encode(jsonString, "UTF-8"));
