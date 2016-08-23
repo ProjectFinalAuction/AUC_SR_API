@@ -33,4 +33,13 @@ public class UserCreditController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/"+ user_id + "/find-user-credit-by-id/", HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	//TODO: GET ALL USER CREDIT WITH ENDING AMOUNT 
+		@RequestMapping(value="/user-ending-amount", method = RequestMethod.GET)
+		public ResponseEntity<Map<String , Object>>findAllUserCreditWithEndingAmount(){
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-active-user-credit-history-with-ending-amount", HttpMethod.GET , request , Map.class) ;
+			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		}
+	
 }

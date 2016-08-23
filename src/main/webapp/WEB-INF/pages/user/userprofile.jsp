@@ -215,6 +215,9 @@
 						<button class="btn btn-default btn-xs">
 							<i class="fa fa-chevron-left" aria-hidden="true"></i>Back
 						</button>
+						<button class="btn btn-default btn-xs">
+							<i class="fa fa-money" aria-hidden="true"></i>Mark Paid
+						</button>
 					</div>
 				</div>
 				<div class="panel-body" id="printInvoice">
@@ -297,7 +300,7 @@
 								<td>
 									<div class="btn-group">
 										<button class="btn btn-default" style="margin-top: 25px;">
-											Submit</button>
+											Save</button>
 									</div>
 								</td>
 							</tr>

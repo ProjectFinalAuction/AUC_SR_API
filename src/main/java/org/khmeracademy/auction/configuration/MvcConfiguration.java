@@ -40,10 +40,10 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/admin/viewauction").setViewName("/admin/viewauction");
 		registry.addViewController("/admin/updateauction").setViewName("/admin/update-auction");
 		registry.addViewController("/admin/bidhistory").setViewName("/admin/bidhistory");
-		registry.addViewController("/admin/topuphistory").setViewName("/admin/topuphistory");
-		registry.addViewController("/admin/addtopup").setViewName("/admin/addtopup");
+		registry.addViewController("/admin/viewtopup").setViewName("/admin/viewtopup");
 		registry.addViewController("/admin/uploadImage").setViewName("/admin/uploadImage");
 		registry.addViewController("/admin/update-supplier").setViewName("/admin/update-supplier");
+		registry.addViewController("/admin/saleinvoice").setViewName("/admin/saleinvoice");
 		registry.addViewController("/itemlist").setViewName("/itemlist");
 		registry.addViewController("/group-items").setViewName("/group-items");
 		registry.addViewController("/viewtranslate").setViewName("/viewtranslate");
@@ -53,7 +53,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/contactus").setViewName("/contactus");
 		registry.addViewController("/aboutus").setViewName("/aboutus");
 		registry.addViewController("/userprofile").setViewName("/user/userprofile");
-	
 	}
 
 }

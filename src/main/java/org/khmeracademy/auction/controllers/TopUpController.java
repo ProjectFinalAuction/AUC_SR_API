@@ -40,6 +40,14 @@ public class TopUpController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-top-up", HttpMethod.POST, requst, Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), response.getStatusCode());
 	}
+	
+	
+	@RequestMapping(value="/add-top-up", method=RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> addTopUpAdmin(@RequestBody AddTopUp addTopUp){
+		HttpEntity<AddTopUp> requst = new HttpEntity<AddTopUp>(addTopUp, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-top-up", HttpMethod.POST, requst, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), response.getStatusCode());
+	}
 }
 
 

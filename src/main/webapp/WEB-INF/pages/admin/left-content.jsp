@@ -89,17 +89,23 @@
 								History</a></li>
 					</ul></li>
 				<li class="has_sub"><a href="javascript:void(0)"
-					class="waves-effect"> <i class="fa fa-cart-arrow-down"
-						aria-hidden="true"></i><span> TopUp Management</span> <span class="menu-arrow"></span>
+					class="waves-effect"><i class="fa fa-credit-card" aria-hidden="true"></i>
+					<span> TopUp Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/topuphistory">TopUp
-								History</a></li>
+							href="${pageContext.request.contextPath}/admin/viewtopup">View TopUp
+							</a></li>
+					</ul>
+				</li>
+				<li class="has_sub"><a href="javascript:void(0)"
+					class="waves-effect"><i class="fa fa-file-text-o" aria-hidden="true"></i>
+					<span> Invoice Management</span> <span class="menu-arrow"></span>
+				</a>
+					<ul class="list-unstyled">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/addtopup">Add TopUp
-							</a>
-						</li>
+							href="${pageContext.request.contextPath}/admin/saleinvoice">Sale Invoice
+							</a></li>
 					</ul>
 				</li>
 			</ul>
