@@ -34,7 +34,7 @@ public class AuctionController {
 	private String WS_URL;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findAllAuctions(AuctionFilter filter, Pagination pagination, @AuthenticationPrincipal User user){
+	public ResponseEntity<Map<String , Object>> findAllAuctions(AuctionFilter filter, Pagination pagination){
 		
 		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-auctions")
 						.queryParam("page",pagination.getPage())

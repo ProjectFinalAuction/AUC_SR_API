@@ -2,15 +2,19 @@ package org.khmeracademy.auction.controllers;
 
 import java.util.Map;
 
+import org.khmeracademy.auction.entities.User;
 import org.khmeracademy.auction.entities.input.AddCategory;
 import org.khmeracademy.auction.entities.input.AddUser;
 import org.khmeracademy.auction.entities.input.UserLogin;
+import org.khmeracademy.auction.filtering.UserFilter;
+import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/rest/user")
@@ -35,9 +40,15 @@ public class UserController {
 	
 	// Get all Users
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> getAllUsers(){
+	public ResponseEntity<Map<String , Object>> getAllUsers(UserFilter filter, Pagination pagination){
+
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/get-all-users")
+				.queryParam("page",pagination.getPage())
+				.queryParam("limit", pagination.getLimit())
+				.queryParam("userName", filter.getUserName())
+				.toUriString();
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-all-users", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(url , HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

@@ -12,9 +12,6 @@
 	href="${pageContext.request.contextPath}/resources/static/assets/plugins/magnific-popup/dist/magnific-popup.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-datatables-editable/datatables.css" />
-	
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
@@ -327,6 +324,3 @@
 	<jsp:include page="footer.jsp"></jsp:include>
 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
-
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootpag/1.0.4/jquery.bootpag.min.js"></script>

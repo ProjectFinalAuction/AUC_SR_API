@@ -9,26 +9,74 @@ app.controller('auctionCtrl', function(){
 	
 })
 
-
-app.controller('myCtrl', function($scope,$http,$rootScope){
+app.controller('viewUserCtrl', function($scope,$http,$rootScope){
 	// select all record to display
+	$scope.userName="";
+	var checkPagination = true;
+	var currentPage = 1;
+	
 	$scope.getAllUsers = function(){
+//		alert($scope.pages);
 		$http({
-			url: 'http://localhost:8080/rest/user',
+			url: '/rest/user?limit=' + 5 +"&page=" + currentPage + "&userName="+$scope.userName,
 			method: 'GET',
 			
-		}).then(function(respone){
-			$scope.user = respone.data.DATA;
+		}).then(function(response){
+			$scope.user = response.data.DATA;
+			$scope.pages = response.data.PAGINATION.PAGE;
+			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
+			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
+			if(checkPagination){
+				$scope.setPagination(response.data.PAGINATION);
+				checkPagination = false;
+			}
+			
 		});
 	}
 	
+	//TODO: CTEATE PAGINATION BUTTON
+	$scope.setPagination = function(pagination){
+		console.log("PAGINATION==>", pagination);
+		$("#PAGINATION").bootpag({
+	        total: pagination.TOTAL_PAGES,
+	        page: pagination.PAGE,
+	        maxVisible: 10,
+	        leaps: true,
+	        firstLastUse: true,
+	        first: 'First',
+	        last: 'Last',
+	        wrapClass: 'pagination',
+	        activeClass: 'active',
+	        disabledClass: 'disabled',
+	        nextClass: 'next',
+	        prevClass: 'prev',
+	        lastClass: 'last',
+	        firstClass: 'first'
+	    }); 
+		$("#PAGINATION ul").addClass("pagination");
+	}
+	
+	$('#PAGINATION').bootpag().on("page", function(event, page){
+		checkPagination = false;
+		currentPage = page;
+		$scope.getAllUsers();
+	});
+	
+	// load all record
+	
+	$scope.getAllUsers();
+})
+
+
+app.controller('myCtrl', function($scope,$http,$rootScope){
+	
+	
 	// add record function
 	$scope.addUser = function(){
-		alert(1);
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({
-			url: 'http://localhost:8080/rest/user',
+			url: '/rest/user',
 			method: 'POST',
 			data:{
 				  "address": $scope.address,
@@ -56,7 +104,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			    showConfirmButton : false
 			  },
 			  function(){
-//			    window.location.href = 'http://localhost:8080/admin/viewuser';
+//			    window.location.href = '/admin/viewuser';
 			});
 			
 		});
@@ -104,7 +152,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({
-			url: 'http://localhost:8080/rest/user',
+			url: '/rest/user',
 			method: 'PUT',
 			data:{
 				  "user_id" : id,
@@ -140,7 +188,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	//Get user_name and password to login
 	$scope.userLogin = function(user_name,password){
 		$http({  
-			url:'http://localhost:8080/rest/user',
+			url:'/rest/user',
 			method: 'POST',
 			data:{
 				"user_name": $scope.user_name,
@@ -164,7 +212,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		function(isConfirm){ 
 			if (isConfirm) {
 				$http({
-					url: 'http://localhost:8080/rest/user/'+id,
+					url: '/rest/user/'+id,
 					
 					method: 'DELETE'
 				}).
@@ -192,9 +240,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		});					
 	}
 	
-	// load all record
 	
-	$scope.getAllUsers();
 	$scope.addUser();
 	
 

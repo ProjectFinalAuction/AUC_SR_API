@@ -73,5 +73,8 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/moment.js"></script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootpag/1.0.4/jquery.bootpag.min.js"></script>
 </body>
 </html>
