@@ -36,7 +36,10 @@ app.controller('mailCtrl', function($scope,$http,$rootScope){
 			    showConfirmButton : true
 			  },
 			  function(){				
-					
+				$('#last_name').val("");
+				$('#first_name').val("");
+				$('#email').val("");
+				$('#message').val("");
 			});
 			
 		});
