@@ -67,6 +67,19 @@ public class AuctionController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-auction-brand-by-category-id/" + id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	//Find all best bidding auction
+	@RequestMapping(value="/find-all-best-bidding-auctions", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findAllBestBiddingAuctions(AuctionFilter filter, Pagination pagination){
+		
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-best-bidding-auctions")
+						.queryParam("page",pagination.getPage())
+						.queryParam("limit", pagination.getLimit())
+						.queryParam("productName", filter.getProductName())
+						.toUriString();
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(url, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addAuction(@RequestBody AddAuction addAuction){

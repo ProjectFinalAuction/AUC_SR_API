@@ -3,6 +3,7 @@
  */
 
 var app = angular.module('myApp', ['angular.filter']);
+
 app.controller('categoryCtrl', function($scope,$http,$rootScope){
 	
 	// Get All Category
