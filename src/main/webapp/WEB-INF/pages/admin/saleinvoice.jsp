@@ -86,7 +86,7 @@
 						
 						<div id="datatable-buttons_wrapper"
 							class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-							<div class="dt-buttons btn-group">
+							<!-- <div class="dt-buttons btn-group">
 								<a class="btn btn-default buttons-copy buttons-html5 btn-sm"
 									tabindex="0" aria-controls="datatable-buttons"><span>Copy</span></a>
 								<a class="btn btn-default buttons-csv buttons-html5 btn-sm"
@@ -100,7 +100,7 @@
 								<label>Search:<input type="search"
 									class="form-control input-sm" placeholder=""
 									aria-controls="datatable-buttons"></label>
-							</div>
+							</div> -->
 							<table id="datatable-buttons"
 								class="table table-hover table-actions-bar dataTable no-footer"
 								role="grid" aria-describedby="datatable-buttons_info">
@@ -136,22 +136,17 @@
 									</tr>
 								</thead>
 								<tbody style="color: #ffffff;">
-									<tr ng-repeat=" inv in invoiceDetail | orderBy:'-invoice.invoice_id'">
-									<td>{{inv.invoice.invoice_date}}<br><br>{{inv.invoice.user.contact}}</td>
-									<td>Admin<br><br>{{inv.invoice.user.user_name}}</td>
-									<td><a href="#">{{inv.invoice.invoice_id}}</a><br><br><br></td>
-									<td>{{inv.auction.product.product_name}}<br><br>{{inv.invoice.user.address}}</td>
-									<td>{{inv.buy_price}}<br><br><br></td>
-									<td>{{inv.qty}}<br><br>{{inv.invoice.user.first_name}}</td>
-									<td>{{inv.buy_price * inv.qty}}<br><br>{{inv.invoice.user.last_name}}</td>
-									<td ng-if="inv.invoice.status=='1'">
-										<img alt="" src="${pageContext.request.contextPath}/resources/static/images/paidStamp.png"
-										class="img-responsive">
-									</td>
-									<td ng-if="inv.invoice.status=='0'"><i class="fa fa-check fa-lg text-primary"
-												aria-hidden="true"></i>
-									</td>
-								</tr>
+									
+									<tr>
+							            <td>Jonas Alexander</td>
+							            <td>Developer</td>
+							            <td>San Francisco</td>
+							            <td>30</td>
+							            <td>2010/07/14</td>
+							            <td>$86,500</td>
+							            <td>2010/07/14</td>
+							            <td>$86,500</td>
+							        </tr>
 								</tbody>
 							</table>
 							
@@ -189,6 +184,10 @@
 		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/buttons.html5.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/buttons.print.min.js"></script>
+	<script 
+		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/vfs_fonts.js"></script>
+	<script 
+		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/jszip.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/static/assets/pages/datatables.init.js"></script>
 
@@ -207,4 +206,7 @@
 			});
 		});
 		TableManageButtons.init();
+		
+	
+
 	</script>

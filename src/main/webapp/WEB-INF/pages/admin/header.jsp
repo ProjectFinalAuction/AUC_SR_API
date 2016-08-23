@@ -16,6 +16,7 @@
  
  <!-- DataTables -->
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
  
 <!--Form Wizard-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery.steps/demo/css/jquery.steps.css" />
