@@ -1,20 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
+<style>
+	#browse_gallery {
+			display:none;
+	}
+	
+	
+	.icon-jfi-trash{
+		display:none;
+	}
+	
+	#u_submit{
+		margin-left:220px;
+	}
+	
+	
+</style>
 
 
 
-<!--Stylesheets-->
+
 	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 
 
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
 <!-- header -->
@@ -94,7 +110,8 @@
   								<th>Supplier</th>
                           		<th>Category</th>  
                           		<th>Quantity</th>   
-                          		<th>Brand</th>                 
+                          		<th>Brand</th> 
+                          		<th>Status</th>                
 								<th style="min-width: 90px;">Action</th>
 							</tr>
 					</thead>
@@ -123,13 +140,13 @@
 	                          <td>{{pro.category.category_name}}</td>
 	                          <td>{{pro.qty}}</td>
 	                          <td>{{pro.brand.brand_name}}</td>
-	                          
+	                          <td>{{pro.status}}</td>
 	                          	
 	                          
 	                          <td>
-	                          	<a href="#" data-toggle="modal" data-target=".enterData" class="table-action-btn" 
-	                          		ng-click="getProductByID(pro,pro.gallery)"><i class="md md-edit text-warning"></i></a>
-	                          	<a href="#" class="table-action-btn"><i class="md md-delete text-danger"></i></a>
+		                          	<a href="#" data-toggle="modal" data-target=".enterData" class="table-action-btn" 
+		                          		ng-click="getProductByID(pro,pro.gallery)"><i class="md md-edit text-warning"></i></a>
+		                          	<a href="#" class="table-action-btn" ng-click="deleteByID(pro)"><i class="md md-delete text-danger"></i></a>
 	                          </td>
                         </tr>
                         
@@ -215,12 +232,23 @@
 						<div class="col-lg-10">
 							<select id="lname" name="lname" type="text" class="form-control" ng-model="pro_brand_to_update">
 								
+								
 								<option value="">{{probrand}}</option>
 								<option ng-repeat="brand in Brand" value="{{brand.brand_id}}">{{brand.brand_name}}</option>
 							
 					
 							</select>
 							<!-- input-group -->
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="control-label col-lg-2">Status *</label>
+						<div class="col-lg-10">
+						
+						<input id="lname" name="lname" type="text"
+								class="form-control" ng-model="prostatus" value={{prostatus}}>
+							
 						</div>
 					</div>
 					
@@ -263,7 +291,7 @@
 						<label for="" class="col-sm-2 form-control-label"></label>
 						<div class="col-sm-10">	
 							<button type="button" class="btn btn-success btn-md"
-								ng-model="user_id" ng-click="updateProduct()"
+								ng-model="user_id" ng-click="updateProduct($event)"
 								id="u_submit" data-dismiss="modal">Update</button>
 						</div>
 					</div>
@@ -275,6 +303,8 @@
 <!--  end modal  -->
           
  </div>
+ 
+
         
 <script type="text/javascript">
 	var app = angular.module('myApp', []);
@@ -282,7 +312,7 @@
 			
 			
 			
-		//****************get brand
+//****************get brand
 			$rootScope.getBrand=function(){
 	    		//alert("a");
 	           $http.get("http://localhost:8080/rest/brand")
@@ -296,7 +326,7 @@
 	    	$rootScope.getBrand();
 			
 			
-		//****************get category
+//****************get category
 			$rootScope.getCategory=function(){
 	    		
 		           $http.get("http://localhost:8080/rest/category/find-main-category")
@@ -313,7 +343,7 @@
 		    	
 		    	
 		    	
-			//***********Supplier 
+//***********Supplier 
 		    	$rootScope.getSupplier = function(){
 					
 						$http.get("http://localhost:8080/rest/supplier")
@@ -342,13 +372,13 @@
         }
     	$rootScope.getProductsMethod();
 		
-      
-       
-       
-           
+    	
+    	
+    	
     	$scope.getProductByID = function(proObject,progallery){
     		
-    		/* $scope.sample = [];
+    		
+    		$scope.sample = [];
     		var image = {};
     		$.each(progallery, function(index, item){
     			var image = {
@@ -357,16 +387,18 @@
 	    			size :  '',
 	    			file : item.image_path,
     			};
-    			sample.push(image);
-    		}); */
+    			$scope.sample.push(image);
+    		}); 
     		
-    		var frmData = new FormData();
+    		console.log($scope.sample);
+    		
+    	
     		
     		
-    		///**********
+    		///*****declare a product object*****
     		$scope.productObj = proObject;
     		
-    		//to get That product's category id
+    	
     		$scope.thisPro_category_id = $scope.productObj.category.category_id
     		$scope.proid = proObject.product_id;
     		$scope.proname = proObject.product_name;
@@ -376,35 +408,16 @@
     		$scope.proqty = proObject.qty;
     		$scope.probrand = proObject.brand.brand_name;
     		$scope.prostatus = proObject.status;
-    		alert(proObject.status);
-//     		alert($scope.proid);
-//     		for (var i = 0; i < progallery.length; i++) {
-//     			//$scope.gallery = progallery[0].image_path;
-//         		//console.log($scope.gallery);
-// 			}
-//     		for (var i = 0; i < progallery.length; i++) {
-// 				frmData.append("images", progallery[i]);
-// 				alert(frmData.values("images"));
-// 			}
+    		
+			//     		alert(proObject.status);
 
-/*     		$rootScope.getProductsMethod=function(){
-               $http.get("http://localhost:8080/rest/product")
-              		.then(function(response) {
-              		$rootScope.products = response.data.DATA;
-              		console.log('All', $rootScope.products);
-              		// alert(response.data.DATA.gallery.image_path); 
-    				console.log(response.data.DATA);
-    				
-      			});
-            }
-        	$rootScope.getProductsMethod(); */
     		
     	}
     	
     	
     	//**************Update Product
-    	$rootScope.updateProduct = function(){
-  
+    	$rootScope.updateProduct = function(e){
+  			e.preventDefault();
     		
     		if ($scope.pro_category_to_update == undefined) {
 				//alert("category no update");
@@ -414,26 +427,39 @@
 			}
     		
     		if($scope.pro_brand_to_update == undefined){
-				//alert("brand no update");
+			
 				$scope.pro_brand_to_update = $scope.productObj.brand.brand_id;
-				//alert($scope.pro_brand_to_update);
+			
 			}
     		
     		if($scope.pro_supplier_to_update == undefined){
-				//alert("supplier no update");
 				$scope.pro_supplier_to_update = $scope.productObj.supplier.supplier_id;
-				//alert($scope.pro_supplier_to_update);
+				
 			}
+    		
+    		if($scope.pro_status_to_update == undefined){
+				$scope.pro_status_to_update = $scope.productObj.status;
+				
+			}
+    	
 
-			alert($scope.pro_brand_to_update +"brand");
-			alert($scope.pro_category_to_update + "category");
-			alert($scope.pro_supplier_to_update+ "supplier");
+// 			alert($scope.pro_brand_to_update +"brand");
+// 			alert($scope.pro_category_to_update + "category");
+// 			alert($scope.pro_supplier_to_update+ "supplier");
+			alert($scope.pro_status_to_update+ "status");
+				
+		
+
+// ==== ==== === == => append Array to frmdata
+		
+			var frmData = new FormData();
 			
-    		$http({
-    			
-			url : 'http://localhost:8080/rest/product',
-			method : 'PUT',
-			data :{ 
+//  			for (var i = 0; i < newFiles['gallery'].length; i++) {
+// 				alert(1);
+// 				frmData.append("imageAdd", newFiles['gallery'][i]);
+// 			}
+
+			var data = {
 					"product_id":$scope.proid,
 					"product_name": $scope.proname,
 			  		"product_description": $scope.prodescription,
@@ -441,73 +467,120 @@
 				  	"category_id": $scope.pro_category_to_update,	  
 				  	"qty": $scope.proqty,
 				  	"brand_id":$scope.pro_brand_to_update,
-				  	"status": $scope.prostatus
-			}					
-    		
-		}).then(function(response) {
-			console.log(response.data)
-			
-			swal({ 
-				title: "Success!",
-				text: "Product has been updated.",
-			    type: "success",
-			    timer : 500,
-			    showConfirmButton : false
-			  }, function(){
-			    window.location.href = 'http://localhost:8080/admin/viewproduct';
-			});
-		
-		}, function(error) {
-			console.log(error.data);
-			alert('failed to update !!');
-			window.location.href = 'http://localhost:8080/admin/viewproduct';
-			
-		});
-    	}
-    	//////////--------------------------------------Manage Images------------------------------------////////////
-    	 $scope.sample = [
-    	                  {
-    	                      name: "1",
-    	                      type: "image/jpg",
-    	                      size: '',
-    	                      file: "http://www.gettyimages.com/gi-resources/images/Homepage/Hero/US/MAR2016/prestige-587705839_full.jpg"
-    	                  },
-    	                  {
-    	                      name: "2",
-    	                      size: '',
-    	                      type: "image/jpg",
-    	                      file: "http://i.imgur.com/RRUe0Mo.png"
-    	                  }
-    	              ];
+// 				  	"status": ($scope.prostatus) ? 1:0	
+					"status":$scope.prostatus
+			};
 
-    	              $scope.show = function(){
-    	                  console.log('File To Send', validatedFiles);
-    	                  console.log('Image Name to Delete', deletedImageName);
-    	              }
+			frmData.append("json_string", JSON.stringify(data));
+ 			frmData.append("imageDelete", deletedImageNames['gallery']);
+
+    		$http({   			
+				url : 'http://localhost:8080/rest/product/updateproduct',
+				method : 'POST',
+				data : frmData,			
+				transformRequest : angular.identity,
+				headers : {
+					'Content-Type' : undefined
+				}
+			}).then(function(response) {
+				console.log(response.data)
+				
+				swal({ 
+					title: "Success!",
+					text: "Product has been updated.",
+				    type: "success",
+				    timer : 1000,
+				    showConfirmButton : false
+				  }, function(){
+				    window.location.href = 'http://localhost:8080/admin/viewproduct';
+				});
+			
+			}, function(error) {
+				console.log(error.data);
+				alert('failed to update !!');
+				//window.location.href = 'http://localhost:8080/admin/viewproduct';
+				
+			});
+    }
+	
     	
+    	
+  //*******************delete method
+  
+    	$scope.deleteByID = function(proObj){
+    			
+    			swal({
+    			title: "Are you sure?",
+    			text: "Your will not be able to recover this product!",
+    			type: "warning",
+    			showCancelButton: true,
+    			confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
+    			cancelButtonText: "No, cancel plx!",
+    			closeOnConfirm: false,
+    			closeOnCancel: false }, 
+    			function(isConfirm){ 
+    				if (isConfirm) {
+    					$http({
+    						url: 'http://localhost:8080/rest/product/delete-product/'+proObj.product_id,
+    						method: 'DELETE'
+    					}).
+    					success(function(response){
+    						console.log(response.data)
+    						window.location.href = 'http://localhost:8080/admin/viewproduct';
+    						});
+    					swal({
+    						title : "Deleted!", 
+    						text : "The user has been deleted.", 
+    						type : "success",
+    						timer : 1000,
+    						showConfirmButton : false
+    					});
+
+    				
+    				} else {
+    					swal({
+    						title : "Cancelled!", 
+    						text : "Your user is not deleted :)", 
+    						type : "error",
+    						timer : 1000,
+    						showConfirmButton : false
+    					});
+    				}
+    			});					
+    		}
 	});
 		
-		
-		app.directive('myFilter', [function() {
-            return {
-                restrict: 'A',       
-                link: function(scope, element) {
-                    // wait for the last item in the ng-repeat then call init
-                    if(scope.$last) {
-                        initJqueryFiler('#gallery', scope.sample);
-                    }
-                }
-            };
-            /**** Usable array ****/
-            // => validatedFiles
-            // => deletedImageName
-
-        }]);
+	
+	
+	// costomize the library of images	
+	app.directive('myFilter', [function() {
+	          return {
+	              restrict: 'A',       
+	              link: function(scope, element) {
+	                  // wait for the last item in the ng-repeat then call init
+	                  if(scope.$last) {
+	                  	// Remove
+	                  //	document.getelementById('browse_gallery').css();
+	                 
+	                  	$('div.jFiler.jFiler-theme-dragdropbox').remove();
+	              		$('#content > span:last-child').after('<input type="file" name="files[]" id="gallery" multiple="multiple">');
+	                    initJqueryFiler(['#gallery'], [scope.sample]);
+	                  }
+	              }
+	          };
+	  	/**** Usable array ****/
+         // => validatedFiles = Array of File
+         // => deletedImageName = Array of Old Image Name
+	
+     }]);
 
 </script>
 
+
+
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
+
 <!--jQuery-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/jquery.filer.min.js?v=1.0.5"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/custom.js?v=1.0.5"></script>     

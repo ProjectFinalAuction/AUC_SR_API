@@ -1,8 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+
+<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+
+
+
 <style type="text/css">
 .thumb-md {
 	border: 1px solid #000;
@@ -12,7 +19,7 @@
 /* 		border: 2px solid white ; */
 /* 	} */
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
 <!-- header -->
@@ -35,7 +42,7 @@
 				<div class="col-sm-12">
 					<h4 class="page-title">Product Management</h4>
 					<ol class="breadcrumb">
-						<li><a href="#">DENH TLAI</a></li>
+						<li><a href="#">iWant Auction</a></li>
 						<li><a href="#">eCommerce</a></li>
 						<li class="active">Add/Edit</li>
 					</ol>
@@ -282,12 +289,9 @@
 
 	    	$rootScope.getBrand();
 	    	
+	    	
+	    	
 //------------------------get category
-
-// 				$rootScope.testSupp=function(){
-// 					alert($scope.pro_supplier);
-			
-// }
 				 $rootScope.getCategory=function(){
 			    		
 				           $http.get("http://localhost:8080/rest/category/find-main-category")
@@ -302,9 +306,10 @@
 				        }
 				    	$rootScope.getCategory();
 				
+				    	
 //------------------------get Supplier
 
-	 					$rootScope.getSupplier = function(){
+	 				$rootScope.getSupplier = function(){
 						
 	 						$http.get("http://localhost:8080/rest/supplier")
 	 		          		 .then(function(response) {
