@@ -33,7 +33,7 @@
 					alt="..." class="img-thumbnail" style="height: 180px;"></a>
 				<div class="caption descript">
 					<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}" class="title">{{a.product.product_name}}</a>
-					<h5 class="lang" key="remaining_day">{{a.remainingTime | durationview}}</h5>
+					<h5>{{a.remainingTime | durationview}}</h5>
 					<p>
 						<span class="price" style="margin-right:20px;">{{a.current_price | currency}}</span>{{a.num_bid}} <spring:message code="bids"></spring:message></span>
 					</p>

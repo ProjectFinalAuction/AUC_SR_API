@@ -17,7 +17,7 @@ app.controller("auctionCtrl", function(){
 			var getAuctionItems = function(id) {
 
 				$http({
-					url : 'http://localhost:8080/rest/auction/bid/' + id,
+					url : '/rest/auction/bid/' + id,
 					method : 'GET'
 				}).then(function(response) {
 					d = response.data.DATA;
@@ -115,7 +115,7 @@ app.controller('bidHistory', function($scope,$http){
 	// select all record to display
 	$scope.findAllBidHistory = function(){
 		$http({
-			url: 'http://localhost:8080/rest/bidhistory',
+			url: '/rest/bidhistory',
 			method: 'GET',
 			
 		}).then(function(respone){
@@ -139,7 +139,7 @@ app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', func
 	$scope.findBidByUserId = function(user_id){
 		
 		$http({
-			url: 'http://localhost:8080/rest/bidhistory/' + user_id,
+			url: '/rest/bidhistory/' + user_id,
 		}).then(function(response){
 			$scope.userBidHistory = response.data.DATA;
 			$scope.processAuctionItems($scope.userBidHistory);
@@ -176,6 +176,9 @@ app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', func
 		
 }]);
 
+
+// find remaining date/time
+/*
 app.factory('datetime', ['$timeout', function ($timeout) {
 	
     var duration = function (timeSpan) {
@@ -209,7 +212,38 @@ app.filter('durationview', ['datetime', function (datetime) {
         return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
     };
 }]);
+*/
+//==== end find remaining date/time
 
 
 
+// viewBidHistory at front-end when user click on bidhistory buttion at bidding interface
+app.controller('bidHistoryFrontEndCtrl',['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
+	
+	$scope.findBidHistoryByAuctionId = function(auction_id){
+		$http({
+			url: '/rest/bidhistory/find-num-bid-and-bidder-in-auction-product-by-auc-id/' + 1,
+			method: 'GET'
+		}).then(function(response){
+			$scope.userBidHistory = response.data.DATA;
+			//////
+			
+			/// code here
+			
+		});
+	}
+	$scope.findBidHistoryByAuctionId(1);
+	
+	
+	
+	//========= remaing time
+	// load by auction id
+    /*
+	$timeout($scope.tick, 1000);
+    $timeout($scope.auc_detail, 10000);
+	$scope.currentTime = moment();
+	*/
+	//===================
+	
+}]);
 
