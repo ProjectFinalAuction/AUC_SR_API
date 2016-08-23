@@ -28,17 +28,17 @@
 		<!-- ============ thumbnail Section ============= -->
 		<div class="col-sm-6 col-md-3 product" style="padding-right: 0px;" ng-repeat="a in auction">
 			<div class="thumbnail" ng-repeat="proimg in a.product.gallery" ng-show="$first" style="position: relative;">
-				<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}"><img
+				<a href="/detail/{{a.auction_id}}"><img
 					src="{{proimg.image_path}}"
 					alt="..." class="img-thumbnail" style="height: 180px;"></a>
 				<div class="caption descript">
-					<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}" class="title">{{a.product.product_name}}</a>
-					<h5>{{a.remainingTime | durationview}}</h5>
+					<a href="/detail/{{a.auction_id}}" class="title">{{a.product.product_name}}</a>
+					<h5 class="lang" key="remaining_day">{{a.remainingTime | durationview}}</h5>
 					<p>
 						<span class="price" style="margin-right:20px;">{{a.current_price | currency}}</span>{{a.num_bid}} <spring:message code="bids"></spring:message></span>
 					</p>
 					<p class="text-center">
-						<a href="${pageContext.request.contextPath}/detail?gws_rd=cr&{{a.product.category.category_name}}&ei=gGm1VbP-He_aKoTEy&=lovE100%f&Aid={{a.auction_id}}&site=PPvgSov&{{a.product.product_name}}"
+						<a href="/detail/{{a.auction_id}}"
 						 class="btn btn-default"
 							role="button"><font color="black">
 							<i class="fa fa-gavel" aria-hidden="true"></i> <spring:message code="bid_now"></spring:message></font> </a>

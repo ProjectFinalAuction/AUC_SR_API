@@ -68,8 +68,6 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 				$scope.setPagination(response.data.PAGINATION);
 				checkPagination = false;
 			}
-			
-			
 		});	
 	}
 	
@@ -140,12 +138,12 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 
 //TODO: SHOW AUCTON TO DETAIL ITEM VIEW CLIENTS
 app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope) {	
-	$scope.ac_id = $('#ac_id').val();
-
+//	$scope.ac_id = $('#ac_id').val();
+	var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
 	// TODO: get one record function
 	$scope.getAuctionById = function(id){
 		$http({
-			url: '/rest/auction/' + $scope.ac_id,
+			url: '/rest/auction/' + id,
 			method: 'GET'
 		}).then(function(response){			
 			$scope.category_name = response.data.DATA.product.category.category_name;
@@ -196,20 +194,40 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
           method: 'POST',
           url: '/rest/bidhistory',
           data: {
-          	"auction_id" : $scope.ac_id,
+          	"auction_id" : id,
           	"current_price" : $('#exampleInputAmount').val()
           }
       }).then(function (response) {
     	  	if(response.data.CODE=="0000"){
     	  		alert("YOU CANNOT BID MORE. YOUR AMOUNT HAS ONLY " + response.data.DATA);
     	  	}else{
-    	  		alert(response.data.MESSAGE);
+    	  		swal({   
+    	  			title: "Bid Now!",   
+    	  			text: "Your Amount is $" + $('#exampleInputAmount').val(),   
+    	  			type: "info",   
+    	  			showCancelButton: true,   
+    	  			closeOnConfirm: false,   
+    	  			showLoaderOnConfirm: true, 
+    	  		}, function(){   
+    	  			setTimeout(function(){     
+    	  				swal({ 
+	        				title: response.data.MESSAGE,
+	        			    type: "success",
+	        			    timer : 1000,
+	        			    showConfirmButton : false
+    	  				});
+    	  				// Web Socket
+    	        	  	sendName();
+    	        	  	// return web socket
+    	        	  	$('#exampleInputAmount').val("");
+    	  			}, 1000); 
+    	  		});
+//    	  		alert(response.data.MESSAGE);
+    	  		
     	  	}
-    	  	// Web Socket
-    	  	sendName();
-    	  	// return web socket
+    	  	
     	  	//$scope.getAuctionById();   -- No need to call because we call in sendName() of web socket (page detail.jsp)
-    	  	$('#exampleInputAmount').val("");
+    	  	
       });
 	}
 	
@@ -227,7 +245,7 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
     $timeout($scope.tick, 1000);
     $timeout($scope.auc_detail, 10000);
 	$scope.currentTime = moment(); 
-	$scope.getAuctionById();
+	$scope.getAuctionById(id);
 //	$scope.findTotalBidCurrentPrice();
 }]);
 

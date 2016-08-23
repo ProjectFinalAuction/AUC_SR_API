@@ -153,10 +153,10 @@
 													ng-disabled="price < (current_price + increment_price) || !(!!price)"><spring:message
 														code="submit_bid"></spring:message></button>
 											</sec:authorize> <sec:authorize access="!isAuthenticated()">
-												<a class="btn btn-block"
+												<button class="btn btn-block" type="button"
 													style="width: 50%; float: left; background-color: #43b3f3; color: white"
 													data-toggle="modal" data-target="#login"><spring:message
-														code="bid_now"></spring:message></a>
+														code="bid_now"></spring:message></button>
 											</sec:authorize></td>
 
 									</tr>
@@ -278,6 +278,7 @@
 <script
 	src="${pageContext.request.contextPath}/resources/static/js/stomp.js"></script>
 <script type="text/javascript">
+		var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
         var stompClient = null;
         
         function disconnect() {
@@ -298,7 +299,7 @@
                 stompClient.subscribe('/topic/greetings', function(greeting){
                     //showGreeting(JSON.parse(greeting.body).content);
                     // Call getAuctionById() after user bidding
-                	angular.element(document.getElementById('right-content')).scope().getAuctionById();
+                	angular.element(document.getElementById('right-content')).scope().getAuctionById(id);
                     
                     //Call find all auctions to show real-time data for visitor who view our main page without click on specific product yet
                 	//angular.element(document.getElementById('mainMenuPage')).scope().findAllAuctions();
