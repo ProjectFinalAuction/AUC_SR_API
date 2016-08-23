@@ -158,6 +158,35 @@ app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', func
 		$('#address').html(item.user.address);
 	}
 
+	//=================================================================
+	//TODO: INSERT BID PRICE TO BID HISTORY 
+	$scope.addTopUp = function(){
+		$http({
+          method: 'POST',
+          url: '/rest/top-up',
+          data: {
+        	  "amount": $scope.balance,
+        	  "currency": $('.selectCurr').val(),
+          }
+      }).then(function (response) {
+    	  	$scope.ending_amount = response.data.DATA.ending_amount;
+    	  	if(response.data.CODE=="9999"){
+    	  		alert("YOUR TOP UP BALANCE " + response.data.DATA.amount);
+    	  	}
+//    	  	alert(response.data.DATA.ending_amount);
+      });
+	}
+	
+	$scope.userCredit = function(userID){
+		$http({
+	          method: 'GET',
+	          url: '/rest/user-credit/'+ userID
+	      }).then(function (response) {
+	    	  	$scope.ending_amount = response.data.DATA.ending_amount;
+	      });
+	}
+	$scope.userCredit(USER_ID);
+	//===============================================
     /*$scope.tick = function () {
         $scope.currentTime = moment();
         $scope.processAuctionItems($scope.userBidHistory);
@@ -209,6 +238,7 @@ app.filter('durationview', ['datetime', function (datetime) {
         return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
     };
 }]);
+
 
 
 

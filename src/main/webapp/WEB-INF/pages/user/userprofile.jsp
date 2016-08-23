@@ -322,10 +322,8 @@
 								<div class="form-group">
 									<label class="control-label col-sm-3">Topup Amount: </label>
 									<div class="col-sm-4">
-										<select class="form-control" id="curr" ng-model="curr">
-											<option value="" ng-selected="true">-- Choose
-												Currency --</option>
-											<option value="USD">US Dollar</option>
+										<select class="form-control selectCurr" id="curr" ng-model="curr" required>
+											<option value="USD" ng-selected="true">US Dollar</option>
 											<option value="KHR">Cambodian Riel</option>
 										</select>
 									</div>
