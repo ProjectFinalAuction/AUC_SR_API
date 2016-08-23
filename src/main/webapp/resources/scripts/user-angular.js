@@ -72,7 +72,6 @@ app.controller('viewUserCtrl', function($scope,$http,$rootScope){
 app.controller('UserCtrl', function($scope,$http,$rootScope){
 	// add record function
 	$scope.addUser = function(){
-		alert("true");
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({
@@ -104,7 +103,7 @@ app.controller('UserCtrl', function($scope,$http,$rootScope){
 			    showConfirmButton : false
 			  },
 			  function(){
-//			    window.location.href = '/admin/viewuser';
+			    window.location.href = '/admin/viewuser';
 			});
 			
 		});

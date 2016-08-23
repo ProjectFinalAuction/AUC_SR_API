@@ -18,7 +18,7 @@
 <div class="content-page">
 	<!-- Start content -->
 	<div class="content">
-		<div class="container" ng-controller="myCtrl">
+		<div class="container" ng-controller="UserCtrl">
 
 			<!-- Page-Title -->
 			<div class="row">
@@ -215,7 +215,7 @@
 							</div>
 
 						</form>
-						<button id="save" ng-click="addUser()" ng-show></button>
+						<button id="save" ng-click="addUser()" style="display: none;"></button>
 					</div>
 				</div>
 			</div>
@@ -242,7 +242,6 @@
 		} else
 			$("#divCheckPasswordMatch").html("Passwords match. CLICK NEXT");
 	}
-	
 </script>
 
 <!-- footer -->
@@ -251,3 +250,9 @@
 	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
 	<!--wizard initialization-->
 <script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.wizard-init.js" type="text/javascript"></script>
+<!--Form Wizard-->
+    <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery.steps/build/jquery.steps.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <!--wizard initialization-->
+    <script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.wizard-init.js" type="text/javascript"></script>

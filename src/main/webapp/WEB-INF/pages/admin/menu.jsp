@@ -10,8 +10,8 @@
 			<div class="topbar-left">
 				<div class="text-right" style="padding-top:10px; margin-left:15px">
 					<a href="${pageContext.request.contextPath}/admin" class="logo"><img
-						src="${pageContext.request.contextPath}/resources/static/images/denhtlai.png"
-						class="img-responsive"></a>
+						src="${pageContext.request.contextPath}/resources/static/images/logo-dashboard.png"
+						class="img-responsive" width="180"></a>
 				</div>
 			</div>
 
