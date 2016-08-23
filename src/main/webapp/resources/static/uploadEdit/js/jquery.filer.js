@@ -348,7 +348,7 @@
 								return false;
 							}
 							if(file.file && opts.type == "image") {
-								var g = '<img src="' + file.file + '" draggable="false" />',
+								var g = '<img src="' + file.file + '" draggable="false" class="thumbnail" />',
 									m = html.find('.jFiler-item-thumb-image.fi-loading');
 								$(g)
 									.error(function() {
@@ -356,11 +356,34 @@
 										html.addClass('jFiler-no-thumbnail');
 										m.removeClass('fi-loading')
 											.html(g);
+
 									})
 									.load(function() {
 										m.removeClass('fi-loading')
 											.html(g);
+
+										// Embbed FancyBox
+										var div = $(m)[0];
+										var img = $(div).find('img')[0];
+										var src = $(img).attr('src');
+										var extension = src.substring(src.lastIndexOf('.')+1);
+	                                    if (extension.length >= 3 && extension.length <= 4){
+	                                        switch(extension.toLowerCase()){
+	                                            case 'jpeg':
+	                                            case 'jpg': 
+	                                            case 'png':
+	                                            case 'gif':
+	                                            case 'bmp':
+	                                                var $a = $('<a></a>').attr({
+	                                                    'class': 'filer-fancybox',
+	                                                    'href' : src
+	                                                });
+	                                                $(img).wrap($a);
+	                                                break;
+	                                        }
+	                                    }
 									});
+
 								return true;
 							}
 							if(window.File && window.FileList && window.FileReader && opts.type == "image" && opts.size < 6e+6) {

@@ -5,29 +5,28 @@
 <head>
 
 <style>
-	#browse_gallery {
-			display:none;
-	}
+/* 	#browse_gallery { */
+/* 			display:none; */
+/* 	} */
 	
 	
-	.icon-jfi-trash{
-		display:none;
-	}
+/* 	.icon-jfi-trash{ */
+/* 		display:none; */
+/* 	} */
 	
-	#u_submit{
-		margin-left:220px;
-	}
+/* 	#u_submit{ */
+/* 		margin-left:220px; */
+/* 	} */
 	
 	
 </style>
 
-
-
-
+	
+<!-- new css -->
 	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
-
-
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/jquery.fancybox.css?v=2.1.5">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -292,7 +291,7 @@
 						<div class="col-sm-10">	
 							<button type="button" class="btn btn-success btn-md"
 								ng-model="user_id" ng-click="updateProduct($event)"
-								id="u_submit" data-dismiss="modal">Update</button>
+								id="u_submit" data-dismiss="modal" style="margin-left:220px;">Update</button>
 						</div>
 					</div>
 				</form>
@@ -382,6 +381,7 @@
     		var image = {};
     		$.each(progallery, function(index, item){
     			var image = {
+    				id   : item.image_id,
 	    			name : item.image_path,
 	    			type : 'image/jpg',
 	    			size :  '',
@@ -446,7 +446,7 @@
 // 			alert($scope.pro_brand_to_update +"brand");
 // 			alert($scope.pro_category_to_update + "category");
 // 			alert($scope.pro_supplier_to_update+ "supplier");
-			alert($scope.pro_status_to_update+ "status");
+			//alert($scope.pro_status_to_update+ "status");
 				
 		
 
@@ -454,10 +454,9 @@
 		
 			var frmData = new FormData();
 			
-//  			for (var i = 0; i < newFiles['gallery'].length; i++) {
-// 				alert(1);
-// 				frmData.append("imageAdd", newFiles['gallery'][i]);
-// 			}
+ 			for (var i = 0; i < newFiles['gallery'].length; i++) {
+				frmData.append("imageAdd", newFiles['gallery'][i]);
+			}
 
 			var data = {
 					"product_id":$scope.proid,
@@ -472,7 +471,7 @@
 			};
 
 			frmData.append("json_string", JSON.stringify(data));
- 			frmData.append("imageDelete", deletedImageNames['gallery']);
+ 			frmData.append("imageDelete", deletedImageIDs['gallery']);
 
     		$http({   			
 				url : 'http://localhost:8080/rest/product/updateproduct',
@@ -582,8 +581,28 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 <!--jQuery-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/jquery.filer.min.js?v=1.0.5"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/custom.js?v=1.0.5"></script>     
+
+ 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/jquery.filer.js?v=1.0.5"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/custom.js?v=1.0.5"></script> 
+        <script type="text/javascript">
+        $(".filer-fancybox").fancybox({
+            padding: 0,
+
+            openEffect : 'elastic',
+            openSpeed  : 150,
+
+            closeEffect : 'elastic',
+            closeSpeed  : 150,
+
+            closeClick : true,
+
+            helpers : {
+                overlay : null
+            }
+        });
+    </script>
  
  
         

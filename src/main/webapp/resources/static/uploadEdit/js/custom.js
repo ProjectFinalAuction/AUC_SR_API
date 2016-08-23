@@ -1,19 +1,21 @@
     // File to Send to Server
     var newFiles = [];
     // Old File Name
-    var deletedImageNames = [];
+    var deletedImageIDs = [];
     // Input File Element
     var inputFile = [];
 
     //Example 2
     function initJqueryFiler(fileElements, uploadedImagesArr){
 
+        var checkAfterShow = true;
+
         for (var i = 0; i < fileElements.length; i++){
             var keyName = fileElements[i].substr(1);
 
             // Each File Array
             newFiles[keyName] = [];
-            deletedImageNames[keyName] = [];
+            deletedImageIDs[keyName] = [];
 
             // Input Element
             inputFile[keyName] = $(fileElements[i])[0];
@@ -31,8 +33,6 @@
                                         <div class="jFiler-item-thumb">\
                                             <div class="jFiler-item-status"></div>\
                                             <div class="jFiler-item-info">\
-                                                <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
-                                                <span class="jFiler-item-others">{{fi-size2}}</span>\
                                             </div>\
                                             {{fi-image}}\
                                         </div>\
@@ -53,8 +53,6 @@
                                             <div class="jFiler-item-thumb">\
                                                 <div class="jFiler-item-status"></div>\
                                                 <div class="jFiler-item-info">\
-                                                    <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
-                                                    <span class="jFiler-item-others">{{fi-size2}}</span>\
                                                 </div>\
                                                 {{fi-image}}\
                                             </div>\
@@ -82,7 +80,7 @@
                 addMore: false,
                 uploadFile: {
                     error: function(el){
-                        el.find(".jFiler-jProgressBar").hide();
+                        //el.find(".jFiler-jProgressBar").hide();
                     }
                 },
                 files: uploadedImagesArr[i],
@@ -99,7 +97,7 @@
 
                     if (isImageFromServer){
                         // Get Deleted Image name
-                        deletedImageNames[inputName].push(currentFile.name);
+                        deletedImageIDs[inputName].push(currentFile.id);
                     } else {
                         var temp;
                         $.each(newFiles[inputName], function(index, item) {

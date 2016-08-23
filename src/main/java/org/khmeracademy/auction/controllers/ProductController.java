@@ -123,11 +123,12 @@ public class ProductController {
 		public ResponseEntity<Map<String, Object>> updateProduct(
 				@RequestParam("json_string") String jsonString, 
 				@RequestParam("imageAdd") List<MultipartFile> galleryFiles,
-				@RequestParam("imageDelete") List<String> deletedImageName,
+				@RequestParam("imageDelete") List<Integer> deletedImageId,
 				HttpServletRequest servletRequest) {
 			
 			System.out.println("Gallery" + galleryFiles.size());
-			System.out.println("Deleted" + deletedImageName.size());
+			System.out.println("Deleted" + deletedImageId.size());
+			
 			// Header must not be JSON Content Type
 			HttpHeaders header = new HttpHeaders();
 			RestTemplate restTemplate = new RestTemplate();
@@ -140,7 +141,13 @@ public class ProductController {
 						formData.add("imageAdd", new FileMessageResource(file.getBytes(), file.getOriginalFilename()));					
 					}
 				}
-				formData.add("imageDelete", deletedImageName);
+				
+				if (!deletedImageId.isEmpty()){
+					for (Integer i : deletedImageId){
+						formData.add("imageDelete", i);						
+					}
+				}
+				
 				formData.add("json_string", URLEncoder.encode(jsonString, "UTF-8"));
 			} catch (Exception e) {
 				e.printStackTrace();

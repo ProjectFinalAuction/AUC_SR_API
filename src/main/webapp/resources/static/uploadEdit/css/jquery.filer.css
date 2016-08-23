@@ -392,10 +392,20 @@ span.jFiler-icon-file.f-audio:after {
     background: rgba(0,0,0,0.55);
 }
 
-.jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb:hover .jFiler-item-info {
-    bottom: 0;
+.jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb img { 
+    -ms-transition: all 0.3s;
+    -webkit-transition: all 0.3s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.3s;
+}
+
+.jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb:hover img {
+
+    -ms-transform: scale(1.1, 1.1); /* IE 9 */
+    -webkit-transform: scale(1.1, 1.1); /* Safari */
+    transform: scale(1.1, 1.1);
+    /* bottom: 0;
     opacity: 1;
-    filter: aplpha(opacity(100));
+    filter: aplpha(opacity(100)); */
 }
 
 .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-info .jFiler-item-title {
