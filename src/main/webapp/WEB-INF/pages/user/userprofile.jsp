@@ -327,7 +327,7 @@
 										</select>
 									</div>
 									<label class="control-label col-sm-4">Total Amount: <font
-										color="#238fc7">5000</font> Credit
+										color="#238fc7">{{ending_amount}}</font> Credit
 									</label>
 								</div>
 								<div class="form-group">
@@ -339,7 +339,7 @@
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-3">
 										<button type="submit" class="btn btn-default"
-											ng-disabled="balance < 1 || !(!!balance)">
+											ng-disabled="balance < 1 || !(!!balance)" ng-click="addTopUp()">
 											<i class="fa fa-plus" aria-hidden="true"></i> Topup
 										</button>
 									</div>
