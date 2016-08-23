@@ -283,5 +283,4 @@ app.filter('durationview', ['datetime', function (datetime) {
     };
 }]);
 
-// connect Web Socket
-connect();
+

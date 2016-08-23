@@ -264,7 +264,7 @@ $(function() {
                $("wsButton").trigger('click');
             },1);
          });
-        
+        connect();
  </script>
  <!-- End WebSocket -->
 	

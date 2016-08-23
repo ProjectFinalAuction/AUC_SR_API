@@ -209,7 +209,7 @@
 									<td>{{num_bid}} <spring:message code="bids"></spring:message></td>
 									<sec:authorize access="isAuthenticated()">
 										<td class="text-right"><input type="button"
-											class="btn btn-default bidhistory" value="Bid History"></td>
+											class="btn btn-default bidhistory" value="Bid History" ng-show="num_bid!==0"></td>
 									</sec:authorize>
 								</tr>
 								<tr>
@@ -321,7 +321,8 @@
         function showGreeting(message) {
             alert(message);
         }
-        
+     // connect Web Socket
+        connect();
  </script>
  <!-- End WebSocket -->
 
