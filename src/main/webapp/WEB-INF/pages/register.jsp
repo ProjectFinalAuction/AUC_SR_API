@@ -13,7 +13,7 @@
 <jsp:include page="menu.jsp"/>
 
 	<!-- content -->
-	<div class="content" id="register" ng-controller="myCtrl">
+	<div class="content" id="register" ng-controller="addUserCtrl">
 		<div class="container" style="padding-right:0;">
 			<div class="col-md-12">
 				<div class="panel panel-default">

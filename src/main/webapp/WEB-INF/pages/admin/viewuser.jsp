@@ -16,7 +16,7 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
-<div class="content-page" ng-controller="viewUserCtrl">
+<div class="content-page" ng-controller="UserCtrl">
 	<!-- Start content -->
 	<div class="content">
 		<div class="container">

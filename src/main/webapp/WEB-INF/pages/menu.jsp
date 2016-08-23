@@ -16,7 +16,7 @@
 				<div id="right-head-info" class="col-md-6">
 					<sec:authorize access="!isAuthenticated()">
 					
-						<a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#login" id="loginFrm">
 							<spring:message code="login"></spring:message> 
 						</a>
 						<span>&nbsp;|&nbsp; </span>
@@ -164,27 +164,39 @@ $(function() {
 	            	}else if(data == "Bad credentials"){
 	            		swal("LOGIN FAILED!", data, "error");
 	            	}else{
-	            		swal({   
-	          			title: "LOGIN SUCCESSFULLY!",   
-	          			text: "THANK YOU",   
-	          			type: "success",   
-	          			confirmButtonColor: "#007d3d",   
-						closeOnConfirm: false,   
-	          			closeOnCancel: false }, 
-	          			function(isConfirm){   
-	          				if(isConfirm) {     		
-	          					if(data=='admin'){
+	            		swal({ 
+	        				title: "LOGIN SUCCESSFULLY!",
+	        				text: "THANK YOU",
+	        			    type: "success",
+	        			    timer : 1000,
+	        			    showConfirmButton : false
+	        			  },
+	        			  function(){
+	        				  if(data=='admin'){
 	          						window.location.href="http://localhost:8080/"+data;	
 	          					}else{
 	          						window.location.href = window.location.href	
 	          					}
-	          					
-	          					
-
-	          				}else {     
-	          					swal("Cancelled", "Your imaginary file is safe :)", "error");   
-	          				} 
-	          			}); 
+	        			});
+	            		
+// 	            		swal({   
+// 	          			title: "LOGIN SUCCESSFULLY!",   
+// 	          			text: "THANK YOU",   
+// 	          			type: "success",   
+// 	          			confirmButtonColor: "#007d3d",   
+// 						closeOnConfirm: false,   
+// 	          			closeOnCancel: false }, 
+// 	          			function(isConfirm){   
+// 	          				if(isConfirm) {     		
+// 	          					if(data=='admin'){
+// 	          						window.location.href="http://localhost:8080/"+data;	
+// 	          					}else{
+// 	          						window.location.href = window.location.href	
+// 	          					}
+// 	          				}else {     
+// 	          					swal("Cancelled", "Your imaginary file is safe :)", "error");   
+// 	          				} 
+// 	          			}); 
    		  
 	            	}
 	            },

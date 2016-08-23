@@ -9,6 +9,7 @@ app.controller('auctionCtrl', function(){
 	
 })
 
+//TODO: VIEW USER BACK END
 app.controller('viewUserCtrl', function($scope,$http,$rootScope){
 	// select all record to display
 	$scope.userName="";
@@ -67,12 +68,11 @@ app.controller('viewUserCtrl', function($scope,$http,$rootScope){
 	$scope.getAllUsers();
 })
 
-
-app.controller('myCtrl', function($scope,$http,$rootScope){
-	
-	
+//TODO: ADD DELETE UPDATE BACK END
+app.controller('UserCtrl', function($scope,$http,$rootScope){
 	// add record function
 	$scope.addUser = function(){
+		alert("true");
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http({
@@ -241,7 +241,51 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	}
 	
 	
-	$scope.addUser();
-	
+//	$scope.addUser();
+})
 
+
+
+//========================================================================================
+//TODO: ADD USER FRONT END
+app.controller('addUserCtrl', function($scope,$http,$rootScope){
+	// add record function
+	$scope.addUser = function(){
+		alert("true");
+		$scope.created_date = new Date();
+		$scope.created_by = 'admin';
+		$http({
+			url: '/rest/user',
+			method: 'POST',
+			data:{
+				  "address": $scope.address,
+	  			  "comment": ($scope.comment==undefined)?'New':$scope.comment,
+	  			  "contact": $scope.contact,
+	  			  "created_by": $scope.created_by,
+	  			  "created_date": $scope.created_date,
+	  			  "dob": moment($('#datepicker').val()).format("YYYY-MM-DD"),
+	  			  "email": $scope.email,
+	  			  "first_name": $scope.first_name,
+	  			  "gender": $('.select2').val(),
+	  			  "last_name": $scope.last_name,
+	  			  "password": $scope.password,
+	  			  "photo": ($scope.photo==undefined)?'String':$scope.photo,
+	  			  "status": ($scope.status==undefined)?'1':$("input:radio[name=status]:checked").val(),
+	  			  "type": ($scope.type == undefined)?'bidder': $("input:radio[name=role]:checked").val(),
+	  			  "user_name": $scope.user_name
+			}
+		}).then(function(respone){
+			swal({ 
+				title: "Success!",
+				text: "User has been inserted.",
+			    type: "success",
+			    timer : 1000,
+			    showConfirmButton : false
+			  },
+			  function(){
+			    window.location.href = '/';
+			});
+			
+		});
+	}
 })
