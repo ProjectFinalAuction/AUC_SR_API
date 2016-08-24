@@ -98,31 +98,31 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 //Get Category By ID
 	
 
-	//Add Brand
-	$scope.addBrand = function(){
-//		alert("Hello");
-		$http({
-			url: 'http://localhost:8080/rest/brand',
-			method: 'POST',
-			data:{
-				  "brand_description": $scope.brand_description,
-				  "brand_name": $scope.brand_name,
-				  "status": $scope.brand_status
-	  			  
-			}
-		}).then(function(respone){
-			swal({ 
-				title: "Success!",
-				text: "Brand has been inserted.",
-			    type: "success",
-			    timer : 1000,
-				showConfirmButton : false	
-			  },
-			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewbrand';
-			});
-		});
-	}
+//	//Add Brand
+//	$scope.addBrand = function(){
+//		alert($scope.brand_status);
+//		$http({
+//			url: 'http://localhost:8080/rest/brand',
+//			method: 'POST',
+//			data:{
+//				  "brand_description": $scope.brand_description,
+//				  "brand_name": $scope.brand_name,
+//				  "status": $scope.brand_status
+//	  			  
+//			}
+//		}).then(function(respone){
+//			swal({ 
+//				title: "Success!",
+//				text: "Brand has been inserted.",
+//			    type: "success",
+//			    timer : 1000,
+//				showConfirmButton : false	
+//			  },
+//			  function(){
+//			    window.location.href = 'http://localhost:8080/admin/viewbrand';
+//			});
+//		});
+//	}
 	
 	//Get Category By ID	
 
@@ -187,7 +187,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		
 	//Add Brand
 	$scope.addBrand = function(){
-//		alert("Hello");
+		//alert($scope.brand_status);
 		$http({
 			url: 'http://localhost:8080/rest/brand',
 			method: 'POST',

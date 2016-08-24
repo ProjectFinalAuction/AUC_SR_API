@@ -43,6 +43,7 @@ public class BrandController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String , Object>> addBrand(@RequestBody AddBrand addBrand){
+		System.out.println("brand status>>>>>>>>>>>>>>>>>>>>>>> "+addBrand.getStatus());
 		HttpEntity<Object> request = new HttpEntity<Object>(addBrand,header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-brand", HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);

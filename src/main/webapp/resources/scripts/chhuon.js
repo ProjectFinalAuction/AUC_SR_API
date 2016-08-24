@@ -59,6 +59,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 			method: 'GET'
 		}).then(function(response){
 			$scope.auctionProduct = response.data.DATA;
+			console.log('==>', $scope.auctionProduct);
 			$scope.category_name = response.data.DATA.product.category.category_name;
 			$scope.product_name = response.data.DATA.product.product_name;
 			$scope.product_condition = response.data.DATA.product.product_condition;

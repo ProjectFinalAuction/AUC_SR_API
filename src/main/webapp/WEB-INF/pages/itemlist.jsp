@@ -54,8 +54,9 @@ pageEncoding="UTF-8"%>
 					<div class="form-group">
 						<div class="input-group">
 							<label class="input-group-addon" for="SortFilterOptions"><spring:message code="filter"></spring:message></label>
-							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0"><spring:message code="all"></spring:message></option>
-								<option ng-repeat="b in auctionProduct | unique: 'product.brand.brand_id'"> {{b.product.brand.brand_name}} </a> </option>
+							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions" ng-model="brand" 
+								ng-options="b.product.brand.brand_id as b.product.brand.brand_name for b in auctionProduct | unique: 'product.brand.brand_id'">
+								<option value=""><spring:message code="all"></spring:message></option>								
 							</select>
 						</div>
 					</div>
@@ -82,7 +83,8 @@ pageEncoding="UTF-8"%>
 
 			<!-- DATA-LISTING -->
 			
-			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auctionProduct ">
+			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auctionProduct | filterBy: ['product.brand.brand_id']: brand">
+				<!-- Can write like this (brand==''?'':brand) -->
 				<!-- wrapper div -->
 				<div class="panel panel-default clearfix listing" >		
 
@@ -94,7 +96,7 @@ pageEncoding="UTF-8"%>
 								<span class="img" ng-repeat="proimg in a.product.gallery" ng-show="$first">
 									<img src="{{proimg.image_path}}" class="img-thumbnail" style="width: 160px; height: 170px" alt="Cinque Terre">
 								</span>
-								<strong>{{b.product.product_name}}</strong>
+								<strong>{{a.product.product_name}}</strong>
 							</a>
 						</h1>
 						<!-- subtitle -->
@@ -128,12 +130,12 @@ pageEncoding="UTF-8"%>
 							</p>
 							<p class="bids">
 								&nbsp;
-								<span class="awe-rt-CurrentPrice price NumberPart"><span class="NumberPart">{{a.current_price | currency}}</span></span>
+								<span class="awe-rt-CurrentPrice price NumberPart" style=" color:#238FC7 "><span>{{a.current_price | currency}}</span></span>
 								<span class="glyphicon glyphicon-option-vertical"></span>
-								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">0</span>
+								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">{{a.auction_id}}</span>
 								<spring:message code="bids"></spring:message>
 								&nbsp;
-								<a href="#" class="btn btn-primary awe-rt-Active awe-rt-Done"><spring:message code="bid_now"></spring:message> 
+								<a href="/detail/{{a.auction_id}}" class="btn btn-default awe-rt-Active awe-rt-Done"><spring:message code="bid_now"></spring:message> 
 									<span class="glyphicon glyphicon-chevron-right"></span>
 								</a>
 							</p>
