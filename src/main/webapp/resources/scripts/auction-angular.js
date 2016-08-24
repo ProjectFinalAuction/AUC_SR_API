@@ -223,7 +223,8 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 	$scope.created_by = 'admin';
 
 	//TODO: TO LIST ALL SUPPLIER FOR CHOOSE TO ADD
-	$scope.findSupplersInProducts = function(){		
+	$scope.findSupplersInProducts = function(){	
+		
 		$http({
 			url : '/rest/supplier/supplier-in-product',
 			method : 'GET'
@@ -245,6 +246,7 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 	
 	// TODO: add record function
 	$scope.addAuction = function() {
+		alert(moment($('#datepickerEnd').val()).format("YYYY-MM-DD HH:mm:ss"));
 		$http({
 			url : '/rest/auction',
 			method : 'POST',
@@ -254,11 +256,11 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 				"created_by" : $scope.created_by,
 				"created_date" : $scope.created_date,
 				"current_price" : $scope.start_price,
-				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD HH:mm:ss"),
+				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
 				"increment_price" : $scope.increment_price,
 				"product_condition" : $scope.product_condition,
 				"product_id" : $scope.product_id,
-				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD HH:mm:ss"),
+				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD"),
 				"start_price" : $scope.start_price,
 				"status" : $scope.status
 			}

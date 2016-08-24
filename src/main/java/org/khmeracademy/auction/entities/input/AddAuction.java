@@ -1,6 +1,8 @@
 package org.khmeracademy.auction.entities.input;
 
-import java.sql.Date;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class AddAuction {
 	private int auction_id; 
@@ -10,7 +12,9 @@ public class AddAuction {
 	private double buy_price;
 	private double increment_price;
 	private double current_price;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date start_date;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date end_date;
 	private String status;
 	private String created_by;

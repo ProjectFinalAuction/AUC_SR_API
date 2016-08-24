@@ -13,6 +13,15 @@
 <jsp:include page="menu.jsp"></jsp:include>
 <!-- left content -->
 <jsp:include page="left-content.jsp"></jsp:include>
+
+<style>
+#invoice{
+	position : relative;
+	top: 0;
+	
+}
+
+</style>
 </head>
 
 <!-- ============================================================== -->
@@ -40,21 +49,30 @@
 						<h4 class="m-t-0 header-title">
 							<b>Buttons example</b>
 						</h4>
-						<%-- <table id="datatable-buttons"
+						<table id="datatable-buttons"
 							class="table table-hover table-actions-bar">
 							<thead>
-								<tr>
-									<th>Date<br><br>Contact
+								<tr class="active">
+									<th>Date<br>
+									<br>Contact
 									</th>
-									<th>Seller<br><br>Buyer
+									<th>Seller<br>
+									<br>Buyer
 									</th>
-									<th>Invoice ID<br><br><br></th>
-									<th>Product<br><br>Address
+									<th>Invoice ID<br>
+									<br>
+									<br></th>
+									<th>Product<br>
+									<br>Address
 									</th>
-									<th>Price<br><br><br></th>
-									<th>Quantity<br><br>First Name
+									<th>Price<br>
+									<br>
+									<br></th>
+									<th>Quantity<br>
+									<br>First Name
 									</th>
-									<th>Total<br><br>Last Name
+									<th>Total<br>
+									<br>Last Name
 									</th>
 									<th>Paid<br> <select class="form-control required">
 											<option value="paid">Paid</option>
@@ -64,29 +82,41 @@
 								</tr>
 							</thead>
 							<tbody style="color: #ffffff;">
-								<tr ng-repeat=" inv in invoiceDetail | orderBy:'-invoice.invoice_id'">
-									<td>{{inv.invoice.invoice_date}}<br><br>{{inv.invoice.user.contact}}</td>
-									<td>Admin<br><br>{{inv.invoice.user.user_name}}</td>
-									<td>{{inv.invoice.invoice_id}}<br><br><br></td>
-									<td>{{inv.auction.product.product_name}}<br><br>{{inv.invoice.user.address}}</td>
-									<td>{{inv.buy_price}}<br><br><br></td>
-									<td>{{inv.qty}}<br><br>{{inv.invoice.user.first_name}}</td>
-									<td>{{inv.buy_price * inv.qty}}<br><br>{{inv.invoice.user.last_name}}</td>
-									<td ng-if="inv.invoice.status=='1'">
-										<img alt="" src="${pageContext.request.contextPath}/resources/static/images/paidStamp.png"
-										class="img-responsive">
+								<tr
+									ng-repeat=" inv in invoiceDetail | orderBy:'-invoice.invoice_id'">
+									<td>{{inv.invoice.invoice_date}}<br>
+									<br>{{inv.invoice.user.contact}}
 									</td>
-									<td ng-if="inv.invoice.status=='0'"><i class="fa fa-check fa-lg text-primary"
-												aria-hidden="true"></i>
+									<td>Admin<br>
+									<br>{{inv.invoice.user.user_name}}
 									</td>
+									<td><a href="" style="color: #ffffff;">{{inv.invoice.invoice_id}}</a><br>
+									<br>
+									<br></td>
+									<td>{{inv.auction.product.product_name}}<br>
+									<br>{{inv.invoice.user.address}}
+									</td>
+									<td>{{inv.buy_price}}<br>
+									<br>
+									<br></td>
+									<td>{{inv.qty}}<br>
+									<br>{{inv.invoice.user.first_name}}
+									</td>
+									<td>{{inv.buy_price * inv.qty}}<br>
+									<br>{{inv.invoice.user.last_name}}
+									</td>
+									<td ng-if="inv.invoice.status=='1'"><img alt=""
+										src="${pageContext.request.contextPath}/resources/static/images/paidStamp.png"
+										class="img-responsive"></td>
+									<td ng-if="inv.invoice.status=='0'"></td>
 								</tr>
-								
 							</tbody>
-						</table> --%>
-						
+						</table>
+
+						<!-- 
 						<div id="datatable-buttons_wrapper"
 							class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-							<!-- <div class="dt-buttons btn-group">
+							<div class="dt-buttons btn-group">
 								<a class="btn btn-default buttons-copy buttons-html5 btn-sm"
 									tabindex="0" aria-controls="datatable-buttons"><span>Copy</span></a>
 								<a class="btn btn-default buttons-csv buttons-html5 btn-sm"
@@ -100,7 +130,8 @@
 								<label>Search:<input type="search"
 									class="form-control input-sm" placeholder=""
 									aria-controls="datatable-buttons"></label>
-							</div> -->
+							</div>
+							
 							<table id="datatable-buttons"
 								class="table table-hover table-actions-bar dataTable no-footer"
 								role="grid" aria-describedby="datatable-buttons_info">
@@ -150,9 +181,151 @@
 								</tbody>
 							</table>
 							
-						</div>
+						</div> -->
 					</div>
 				</div>
+			</div>
+		</div>
+		
+		<!-- ================= Invoice ==================== -->
+		<div class="container" id="invoice" ng-show="invoice">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<h4 class="page-title">Invoice</h4>
+					<ol class="breadcrumb">
+						<li><a href="#">Ubold</a></li>
+						<li><a href="#">Extras</a></li>
+						<li class="active">Invoice</li>
+					</ol>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card-box">
+						<div class="clearfix">
+							<div class="pull-left">
+								<h4 class="text-right m-t-20"
+									style="font-size: 28px; font-weight: 600;">
+									UB<span class="text-custom">O</span>LD
+								</h4>
+							</div>
+							<div class="pull-right">
+								<h4>
+									Invoice # <br> <strong>2015-04-23654789</strong>
+								</h4>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="pull-left m-t-30">
+									<address>
+										<strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite
+										600<br> San Francisco, CA 94107<br> <abbr
+											title="Phone">P:</abbr> (123) 456-7890
+									</address>
+								</div>
+								<div class="pull-right m-t-30">
+									<p>
+										<strong>Order Date: </strong> Jun 15, 2015
+									</p>
+									<p class="m-t-10">
+										<strong>Order Status: </strong> <span class="label label-pink">Pending</span>
+									</p>
+									<p class="m-t-10">
+										<strong>Order ID: </strong> #123456
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="m-h-50"></div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="table-responsive">
+									<table class="table m-t-30">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Item</th>
+												<th>Description</th>
+												<th>Quantity</th>
+												<th>Unit Cost</th>
+												<th>Total</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>LCD</td>
+												<td>Lorem ipsum dolor sit amet.</td>
+												<td>1</td>
+												<td>$380</td>
+												<td>$380</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>Mobile</td>
+												<td>Lorem ipsum dolor sit amet.</td>
+												<td>5</td>
+												<td>$50</td>
+												<td>$250</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>LED</td>
+												<td>Lorem ipsum dolor sit amet.</td>
+												<td>2</td>
+												<td>$500</td>
+												<td>$1000</td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td>LCD</td>
+												<td>Lorem ipsum dolor sit amet.</td>
+												<td>3</td>
+												<td>$300</td>
+												<td>$900</td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td>Mobile</td>
+												<td>Lorem ipsum dolor sit amet.</td>
+												<td>5</td>
+												<td>$80</td>
+												<td>$400</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3 col-md-offset-9">
+								<p class="text-right">
+									<b>Sub-total:</b> 2930.00
+								</p>
+								<p class="text-right">Discout: 12.9%</p>
+								<p class="text-right">VAT: 12.9%</p>
+								<hr>
+								<h3 class="text-right">USD 2930.00</h3>
+							</div>
+						</div>
+						<hr>
+						<div class="hidden-print">
+							<div class="pull-right">
+								<a href="javascript:window.print()"
+									class="btn btn-inverse waves-effect waves-light"><i
+									class="fa fa-print"></i></a> <a href="#"
+									class="btn btn-primary waves-effect waves-light">Submit</a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+				</div>
+
 			</div>
 
 		</div>
@@ -184,9 +357,9 @@
 		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/buttons.html5.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/buttons.print.min.js"></script>
-	<script 
+	<script
 		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/vfs_fonts.js"></script>
-	<script 
+	<script
 		src="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/jszip.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/static/assets/pages/datatables.init.js"></script>
@@ -206,7 +379,4 @@
 			});
 		});
 		TableManageButtons.init();
-		
-	
-
 	</script>
