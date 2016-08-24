@@ -2,7 +2,7 @@
  * 
  */
 
-var app = angular.module('myApp', ['angular.filter']);
+var app = angular.module('myApp', []);
 
 //TODO: SHOW AUCTON TO VIEW CLIENTS
 app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope) {
