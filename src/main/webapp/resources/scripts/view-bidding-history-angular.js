@@ -8,24 +8,75 @@ app.controller('auctionCtrl', function(){})
 //=== end declare conflicted controllers=======================
 
 
-app.controller('biddingHistoryCtrl', function($scope,$http,$rootScope){
-	$scope.viewBiddingHistory = function(auction_id){
-		//alert("Hello");
+app.controller('biddingHistoryCtrl', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
+	
+	$scope.viewBiddingHistory = function(){
+		// get auction id when user click on bid history button
+		var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+				
 		$http({
-			url: '/rest/bidhistory/find-num-bid-and-bidder-in-auction-product-by-auc-id/' + 1,
+			url: '/rest/bidhistory/find-num-bid-and-bidder-in-auction-product-by-auc-id/' + id,
 			method: 'GET'
 		}).then(function(response){
+			// get respnse data
 			$scope.auctionBidHistory = response.data.DATA;
-			//////
 			
-			/// code here
+			
+			// run remaining date
+			$scope.processAuctionItems(response.data.DATA[0].auction);
+			$scope.remaing_date = response.data.DATA[0].auction;
 			
 		});
 	}
-	$scope.viewBiddingHistory(1);
 	
+	$scope.tick = function () {
+        $scope.currentTime = moment();
+        $scope.processAuctionItems($scope.remaing_date);
+        $timeout($scope.tick, 1000);
+    }
+    $scope.processAuctionItems = function (data) {
+        data.remainingTime = datetime.getRemainigTime(data.end_date);    	
+    }
+    
+    // load by auction id
+    $timeout($scope.tick, 1000);
+    $timeout($scope.auctionBidHistory, 10000);
+	$scope.currentTime = moment(); 
 	
-	
-	
+	// show bidhistory
+	$scope.viewBiddingHistory();
+}]);
 
-});
+app.factory('datetime', ['$timeout', function ($timeout) {
+	
+    var duration = function (timeSpan) {
+        var days = Math.floor(timeSpan / 86400000);
+        var diff = timeSpan - days * 86400000;
+        var hours = Math.floor(diff / 3600000);
+        diff = diff - hours * 3600000;
+
+        var minutes = Math.floor(diff / 60000);
+        diff = diff - minutes * 60000;
+
+        var secs = Math.floor(diff / 1000);
+
+        return { 'days': days, 'hours': hours, 'minutes': minutes, 'seconds': secs };
+    };
+
+    function getRemainigTime(referenceTime) {
+        var now = moment().utc();
+        return moment(referenceTime) - now;
+    }
+    return {
+        duration: duration,
+        getRemainigTime: getRemainigTime
+    };
+}]);
+
+app.filter('durationview', ['datetime', function (datetime) {
+    return function (input, css) {
+        var duration = datetime.duration(input);
+        
+        return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
+    };
+}]);

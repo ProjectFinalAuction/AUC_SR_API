@@ -140,6 +140,10 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope) {	
 //	$scope.ac_id = $('#ac_id').val();
 	var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+	
+	// get auction_id is used for bid history button -- EAN SOKCHOMRERN 2016/08/24
+	$scope.auction_id = id;
+	
 	// TODO: get one record function
 	$scope.getAuctionById = function(id){
 		$http({

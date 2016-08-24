@@ -50,11 +50,13 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/detail").setViewName("/detail");
 		registry.addViewController("/detail/{id}").setViewName("/detail");
 		registry.addViewController("/access-denied").setViewName("error/access-denied");
-		registry.addViewController("/viewbidhistory").setViewName("viewbidhistory");
+		registry.addViewController("/viewbidhistory").setViewName("/viewbidhistory");
 		registry.addViewController("/contactus").setViewName("/contactus");
 		registry.addViewController("/aboutus").setViewName("/aboutus");
 		registry.addViewController("/userprofile").setViewName("/user/userprofile");
 		registry.addViewController("/bestbid").setViewName("/bestbid");
+		
+		registry.addViewController("/viewbidhistory/{id}").setViewName("/viewbidhistory");
 	}
 
 }

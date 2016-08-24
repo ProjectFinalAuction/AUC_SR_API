@@ -25,7 +25,7 @@
 				<div class="panel-heading">
 					<span class="text-muted"><strong>Bid History</strong></span>
 					<div class="btn-group pull-left">
-						<button class="btn btn-default btn-xs">
+						<button class="btn btn-default btn-xs" onclick="window.history.back();">
 							<i class="fa fa-chevron-left" aria-hidden="true"></i>Back
 						</button>
 					</div>
@@ -71,7 +71,7 @@
 							<label for="remaining_time" class="col-sm-2"><strong>Remaining
 									Time</strong></label>
 							<div class="col-sm-10">
-								<span id="remaining_time">I don't know how to do yet</span>
+								<span id="remaining_time">{{remaing_date.remainingTime | durationview}}</span>
 							</div>
 						</div>
 
@@ -101,7 +101,7 @@
 								<th>Username</th>
 								<th>Amount</th>
 							</tr>
-							<tr ng-repeat="u in auctionBidHistory">
+							<tr ng-repeat="u in auctionBidHistory | orderBy:'-current_price'">
 								<td>{{$index + 1}}</td>
 								<td>{{u.bid_date}}</td>
 								<td>{{u.user.user_name}}</td>

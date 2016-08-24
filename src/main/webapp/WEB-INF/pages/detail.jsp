@@ -119,58 +119,61 @@
 						</div>
 						<div class="list-group-item">
 							<form action="">
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<td><b><spring:message code="current_price"></spring:message></b></td>
-										<td>{{current_price | currency}}</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th><spring:message code="minimum_bid"></spring:message></th>
-										<td>{{current_price + increment_price | currency}}
-											({{current_price | currency}} + {{increment_price |
-											currency}})</td>
-									</tr>
-									<tr>
-										<th><spring:message code="max_bid"></spring:message></th>
-										<td colspan="2">
-											<div class="input-group">
-												<div class="input-group-addon">$</div>
-												<input type="number" class="form-control" ng-model="price"
-													id="exampleInputAmount" placeholder="Amount">
-												<div class="input-group-addon">.00</div>
-											</div> <!-- <input type="text" class="form-control"> -->
-										</td>
-									</tr>
-									<tr>
-										<th></th>
-										<td align="center"><sec:authorize
-												access="isAuthenticated()">
-												<button class="btn btn-success btn-block" type="button"
-													style="width: 50%; float: left;" ng-click="addBidPrice()" 
-													ng-disabled="price < (current_price + increment_price) || !(!!price)"><spring:message
-														code="submit_bid"></spring:message></button>
-											</sec:authorize> <sec:authorize access="!isAuthenticated()">
-												<button class="btn btn-block" type="button"
-													style="width: 50%; float: left; background-color: #43b3f3; color: white"
-													data-toggle="modal" data-target="#login"><spring:message
-														code="bid_now"></spring:message></button>
-											</sec:authorize></td>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<td><b><spring:message code="current_price"></spring:message></b></td>
+											<td>{{current_price | currency}}</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th><spring:message code="minimum_bid"></spring:message></th>
+											<td>{{current_price + increment_price | currency}}
+												({{current_price | currency}} + {{increment_price |
+												currency}})</td>
+										</tr>
+										<tr>
+											<th><spring:message code="max_bid"></spring:message></th>
+											<td colspan="2">
+												<div class="input-group">
+													<div class="input-group-addon">$</div>
+													<input type="number" class="form-control" ng-model="price"
+														id="exampleInputAmount" placeholder="Amount">
+													<div class="input-group-addon">.00</div>
+												</div> <!-- <input type="text" class="form-control"> -->
+											</td>
+										</tr>
+										<tr>
+											<th></th>
+											<td align="center"><sec:authorize
+													access="isAuthenticated()">
+													<button class="btn btn-success btn-block" type="button"
+														style="width: 50%; float: left;" ng-click="addBidPrice()"
+														ng-disabled="price < (current_price + increment_price) || !(!!price)">
+														<spring:message code="submit_bid"></spring:message>
+													</button>
+												</sec:authorize> <sec:authorize access="!isAuthenticated()">
 
-									</tr>
-									<tr>
-										<td colspan="2"><small><span class="lang"
-												key="description">Your site name here will bid
-													incrementally for you up to your maximum bid. Your maximum
-													bid is kept a secret from other users. Your bid is a
-													contract between you and the listing creator. If you have
-													the highest bid you will enter into a legally binding
-													purchase contract.</span></small></td>
-									</tr>
-								</tbody>
-							</table>
+													<button class="btn btn-block" type="button"
+														style="width: 50%; float: left; background-color: #43b3f3; color: white"
+														data-toggle="modal" data-target="#login">
+														<spring:message code="bid_now"></spring:message>
+													</button>
+												</sec:authorize></td>
+
+										</tr>
+										<tr>
+											<td colspan="2"><small><span class="lang"
+													key="description">Your site name here will bid
+														incrementally for you up to your maximum bid. Your maximum
+														bid is kept a secret from other users. Your bid is a
+														contract between you and the listing creator. If you have
+														the highest bid you will enter into a legally binding
+														purchase contract.</span></small></td>
+										</tr>
+									</tbody>
+								</table>
 							</form>
 						</div>
 					</div>
@@ -208,8 +211,17 @@
 									<th><spring:message code="bid_history"></spring:message></th>
 									<td>{{num_bid}} <spring:message code="bids"></spring:message></td>
 									<sec:authorize access="isAuthenticated()">
-										<td class="text-right"><input type="button"
-											class="btn btn-default bidhistory" value="Bid History" ng-show="num_bid!==0"></td>
+										<td class="text-right">
+										<!--  Bid History View -->
+										<a
+											href="/viewbidhistory/{{auction_id}}"> <input
+												type="button" class="btn btn-default bidhistory"
+												value="Bid History">
+										</a>
+										
+										
+										
+										</td>
 									</sec:authorize>
 								</tr>
 								<tr>
@@ -278,53 +290,56 @@
 <script
 	src="${pageContext.request.contextPath}/resources/static/js/stomp.js"></script>
 <script type="text/javascript">
-		var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-        var stompClient = null;
-        
-        function disconnect() {
-            if (stompClient != null) {
-                stompClient.disconnect();
-            }
-            console.log("Disconnected");
-        }
-        
-        function connect() {
-        	if (stompClient != null) {
-                stompClient.disconnect();
-            }
-        	var socket = new SockJS('/hello');
-            stompClient = Stomp.over(socket);            
-            stompClient.connect({}, function(frame) {
-                console.log('Connected: ' + frame);
-                stompClient.subscribe('/topic/greetings', function(greeting){
-                    //showGreeting(JSON.parse(greeting.body).content);
-                    // Call getAuctionById() after user bidding
-                	angular.element(document.getElementById('right-content')).scope().getAuctionById(id);
-                    
-                    //Call find all auctions to show real-time data for visitor who view our main page without click on specific product yet
-                	//angular.element(document.getElementById('mainMenuPage')).scope().findAllAuctions();
-                    // we cannot call above function to work correctly, so we have to create a button on menu.jsp to be a trigger when user click on bid button
-                });
-            });
-            
-        }
-        
-        
-        function sendName() {
-        	
-//         	alert("HELLO SEND NAME");
-            var name = "Hello"
-            stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+	var id = window.location.href.substring(window.location.href
+			.lastIndexOf('/') + 1);
+	var stompClient = null;
 
-        }
-        
-        function showGreeting(message) {
-            alert(message);
-        }
-     // connect Web Socket
-        connect();
- </script>
- <!-- End WebSocket -->
+	function disconnect() {
+		if (stompClient != null) {
+			stompClient.disconnect();
+		}
+		console.log("Disconnected");
+	}
+
+	function connect() {
+		if (stompClient != null) {
+			stompClient.disconnect();
+		}
+		var socket = new SockJS('/hello');
+		stompClient = Stomp.over(socket);
+		stompClient.connect({}, function(frame) {
+			console.log('Connected: ' + frame);
+			stompClient.subscribe('/topic/greetings', function(greeting) {
+				//showGreeting(JSON.parse(greeting.body).content);
+				// Call getAuctionById() after user bidding
+				angular.element(document.getElementById('right-content'))
+						.scope().getAuctionById(id);
+
+				//Call find all auctions to show real-time data for visitor who view our main page without click on specific product yet
+				//angular.element(document.getElementById('mainMenuPage')).scope().findAllAuctions();
+				// we cannot call above function to work correctly, so we have to create a button on menu.jsp to be a trigger when user click on bid button
+			});
+		});
+
+	}
+
+	function sendName() {
+
+		//         	alert("HELLO SEND NAME");
+		var name = "Hello"
+		stompClient.send("/app/hello", {}, JSON.stringify({
+			'name' : name
+		}));
+
+	}
+
+	function showGreeting(message) {
+		alert(message);
+	}
+	// connect Web Socket
+	connect();
+</script>
+<!-- End WebSocket -->
 
 
 
@@ -340,4 +355,3 @@
 		});
 	});
 </script>
-
