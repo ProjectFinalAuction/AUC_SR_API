@@ -5,6 +5,12 @@
 <head>
 
 
+<!-- new css -->
+	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/jquery.fancybox.css?v=2.1.5">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5">
+
 <link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath}/resources/static/uploadEdit/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 
@@ -216,15 +222,14 @@
 											</div>
 
 
-											<div class="text-center m-t-30" style="margin-left: 75px;">
-
-
-												<input
-													class=" btn btn-purple btn-md waves-effect waves-light"
-													type="file" name="image" id="image-input" multiple /><br/><br/>
-												<button class="btn  btn-default waves-effect waves-light" id="Reset" onclick="resetImage()">
-													Cancel 
-												</button>
+											<div class="text-center m-t-30" style="margin-left: 75px;" my-filter>
+       												<input type="file" name="files[]" id="gallery" multiple="multiple">
+<!-- 												<input -->
+<!-- 													class=" btn btn-purple btn-md waves-effect waves-light" -->
+<!-- 													type="file" name="image" id="image-input" multiple /><br/><br/> -->
+<!-- 												<button class="btn  btn-default waves-effect waves-light" id="Reset" onclick="resetImage()"> -->
+<!-- 													Cancel  -->
+<!-- 												</button> -->
 											
 												
 
@@ -291,7 +296,7 @@
 	  			});
 		}
 
-	    	$rootScope.getBrand();
+	    $rootScope.getBrand();
 	    	
 	    	
 	    	
@@ -332,34 +337,30 @@
 		
 			
 			
+// 		var inputLocalFont = document.getElementById("image-input");
+// 		inputLocalFont.addEventListener("change",previewImages,false); //bind the function to the input
+
+// 		function previewImages(){
+
+// 		    var fileList = this.files;
 			
-		var inputLocalFont = document.getElementById("image-input");
-		inputLocalFont.addEventListener("change",previewImages,false); //bind the function to the input
+// 		    var anyWindow = window.URL || window.webkitURL;
 
-		function previewImages(){
-
-		    var fileList = this.files;
-			
-		    var anyWindow = window.URL || window.webkitURL;
-
-		        for(var i = 0; i < fileList.length; i++){
-		          //get a blob to play with
-		          var objectUrl = anyWindow.createObjectURL(fileList[i]);
-		          // for the next line to work, you need something class="preview-area" in your html
-		          $('.preview-area').append('<img class="thumb-lg" src="' + objectUrl + '" />');
-		          // get rid of the blob
-		          window.URL.revokeObjectURL(fileList[i]);
-		          document.getElementById("preview_area").style.border = "2px solid white";
+// 		        for(var i = 0; i < fileList.length; i++){
+// 		          //get a blob to play with
+// 		          var objectUrl = anyWindow.createObjectURL(fileList[i]);
+// 		          // for the next line to work, you need something class="preview-area" in your html
+// 		          $('.preview-area').append('<img class="thumb-lg" src="' + objectUrl + '" />');
+// 		          // get rid of the blob
+// 		          window.URL.revokeObjectURL(fileList[i]);
+// 		          document.getElementById("preview_area").style.border = "2px solid white";
 		          
-		        }
-					// 		        alert(this.files[0].size);
+// 		        }
+// 					// 		        alert(this.files[0].size);
 
 
-		}
+// 		}
 		
-	
-
-
 
 
 		
@@ -369,7 +370,32 @@
 		
 		$rootScope.addProduct=function (e) {
 						 e.preventDefault();
-		
+			 
+				//var Myfile=	$('input[name=image]')[0].files;
+				
+				if ($scope.pro_name == undefined) {
+					
+					alert("Pleas Insert Product Name !");
+				}else if($scope.pro_description == undefined){
+					alert("Pleas Insert Product Description !");
+					 window.location.href = 'http://localhost:8080/admin/viewproduct';
+				}else if($scope.pro_supplier == undefined){
+					alert("Pleas Insert Product Supplier !");
+					 window.location.href = 'http://localhost:8080/admin/viewproduct';
+				}else if($scope.pro_category  == undefined){
+					alert("Pleas Insert Product Category !");
+					 window.location.href = 'http://localhost:8080/admin/viewproduct';
+				}else if( $scope.pro_quantity == undefined){
+					alert("Pleas Insert Product Qty !");
+					 window.location.href = 'http://localhost:8080/admin/viewproduct';
+				}else if(  $scope.pro_brand == undefined){
+					alert("Pleas Insert Product Brand !");
+					 window.location.href = 'http://localhost:8080/admin/viewproduct';
+				}else if(   $scope.pro_status == undefined){
+					alert("Pleas Insert Product Status !");
+					 window.location.href = 'http://localhost:8080/admin/viewproduct';
+				}
+
 		
 //--------************-------upload images-------************---------//
 			var frmData = new FormData();
@@ -399,7 +425,7 @@
 			frmData.append('category_id',  $scope.pro_category);
 			frmData.append('qty',  $scope.pro_quantity);
 			frmData.append('brand_id',  $scope.pro_brand);
-			alert(frmData.get("supplier_id"));
+			//alert(frmData.get("supplier_id"));
 			if ($scope.pro_status == 'active') {
 				$scope.tf= 1;
 			}else{
@@ -411,13 +437,13 @@
 			
 
 			// Gallery File
-			var gallery_files = $('input[name=image]')[0].files;
-			console.log(gallery_files.length);
-			for (var i = 0; i < gallery_files.length; i++) {
-				frmData.append("images", gallery_files[i]);
+			//var gallery_files = $('input[name=image]')[0].files;
+			//console.log(gallery_files.length);
+			for (var i = 0; i < newFiles['gallery'].length; i++) {
+				frmData.append("images", newFiles['gallery'][i]);
 				//$("#result").src = gallery_files[i];
 			}
-			console.log(gallery_files.length);
+			
 			$http({
 				url : 'http://localhost:8080/rest/product',
 				method : 'POST',
@@ -455,7 +481,22 @@
 
 	});
 	
-	
+	app.directive('myFilter', [function() {
+        return {
+            restrict: 'A',       
+            link: function(scope, element) {
+                // wait for the last item in the ng-repeat then call init
+				angular.element(document).ready(function() {
+					initJqueryFiler(['#gallery'], [[]]);
+                });
+            }
+        };
+        /**** Usable array ****/
+        // If your input file, id = '#gallery' use:
+        // => newFiles['gallery']
+        // => deletedImageIDs['gallery']
+
+}]);
 	
 	
 </script>
@@ -524,12 +565,29 @@
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
-<script type="text/javascript">
-function resetImage(){
- 	$('#preview_area').html('');
-}
-function resetForm(){
-	 $("form")[0].reset();
-	 $('#preview_area').html('');
-}
-</script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/jquery.filer.js?v=1.0.5"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/custom.js?v=1.0.5"></script> 
+        <script type="text/javascript">
+        $(".filer-fancybox").fancybox({
+            padding: 0,
+
+            openEffect : 'elastic',
+            openSpeed  : 150,
+
+            closeEffect : 'elastic',
+            closeSpeed  : 150,
+
+            closeClick : true,
+
+            helpers : {
+                overlay : null
+            }
+        });
+    </script>
+
+<!-- <script type="text/javascript"> -->
+
+<!-- </script> -->
