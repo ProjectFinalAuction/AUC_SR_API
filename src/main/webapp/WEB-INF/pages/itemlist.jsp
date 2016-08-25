@@ -64,16 +64,10 @@ pageEncoding="UTF-8"%>
 					<div class="form-group">
 						<div class="input-group">
 							<label class="input-group-addon" for="SortFilterOptions"><spring:message code="sort"></spring:message></label>
-							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions"><option selected="selected" value="0"><spring:message code="ending_soon"></spring:message></option>
-								<option value="1"><spring:message code="newest"></spring:message></option>
-								<option value="2"><spring:message code="price_low_to_high"></spring:message></option>
-								<option value="3"><spring:message code="price_high_to_low"></spring:message></option>
-								<option value="4"><spring:message code="title_a_to_z"></spring:message></option>
-								<option value="5"><spring:message code="title_z_to_a"></spring:message></option>
-								<option value="6"><spring:message code="listing_id_0_to_9"></spring:message></option>
-								<option value="7"><spring:message code="listing_id_9_to_0"></spring:message></option>
-								<option value="8"><spring:message code="activity_high_to_low"></spring:message></option>
-								<option value="9"><spring:message code="activity_low_to_high"></spring:message></option>
+							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions" ng-model="orderList" >
+							    <option value="product.product_name">Product Name</option>
+							    <option value="-start_price">Price Low to Hight</option>
+							    <option value="start_price">Price High to Low</option>
 							</select>
 						</div>
 					</div>
@@ -83,7 +77,7 @@ pageEncoding="UTF-8"%>
 
 			<!-- DATA-LISTING -->
 			
-			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auctionProduct | filterBy: ['product.brand.brand_id']: brand">
+			<section data-listingid="327081" style=" width: 100% " ng-repeat="a in auctionProduct | filterBy: ['product.brand.brand_id']: brand | orderBy: orderList ">
 				<!-- Can write like this (brand==''?'':brand) -->
 				<!-- wrapper div -->
 				<div class="panel panel-default clearfix listing" >		
