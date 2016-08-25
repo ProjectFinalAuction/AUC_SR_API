@@ -44,7 +44,7 @@
  	  <!-- ============================================================== -->
       <!-- Start right Content here -->
       <!-- ============================================================== -->                      
-    <div class="content-page" ng-controller="viewProductCtrl" >
+    <div class="content-page" ng-controller="viewProductCtrl" ng-cloak>
         <!-- Start content -->
         <div class="content">
           <div class="container">
@@ -139,7 +139,10 @@
 	                          <td>{{pro.category.category_name}}</td>
 	                          <td>{{pro.qty}}</td>
 	                          <td>{{pro.brand.brand_name}}</td>
-	                          <td>{{pro.status}}</td>
+	                          <td>
+	                          	<span ng-show="pro.status==1">Active</span>
+	                          	<span ng-show="pro.status==0">Inactive</span>
+	                          </td>
 	                          	
 	                          
 	                          <td>
@@ -252,9 +255,12 @@
 						<label class="control-label col-lg-2">Status *</label>
 						<div class="col-lg-10">
 						
-						<input id="lname" name="lname" type="text"
-								class="form-control" ng-model="prostatus" value={{prostatus}}>
-							
+						<!-- <input id="lname" name="lname" type="text"
+								class="form-control" ng-model="prostatus" value={{prostatus}}> -->
+						<select ng-model="prostatus" class="form-control">
+							<option value="1" ng-selected="{{prostatus==1}}">Active</option>
+							<option value="0" ng-selected="{{prostatus==0}}">Inactive</option>
+						</select>
 						</div>
 					</div>
 					
