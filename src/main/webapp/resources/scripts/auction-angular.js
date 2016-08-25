@@ -113,8 +113,8 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 			$scope.start_price = response.data.DATA.start_price;
 			$scope.increment_price = response.data.DATA.increment_price;
 			$scope.buy_price = response.data.DATA.buy_price;
-			$scope.start_date = moment(response.data.DATA.start_date).format("MM/DD/YYYY");
-			$scope.end_date = moment(response.data.DATA.end_date).format("MM/DD/YYYY");
+			$scope.start_date = moment(response.data.DATA.start_date).format("DD-MM-YYYY HH:mm:ss");
+			$scope.end_date = moment(response.data.DATA.end_date).format("DD-MM-YYYY HH:mm:ss");
 			$scope.status = response.data.DATA.status;
 			$scope.comment = response.data.DATA.comment;			
 		});
@@ -122,6 +122,7 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 	
 	//	TODO: UPDATE FUNCTION 
 	$scope.updateAuction = function(){
+		alert( $("#endDate").val())
 		$http({
 			url: '/rest/auction',
 			method: 'PUT',
@@ -132,13 +133,13 @@ app.controller('auctionCtrl', function($scope, $http, $rootScope) {
 				"created_by" : $scope.created_by,
 				"created_date" : $scope.created_date,
 				"current_price" : $scope.start_price,
-				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
+				"end_date" : $("#endDate").val(),
 				"increment_price" : $scope.increment_price,
 				"product_condition" : $scope.product_condition,
 				"product_id" : $scope.pro,
-				"start_date" : moment($scope.start_date).format("YYYY-MM-DD"),
+				"start_date" : $("#startDate").val(),
 				"start_price" : $scope.start_price,
-				"status" : $scope.status
+				"status" : $("input:radio[name=status]:checked").val()
 			} 
 		}).then(function(response){
 			swal({ 
@@ -246,7 +247,8 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 	
 	// TODO: add record function
 	$scope.addAuction = function() {
-		alert(moment($('#datepickerEnd').val()).format("YYYY-MM-DD HH:mm:ss"));
+		/*alert($("#startDate").val());
+		alert($("#endDate").val());*/
 		$http({
 			url : '/rest/auction',
 			method : 'POST',
@@ -256,15 +258,16 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 				"created_by" : $scope.created_by,
 				"created_date" : $scope.created_date,
 				"current_price" : $scope.start_price,
-				"end_date" : moment($('#datepickerEnd').val()).format("YYYY-MM-DD"),
+				"end_date" :$("#endDate").val(),
 				"increment_price" : $scope.increment_price,
 				"product_condition" : $scope.product_condition,
 				"product_id" : $scope.product_id,
-				"start_date" : moment($scope.currentDate).format("YYYY-MM-DD"),
+				"start_date" : $("#startDate").val(),
 				"start_price" : $scope.start_price,
-				"status" : $scope.status
+				"status" : $("input:radio[name=status]:checked").val()
 			}
 		}).then(function(response) {
+			
 			swal({ 
 				title: "Success!",
 				text: "Auction has been inserted.",

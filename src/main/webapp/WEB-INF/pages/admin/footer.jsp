@@ -57,20 +57,18 @@
 <!--Form Wizard-->
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery.steps/build/jquery.steps.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/dropzone/dist/dropzone.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function() {
 
-		jQuery('#datepicker').datepicker();
-		jQuery('#datepickerEnd').datepicker({
-	          format: 'mm/dd/yyyy',
-	          startDate: 'today'
-	      });
-	});
-</script>
+ <!-- -------------- DataTimePicker ------------ -->
+<script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+	 
+      $('#end').datetimepicker({
+        format: 'dd-MM-yyyy hh:mm:ss',
+               
+      });
+    </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/moment.js"></script>
 

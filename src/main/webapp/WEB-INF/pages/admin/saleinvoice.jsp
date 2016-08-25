@@ -15,11 +15,15 @@
 <jsp:include page="left-content.jsp"></jsp:include>
 
 <style>
-#invoice{
-	position : relative;
-	top: 0;
-	
+#invoiceID{
+	position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 0px;
+    padding-right: 80px;
+    padding-top: 20px;
 }
+
 
 </style>
 </head>
@@ -38,21 +42,21 @@
 					<ol class="breadcrumb">
 						<li><a href="#">DENH TLAI</a></li>
 						<li><a href="#">Invoice Management</a></li>
-						<li class="active">Sale Invoice</li>
+						<li><a href="${pageContext.request.contextPath}/admin/saleinvoice" style="color: #238fc7;">Sale Invoice</a></li>
 					</ol>
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row" ng-show="invoiceDetail">
 				<div class="col-sm-12">
 					<div class="card-box table-responsive">
 						<h4 class="m-t-0 header-title">
-							<b>Buttons example</b>
+							<b>Invoice Details</b>
 						</h4>
 						<table id="datatable-buttons"
-							class="table table-hover table-actions-bar">
+							class="table table-striped m-0">
 							<thead>
-								<tr class="active">
+								<tr>
 									<th>Date<br>
 									<br>Contact
 									</th>
@@ -90,7 +94,7 @@
 									<td>Admin<br>
 									<br>{{inv.invoice.user.user_name}}
 									</td>
-									<td><a href="" style="color: #ffffff;">{{inv.invoice.invoice_id}}</a><br>
+									<td><a href="" style="color: #ffffff;" ng-click="findInvoiceDetailByInvoiceId(inv.invoice.invoice_id)">{{inv.invoice.invoice_id}}</a><br>
 									<br>
 									<br></td>
 									<td>{{inv.auction.product.product_name}}<br>
@@ -110,110 +114,31 @@
 										class="img-responsive"></td>
 									<td ng-if="inv.invoice.status=='0'"></td>
 								</tr>
+								
 							</tbody>
 						</table>
 
-						<!-- 
-						<div id="datatable-buttons_wrapper"
-							class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-							<div class="dt-buttons btn-group">
-								<a class="btn btn-default buttons-copy buttons-html5 btn-sm"
-									tabindex="0" aria-controls="datatable-buttons"><span>Copy</span></a>
-								<a class="btn btn-default buttons-csv buttons-html5 btn-sm"
-									tabindex="0" aria-controls="datatable-buttons"><span>CSV</span></a>
-								<a class="btn btn-default buttons-pdf buttons-html5 btn-sm"
-									tabindex="0" aria-controls="datatable-buttons"><span>PDF</span></a>
-								<a class="btn btn-default buttons-print btn-sm" tabindex="0"
-									aria-controls="datatable-buttons"><span>Print</span></a>
-							</div>
-							<div id="datatable-buttons_filter" class="dataTables_filter">
-								<label>Search:<input type="search"
-									class="form-control input-sm" placeholder=""
-									aria-controls="datatable-buttons"></label>
-							</div>
-							
-							<table id="datatable-buttons"
-								class="table table-hover table-actions-bar dataTable no-footer"
-								role="grid" aria-describedby="datatable-buttons_info">
-								<thead>
-									<tr role="row">
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1"
-											style="width: 209px;">Date<br><br>Contact</th>
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1" 
-											style="width: 265px;">Seller<br><br>Buyer</th>
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1"
-											style="width: 179px;">Invoice ID<br><br><br></th>
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1"											
-											style="width: 94px;">Product<br><br>Address</th>
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1"											
-											style="width: 173px;">Price<br><br><br></th>
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1"											
-											style="width: 128px;">Quantity<br><br>First Name</th>
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1"											
-											style="width: 128px;">Total<br><br>Last Name</th>
-										<th tabindex="0"
-											aria-controls="datatable-buttons" rowspan="1" colspan="1"											
-											style="width: 128px;">Paid<br> <select class="form-control required">
-											<option value="paid">Paid</option>
-											<option value="unpaid">Unpaid</option>
-											</select></th>
-									</tr>
-								</thead>
-								<tbody style="color: #ffffff;">
-									
-									<tr>
-							            <td>Jonas Alexander</td>
-							            <td>Developer</td>
-							            <td>San Francisco</td>
-							            <td>30</td>
-							            <td>2010/07/14</td>
-							            <td>$86,500</td>
-							            <td>2010/07/14</td>
-							            <td>$86,500</td>
-							        </tr>
-								</tbody>
-							</table>
-							
-						</div> -->
+						
 					</div>
 				</div>
 			</div>
-		</div>
-		
-		<!-- ================= Invoice ==================== -->
-		<div class="container" id="invoice" ng-show="invoice">
-			<!-- Page-Title -->
-			<div class="row">
-				<div class="col-sm-12">
-					<h4 class="page-title">Invoice</h4>
-					<ol class="breadcrumb">
-						<li><a href="#">Ubold</a></li>
-						<li><a href="#">Extras</a></li>
-						<li class="active">Invoice</li>
-					</ol>
-				</div>
-			</div>
-
-			<div class="row">
+			
+			<!-- ================= Invoice ==================== -->
+			<div class="row" ng-show="invoice">
 				<div class="col-md-12">
 					<div class="card-box">
 						<div class="clearfix">
 							<div class="pull-left">
-								<h4 class="text-right m-t-20"
+								<!-- <h4 class="text-right m-t-20"
 									style="font-size: 28px; font-weight: 600;">
 									UB<span class="text-custom">O</span>LD
-								</h4>
+								</h4> -->
+								<img src="${pageContext.request.contextPath}/resources/static/images/denhtlai.png" 
+								class="img-responsive" style="width:20%; height:20%;">
 							</div>
 							<div class="pull-right">
-								<h4>
-									Invoice # <br> <strong>2015-04-23654789</strong>
+								<h4 id="invoiceID">
+									Invoice # <br> <strong>{{invoice_id}}</strong>
 								</h4>
 							</div>
 						</div>
@@ -222,20 +147,23 @@
 							<div class="col-md-12">
 								<div class="pull-left m-t-30">
 									<address>
-										<strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite
-										600<br> San Francisco, CA 94107<br> <abbr
-											title="Phone">P:</abbr> (123) 456-7890
+										<strong>DENH TLAI, Inc.</strong><br> 323 Street, Toul Kork
+										<br>Toul Kork, Phnom Penh<br> <abbr
+											title="Phone">P:</abbr> (855) 12-345-678
 									</address>
 								</div>
 								<div class="pull-right m-t-30">
 									<p>
-										<strong>Order Date: </strong> Jun 15, 2015
+										<strong>Invoice Date: </strong> 
+										<span>{{invoice_date}}</span>
 									</p>
 									<p class="m-t-10">
-										<strong>Order Status: </strong> <span class="label label-pink">Pending</span>
+										<strong>Invoice Status: </strong> 
+										<span class="label label-pink" ng-if="status=='1'">PAID</span>
+										<span class="label label-pink" ng-if="status=='0'">UNPAID</span>
 									</p>
 									<p class="m-t-10">
-										<strong>Order ID: </strong> #123456
+										<strong>Auction ID: </strong><span>{{auction_id}}</span>
 									</p>
 								</div>
 							</div>
@@ -249,7 +177,6 @@
 											<tr>
 												<th>#</th>
 												<th>Item</th>
-												<th>Description</th>
 												<th>Quantity</th>
 												<th>Unit Cost</th>
 												<th>Total</th>
@@ -258,44 +185,11 @@
 										<tbody>
 											<tr>
 												<td>1</td>
-												<td>LCD</td>
-												<td>Lorem ipsum dolor sit amet.</td>
-												<td>1</td>
-												<td>$380</td>
-												<td>$380</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Mobile</td>
-												<td>Lorem ipsum dolor sit amet.</td>
-												<td>5</td>
-												<td>$50</td>
-												<td>$250</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>LED</td>
-												<td>Lorem ipsum dolor sit amet.</td>
-												<td>2</td>
-												<td>$500</td>
-												<td>$1000</td>
-											</tr>
-											<tr>
-												<td>4</td>
-												<td>LCD</td>
-												<td>Lorem ipsum dolor sit amet.</td>
-												<td>3</td>
-												<td>$300</td>
-												<td>$900</td>
-											</tr>
-											<tr>
-												<td>5</td>
-												<td>Mobile</td>
-												<td>Lorem ipsum dolor sit amet.</td>
-												<td>5</td>
-												<td>$80</td>
-												<td>$400</td>
-											</tr>
+												<td>{{product_name}}</td>
+												<td>{{qty}}</td>
+												<td>{{buy_price}}</td>
+												<td>{{buy_price * qty}}</td>
+											</tr>																																												
 										</tbody>
 									</table>
 								</div>
@@ -304,12 +198,12 @@
 						<div class="row">
 							<div class="col-md-3 col-md-offset-9">
 								<p class="text-right">
-									<b>Sub-total:</b> 2930.00
+									<b>Sub-total:</b> 0.00
 								</p>
-								<p class="text-right">Discout: 12.9%</p>
-								<p class="text-right">VAT: 12.9%</p>
+								<p class="text-right">Discout: 0.0%</p>
+								<p class="text-right">VAT: 0.0%</p>
 								<hr>
-								<h3 class="text-right">USD 2930.00</h3>
+								<h3 class="text-right">USD {{buy_price * qty}}</h3>
 							</div>
 						</div>
 						<hr>
@@ -328,7 +222,24 @@
 
 			</div>
 
+			
 		</div>
+		
+		
+	<!-- 	<div class="container" id="invoice" ">
+			Page-Title
+			<div class="row">
+				<div class="col-sm-12">
+					<h4 class="page-title">Invoice</h4>
+					<ol class="breadcrumb">
+						<li><a href="#">DENH TLAI</a></li>
+						<li><a href="#">Invoice Management</a></li>
+						<li class="active">Sale Invoice</li>
+					</ol>
+				</div>
+			</div>
+
+					</div> -->
 		<!-- container -->
 
 	</div>

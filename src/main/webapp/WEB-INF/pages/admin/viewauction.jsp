@@ -12,7 +12,8 @@
 	href="${pageContext.request.contextPath}/resources/static/assets/plugins/magnific-popup/dist/magnific-popup.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-datatables-editable/datatables.css" />
-
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/css/bootstrap-combined.min.css" 
+rel="stylesheet" type="text/css" />
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -98,7 +99,7 @@
 									</thead>
 
 									<tbody>
-										<tr ng-repeat="a in auction">
+										<tr ng-repeat="a in auction | orderBy:'-product.product_id'">
 											<td>
 												<div class="checkbox checkbox-primary m-r-15">
 													<input id="checkbox2" type="checkbox"> <label
@@ -164,7 +165,7 @@
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal fade" id="myModal" role="dialog" style="z-index:10000;">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -246,9 +247,9 @@
 									Date *</label>
 								<div class="col-lg-10">
 									<div class="input-group">
-										<input type="text" class="required form-control"
+										<input type="text" id="startDate" class="required form-control"
 											ng-value="start_date" ng-disabled="true"
-											ng-model="start_date"> <span
+											ng-model="start_date" > <span
 											class="input-group-addon bg-custom b-0 text-white"><i
 											class="icon-calender"></i></span>
 									</div>
@@ -258,12 +259,15 @@
 							<div class="form-group clearfix">
 								<label class="control-label col-lg-2">End Date *</label>
 								<div class="col-lg-10">
-									<div class="input-group" >
-										<input type="text" class="required form-control"
-											placeholder="mm/dd/yyyy" id="datepickerEnd" name="endDate" 
-											ng-model="end_date" ng-value="end_date">
-										<span class="input-group-addon bg-custom b-0 text-white"><i
-											class="icon-calender"></i></span>
+									
+
+									<div class="input-group" id="end">
+										<input type="text" class="required form-control add-on"
+											placeholder="dd-mm-yyyy hh:mm:ss" id="endDate" name="endDate"
+											ng-model="end_date"> <span
+											class="add-on input-group-addon bg-custom b-0 text-white">
+											<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+										</span>
 									</div>
 									<!-- input-group -->
 								</div>
@@ -274,12 +278,12 @@
 								<div class="col-lg-10">
 									<div class="radio radio-info radio-inline">
 										<input type="radio" id="status1" name="status"
-											ng-model="status" value="1" ng-value="1" ng-checked="status==1"> <label for="status1">
+											ng-model="status" value="1" ng-checked="status=='1'"> <label for="status1">
 											Enable </label>
 									</div>
 									<div class="radio radio-inline">
 										<input type="radio" id="status2" name="status"
-											ng-model="status" value="0" ng-value="0" ng-checked="status==0"> <label for="status2">
+											ng-model="status" value="0" ng-checked="status=='0'"> <label for="status2">
 											Disable </label>
 									</div>
 								</div>

@@ -12,13 +12,13 @@ public class AddAuction {
 	private double buy_price;
 	private double increment_price;
 	private double current_price;
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date start_date;
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date end_date;
+	/*@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")*/
+	private String start_date;
+//	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private String end_date;
 	private String status;
 	private String created_by;
-	private Date created_date;
+	private String created_date;
 	private String comment;
 	public int getAuction_id() {
 		return auction_id;
@@ -62,16 +62,16 @@ public class AddAuction {
 	public void setCurrent_price(double current_price) {
 		this.current_price = current_price;
 	}
-	public Date getStart_date() {
+	public String getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(Date start_date) {
+	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 	public String getStatus() {
@@ -86,10 +86,10 @@ public class AddAuction {
 	public void setCreated_by(String created_by) {
 		this.created_by = created_by;
 	}
-	public Date getCreated_date() {
+	public String getCreated_date() {
 		return created_date;
 	}
-	public void setCreated_date(Date created_date) {
+	public void setCreated_date(String created_date) {
 		this.created_date = created_date;
 	}
 	public String getComment() {

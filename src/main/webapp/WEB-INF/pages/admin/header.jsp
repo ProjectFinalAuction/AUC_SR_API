@@ -10,13 +10,18 @@
 
 <!-- Style Circliful Chart-->
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
-
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 <!--Radial Chart CSS -->
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/radial/radial.css" rel="stylesheet">
  
  <!-- DataTables -->
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
+ 
+<!--  -------------	Date time Picker ------------ -->
+
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+ 
  
 <!--Form Wizard-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery.steps/demo/css/jquery.steps.css" />
@@ -26,7 +31,7 @@
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/icons.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/pages.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/static/assets/css/responsive.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/resources/static/assets/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
 <link href="${pageContext.request.contextPath}/resources/static/css/sol.css" rel="stylesheet" type="text/css" />
 
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/modernizr.min.js"></script>

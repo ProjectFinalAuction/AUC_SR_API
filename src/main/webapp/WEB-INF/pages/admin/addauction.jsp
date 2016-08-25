@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Auction</title>
-
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
 <!-- menu -->
@@ -45,11 +45,12 @@
 								<label class="col-lg-2 control-label" for="supplier">Supplier
 									Name *</label>
 								<div class="col-lg-10">
-									<select class="form-control required" name="supplier" 
-										ng-change="findProductsHasSupplier(sup)"
-										ng-model="sup" id="supplier" required 
+									<select class="form-control required" name="supplier"
+										ng-change="findProductsHasSupplier(sup)" ng-model="sup"
+										id="supplier" required
 										ng-options="s.supplier_id as s.contact_name for s in supplier">
-										<option value="" style="display:none">-- Choose Supplier --</option>
+										<option value="" style="display: none">-- Choose
+											Supplier --</option>
 
 									</select>
 								</div>
@@ -61,7 +62,8 @@
 									<select class="form-control required" name="product"
 										ng-model="product_id" id="product" ng-value="product_id"
 										ng-options="p.product_id as p.product_name for p in product">
-										<option value="" style="display:none">-- Choose	Product --</option>
+										<option value="" style="display: none">-- Choose
+											Product --</option>
 									</select>
 								</div>
 							</div>
@@ -71,7 +73,8 @@
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
 										ng-model="product_condition" required>
-										<option value="" ng-selected="true">-- Choose Condition	--</option>
+										<option value="" ng-selected="true">-- Choose
+											Condition --</option>
 										<option value="Very_Good">Very Good</option>
 										<option value="Good">Good</option>
 										<option value="Like_New">Like New</option>
@@ -114,9 +117,9 @@
 									Date *</label>
 								<div class="col-lg-10">
 									<div class="input-group">
-										<input type="text" class="required form-control"
-											ng-value="currentDate | date:'MM/dd/yyyy'" ng-disabled="true"
-											ng-model="start_date"> <span
+										<input type="text" id="startDate" class="required form-control"
+											ng-value="currentDate | date:'dd-mm-yyyy HH:mm:ss'"
+											ng-disabled="true" ng-model="start_date"> <span
 											class="input-group-addon bg-custom b-0 text-white"><i
 											class="icon-calender"></i></span>
 									</div>
@@ -126,12 +129,14 @@
 							<div class="form-group clearfix">
 								<label class="control-label col-lg-2">End Date *</label>
 								<div class="col-lg-10">
-									<div class="input-group" >
-										<input type="text" class="required form-control"
-											placeholder="mm/dd/yyyy" id="datepickerEnd" name="endDate" ng-model="end_date">
-										<span class="input-group-addon bg-custom b-0 text-white"><i
-											class="icon-calender"></i></span>
+									<div class="input-group" id="end">
+										<input type="text" class="required form-control add-on"
+											placeholder="dd-mm-yyyy" id="endDate" name="endDate" ng-model="end_date">
+										<span class="add-on input-group-addon bg-custom b-0 text-white" > <i data-time-icon="icon-time"
+											data-date-icon="icon-calendar"></i>
+										</span>
 									</div>
+
 									<!-- input-group -->
 								</div>
 							</div>
@@ -197,8 +202,7 @@
 	src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
 
 <script type="text/javascript">
-	function clearFrm(){
+	function clearFrm() {
 		$("#wizard-validation-form")[0].reset();
 	}
 </script>
-

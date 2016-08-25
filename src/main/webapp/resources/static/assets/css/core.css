@@ -505,6 +505,7 @@ blockquote small {
   -ms-transition: all 300ms ease;
   border: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  z-index:30000;
 }
 .dropdown-menu > li > a {
   padding: 6px 20px;

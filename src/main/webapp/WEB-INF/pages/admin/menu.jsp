@@ -135,7 +135,7 @@
 									<li class="nav-item dropdown logined" style="margin-top:-20px;">
 										<a class="nav-link dropdown-toggle profile waves-effect" data-toggle="dropdown" href="#" 
 											aria-expanded="true">
-										<span class="lang" key="welcome"></span>  <sec:authentication property="principal.username" />
+										<span class="lang" key="welcome"><sec:authentication property="principal.username" /></span>  
 										<img src="${pageContext.request.contextPath}/resources/static/assets/images/users/avatar-1.jpg" alt="user-img"
 									class="img-circle">
 								
