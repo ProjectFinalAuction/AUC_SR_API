@@ -34,7 +34,7 @@
 
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="card-box">
+					<div class="card-box">	
 						<div class="row">
 							<div class="col-sm-8">
 								<form role="form">
@@ -164,8 +164,8 @@
 					<div class="form-group row">
 						<label class="col-lg-2 control-label " for="phone">Contact Number *</label>
 						<div class="col-lg-10">
-							<input id="phone" name="phone" type="text" placeholder="Ex: 012 345 678"
-								class="required form-control" value={{contact}}>
+							<input id="phone" name="phone" type="text" placeholder="Ex: 012345678 (Allow only number, no space)"
+								class="required form-control" value={{contact}} ng-pattern="/^\d+$/">
 						</div>
 					</div>
 			
@@ -200,7 +200,7 @@
 						<div class="col-lg-10">
 							<div class="input-group">
 								<input type="text" class="required form-control"
-									placeholder="dd-MM-yyyyd" id="datepicker" value={{dob}}> 
+									placeholder="dd-MM-yyyy" id="datepicker" value={{dob}}> 
 								<span class="input-group-addon bg-custom b-0 text-white"><i
 									class="icon-calender"></i></span>
 							</div>

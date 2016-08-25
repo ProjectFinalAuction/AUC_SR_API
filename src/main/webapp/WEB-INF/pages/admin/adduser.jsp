@@ -87,7 +87,7 @@
 									<label class="col-lg-2 control-label " for="phone">Contact
 										Number *</label>
 									<div class="col-lg-10">
-										<input id="phone" name="phone" type="text" placeholder=""
+										<input id="phone" name="phone" type="text" placeholder="Ex: 012803020 (Allow only number, no space)"
 											class="required form-control" ng-model="contact">
 									</div>
 								</div>
