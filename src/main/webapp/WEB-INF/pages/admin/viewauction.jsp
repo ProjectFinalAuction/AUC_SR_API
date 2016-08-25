@@ -99,7 +99,7 @@ rel="stylesheet" type="text/css" />
 									</thead>
 
 									<tbody>
-										<tr ng-repeat="a in auction | orderBy:'-product.product_id'">
+										<tr ng-repeat="a in auction | orderBy:['-auction_id', '-product.product_id']">
 											<td>
 												<div class="checkbox checkbox-primary m-r-15">
 													<input id="checkbox2" type="checkbox"> <label
@@ -264,7 +264,7 @@ rel="stylesheet" type="text/css" />
 									<div class="input-group" id="end">
 										<input type="text" class="required form-control add-on"
 											placeholder="dd-mm-yyyy hh:mm:ss" id="endDate" name="endDate"
-											ng-model="end_date"> <span
+											ng-model="end_date" ng-blur="checkErr()"> <span
 											class="add-on input-group-addon bg-custom b-0 text-white">
 											<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 										</span>

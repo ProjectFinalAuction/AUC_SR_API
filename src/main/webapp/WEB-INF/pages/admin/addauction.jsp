@@ -39,7 +39,7 @@
 							<b>Add Auction </b>
 						</h4>
 
-						<form id="wizard-validation-form" action="/index">
+						<form id="wizard-validation-form" action="/index" name="myForm">
 							<section>
 							<div class="form-group clearfix">
 								<label class="col-lg-2 control-label" for="supplier">Supplier
@@ -118,8 +118,8 @@
 								<div class="col-lg-10">
 									<div class="input-group">
 										<input type="text" id="startDate" class="required form-control"
-											ng-value="currentDate | date:'dd-mm-yyyy HH:mm:ss'"
-											ng-disabled="true" ng-model="start_date"> <span
+											ng-value="currentDate | date:'dd-MM-yyyy HH:mm:ss'"
+											ng-disabled="false" ng-model="start_date"> <span
 											class="input-group-addon bg-custom b-0 text-white"><i
 											class="icon-calender"></i></span>
 									</div>
@@ -131,7 +131,7 @@
 								<div class="col-lg-10">
 									<div class="input-group" id="end">
 										<input type="text" class="required form-control add-on"
-											placeholder="dd-mm-yyyy" id="endDate" name="endDate" ng-model="end_date">
+											placeholder="dd-mm-yyyy" id="endDate" name="endDate" ng-model="end_date" ng-blur='checkErr()'>
 										<span class="add-on input-group-addon bg-custom b-0 text-white" > <i data-time-icon="icon-time"
 											data-date-icon="icon-calendar"></i>
 										</span>
@@ -173,7 +173,7 @@
 									<div class="text-center p-20">
 										<button type="button"
 											class="btn w-sm btn-default waves-effect waves-light"
-											ng-click="addAuction()">
+											ng-click="addAuction()" ng-disabled="myForm.$invalid">
 											<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
 										</button>
 										<button type="button" onclick="clearFrm()"
