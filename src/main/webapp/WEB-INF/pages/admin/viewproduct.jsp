@@ -327,7 +327,24 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/jquery.filer.js?v=1.0.5"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/uploadEdit/js/custom.js?v=1.0.5"></script> 
+	<script type="text/javascript">
+	 $(".filer-fancybox").fancybox({
+         padding: 0,
 
+         openEffect : 'elastic',
+         openSpeed  : 150,
+
+         closeEffect : 'elastic',
+         closeSpeed  : 150,
+
+         closeClick : true,
+
+         helpers : {
+             overlay : null
+         }
+     });
+
+	</script>
  
  
         
