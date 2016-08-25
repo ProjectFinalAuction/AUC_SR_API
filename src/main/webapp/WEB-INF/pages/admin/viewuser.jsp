@@ -88,8 +88,8 @@
 										<td ng-if="u.status=='0'"><i class="fa fa-times fa-lg text-danger"
 												aria-hidden="true"></i></td>
 										<td>{{u.type}}</td>
-										<td><a href="#" data-toggle="modal" data-target=".enterData" 
-												class="table-action-btn" ng-click="getUserByID(u)">
+										<td><a href="" data-toggle="modal" data-target=".enterData" 
+												class="table-action-btn" ng-click="getUserByID(u.user_id)">
 												<i class="md md-edit text-warning"></i></a>
 											<a href="#" class="table-action-btn" ng-click="deleteUser(u.user_id)">
 												<i class="md md-delete text-danger"></i></a>
@@ -139,7 +139,7 @@
 						<label class="col-lg-2 control-label " for="userName2">Username *</label>
 						<div class="col-lg-10">
 							<input class=" form-control required" id="user_name"
-								name="user_name" type="text" ng-model="user_name" value={{user_name}}>
+								name="user_name" type="text" value={{user_name}}>
 						</div>
 					</div>
 					<!-- User Password -->
@@ -147,7 +147,7 @@
 						<label class="col-lg-2 control-label " for="password2">Password *</label>
 						<div class="col-lg-10">
 							<input id="password2" name="password" type="password"
-								class="required form-control" ng-model="password" value={{password}}>
+								class="required form-control" value={{password}}>
 						</div>
 					</div>
 
@@ -156,7 +156,7 @@
 						<label class="col-lg-2 control-label " for="email2">Email *</label>
 						<div class="col-lg-10">
 							<input id="email2" name="email" type="text"
-								class="required email form-control" ng-model="email" value={{email}}>
+								class="required email form-control" value={{email}}>
 						</div>
 					</div>
 
@@ -165,7 +165,7 @@
 						<label class="col-lg-2 control-label " for="phone">Contact Number *</label>
 						<div class="col-lg-10">
 							<input id="phone" name="phone" type="text" placeholder="Ex: 012 345 678"
-								class="required form-control" ng-model="contact" value={{contact}}>
+								class="required form-control" value={{contact}}>
 						</div>
 					</div>
 			
@@ -173,7 +173,7 @@
 						<label class="col-lg-2 control-label " for="fname">First Name *</label>
 						<div class="col-lg-10">
 							<input id="fname" name="fname" type="text"
-								class="form-control" ng-model="first_name" value={{first_name}}>
+								class="form-control" value={{first_name}}>
 						</div>		
 					</div>
 					
@@ -181,14 +181,14 @@
 						<label class="col-lg-2 control-label " for="lname">Last Name *</label>
 						<div class="col-lg-10">
 							<input id="lname" name="lname" type="text"
-								class="form-control" ng-model="last_name" value={{last_name}}>
+								class="form-control" value={{last_name}}>
 						</div>	
 					</div>
 					
 					<div class="form-group row">
 						<label class="col-lg-2 control-label " for="lname">Gender *</label>
 						<div class="col-lg-10">
-							<select class="form-control select2" name="gender" ng-model="gender" value={{gender}}>
+							<select class="form-control select2" name="gender" value={{gender}}>
 								<option value="female">Female</option>
 								<option value="male">Male</option>
 							</select>
@@ -200,7 +200,7 @@
 						<div class="col-lg-10">
 							<div class="input-group">
 								<input type="text" class="required form-control"
-									placeholder="mm/dd/yyyy" id="datepicker" ng-model="dob" value={{dob}}> 
+									placeholder="dd-MM-yyyyd" id="datepicker" value={{dob}}> 
 								<span class="input-group-addon bg-custom b-0 text-white"><i
 									class="icon-calender"></i></span>
 							</div>
@@ -212,14 +212,14 @@
 						<label class="col-lg-2 control-label">Address</label>
 						<div class="col-lg-10">
 							<textarea class="required form-control" rows="5"
-								ng-model="address" value={{address}}></textarea>
+								 value={{address}}></textarea>
 						</div>
 					</div>
 					
 					<div class="form-group row">
 						<label class="col-lg-2 control-label">Photo</label>
 						<div class="col-lg-10 dropzone dz-clickable" id="dropzone">
-							<div class="dz-default dz-message" ng-model="photo" value={{photo}}></div>
+							<div class="dz-default dz-message" value={{photo}}></div>
 						</div>
 					</div>
 					
@@ -228,12 +228,12 @@
 						<div class="col-lg-10">
 							<div class="radio radio-info radio-inline">
 								<input type="radio" id="role1" name="role"
-									ng-model="type" value="admin"> 
+									value="admin"> 
 									<label for="role1"> Admin </label>
 							</div>
 							<div class="radio radio-inline">
 								<input type="radio" id="role2" name="role"
-									ng-model="type" value="bidder" > 
+									value="bidder" > 
 									<label for="role2"> Bidder </label>
 							</div>
 						</div>
@@ -244,12 +244,12 @@
 						<div class="col-lg-10">
 							<div class="radio radio-info radio-inline">
 								<input type="radio" id="status1" name="status"
-									ng-model="status" value="1" > <label for="status1">
+									value="1" > <label for="status1">
 									Enable </label>
 							</div>
 							<div class="radio radio-inline">
 								<input type="radio" id="status2" name="status" 
-									ng-model="status" value="0" > <label
+									value="0" > <label
 									for="status2"> Disable </label>
 							</div>
 						</div>
@@ -258,7 +258,7 @@
 					<div class="form-group row">
 						<label class="col-lg-2 control-label">Comment</label>
 						<div class="col-lg-10">
-							<textarea class="form-control" rows="5" ng-model="comment" value={{comment}}></textarea>
+							<textarea class="form-control" rows="5" value={{comment}}></textarea>
 						</div>
 					</div>
 					
@@ -279,5 +279,6 @@
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
