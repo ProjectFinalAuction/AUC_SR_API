@@ -23,12 +23,13 @@
 			<!-- ============================ BidHistory ===================== -->
 			<div class="panel panel-default" id="bid_history">
 				<div class="panel-heading">
-					<span class="text-muted"><strong>Bid History</strong></span>
-					<div class="btn-group pull-left">
+					<div class="btn-group pull-right">
 						<button class="btn btn-default btn-xs" onclick="window.history.back();">
 							<i class="fa fa-chevron-left" aria-hidden="true"></i>Back
 						</button>
 					</div>
+					<span class="text-muted"><strong>Bid History</strong></span>
+					
 				</div>
 				<div class="panel-body" id="bid_history_detail">
 					<div class="row">
