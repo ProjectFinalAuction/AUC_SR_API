@@ -9,6 +9,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><spring:message code="item_information"></spring:message></title>
+<!-- link to photos pop up lightbox -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/dist/css/lightbox.min.css">
+<!-- css style of slide detail -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/slide-detail.css">
+
 <!-- header -->
 <jsp:include page="header.jsp" />
 <!-- menu -->
@@ -44,7 +49,7 @@
 						<div class="list-group-item" id="img">
 							<div class="thumbnail" ng-repeat="proimg in gallery"
 								ng-show="$first">
-								<a href="images/newcar1.png" data-lightbox="example-set"
+								<a href="{{proimg.image_path}}" data-lightbox="example-set"
 									id="myLink"> <img src="{{proimg.image_path}}"
 									class="img-responsive" width="100%" id="myImage" /></a>
 							</div>
@@ -52,7 +57,7 @@
 						<div class="list-group-item">
 							<div class="thumbnail" style="border: none;">
 
-								<script type="text/javascript" src="js/jssor.slider.min.js"></script>
+								<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/jssor.slider.min.js"></script>
 								<!-- use jssor.slider.debug.js instead for debug -->
 
 								<div id="jssor_1"
@@ -60,25 +65,10 @@
 
 									<div data-u="slides"
 										style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
-										<div style="display: none;">
-											<img data-u="image" src="images/newcar1.png" id="moreImgs6" /><a
-												href="images/newcar1.png" data-lightbox="example-set"></a>
+										<div style="display: none;" ng-repeat="proimgAll in gallery">
+											<img data-u="image" src="{{proimgAll.image_path}}" id="moreImgs6" /><a
+												href="{{proimgAll.image_path}}" data-lightbox="example-set"></a>
 										</div>
-										<div style="display: none;">
-											<img data-u="image" src="images/newcar2.png" id="moreImgs7" /><a
-												href="images/newcar2.png" data-lightbox="example-set"></a>
-										</div>
-										<div style="display: none;">
-											<img data-u="image" src="images/newcar3.png" id="moreImgs8" /><a
-												href="images/newcar3.png" data-lightbox="example-set"></a>
-										</div>
-										<div style="display: none;">
-											<img data-u="image" src="images/newcar4.png" id="moreImgs9" /><a
-												href="images/newcar4.png" data-lightbox="example-set"></a>
-										</div>
-										<!-- <div style="display: none;">
-                <img data-u="image" src="images/home5.png" id="moreImgs5"/><a href="images/home5.png" data-lightbox="example-set"></a>
-            </div>  -->
 									</div>
 									<!-- Bullet Navigator -->
 									<div data-u="navigator" class="jssorb03"
@@ -96,11 +86,15 @@
 										style="top: 0px; right: 18px; width: 55px; height: 55px;"
 										data-autocenter="2"></span>
 								</div>
+								
 								<!-- link from js.js to call function jssor_1_slider_init() -->
-								<script type="text/javascript" src="js/js.js"></script>
+								<script src="${pageContext.request.contextPath}/resources/static/js/slider-detail.js"></script>
 								<script>
 									jssor_1_slider_init();
 								</script>
+								<!-- js photo pop up -->
+								<script src="${pageContext.request.contextPath}/resources/static/dist/js/lightbox-plus-jquery.min.js"></script>
+							
 							</div>
 						</div>
 					</div>
@@ -202,7 +196,7 @@
 							</thead>
 							<tbody>
 
-								<tr ng-hide="buy_price >= current_price">
+								<tr ng-hide="current_price >= buy_price">
 									<td style="color: red;" ><spring:message
 											code="reserve_price_not_met"></spring:message></td>
 									<td colspan="2"></td>
