@@ -33,18 +33,17 @@
 				<div class="panel-body" id="bid_history_detail">
 					<div class="row">
 						History for <strong><span id="product_name"
-							ng-repeat="u in auctionBidHistory | limitTo:1">{{u.auction.product.product_name}}</span></strong>
+							ng-model="produt_name">{{product_name}}</span></strong>
 					</div>
 					<hr>
-					<div class="row" style="padding-bottom: 20px;"
-						ng-repeat="u in auctionBidHistory | limitTo:1">
+					<div class="row" style="padding-bottom: 20px;">
 
 						<!--  Current Price -->
 						<div class="clearfix">
 							<label for="current_price" class="col-sm-2"><strong>Current
 									Price</strong></label>
 							<div class="col-sm-10">
-								<span id="current_price">{{u.auction.current_price}}</span>
+								<span id="current_price">{{current_price}}</span>
 							</div>
 						</div>
 
@@ -53,7 +52,7 @@
 							<label for="starting_price" class="col-sm-2"><strong>Starting
 									Price</strong></label>
 							<div class="col-sm-10">
-								<span id="starting_price">{{u.auction.start_price}}</span>
+								<span id="starting_price">{{start_price}}</span>
 							</div>
 						</div>
 
@@ -62,7 +61,7 @@
 							<label for="number_of_bids" class="col-sm-2"><strong>Number
 									of Bids</strong></label>
 							<div class="col-sm-10">
-								<span id="number_of_bids">{{u.auction.num_bid}}</span>
+								<span id="number_of_bids">{{num_bid}}</span>
 							</div>
 						</div>
 
@@ -80,7 +79,7 @@
 							<label for="start_date_time" class="col-sm-2"><strong>Start
 									Date/Time</strong></label>
 							<div class="col-sm-10">
-								<span id="start_date_time">{{u.auction.start_date}}</span>
+								<span id="start_date_time">{{start_date}}</span>
 							</div>
 						</div>
 
@@ -89,7 +88,7 @@
 							<label for="end_date_time" class="col-sm-2"><strong>End
 									Date/Time</strong></label>
 							<div class="col-sm-10">
-								<span id="end_date_time">{{u.auction.end_date}}</span>
+								<span id="end_date_time">{{end_date}}</span>
 							</div>
 						</div>
 					</div>

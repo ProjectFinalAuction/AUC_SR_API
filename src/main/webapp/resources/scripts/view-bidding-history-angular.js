@@ -26,6 +26,14 @@ app.controller('biddingHistoryCtrl', ['$scope', '$http', '$timeout', 'datetime',
 			$scope.processAuctionItems(response.data.DATA[0].auction);
 			$scope.remaing_date = response.data.DATA[0].auction;
 			
+			// show distinct information on the top
+			$scope.product_name=response.data.DATA[0].auction.product.product_name;
+			$scope.current_price=response.data.DATA[0].auction.current_price;
+			$scope.start_price=response.data.DATA[0].auction.start_price;
+			$scope.num_bid=response.data.DATA[0].auction.num_bid;			
+			$scope.start_date = moment(response.data.DATA[0].auction.start_date).format("LLLL");
+			$scope.end_date = moment(response.data.DATA[0].auction.end_date).format("LLLL")
+			
 		});
 	}
 	
