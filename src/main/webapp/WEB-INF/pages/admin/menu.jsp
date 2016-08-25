@@ -11,7 +11,7 @@
 				<div class="text-right" style="padding-top:10px; margin-left:15px">
 					<a href="${pageContext.request.contextPath}/admin" class="logo"><img
 						src="${pageContext.request.contextPath}/resources/static/images/logo-dashboard.png"
-						class="img-responsive" width="180"></a>
+						class="img-responsive" width="170"></a>
 				</div>
 			</div>
 

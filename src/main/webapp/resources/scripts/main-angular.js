@@ -54,7 +54,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	$scope.findAllAuctions = function() {
 		
 		$http({
-			url : '/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+$scope.productName,
+			url : '/rest/auction/all-auction-active?limit=' + 12 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.processAuctionItemsItems(response.data.DATA);
@@ -93,7 +93,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	$scope.searchProName = function(proName){
 //		alert(proName);
 		$http({
-			url : '/rest/auction?limit=' + 12 +"&page=" + currentPage + "&productName="+proName,
+			url : '/rest/auction/all-auction-active?limit=' + 12 +"&page=" + currentPage + "&productName="+proName,
 			method : 'GET'
 		}).then(function(response) {
 			$scope.auction = response.data.DATA;

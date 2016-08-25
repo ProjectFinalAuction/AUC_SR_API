@@ -110,4 +110,19 @@ public class AuctionController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-bidding-auction-by-auction-id/" + auction_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	//TODO: FIND ALL AUCTION STATUS 1 ACTIVE
+	@RequestMapping(value="/all-auction-active", method = RequestMethod.GET)
+	public ResponseEntity<Map<String , Object>> findAllAuctionsActive(AuctionFilter filter, Pagination pagination){
+		
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-auctions-active")
+						.queryParam("page",pagination.getPage())
+						.queryParam("limit", pagination.getLimit())
+						.queryParam("productName", filter.getProductName())
+						.toUriString();
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(url, HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	}
+
 }
