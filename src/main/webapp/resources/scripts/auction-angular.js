@@ -139,7 +139,7 @@ app
 
 					// TODO: UPDATE FUNCTION
 					$scope.updateAuction = function() {
-						alert($("#endDate").val())
+						
 						$http(
 								{
 									url : '/rest/auction',

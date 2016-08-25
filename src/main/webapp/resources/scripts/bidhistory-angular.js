@@ -127,7 +127,7 @@ app.controller('bidHistory', function($scope,$http){
 })
 
 // TODO: =========BID HISTORY BY USER_ID FOR FRONT-END============
-app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
+app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
 	
 	// Show or Hide Panel
 	$scope.controlPanel = function(){
@@ -142,7 +142,9 @@ app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', func
 			url: 'http://localhost:8080/rest/bidhistory/' + user_id,
 		}).then(function(response){
 			$scope.userBidHistory = response.data.DATA;
-			$scope.processAuctionItems($scope.userBidHistory);
+			//$scope.processAuctionItems($scope.userBidHistory);
+			
+			
 		});
 	}
 	
@@ -187,22 +189,25 @@ app.controller('userBidHistory',['$scope', '$http', '$timeout', 'datetime', func
 	}
 	$scope.userCredit(USER_ID);
 	//===============================================
-    /*$scope.tick = function () {
+	$scope.tick = function () {
         $scope.currentTime = moment();
-        $scope.processAuctionItems($scope.userBidHistory);
+        $scope.processAuctionItemsItems($scope.userBidHistory);
+        
         $timeout($scope.tick, 1000);
+        
     }
-    
-    $scope.processAuctionItems = function (data) {
-        data.remainingTime = datetime.getRemainigTime(data.auction.end_date);
-    }
-    
-    $timeout($scope.tick, 1000);
-    $timeout($scope.userBidHistory, 10000);
-	$scope.currentTime = moment();*/ 
 	
+    $scope.processAuctionItemsItems = function (data) {
+        angular.forEach(data, function (item) {
+            item.remainingTime = datetime.getRemainigTime(item.auction.end_date);
+        });
+    }
+    
+    
 	$scope.findBidByUserId(USER_ID);
-		
+	// load remaining date/time
+	$scope.currentTime = moment(); 
+	$timeout($scope.tick, 1000);		
 }]);
 
 app.factory('datetime', ['$timeout', function ($timeout) {
@@ -238,6 +243,7 @@ app.filter('durationview', ['datetime', function (datetime) {
         return duration.days + "days, " + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
     };
 }]);
+
 
 
 

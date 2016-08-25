@@ -123,8 +123,8 @@ pageEncoding="UTF-8"%>
 								data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" 
 								data-action-time="08/25/2016 00:22:49" 
 								data-end-value="Ended" 
-								data-action-milliseconds="1472059369000">{{a.remainingTime | durationview}}</span>
-								<span class="awe-rt-Done "><spring:message code="remaining"></spring:message></span>
+								data-action-milliseconds="1472059369000"><spring:message code="remaining"></spring:message></span> {{a.remainingTime | durationview}}</span>
+								<span class="awe-rt-Done ">
 							</p>
 							<p class="bids">
 								&nbsp;
