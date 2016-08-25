@@ -142,6 +142,7 @@
 	                          <td>
 	                          	<span ng-show="pro.status==1">Active</span>
 	                          	<span ng-show="pro.status==0">Inactive</span>
+	                          	<span ng-show="pro.status==3">Auction</span>
 	                          </td>
 	                          	
 	                          
@@ -260,6 +261,7 @@
 						<select ng-model="prostatus" class="form-control">
 							<option value="1" ng-selected="{{prostatus==1}}">Active</option>
 							<option value="0" ng-selected="{{prostatus==0}}">Inactive</option>
+							<option value="3" ng-selected="{{prostatus==3}}">Auction</option>
 						</select>
 						</div>
 					</div>
