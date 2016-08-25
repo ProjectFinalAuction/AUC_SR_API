@@ -11,7 +11,7 @@
 <!-- header -->
 <jsp:include page="../header.jsp" />
 <!-- menu -->
-<jsp:include page="../menu.jsp" />
+<jsp:include page="../menu.jsp"></jsp:include>
 <style>
 .left .nav a, .left .panel-title {
 	color: gray;

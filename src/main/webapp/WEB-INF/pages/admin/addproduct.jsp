@@ -77,7 +77,7 @@
 											class="text-danger">*</span></label>
 										<textarea class="form-control" ng-model="pro_description"
 											rows="5" name="prodescript" id="productdescription"
-											placeholder="Please enter description"></textarea>
+											placeholder="Please enter description"  maxlength="250"></textarea>
 									</div>
 
 									<div class="form-group m-b-20">
