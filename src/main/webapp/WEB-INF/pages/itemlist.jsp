@@ -125,14 +125,18 @@ pageEncoding="UTF-8"%>
 						<span class="label label-primary status-type" style="float: right; background-color: #BBBAB9 ; margin-top: 5px; "><spring:message code="auction"></spring:message></span><br><br><br><br><br>
 						<span style=" text-align: right; ">
 							<p class="time remaining" > 
-								<span data-epoch="ending" data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" data-action-time="08/25/2016 00:22:49" data-end-value="Ended" data-action-milliseconds="1472059369000">9 Days, 34 Minutes</span>
+								<span data-epoch="ending" 
+								data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" 
+								data-action-time="08/25/2016 00:22:49" 
+								data-end-value="Ended" 
+								data-action-milliseconds="1472059369000">{{a.remainingTime | durationview}}</span>
 								<span class="awe-rt-Done "><spring:message code="remaining"></spring:message></span>
 							</p>
 							<p class="bids">
 								&nbsp;
 								<span class="awe-rt-CurrentPrice price NumberPart" style=" color:#238FC7 "><span>{{a.current_price | currency}}</span></span>
 								<span class="glyphicon glyphicon-option-vertical"></span>
-								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">{{a.auction_id}}</span>
+								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">{{a.num_bid}}</span>
 								<spring:message code="bids"></spring:message>
 								&nbsp;
 								<a href="/detail/{{a.auction_id}}" class="btn btn-default awe-rt-Active awe-rt-Done"><spring:message code="bid_now"></spring:message> 
