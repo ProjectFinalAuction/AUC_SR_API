@@ -19,7 +19,7 @@
 					      <ul class="nav navbar-nav">
 					       	<li class="active"><a href="${pageContext.request.contextPath}/index"><spring:message code="home"></spring:message></a></li>
 <!-- 					        <li><a href="sell_first_step.html" class="lang" key="seller">Seller</a></li> -->
-					        <li><a href="#"><spring:message code="buyer"></spring:message></a></li>
+<%-- 					        <li><a href="#"><spring:message code="buyer"></spring:message></a></li> --%>
 					        <li><a href="${pageContext.request.contextPath}/contactus"><spring:message code="contact_s"></spring:message></a></li>
 					        <li><a href="${pageContext.request.contextPath}/aboutus"><spring:message code="about"></spring:message></a></li>
 					      </ul>

@@ -157,7 +157,7 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 			$scope.current_price = response.data.DATA.current_price;
 			$scope.start_price = response.data.DATA.start_price;
 			$scope.increment_price = response.data.DATA.increment_price;
-//			$scope.buy_price = response.data.DATA.buy_price;
+			$scope.buy_price = response.data.DATA.buy_price;
 			$scope.product_condition = response.data.DATA.product_condition;
 			$scope.start_date = moment(response.data.DATA.start_date).format("LLLL");
 			$scope.end_date = moment(response.data.DATA.end_date).format("LLLL");

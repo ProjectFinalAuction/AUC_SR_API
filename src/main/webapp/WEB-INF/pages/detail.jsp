@@ -202,8 +202,8 @@
 							</thead>
 							<tbody>
 
-								<tr>
-									<td style="color: red;"><spring:message
+								<tr ng-hide="buy_price >= current_price">
+									<td style="color: red;" ><spring:message
 											code="reserve_price_not_met"></spring:message></td>
 									<td colspan="2"></td>
 								</tr>
@@ -216,7 +216,7 @@
 										<a
 											href="/viewbidhistory/{{auction_id}}"> <input
 												type="button" class="btn btn-default bidhistory"
-												value="Bid History">
+												value="Bid History" ng-show="num_bid > 0">
 										</a>
 										
 										
