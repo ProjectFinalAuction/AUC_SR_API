@@ -14,7 +14,7 @@
 <jsp:include page="menu.jsp" />
 
 <!-- content -->
-<div ng-controller="biddingHistoryCtrl">
+<div class="container" style="margin-top: 5px;" ng-controller="biddingHistoryCtrl">
 	<div class="row">
 		<div class="col-md-12 col-xs-12">
 
@@ -126,3 +126,12 @@
 	src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/view-bidding-history-angular.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#menustand").hide(function(){
+			$("#right-content").removeClass('col-md-9');
+		});
+		$('#searchPanel').hide();
+	});
+</script>	
