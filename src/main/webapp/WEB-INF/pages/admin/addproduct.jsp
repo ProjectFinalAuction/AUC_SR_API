@@ -194,7 +194,7 @@
 									<section>
 									<div class="form-group clearfix">
 										<!-- upload image -->
-										<div class="col-lg-10">
+										<div class="col-lg-12">
 
 											<div class="table-box m-b-30">
 												<div class="table-detail">

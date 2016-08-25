@@ -151,6 +151,12 @@
                         
                       </tbody>
                     </table>
+                    <div class="dataTables_info ng-binding"><b>Total Page&#8227;{{pagination.TOTAL_PAGES}}</b> 
+                    											&nbsp;&nbsp;
+                    										<b>All Products&#8227;{{pagination.TOTAL_COUNT}}</b></div>
+                    <div id="PAGINATION">
+                    	
+                    </div>
                   </div>
             </div>
            </div> <!-- end col -->   
@@ -356,21 +362,54 @@
 		  			});
 }
 				    $rootScope.getSupplier();
-			
+	    var checkPagination = true;
+		var currentPage = 1;
 
 //**********get product
     	$rootScope.getProductsMethod=function(){
 //     		alert("a");
-           $http.get("http://localhost:8080/rest/product")
+           $http.get("http://localhost:8080/rest/product?limit=15&page="+currentPage)
           		.then(function(response) {
           		$rootScope.products = response.data.DATA;
+          		$rootScope.pagination= response.data.PAGINATION;
           		/* alert(response.data.DATA.gallery.image_path); */
 				console.log(response.data.DATA);
+				if(checkPagination){
+					$scope.setPagination(response.data.PAGINATION);
+					checkPagination=false;
+				}
 				
   			});
         }
     	$rootScope.getProductsMethod();
 		
+    	
+    	//TODO: CTEATE PAGINATION BUTTON
+    	$scope.setPagination = function(pagination){
+    		console.log("PAGINATION==>", pagination);
+    		$("#PAGINATION").bootpag({
+    	        total: pagination.TOTAL_PAGES,
+    	        page: pagination.PAGE,
+    	        maxVisible: 10,
+    	        leaps: true,
+    	        firstLastUse: true,
+    	        first: 'First',
+    	        last: 'Last',
+    	        wrapClass: 'pagination',
+    	        activeClass: 'active',
+    	        disabledClass: 'disabled',
+    	        nextClass: 'next',
+    	        prevClass: 'prev',
+    	        lastClass: 'last',
+    	        firstClass: 'first'
+    	    }); 
+    		$("#PAGINATION ul").addClass("pagination");
+    	}
+    	$('#PAGINATION').bootpag().on("page", function(event, page){
+    		checkPagination = false;
+    		currentPage = page;
+    		$scope.getProductsMethod();
+    	});
     	
     	
     	

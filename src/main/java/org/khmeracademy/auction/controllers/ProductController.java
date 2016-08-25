@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.khmeracademy.auction.entities.input.AddProduct;
 import org.khmeracademy.auction.utils.FileMessageResource;
 import org.khmeracademy.auction.utils.HrdGeneratorUI;
+import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -18,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,10 +44,10 @@ public class ProductController {
 	private String WS_URL;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String, Object>> getAllProducts() {
+	public ResponseEntity<Map<String, Object>> getAllProducts(@ModelAttribute Pagination pagination) {
 		// System.out.println("Hello");
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-products", HttpMethod.GET, request, Map.class);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-products?limit="+ pagination.getLimit()+"&page="+pagination.getPage(), HttpMethod.GET, request, Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
 
