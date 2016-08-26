@@ -1,6 +1,6 @@
 package org.khmeracademy.auction.entities.input;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class AddUser {
 	private int user_id;

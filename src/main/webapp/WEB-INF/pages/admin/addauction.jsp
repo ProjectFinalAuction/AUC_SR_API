@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Auction</title>
-<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/css/bootstrap-combined.min.css" 
+rel="stylesheet" type="text/css" />
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
 <!-- menu -->

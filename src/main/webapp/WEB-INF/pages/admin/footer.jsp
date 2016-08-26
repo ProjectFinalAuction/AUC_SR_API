@@ -66,8 +66,14 @@
 	 
       $('#end').datetimepicker({
         format: 'dd-MM-yyyy hh:mm:ss',
-               
+           
       });
+      
+      $('#dateofbirth').datetimepicker({
+    	    format: 'dd-MM-yyyy',
+    	    pickTime: false
+    	  });
+
     </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/moment.js"></script>

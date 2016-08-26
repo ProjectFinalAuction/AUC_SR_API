@@ -83,7 +83,7 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 					$scope.first_name = response.data.DATA.first_name;
 					$scope.last_name = response.data.DATA.last_name;
 					if ((response.data.DATA.gender == 'female')
-							|| (userObject.gender == 'F')) {
+							|| (response.data.DATA.gender == 'F')) {
 
 						$('select[name="gender"]').find(
 								'option[value="female"]')
@@ -93,7 +93,8 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 						$('select[name="gender"]').find('option[value="male"]')
 								.attr("selected", true);
 					}
-					$scope.dob = response.data.DATA.dob;
+					$scope.dob =  moment(response.data.DATA.dob)
+							.format("DD-MM-YYYY");
 					$scope.address = response.data.DATA.address;
 					$scope.photo = response.data.DATA.photo;
 					if (response.data.DATA.type == 'admin') {
@@ -111,6 +112,7 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 	}
 	// Update User
 	$scope.updateUser = function(id) {
+		alert($("#dob1").val());
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http(
@@ -124,7 +126,7 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 						"contact" : $scope.contact,
 						"created_by" : $scope.created_by,
 						"created_date" : $scope.created_date,
-						"dob" : $('#dob').val(),
+						"dob" : $("#dob1").val(),
 						"email" : $scope.email,
 						"first_name" : $scope.first_name,
 						"gender" : $('.select2').val(),
@@ -138,14 +140,14 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 								.val() == 'admin') ? 1 : 2
 					}
 				}).then(function(response) {
-			swal({
-				title : "Success",
-				text : "User has been updated!",
-				type : "success",
-				timer : 1000,
-				showConfirmButton : false
-			});
-			$scope.getAllUsers();
+					swal({
+						title : "Success",
+						text : "User has been updated!",
+						type : "success",
+						timer : 1000,
+						showConfirmButton : false
+					});
+					$scope.getAllUsers();
 		}, function(error) {
 		});
 	}

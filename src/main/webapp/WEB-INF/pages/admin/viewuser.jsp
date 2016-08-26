@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Management</title>
-
+<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/css/bootstrap-combined.min.css" 
+rel="stylesheet" type="text/css" />
 <!-- header -->
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -195,14 +196,14 @@
 						</div>
 					</div>
 					
-					<div class="form-group row">
+					<div class="form-group row" >
 						<label class="control-label col-lg-2">Date of Birth</label>
 						<div class="col-lg-10">
-							<div class="input-group">
-								<input type="text" class="required form-control"
-									placeholder="dd-MM-yyyy" id="datepicker" value={{dob}}> 
-								<span class="input-group-addon bg-custom b-0 text-white"><i
-									class="icon-calender"></i></span>
+							<div class="input-group" id="dateofbirth">
+								<input type="text" class="required form-control add-on"
+									placeholder="dd-MM-yyyy" id="dob1" value="{{dob}}"> 
+								<span class="add-on input-group-addon bg-custom b-0 text-white" > <i data-time-icon="icon-time"
+											data-date-icon="icon-calendar"></i></span>
 							</div>
 							<!-- input-group -->
 						</div>
@@ -279,6 +280,6 @@
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
-
+>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
