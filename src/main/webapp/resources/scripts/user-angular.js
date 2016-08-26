@@ -95,6 +95,7 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 					}
 					$scope.dob =  moment(response.data.DATA.dob)
 							.format("DD-MM-YYYY");
+					
 					$scope.address = response.data.DATA.address;
 					$scope.photo = response.data.DATA.photo;
 					if (response.data.DATA.type == 'admin') {
@@ -112,7 +113,14 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 	}
 	// Update User
 	$scope.updateUser = function(id) {
-		alert($("#dob1").val());
+		date1 = ($('#dob1').val()).split(':');		
+		date2 = date1[0].split(' ');
+		date3 = date2[0].split('-');
+		
+		startDate = new Date(parseInt(date3[2]), parseInt(date3[1]) - 1,
+				parseInt(date3[0])
+				);		
+		
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http(
@@ -126,7 +134,7 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 						"contact" : $scope.contact,
 						"created_by" : $scope.created_by,
 						"created_date" : $scope.created_date,
-						"dob" : $("#dob1").val(),
+						"dob" : startDate,
 						"email" : $scope.email,
 						"first_name" : $scope.first_name,
 						"gender" : $('.select2').val(),
@@ -151,6 +159,12 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 		}, function(error) {
 		});
 	}
+	
+	
+	
+	
+	
+	
 	
 	// delete supplier
 	$scope.deleteUser = function(id, e) {

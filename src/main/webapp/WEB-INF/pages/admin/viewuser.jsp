@@ -200,7 +200,7 @@ rel="stylesheet" type="text/css" />
 						<label class="control-label col-lg-2">Date of Birth</label>
 						<div class="col-lg-10">
 							<div class="input-group" id="dateofbirth">
-								<input type="text" class="required form-control add-on"
+								<input type="text" class="required form-control add-on" ng-model="dob"
 									placeholder="dd-MM-yyyy" id="dob1" value="{{dob}}"> 
 								<span class="add-on input-group-addon bg-custom b-0 text-white" > <i data-time-icon="icon-time"
 											data-date-icon="icon-calendar"></i></span>
