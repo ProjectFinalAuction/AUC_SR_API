@@ -40,12 +40,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-			.antMatchers("/" , "/index" , "/about", "/contact", "/ui-itemlist", "error/**", "/detail" ).permitAll()
+			.antMatchers("/" , "/index" , "/about", "/contact", "/ui-itemlist", "error/**", "/detail", "/login" ).permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.antMatchers("/user/**").hasRole("BIDDER");
 		http
 		.formLogin()
-		.loginPage("/")
+		.loginPage("/login")
 		.usernameParameter("username")
 		.passwordParameter("password")
 		.successHandler(ajaxAuthenticationSuccessHandler)

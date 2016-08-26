@@ -19,6 +19,9 @@
 						<a class="nav-link" href="#" data-toggle="modal" data-target="#login" id="loginFrm">
 							<spring:message code="login"></spring:message> 
 						</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/login" id="loginFrm">
+							<spring:message code="login"></spring:message> 
+						</a>
 						<span>&nbsp;|&nbsp; </span>
 					
 						<a class="nav-link" href="${pageContext.request.contextPath}/register"><spring:message code="register"></spring:message></a>
