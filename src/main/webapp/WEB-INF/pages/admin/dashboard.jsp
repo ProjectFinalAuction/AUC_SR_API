@@ -113,10 +113,7 @@
             		<div class="card-box">
                   <a href="#" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
             			<h4 class="header-title m-t-0">Recent Bids</h4>
-            			<p class="m-b-30 font-13">
-  			            Your awesome text goes here.
-  		            </p>
-
+            			
           			  <div class="table-responsive">
                     <table class="table table-actions-bar">
                       <thead>
@@ -187,10 +184,7 @@
           		  <div class="card-box">
                   <a href="#" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
           			  <h4 class="header-title m-t-0">Top Auction of Products</h4>
-          			  <p class="m-b-30 font-13">
-			              Your awesome text goes here.
-		              </p>
-
+          			  
             			<div class="table-responsive">
                     <table class="table table-actions-bar">
                       <thead>

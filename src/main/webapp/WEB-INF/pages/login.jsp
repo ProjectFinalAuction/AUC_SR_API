@@ -6,8 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><spring:message code="cambodia_auction"></spring:message></title>
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/resources/static/assets/images/auction.ico">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/assets/images/auction.ico">
 <link
 	href="${pageContext.request.contextPath}/resources/static/assets/login/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
@@ -26,6 +25,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/static/assets/login/css/responsive.css"
 	rel="stylesheet" type="text/css" />
+	
 <!-- Sweet Alert CSS -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/static/css/sweetalert.css">
@@ -33,13 +33,16 @@
 	src="${pageContext.request.contextPath}/resources/static/js/sweetalert.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/static/js/sweetalert-dev.js"></script>
-</head>
+	
 <style>
 #login{
 	background-color: #238FC7 !important;
     border: 1px solid #238FC7 !important;
 }
 </style>
+
+</head>
+
 <body>
 	<div class="account-pages"></div>
 	<div class="clearfix"></div>
@@ -90,7 +93,7 @@
 
 					<div class="form-group m-t-20 m-b-0">
 						<div class="col-sm-12">
-							<a href="page-recoverpw.html" class="text-dark"><i
+							<a href="" class="text-dark"><i
 								class="fa fa-lock m-r-5"></i> Forgot your password?</a>
 						</div>
 					</div>
@@ -169,6 +172,7 @@
 	src="${pageContext.request.contextPath}/resources/static/assets/login/js/jquery.core.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.app.js"></script>
+	
 <script type="text/javascript">
 $(function() {
 	
@@ -180,10 +184,7 @@ $(function() {
 	            url: "${pageContext.request.contextPath}/login",
 	            type: "POST",
 	            data: $("#formLogin").serialize(),
-	            success: function(data) {
-	            	
-	            	alert(data);
-	            	
+	            success: function(data) {	            	
 	            	if(data == "User account is locked"){
 	            		alert(data);
 	            	}else if(data == "User is disabled"){
@@ -213,6 +214,5 @@ $(function() {
    		  });
 		  
 	});
-	
 });
 </script>

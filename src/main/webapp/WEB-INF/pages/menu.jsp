@@ -16,9 +16,6 @@
 				<div id="right-head-info" class="col-md-6">
 					<sec:authorize access="!isAuthenticated()">
 					
-						<a class="nav-link" href="#" data-toggle="modal" data-target="#login" id="loginFrm">
-							<spring:message code="login"></spring:message> 
-						</a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/login" id="loginFrm">
 							<spring:message code="login"></spring:message> 
 						</a>
@@ -99,45 +96,6 @@
 		src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
 </header>
 
-<!--  ========  Model Login ====== -->
-	<div class="modal fade" id="login" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header text-xs-center">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>					
-				</div>
-				<div class="modal-body">
-					<form class="formlogin" id="formLogin" method="POST" role="form">
-						<fieldset>
-<!-- 							<h4 class="text-success text-xs-center lang" align="center" key="welcome">WELCOME LOGIN</h4> -->
-							<div><img src="${pageContext.request.contextPath}/resources/static/images/denhtlaiHD.png" 
-							class="img-responsive" width="350" style="margin:15px auto;"></div>
-							<div class="form-group">
-								<label class="text-xs-left"><spring:message code="username"></spring:message></label> <input type="text"
-									class="form-control form-control-succes" name="username"
-									placeholder="enter your username" autofocus required>
-							</div>
-							<div class="form-group">
-								<label class="text-xs-left" ><spring:message code="password"></spring:message></label> <input
-									type="password" class="form-control form-control-succes"
-									name="password" placeholder="enter your password" required>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary"
-									><spring:message code="sign_in"></spring:message>
-								</button>&nbsp;&nbsp;
-								<a href="${pageContext.request.contextPath}/register?bidder" id="registerLoginLink"><spring:message code="register_now"></spring:message></a>
-							</div>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 <!-- Web Socket - create a button to call the function sendName when user bids product on the other page. This button is a trigger and it runs when user bids, and then it gets data after 1 second-->
 <button type="button" onclick="sendName()" id="wsButton" style="display:none">Web Socket</button>
 <!-- End test web socket -->
