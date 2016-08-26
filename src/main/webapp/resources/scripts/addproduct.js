@@ -12,8 +12,10 @@
 	
 //		======================================get brand======================================
 		$rootScope.getBrand=function(){
+			var checkPagination = true;
+			var currentPage = 1;
 	    		//alert("a");
-	           $http.get("http://localhost:8080/rest/brand")
+	           $http.get("http://localhost:8080/rest/brand?limit=" + 50 +"&page=" + currentPage)
 	          		.then(function(response) {
 	          		$rootScope.Brands = response.data.DATA;
 					console.log(response.data.DATA);
