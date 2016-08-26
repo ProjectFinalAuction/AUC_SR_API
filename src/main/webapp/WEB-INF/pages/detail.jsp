@@ -149,11 +149,10 @@
 													</button>
 												</sec:authorize> <sec:authorize access="!isAuthenticated()">
 
-													<button class="btn btn-block" type="button"
-														style="width: 50%; float: left; background-color: #43b3f3; color: white"
-														data-toggle="modal" data-target="#login">
+													<a href="/login"><button class="btn btn-block" type="button"
+														style="width: 50%; float: left; background-color: #43b3f3; color: white">
 														<spring:message code="bid_now"></spring:message>
-													</button>
+													</button></a>
 												</sec:authorize></td>
 
 										</tr>
