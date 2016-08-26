@@ -20,6 +20,10 @@
 .thumb-md {
 	border: 1px solid #000;
 }
+ #browse_gallery{
+	margin-left:-105px;
+	margin-bottom:35px;
+}
 
 /* 	.preview-area{ */
 /* 		border: 2px solid white ; */
@@ -58,7 +62,7 @@
 
 			<div class="row">
 				<div class="col-sm-12">
-					<form name="add-product-form">
+					<form name="add-product-form" id="myform">
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="card-box">
@@ -164,7 +168,7 @@
 
 									<div class="form-group m-b-20">
 										<label for="qty">Quantity<span class="text-danger">*</span></label>
-										<input type="text" class="form-control" name="qty" id="qty"
+										<input type="number" class="form-control" name="qty" id="qty"
 											ng-model="pro_quantity">
 									</div>
 
@@ -252,7 +256,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="text-center p-20">
-						<button type="button" class="btn w-sm btn-white waves-effect" onclick="resetForm()">Reset</button>
+						<button type="reset" class="btn w-sm btn-white waves-effect" onclick="resetForm()">Reset</button>
 						<button type="button"
 							class="btn w-sm btn-default waves-effect waves-light"
 							ng-click="addProduct($event)" id="save_button">Save</button>
@@ -290,7 +294,7 @@
         
 <!-- //===========library      -->
    	<script type="text/javascript">
-
+		
 	 $(".filer-fancybox").fancybox({
         padding: 0,
 
@@ -306,6 +310,12 @@
             overlay : null
         }
     });
+	 
+	 function resetForm(){
+	
+		$("#myform")[0].reset();
+		 
+	 }
     </script>
 
 <!-- <script type="text/javascript"> -->
