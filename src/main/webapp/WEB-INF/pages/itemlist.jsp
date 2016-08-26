@@ -66,8 +66,9 @@ pageEncoding="UTF-8"%>
 							<label class="input-group-addon" for="SortFilterOptions"><spring:message code="sort"></spring:message></label>
 							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions" ng-model="orderList" >
 							    <option value="product.product_name">Product Name</option>
-							    <option value="-start_price">Price Low to Hight</option>
-							    <option value="start_price">Price High to Low</option>
+							    <option value="-product.product_name">Product Name</option>
+							    <option value="start_price">Price Low to Hight</option>
+							    <option value="-start_price">Price High to Low</option>
 							</select>
 						</div>
 					</div>
