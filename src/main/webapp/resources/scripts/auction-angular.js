@@ -19,7 +19,7 @@ app
 					$scope.findAllAuctions = function() {
 						$http(
 								{
-									url : '/rest/auction?limit=' + 5 + "&page="
+									url : '/rest/auction?limit=' + 10 + "&page="
 											+ currentPage + "&productName="
 											+ $scope.productName,
 									method : 'GET'

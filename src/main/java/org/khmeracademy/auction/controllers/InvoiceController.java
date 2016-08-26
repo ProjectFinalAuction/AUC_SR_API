@@ -2,6 +2,8 @@ package org.khmeracademy.auction.controllers;
 
 import java.util.Map;
 
+import org.khmeracademy.auction.filtering.InvoiceFilter;
+import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/rest/invoice")
@@ -28,9 +31,14 @@ public class InvoiceController {
 	
 	//TODO: GET ALL USER CREDIT WITH ENDING AMOUNT 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>>findAllInvoiceDetails(){
+	public ResponseEntity<Map<String , Object>>findAllInvoiceDetails(InvoiceFilter filter, Pagination pagination){
+		String url = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-invoice-details")
+				.queryParam("page", pagination.getPage())
+				.queryParam("limit", pagination.getLimit())
+				.queryParam("fullName", filter.getFullName())
+				.toString();
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-invoice-details", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange( url , HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

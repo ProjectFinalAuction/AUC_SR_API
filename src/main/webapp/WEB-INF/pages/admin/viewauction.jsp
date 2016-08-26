@@ -137,7 +137,7 @@ rel="stylesheet" type="text/css" />
 										</tr>
 									</tbody>
 								</table>
-<!-- 							</div> -->
+							</div>
 							<!-- Table Data-->
 
 							<!-- Pagination-->

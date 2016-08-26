@@ -35,7 +35,7 @@
 					<a href="/detail/{{a.auction_id}}" class="title">{{a.product.product_name}}</a>
 					<h5 class="lang" key="remaining_day">{{a.remainingTime | durationview}}</h5>
 					<p>
-						<span class="price" style="margin-right:20px;">{{a.current_price | currency}}</span>{{a.num_bid}} <spring:message code="bids"></spring:message></span>
+						<span class="price" style="margin-right:5px;">{{a.current_price | currency}}</span><font color="#f3809f">{{a.num_bid}} </font><spring:message code="bids"></spring:message></span>
 					</p>
 					<p class="text-center">
 						<a href="/detail/{{a.auction_id}}"
