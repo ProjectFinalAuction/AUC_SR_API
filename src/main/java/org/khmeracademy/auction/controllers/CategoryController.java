@@ -3,6 +3,8 @@ package org.khmeracademy.auction.controllers;
 import java.util.Map;
 
 import org.khmeracademy.auction.entities.input.AddCategory;
+import org.khmeracademy.auction.filtering.CategoryFilter;
+import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/rest/category")
@@ -29,9 +32,14 @@ public class CategoryController {
 	private String WS_URL;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findAllCategories(){
+	public ResponseEntity<Map<String , Object>> findAllCategories(CategoryFilter filter, Pagination pagination){
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-categories")
+				.queryParam("page",pagination.getPage())
+				.queryParam("limit", pagination.getLimit())
+				.queryParam("categoryName", filter.getCategoryName())
+				.toUriString();
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-categories", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange( url , HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

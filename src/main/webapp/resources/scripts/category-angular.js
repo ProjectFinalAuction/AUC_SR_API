@@ -4,24 +4,63 @@
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$http,$rootScope){
+	$scope.categoryName = "";
+	var checkPagination = true;
+	var currentPage = 1;
 	// Get All Category
 	$scope.findAllCategories = function(){
 		$http({
-			url: 'http://localhost:8080/rest/category',
+			url: '/rest/category?limit=' + 10 +"&page=" + currentPage + "&categoryName="+$scope.categoryName,
 			method: 'GET',
 			
-		}).then(function(respone){
-			$scope.category = respone.data.DATA;
+		}).then(function(response){
+			$scope.category = response.data.DATA;
+			
+			$scope.pages = response.data.PAGINATION.PAGE;
+			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
+			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
+			if (checkPagination) {
+				$scope.setPagination(response.data.PAGINATION);
+				checkPagination = false;
+			}
 		});
 	}
+	// TODO: CTEATE PAGINATION BUTTON
+	$scope.setPagination = function(pagination) {
+		console.log("PAGINATION==>", pagination);
+		$("#PAGINATION").bootpag({
+			total : pagination.TOTAL_PAGES,
+			page : pagination.PAGE,
+			maxVisible : 10,
+			leaps : true,
+			firstLastUse : true,
+			first : 'First',
+			last : 'Last',
+			wrapClass : 'pagination',
+			activeClass : 'active',
+			disabledClass : 'disabled',
+			nextClass : 'next',
+			prevClass : 'prev',
+			lastClass : 'last',
+			firstClass : 'first'
+		});
+		$("#PAGINATION ul").addClass("pagination");
+	}
+
+	$('#PAGINATION').bootpag().on("page", function(event, page) {
+		checkPagination = false;
+		currentPage = page;
+		$scope.findAllCategories();
+	});
+	
 	//Select Main Category
 	$scope.findMainCategories = function(){
 		$http({
-			url: 'http://localhost:8080/rest/category/find-main-category',
+			url: '/rest/category/find-main-category',
 			method: 'GET',
 			
-		}).then(function(respone){
-			$scope.maincategory = respone.data.DATA;
+		}).then(function(response){
+			$scope.maincategory = response.data.DATA;
 		});
 	}
 	
@@ -29,7 +68,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	$scope.addCategory = function(){
 		
 		$http({
-			url: 'http://localhost:8080/rest/category',
+			url: '/rest/category',
 			method: 'POST',
 			data:{
 			  			  
@@ -39,7 +78,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				"status": $scope.status
 	  			  
 			}
-		}).then(function(respone){
+		}).then(function(response){
 			swal({ 
 				title: "Success!",
 				text: "Category has been inserted.",
@@ -48,7 +87,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			    showConfirmButton : false
 			  },
 			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewcategory';
+			    window.location.href = '/admin/viewcategory';
 			});
 		});
 	}
@@ -67,7 +106,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			function(isConfirm){ 
 				if (isConfirm) {
 					$http({
-						url: 'http://localhost:8080/rest/category/'+ category_id,
+						url: '/rest/category/'+ category_id,
 						
 						method: 'DELETE'
 					}).
@@ -93,36 +132,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				}
 			});	
 	}
-	
 
-//Get Category By ID
-	
-
-//	//Add Brand
-//	$scope.addBrand = function(){
-//		alert($scope.brand_status);
-//		$http({
-//			url: 'http://localhost:8080/rest/brand',
-//			method: 'POST',
-//			data:{
-//				  "brand_description": $scope.brand_description,
-//				  "brand_name": $scope.brand_name,
-//				  "status": $scope.brand_status
-//	  			  
-//			}
-//		}).then(function(respone){
-//			swal({ 
-//				title: "Success!",
-//				text: "Brand has been inserted.",
-//			    type: "success",
-//			    timer : 1000,
-//				showConfirmButton : false	
-//			  },
-//			  function(){
-//			    window.location.href = 'http://localhost:8080/admin/viewbrand';
-//			});
-//		});
-//	}
 	
 	//Get Category By ID	
 
@@ -149,7 +159,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	$scope.updateCategory = function(id){
 		
 		$http({
-			url: 'http://localhost:8080/rest/category',
+			url: '/rest/category',
 			method: 'PUT',
 			data:{
 				 "category_description": $scope.category_description,
@@ -171,25 +181,12 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		},function(error){});
 	}
 	
-	//===================================================
-		
-	//Get Brand
-	$scope.findAllBrands = function(){
-		$http({
-			url: 'http://localhost:8080/rest/brand',
-			method: 'GET',
-			
-		}).then(function(respone){
-			$scope.brand = respone.data.DATA;
-		});
-	}
-	
-		
+	//===================================================	
 	//Add Brand
 	$scope.addBrand = function(){
 		//alert($scope.brand_status);
 		$http({
-			url: 'http://localhost:8080/rest/brand',
+			url: '/rest/brand',
 			method: 'POST',
 			data:{
 				  "brand_description": $scope.brand_description,
@@ -197,7 +194,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				  "status": $scope.brand_status
 	  			  
 			}
-		}).then(function(respone){
+		}).then(function(response){
 			swal({ 
 				title: "Success!",
 				text: "Brand has been inserted.",
@@ -206,10 +203,111 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 				showConfirmButton : false
 			  },
 			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewbrand';
+			    window.location.href = '/admin/viewbrand';
 			});
 		});
 	}
+
+	// load all record
+	$scope.findAllCategories();
+	$scope.findMainCategories();
+})
+
+
+//TODO: SHOW AUCTON TO VIEW CLIENTS
+app.controller('auctionCtrl', function($scope, $http, $rootScope) {
+	$scope.productName = "";
+	$scope.currentPage = 1;
+	//TODO: select all record to display
+	$scope.findAllAuctions = function() {
+		$http({
+			url : '/rest/auction?limit=' + 8 +"&page=" + $scope.currentPage + "&productName="+$scope.productName,
+			method : 'GET'
+		}).then(function(response) {
+			$scope.auction = response.data.DATA;
+		});
+	}
+	
+	// TODO: get one record function
+	$scope.getAuctionById = function(id){
+		$rootScope.rootID = id;
+//		alert($scope.product_name);
+		$http({
+			url: '/rest/auction/'+id,
+			method: 'GET'
+		}).then(function(response){
+			$scope.category_name = response.data.DATA.product.category.category_name;
+			
+//			$scope.findProductsHasSupplier($scope.sup);
+			$scope.pro = response.data.DATA.product.product_id;
+			$scope.product_name = response.data.DATA.product.product_name;
+			$scope.product_condition = response.data.DATA.product_condition;
+			$scope.start_price = response.data.DATA.start_price;
+			$scope.increment_price = response.data.DATA.increment_price;
+			$scope.buy_price = response.data.DATA.buy_price;
+			$scope.start_date = moment(response.data.DATA.start_date).format("MM/DD/YYYY");
+			$scope.end_date = moment(response.data.DATA.end_date).format("MM/DD/YYYY");
+			$scope.status = response.data.DATA.status;
+			$scope.comment = response.data.DATA.comment;			
+		});
+	}
+
+	// load all record
+	$scope.findAllAuctions();
+//	$scope.dayDiff();
+})
+
+//TODO: VIEW ALL BRAND NAME OF PRODUCTS
+app.controller('viewBrandCtrl', function($scope,$http,$rootScope){
+	$scope.brandName = "";
+	var checkPagination = true;
+	var currentPage = 1;
+	//Get Brand
+	$scope.findAllBrands = function(){
+		$http({
+			url: '/rest/brand?limit=' + 10 +"&page=" + currentPage + "&brandName="+$scope.brandName,
+			method: 'GET',
+			
+		}).then(function(response){
+			$scope.brand = response.data.DATA;
+			
+			$scope.pages = response.data.PAGINATION.PAGE;
+			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
+			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
+			if (checkPagination) {
+				$scope.setPagination(response.data.PAGINATION);
+				checkPagination = false;
+			}
+		});
+	}
+	
+	// TODO: CTEATE PAGINATION BUTTON
+	$scope.setPagination = function(pagination) {
+		console.log("PAGINATION==>", pagination);
+		$("#PAGINATION").bootpag({
+			total : pagination.TOTAL_PAGES,
+			page : pagination.PAGE,
+			maxVisible : 10,
+			leaps : true,
+			firstLastUse : true,
+			first : 'First',
+			last : 'Last',
+			wrapClass : 'pagination',
+			activeClass : 'active',
+			disabledClass : 'disabled',
+			nextClass : 'next',
+			prevClass : 'prev',
+			lastClass : 'last',
+			firstClass : 'first'
+		});
+		$("#PAGINATION ul").addClass("pagination");
+	}
+
+	$('#PAGINATION').bootpag().on("page", function(event, page) {
+		checkPagination = false;
+		currentPage = page;
+		$scope.findAllBrands();
+	});
 	
 	//Delete Category
 	$scope.deleteBrand = function(brand_id){
@@ -226,7 +324,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			function(isConfirm){ 
 				if (isConfirm) {
 					$http({
-						url: 'http://localhost:8080/rest/brand/'+ brand_id,
+						url: '/rest/brand/'+ brand_id,
 						
 						method: 'DELETE'
 					}).
@@ -271,7 +369,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	$scope.updateBrand = function(id){
 		
 		$http({
-			url: 'http://localhost:8080/rest/brand',
+			url: '/rest/brand',
 			method: 'PUT',
 			data:{
 				 "brand_description": $scope.brand_description,
@@ -291,81 +389,5 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			$scope.findAllBrands();
 		},function(error){});
 	}
-	
-	
-	
-	
-	
-//	.........................................
-	$scope.loadme = function(){
-		alert("me");
-	};
-	
-	// load all record
-	$scope.findAllCategories();
-	$scope.findMainCategories();
 	$scope.findAllBrands();
-})
-
-//var firstDate = new Date();
-//var secondDate = new Date();
-//
-//$scope.formatString = function(format) {
-//    var day   = parseInt(format.substring(0,2));
-//    var month  = parseInt(format.substring(3,5));
-//    var year   = parseInt(format.substring(6,10));
-//    var date = new Date(year, month-1, day);
-//    return date;
-//}
-//
-//$scope.dayDiff = function(firstDate,secondDate){
-//    var date2 = new Date($scope.formatString(secondDate));
-//    var date1 = new Date($scope.formatString(firstDate));
-//    var timeDiff = Math.abs(date2.getTime() - date1.getTime());   
-//    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-//    alert(diffDays);
-//}
-
-
-//TODO: SHOW AUCTON TO VIEW CLIENTS
-app.controller('auctionCtrl', function($scope, $http, $rootScope) {
-	$scope.productName = "";
-	$scope.currentPage = 1;
-	//TODO: select all record to display
-	$scope.findAllAuctions = function() {
-		$http({
-			url : 'http://localhost:8080/rest/auction?limit=' + 8 +"&page=" + $scope.currentPage + "&productName="+$scope.productName,
-			method : 'GET'
-		}).then(function(response) {
-			$scope.auction = response.data.DATA;
-		});
-	}
-	
-	// TODO: get one record function
-	$scope.getAuctionById = function(id){
-		$rootScope.rootID = id;
-//		alert($scope.product_name);
-		$http({
-			url: 'http://localhost:8080/rest/auction/'+id,
-			method: 'GET'
-		}).then(function(response){
-			$scope.category_name = response.data.DATA.product.category.category_name;
-			
-//			$scope.findProductsHasSupplier($scope.sup);
-			$scope.pro = response.data.DATA.product.product_id;
-			$scope.product_name = response.data.DATA.product.product_name;
-			$scope.product_condition = response.data.DATA.product_condition;
-			$scope.start_price = response.data.DATA.start_price;
-			$scope.increment_price = response.data.DATA.increment_price;
-			$scope.buy_price = response.data.DATA.buy_price;
-			$scope.start_date = moment(response.data.DATA.start_date).format("MM/DD/YYYY");
-			$scope.end_date = moment(response.data.DATA.end_date).format("MM/DD/YYYY");
-			$scope.status = response.data.DATA.status;
-			$scope.comment = response.data.DATA.comment;			
-		});
-	}
-
-	// load all record
-	$scope.findAllAuctions();
-//	$scope.dayDiff();
 })

@@ -4,23 +4,61 @@
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$http,$rootScope){
+	$scope.supplierName = "";
+	var checkPagination = true;
+	var currentPage = 1;
 	// select all record to display
 	$scope.findAllSuppliers = function(){
 		$http({
-			url: 'http://localhost:8080/rest/supplier',
+			url: '/rest/supplier?limit=' + 10 +"&page=" + currentPage + "&supplierName="+$scope.supplierName,
 			method: 'GET'
 			
 		}).then(function(response){
 			$scope.supplier = response.data.DATA;
+			
+			$scope.pages = response.data.PAGINATION.PAGE;
+			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
+			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
+			if (checkPagination) {
+				$scope.setPagination(response.data.PAGINATION);
+				checkPagination = false;
+			}
 		});
 	}
+	// TODO: CTEATE PAGINATION BUTTON
+	$scope.setPagination = function(pagination) {
+		console.log("PAGINATION==>", pagination);
+		$("#PAGINATION").bootpag({
+			total : pagination.TOTAL_PAGES,
+			page : pagination.PAGE,
+			maxVisible : 10,
+			leaps : true,
+			firstLastUse : true,
+			first : 'First',
+			last : 'Last',
+			wrapClass : 'pagination',
+			activeClass : 'active',
+			disabledClass : 'disabled',
+			nextClass : 'next',
+			prevClass : 'prev',
+			lastClass : 'last',
+			firstClass : 'first'
+		});
+		$("#PAGINATION ul").addClass("pagination");
+	}
+
+	$('#PAGINATION').bootpag().on("page", function(event, page) {
+		checkPagination = false;
+		currentPage = page;
+		$scope.findAllSuppliers();
+	});
 	
 	
 	// select suplier by id
 	$scope.findSupplierById = function(id){
 		
 		$http({
-			url: 'http://localhost:8080/rest/supplier/'+id,
+			url: '/rest/supplier/'+id,
 			method: 'GET'
 			
 		}).then(function(response){
@@ -38,7 +76,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	$scope.addSupplier = function(){
 		
 		$http({
-			url: 'http://localhost:8080/rest/supplier',
+			url: '/rest/supplier',
 			method: 'POST',
 			data:{
 			  			  
@@ -58,7 +96,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			    showConfirmButton : false
 			  },
 			  function(){
-			    window.location.href = 'http://localhost:8080/admin/viewsupplier';
+			    window.location.href = '/admin/viewsupplier';
 			});
 			// clear input fields
 			/*$scope.address = "";
@@ -73,7 +111,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	$scope.updateSupplier = function(id){
 		
 		$http({
-			url: 'http://localhost:8080/rest/supplier',
+			url: '/rest/supplier',
 			data: {
 				"address": $scope.address,
 				"contact_name": $scope.contact_name,
@@ -110,7 +148,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		function(isConfirm){ 
 			if (isConfirm) {
 				$http({
-					url: 'http://localhost:8080/rest/supplier/'+id,
+					url: '/rest/supplier/'+id,
 					
 					method: 'DELETE'
 				}).

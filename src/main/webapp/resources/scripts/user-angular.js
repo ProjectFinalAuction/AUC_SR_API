@@ -21,7 +21,7 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 		// alert($scope.pages);
 		$http(
 				{
-					url : '/rest/user',
+					url : '/rest/user?limit=' + 10 +"&page=" + currentPage + "&userName="+$scope.userName,
 					method : 'GET',
 
 				}).then(function(response) {
@@ -124,8 +124,7 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 						"contact" : $scope.contact,
 						"created_by" : $scope.created_by,
 						"created_date" : $scope.created_date,
-						"dob" : moment($('#datepicker').val()).format(
-								"YYYY-MM-DD"),
+						"dob" : $('#dob').val(),
 						"email" : $scope.email,
 						"first_name" : $scope.first_name,
 						"gender" : $('.select2').val(),

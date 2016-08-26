@@ -3,6 +3,8 @@ package org.khmeracademy.auction.controllers;
 import java.util.Map;
 
 import org.khmeracademy.auction.entities.input.AddSupplier;
+import org.khmeracademy.auction.filtering.SupplierFilter;
+import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/rest/supplier")
@@ -30,9 +33,15 @@ public class SupplierController {
 	
 	// get all suppliers
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findAllSuppliers(){
+	public ResponseEntity<Map<String , Object>> findAllSuppliers(SupplierFilter filter, Pagination pagination){
+		
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-suppliers")
+				.queryParam("page",pagination.getPage())
+				.queryParam("limit", pagination.getLimit())
+				.queryParam("userName", filter.getSupplierName())
+				.toUriString();
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-suppliers", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(url, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

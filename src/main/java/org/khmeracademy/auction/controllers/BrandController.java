@@ -5,6 +5,8 @@ package org.khmeracademy.auction.controllers;
 import java.util.Map;
 
 import org.khmeracademy.auction.entities.input.AddBrand;
+import org.khmeracademy.auction.filtering.BrandFilter;
+import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/rest/brand")
@@ -32,12 +35,16 @@ public class BrandController {
 	@Autowired
 	private String WS_URL;
 
-	
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String,Object>> findAllBrands(){
+	public ResponseEntity<Map<String,Object>> findAllBrands(BrandFilter filter, Pagination pagination){
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-brands")
+				.queryParam("page",pagination.getPage())
+				.queryParam("limit", pagination.getLimit())
+				.queryParam("brandName", filter.getBrandName())
+				.toUriString();
 		HttpEntity<Object> request= new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-brands", HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange( url , HttpMethod.GET , request , Map.class) ;
 	return new ResponseEntity<Map<String,Object>>(response.getBody(), HttpStatus.OK);
 	}
 	
