@@ -65,10 +65,14 @@ pageEncoding="UTF-8"%>
 						<div class="input-group">
 							<label class="input-group-addon" for="SortFilterOptions"><spring:message code="sort"></spring:message></label>
 							<select class="form-control input-sm" id="SortFilterOptions" name="SortFilterOptions" ng-model="orderList" >
+								<option value="">Default</option>
+							    <option value="-num_bid">Most Bid</option>
+							    <option value="num_bid">Less Bid</option>					 
+							    <option value="end_date">Ending soon</option>
 							    <option value="product.product_name">Product: A-Z</option>
 							    <option value="-product.product_name">Product: Z-A</option>
-							    <option value="start_price">Price: Low to Hight</option>
-							    <option value="-start_price">Price: High to Low</option>
+							    <option value="current_price">Price: Low to Hight</option>
+							    <option value="-current_price">Price: High to Low</option>
 							</select>
 						</div>
 					</div>
@@ -117,7 +121,7 @@ pageEncoding="UTF-8"%>
 
 					<!-- Auction Part -->
 					<div class="col-sm-5" >
-						<span class="label label-primary status-type" style="float: right; background-color: #BBBAB9 ; margin-top: 5px; "><spring:message code="auction"></spring:message></span><br><br><br><br><br>
+						<span class="label label-primary status-type" style="float: right; background-color: #238FC7 ; margin-top: 5px; "><spring:message code="auction"></spring:message></span><br><br><br><br><br>
 						<span style=" text-align: right; ">
 							<p class="time remaining" > 
 								<span data-epoch="ending" 
