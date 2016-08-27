@@ -10,9 +10,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><spring:message code="item_information"></spring:message></title>
 <!-- link to photos pop up lightbox -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/dist/css/lightbox.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/static/dist/css/lightbox.min.css">
 <!-- css style of slide detail -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/slide-detail.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/static/css/slide-detail.css">
 
 <!-- header -->
 <jsp:include page="header.jsp" />
@@ -42,7 +44,8 @@
 						<div class="list-group-item">
 							<p>
 								<spring:message code="remaining_time"></spring:message>
-								: <span ng-cloak>{{auc_detail.remainingTime | durationview}}</span>
+								: <span ng-cloak>{{auc_detail.remainingTime |
+									durationview}}</span>
 							</p>
 						</div>
 						<!-- end remain time -->
@@ -57,7 +60,8 @@
 						<div class="list-group-item">
 							<div class="thumbnail" style="border: none;">
 
-								<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/jssor.slider.min.js"></script>
+								<script type="text/javascript"
+									src="${pageContext.request.contextPath}/resources/static/js/jssor.slider.min.js"></script>
 								<!-- use jssor.slider.debug.js instead for debug -->
 
 								<div id="jssor_1"
@@ -66,8 +70,9 @@
 									<div data-u="slides"
 										style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
 										<div style="display: none;" ng-repeat="proimgAll in gallery">
-											<img data-u="image" src="{{proimgAll.image_path}}" id="moreImgs6" /><a
-												ng-cloak href="{{proimgAll.image_path}}" data-lightbox="example-set"></a>
+											<img data-u="image" src="{{proimgAll.image_path}}"
+												id="moreImgs6" /><a ng-cloak
+												href="{{proimgAll.image_path}}" data-lightbox="example-set"></a>
 										</div>
 									</div>
 									<!-- Bullet Navigator -->
@@ -86,15 +91,17 @@
 										style="top: 0px; right: 18px; width: 55px; height: 55px;"
 										data-autocenter="2"></span>
 								</div>
-								
+
 								<!-- link from js.js to call function jssor_1_slider_init() -->
-								<script src="${pageContext.request.contextPath}/resources/static/js/slider-detail.js"></script>
+								<script
+									src="${pageContext.request.contextPath}/resources/static/js/slider-detail.js"></script>
 								<script>
 									jssor_1_slider_init();
 								</script>
 								<!-- js photo pop up -->
-								<script src="${pageContext.request.contextPath}/resources/static/dist/js/lightbox-plus-jquery.min.js"></script>
-							
+								<script
+									src="${pageContext.request.contextPath}/resources/static/dist/js/lightbox-plus-jquery.min.js"></script>
+
 							</div>
 						</div>
 					</div>
@@ -123,9 +130,9 @@
 									<tbody>
 										<tr>
 											<th><spring:message code="minimum_bid"></spring:message></th>
-											<td ng-cloak>{{current_price + increment_price | currency}}
-												({{current_price | currency}} + {{increment_price |
-												currency}})</td>
+											<td ng-cloak>{{current_price + increment_price |
+												currency}} ({{current_price | currency}} + {{increment_price
+												| currency}})</td>
 										</tr>
 										<tr>
 											<th><spring:message code="max_bid"></spring:message></th>
@@ -149,10 +156,11 @@
 													</button>
 												</sec:authorize> <sec:authorize access="!isAuthenticated()">
 
-													<a href="/login"><button class="btn btn-block" type="button"
-														style="width: 50%; float: left; background-color: #43b3f3; color: white">
-														<spring:message code="bid_now"></spring:message>
-													</button></a>
+													<a href="/login"><button class="btn btn-block"
+															type="button"
+															style="width: 50%; float: left; background-color: #43b3f3; color: white">
+															<spring:message code="bid_now"></spring:message>
+														</button></a>
 												</sec:authorize></td>
 
 										</tr>
@@ -196,7 +204,7 @@
 							<tbody>
 
 								<tr ng-hide="current_price >= buy_price">
-									<td style="color: red;" ><spring:message
+									<td style="color: red;"><spring:message
 											code="reserve_price_not_met"></spring:message></td>
 									<td colspan="2"></td>
 								</tr>
@@ -205,15 +213,14 @@
 									<td ng-cloak>{{num_bid}} <spring:message code="bids"></spring:message></td>
 									<sec:authorize access="isAuthenticated()">
 										<td class="text-right">
-										<!--  Bid History View -->
-										<a
-											ng-cloak href="/viewbidhistory/{{auction_id}}"> <input
+											<!--  Bid History View --> <a ng-cloak
+											href="/viewbidhistory/{{auction_id}}"> <input
 												type="button" class="btn btn-default bidhistory"
 												value="Bid History" ng-show="num_bid > 0">
 										</a>
-										
-										
-										
+
+
+
 										</td>
 									</sec:authorize>
 								</tr>
@@ -227,11 +234,40 @@
 								</tr>
 								<tr>
 									<th><spring:message code="listed_by"></spring:message></th>
-									<td colspan="2"><i class="fa fa-star-o" aria-hidden="true"></i>
-										<i class="fa fa-star-o" aria-hidden="true"></i> <i
-										class="fa fa-star-o" aria-hidden="true"></i> <i
-										class="fa fa-star-o" aria-hidden="true"></i> <i
-										class="fa fa-star-o" aria-hidden="true"></i></td>
+									<!-- 									<td colspan="2"><i class="fa fa-star-o" aria-hidden="true"></i> -->
+									<!-- 										<i class="fa fa-star-o rating" aria-hidden="true"></i> <i -->
+									<!-- 										class="fa fa-star-o" aria-hidden="true"></i> <i -->
+									<!-- 										class="fa fa-star-o" aria-hidden="true"></i> <i -->
+									<!-- 										class="fa fa-star-o" aria-hidden="true"></i></td> -->
+									<td colspan="2">
+										<fieldset class="rating">
+											<input type="radio" id="star5" name="rating" value="5" /><label
+												class="full" for="star5" title="Awesome - 5 stars"></label>
+											<input type="radio" id="star4half" name="rating"
+												value="4 and a half" /><label class="half" for="star4half"
+												title="Pretty good - 4.5 stars"></label> <input type="radio"
+												id="star4" name="rating" value="4" /><label class="full"
+												for="star4" title="Pretty good - 4 stars"></label> <input
+												type="radio" id="star3half" name="rating"
+												value="3 and a half" /><label class="half" for="star3half"
+												title="Meh - 3.5 stars"></label> <input type="radio"
+												id="star3" name="rating" value="3" /><label class="full"
+												for="star3" title="Meh - 3 stars"></label> <input
+												type="radio" id="star2half" name="rating"
+												value="2 and a half" /><label class="half" for="star2half"
+												title="Kinda bad - 2.5 stars"></label> <input type="radio"
+												id="star2" name="rating" value="2" /><label class="full"
+												for="star2" title="Kinda bad - 2 stars"></label> <input
+												type="radio" id="star1half" name="rating"
+												value="1 and a half" /><label class="half" for="star1half"
+												title="Meh - 1.5 stars"></label> <input type="radio"
+												id="star1" name="rating" value="1" /><label class="full"
+												for="star1" title="Sucks big time - 1 star"></label> <input
+												type="radio" id="starhalf" name="rating" value="half" /><label
+												class="half" for="starhalf"
+												title="Sucks big time - 0.5 stars"></label>
+										</fieldset>
+									</td>
 								</tr>
 							</tbody>
 

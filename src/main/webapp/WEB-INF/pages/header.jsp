@@ -24,5 +24,9 @@
 	href="${pageContext.request.contextPath}/resources/static/css/front-end-style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/css/media.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/static/css/star-rating.css">
+	
+	
 </head>
 

@@ -36,8 +36,8 @@ pageEncoding="UTF-8"%>
 					</div>
 					<div class="form-group">
 						<div class="btn-group">
-							<button id="Status_IncludeActive" class="btn btn-sm btn-primary"><spring:message code="active"></spring:message></button>
-							<button id="Status_IncludeCompleted" class="btn btn-sm btn-default"><spring:message code="completed"></spring:message></button>
+							<button id="Status_IncludeActive" type="button" class="btn btn-sm btn-primary"><spring:message code="active"></spring:message></button>
+							<button id="Status_IncludeCompleted" type="button" class="btn btn-sm btn-default"><spring:message code="completed"></spring:message></button>
 						</div>
 					</div>
 
@@ -76,7 +76,7 @@ pageEncoding="UTF-8"%>
 							</select>
 						</div>
 					</div>
-					<input type="submit" id="submitDropDown" class="awe-hidden">
+<!-- 					<input type="submit" id="submitDropDown" class="awe-hidden"> -->
 				</form>    
 			</div>
 
