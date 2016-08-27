@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,7 @@
 		<div class="card-box">
 			<div class="panel-heading">
 				<h3 class="text-center">
-					Sign In to <strong style="color: #238FC7;">DENH TLAI</strong>
+					<spring:message code="sign_in_to"></spring:message> <strong style="color: #238FC7;"><spring:message code="denh_tlai"></spring:message></strong>
 				</h3>
 			</div>
 
@@ -62,14 +63,14 @@
 					<div class="form-group ">
 						<div class="col-xs-12">
 							<input class="form-control" type="text" name="username" required autofocus
-								placeholder="Username">
+								placeholder="<spring:message code='username'></spring:message>"  >
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-xs-12">
 							<input class="form-control" type="password" name="password" required
-								placeholder="Password">
+								placeholder="<spring:message code='password'></spring:message>" >
 						</div>
 					</div>
 
@@ -77,7 +78,7 @@
 						<div class="col-xs-12">
 							<div class="checkbox checkbox-primary">
 								<input id="checkbox-signup" type="checkbox"> <label
-									for="checkbox-signup"> Remember me </label>
+									for="checkbox-signup"> <spring:message code="remember_me"></spring:message> </label>
 							</div>
 
 						</div>
@@ -87,21 +88,21 @@
 						<div class="col-xs-12">
 							<button id="login"
 								class="btn btn-pink btn-block text-uppercase waves-effect waves-light"
-								type="submit">Sing in</button>
+								type="submit"><spring:message code="sign_in"></spring:message></button>
 						</div>
 					</div>
 
 					<div class="form-group m-t-20 m-b-0">
 						<div class="col-sm-12">
 							<a href="" class="text-dark"><i
-								class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+								class="fa fa-lock m-r-5"></i> <spring:message code="sign_in_to"></spring:message>?</a>
 						</div>
 					</div>
 
 					<div class="form-group m-t-20 m-b-0">
 						<div class="col-sm-12 text-center">
 							<h4>
-								<b>Sign in with</b>
+								<b><spring:message code="sign_in_with"></spring:message></b>
 							</h4>
 						</div>
 					</div>
@@ -131,8 +132,8 @@
 		<div class="row">
 			<div class="col-sm-12 text-center">
 				<p>
-					Don't have an account? <a href="${pageContext.request.contextPath}/register?bidder" id="registerLoginLink"
-						class="text-primary m-l-5"><b>Sign Up</b></a>
+					<spring:message code="dont_have_an_account"></spring:message>? <a href="${pageContext.request.contextPath}/register?bidder" id="registerLoginLink"
+						class="text-primary m-l-5"><b><spring:message code="sign_up"></spring:message></b></a>
 				</p>
 			</div>
 		</div>
