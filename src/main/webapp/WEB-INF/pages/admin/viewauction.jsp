@@ -123,7 +123,7 @@ rel="stylesheet" type="text/css" />
 												aria-hidden="true"></i></td>
 											<td ng-if="a.status=='3'"><i class="table-action-btn fa fa-gavel" style="color: #2ecc71;"
 												aria-hidden="true"></i></td>
-											<td><span>0 Bids</span></td>
+											<td style="text-align: center"><strong>{{a.num_bid}} Bid</strong></td>
 											<td class="action">
 												<a href="#"><i class="fa fa-eye fa-lg text-primary"
 													title="View bids"></i></a>&nbsp;&nbsp;
@@ -161,10 +161,8 @@ rel="stylesheet" type="text/css" />
 			</div>
 			<!-- container -->
 		</div>
-		<!-- content -->
-	</div>
-
-	<!-- Modal -->
+		
+			<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog" style="z-index:10000;">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -173,15 +171,15 @@ rel="stylesheet" type="text/css" />
 					<h4 class="modal-title">Update Auction Information</h4>
 				</div>
 				<div class="modal-body">
-					<form id="wizard-validation-form" action="/index">
-							<section>
+					<form id="wizard-validation-form">
+						<section>
 							<div class="form-group clearfix">
 								<label class="col-lg-2 control-label" for="supplier">Supplier
 									Name *</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="supplier" 
-										ng-change="findProductsHasSupplier(sup)"
 										ng-model="sup" id="supplier"
+										ng-change="findProductsHasSupplier(sup)"
 										ng-options="s.supplier_id as s.contact_name for s in supplier" value="{{contact_name}}">
 										<!-- <option value="" style="display:none">-- Choose Supplier --</option> -->
 									</select>
@@ -193,7 +191,8 @@ rel="stylesheet" type="text/css" />
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
 										ng-model="pro"
-										ng-options="p.product_id as p.product_name for p in product" value="{{product_name}}">
+										ng-options="p.product_id as p.product_name for p in product" 
+										ng-value="product_name">
 										<!-- <option value="" style="display:none">-- Choose	Product --</option> -->
 									</select>
 								</div>
@@ -203,7 +202,7 @@ rel="stylesheet" type="text/css" />
 									Condition*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-model="product_condition" ng-value="product_condition" required>
+										ng-model="product_condition" value="{{product_condition}}" required>
 										<!-- <option value="" ng-selected="true">-- Choose Condition	--</option> -->
 										<option value="Very_Good">Very Good</option>
 										<option value="Good">Good</option>
@@ -248,7 +247,7 @@ rel="stylesheet" type="text/css" />
 								<div class="col-lg-10">
 									<div class="input-group">
 										<input type="text" id="startDate" class="required form-control"
-											ng-value="start_date" ng-disabled="true"
+											value="{{start_date}}" ng-disabled="true"
 											ng-model="start_date" > <span
 											class="input-group-addon bg-custom b-0 text-white"><i
 											class="icon-calender"></i></span>
@@ -264,7 +263,7 @@ rel="stylesheet" type="text/css" />
 									<div class="input-group" id="end">
 										<input type="text" class="required form-control add-on"
 											placeholder="dd-mm-yyyy hh:mm:ss" id="endDate" name="endDate"
-											ng-model="end_date" ng-blur="checkErr()"> <span
+											ng-model="end_date" value="{{end_date}}" ng-blur="checkErr()"> <span
 											class="add-on input-group-addon bg-custom b-0 text-white">
 											<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 										</span>
@@ -278,12 +277,12 @@ rel="stylesheet" type="text/css" />
 								<div class="col-lg-10">
 									<div class="radio radio-info radio-inline">
 										<input type="radio" id="status1" name="status"
-											ng-model="status" value="1" ng-checked="status=='1'"> <label for="status1">
+											ng-model="status" value="1"> <label for="status1">
 											Enable </label>
 									</div>
 									<div class="radio radio-inline">
 										<input type="radio" id="status2" name="status"
-											ng-model="status" value="0" ng-checked="status=='0'"> <label for="status2">
+											ng-model="status" value="0" > <label for="status2">
 											Disable </label>
 									</div>
 								</div>
@@ -292,14 +291,14 @@ rel="stylesheet" type="text/css" />
 							<div class="form-group clearfix">
 								<label class="col-lg-2 control-label">Comment</label>
 								<div class="col-lg-10">
-									<textarea class="form-control" rows="5" ng-model="comment" ng-value="comment"></textarea>
+									<textarea class="form-control" rows="5" ng-model="comment" value="{{comment}}"></textarea>
 								</div>
 							</div>
 
 							<div class="form-group clearfix">
 								<label class="col-lg-12 control-label ">(*) Mandatory</label>
 							</div>
-							</section>
+						</section>
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="text-center p-20">
@@ -323,8 +322,13 @@ rel="stylesheet" type="text/css" />
 			</div>
 		</div>
 	</div>
+		
+		
+		<!-- content -->
+	</div>
+	
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/scripts/auction-angular.js"></script>

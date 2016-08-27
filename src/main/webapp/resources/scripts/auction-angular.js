@@ -106,62 +106,66 @@ app
 
 					// TODO: get one record function
 					$scope.getAuctionById = function(id) {
-						$rootScope.rootID = id;
+						
+						//$rootScope.rootID = id;
+						
 						$http({
 							url : '/rest/auction/' + id,
 							method : 'GET'
-						})
-								.then(
-										function(response) {
-
-											$scope.sup = response.data.DATA.product.supplier.supplier_id;
-
-											$scope
-													.findProductsHasSupplier($scope.sup);
-											$scope.pro = response.data.DATA.product.product_id;
-
-											$scope.product_condition = response.data.DATA.product_condition;
-											$scope.start_price = response.data.DATA.start_price;
-											$scope.increment_price = response.data.DATA.increment_price;
-											$scope.buy_price = response.data.DATA.buy_price;
-											$scope.start_date = moment(
-													response.data.DATA.start_date)
-													.format(
-															"DD-MM-YYYY HH:mm:ss");
-											$scope.end_date = moment(
-													response.data.DATA.end_date)
-													.format(
-															"DD-MM-YYYY HH:mm:ss");
-											$scope.status = response.data.DATA.status;
-											$scope.comment = response.data.DATA.comment;
-										});
+						}).then(function(response) {
+							
+							$scope.sup = response.data.DATA.product.supplier.supplier_id;
+//							alert(response.data.DATA.product.supplier.contact_name);
+							$scope.findProductsHasSupplier($scope.sup);
+							$scope.pro = response.data.DATA.product.product_id;
+							
+//							$scope.product_name = response.data.DATA.product.product_name;
+							$scope.product_condition = response.data.DATA.product_condition;
+							$scope.start_price = response.data.DATA.start_price;
+							$scope.increment_price = response.data.DATA.increment_price;
+							$scope.buy_price = response.data.DATA.buy_price;
+							$scope.start_date = moment(response.data.DATA.start_date).format("DD-MM-YYYY HH:mm:ss");
+							$scope.end_date = moment(response.data.DATA.end_date).format("DD-MM-YYYY HH:mm:ss");
+							$scope.status = response.data.DATA.status;
+							$scope.comment = response.data.DATA.comment;
+							alert($scope.pro);
+						});
 					}
-
+					
+					// TODO: get one record function
+//					$scope.getAuctionByID= function(auctionObject){
+//						$scope.sup = auctionObject.product.supplier.supplier_id;
+//						$scope.contact_name = findProductsHasSupplier($scope.sup);
+//						alert(auctionObject.product.supplier.supplier_id);
+//						
+//					}
+					
+					
 					// TODO: UPDATE FUNCTION
 					$scope.updateAuction = function() {
 						
 						$http(
-								{
-									url : '/rest/auction',
-									method : 'PUT',
-									data : {
-										"auction_id" : $rootScope.rootID,
-										"buy_price" : $scope.buy_price,
-										"comment" : $scope.comment,
-										"created_by" : $scope.created_by,
-										"created_date" : $scope.created_date,
-										"current_price" : $scope.start_price,
-										"end_date" : $("#endDate").val(),
-										"increment_price" : $scope.increment_price,
-										"product_condition" : $scope.product_condition,
-										"product_id" : $scope.pro,
-										"start_date" : $("#startDate").val(),
-										"start_price" : $scope.start_price,
-										"status" : $(
-												"input:radio[name=status]:checked")
-												.val()
-									}
-								}).then(function(response) {
+							{
+								url : '/rest/auction',
+								method : 'PUT',
+								data : {
+									"auction_id" : $rootScope.rootID,
+									"buy_price" : $scope.buy_price,
+									"comment" : $scope.comment,
+									"created_by" : $scope.created_by,
+									"created_date" : $scope.created_date,
+									"current_price" : $scope.start_price,
+									"end_date" : $("#endDate").val(),
+									"increment_price" : $scope.increment_price,
+									"product_condition" : $scope.product_condition,
+									"product_id" : $scope.pro,
+									"start_date" : $("#startDate").val(),
+									"start_price" : $scope.start_price,
+									"status" : $(
+											"input:radio[name=status]:checked")
+											.val()
+								}
+							}).then(function(response) {
 							swal({
 								title : "Success!",
 								text : "Auction has been updated.",
@@ -372,3 +376,4 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 		
 	};
 });
+
