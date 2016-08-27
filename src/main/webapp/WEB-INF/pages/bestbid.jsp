@@ -24,7 +24,7 @@
 	
 	<!-- ================ Starting New Item Content ================ -->
 	<div class="row" style="position: relative;">
-		<p id="title"><spring:message code="new_arrival"></spring:message></p>
+		<p id="title"><spring:message code="best_bid"></spring:message></p>
 		<!-- ============ thumbnail Section ============= -->
 		<div class="col-sm-6 col-md-3 product" style="padding-right: 0px;" ng-repeat="a in auctionBestBid ">
 			<div class="thumbnail" ng-repeat="proimg in a.product.gallery" ng-show="$first" style="position: relative;">
