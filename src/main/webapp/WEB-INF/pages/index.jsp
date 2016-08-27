@@ -33,7 +33,7 @@
 					alt="..." class="img-thumbnail" style="height: 180px;"></a>
 				<div class="caption descript">
 					<a ng-cloak href="/detail/{{a.auction_id}}" class="title">{{a.product.product_name}}</a>
-					<h5 class="lang" key="remaining_day" ng-cloak>{{a.remainingTime | durationview}}</h5>
+					<h5 ng-cloak>{{a.remainingTime | durationview}}</h5>
 					<p>
 						<span class="price" style="margin-right:5px;" ng-cloak>{{a.current_price | currency}}</span><font color="#f3809f" ng-cloak>{{a.num_bid}} </font><spring:message code="bids"></spring:message></span>
 					</p>

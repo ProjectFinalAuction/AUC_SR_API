@@ -141,19 +141,19 @@
 						<div class="col-sm-2">
 							<a
 								href="${pageContext.request.contextPath}/detail?Aid={{ub.auction.auction_id}}">
-								<img alt="" src="{{ub.image_path}}" class="img-responsive"
+								<img ng-cloak alt="" src="{{ub.image_path}}" class="img-responsive"
 								style="width: 149px; height: 130px;">
 							</a>
 						</div>
 						<div class="col-sm-6">
 							<p>
-								<strong><a href="#">{{ub.auction.product.product_name}}</a></strong>
+								<strong><a href="#" ng-cloak>{{ub.auction.product.product_name}}</a></strong>
 							</p>
-							<p>Current Price$ {{ub.auction.current_price}}
+							<p ng-cloak>Current Price$ {{ub.auction.current_price}}
 								&nbsp;&nbsp;|&nbsp;&nbsp;Your Bid $
 								{{ub.user_latest_current_price}}</p>
 						</div>
-						<div class="col-sm-3 text-right">{{ub.remainingTime |
+						<div class="col-sm-3 text-right" ng-cloak>{{ub.remainingTime |
 							durationview}}</div>
 					</div>
 					<button class="btn btn-default contact">Contact</button>
@@ -181,23 +181,23 @@
 					ng-if="ub.auction.status=='3'">
 					<div class="row">
 						<div class="col-sm-2">
-							<a
+							<a ng-cloak
 								href="${pageContext.request.contextPath}/detail?Aid={{ub.auction.auction_id}}">
-								<img alt="" src="{{ub.image_path}}" class="img-responsive"
+								<img alt="" ng-cloak src="{{ub.image_path}}" class="img-responsive"
 								style="width: 149px; height: 130px;">
 							</a>
 						</div>
 						<div class="col-sm-8">
 							<p>
-								<strong><a href="#">{{ub.auction.product.product_name}}</a></strong><br>
+								<strong><a ng-cloak href="#">{{ub.auction.product.product_name}}</a></strong><br>
 								{{ub.auction.end_date}}
 							</p>
 							<div class="row">
 								<div class="col-sm-4">1</div>
-								<div class="col-sm-4">
+								<div class="col-sm-4" ng-cloak>
 									<strong>$ {{ub.auction.current_price}}</strong>
 								</div>
-								<div class="col-sm-4">$ {{ub.auction.current_price * 1}}</div>
+								<div class="col-sm-4" ng-cloak>$ {{ub.auction.current_price * 1}}</div>
 							</div>
 
 						</div>
@@ -327,7 +327,7 @@
 											<option value="KHR">Cambodian Riel</option>
 										</select>
 									</div>
-									<label class="control-label col-sm-4">Total Amount: <font
+									<label class="control-label col-sm-4" ng-cloak>Total Amount: <font
 										color="#238fc7">{{ending_amount}}</font> Credit
 									</label>
 								</div>

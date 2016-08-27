@@ -27,8 +27,8 @@
 		<input type="hidden" id="ac_id" value="${param.Aid}">
 		<!-- detail content information -->
 		<ul class="list-group" style="padding-left: 14px;">
-			<li class="list-group-item sublinkcategory"><spring:message
-					code="home" ng-cloak></spring:message> / {{category_name | uppercase}} /
+			<li class="list-group-item sublinkcategory" ng-cloak><spring:message
+					code="home"></spring:message> / {{category_name | uppercase}} /
 				{{product_name | uppercase}}</li>
 		</ul>
 
@@ -49,8 +49,8 @@
 						<div class="list-group-item" id="img">
 							<div class="thumbnail" ng-repeat="proimg in gallery"
 								ng-show="$first">
-								<a ng-cloak href="{{proimg.image_path}}" data-lightbox="example-set"
-									id="myLink"> <img ng-cloak src="{{proimg.image_path}}"
+								<a href="{{proimg.image_path}}" data-lightbox="example-set"
+									id="myLink"> <img src="{{proimg.image_path}}"
 									class="img-responsive" width="100%" id="myImage" /></a>
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 									<div data-u="slides"
 										style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
 										<div style="display: none;" ng-repeat="proimgAll in gallery">
-											<img data-u="image" ng-cloak src="{{proimgAll.image_path}}" id="moreImgs6" /><a
+											<img data-u="image" src="{{proimgAll.image_path}}" id="moreImgs6" /><a
 												ng-cloak href="{{proimgAll.image_path}}" data-lightbox="example-set"></a>
 										</div>
 									</div>
