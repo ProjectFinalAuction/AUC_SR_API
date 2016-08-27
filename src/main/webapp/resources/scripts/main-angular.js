@@ -3,6 +3,9 @@
  */
 
 var app = angular.module('myApp', []);
+
+
+
 app.controller('categoryCtrl', function($scope,$http,$rootScope){
 	// Get All Category
 	$scope.findAllCategories = function(){

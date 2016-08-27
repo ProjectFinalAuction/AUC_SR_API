@@ -67,7 +67,7 @@
 											<!-- -------------------------------- -->
 											<optgroup>
 												<option ng-repeat="cat in maincategory"
-													value="{{cat.category_id}}">{{cat.category_name}}</option>
+													ng-cloak value="{{cat.category_id}}">{{cat.category_name}}</option>
 											</optgroup>
 										</select>
 									</div>

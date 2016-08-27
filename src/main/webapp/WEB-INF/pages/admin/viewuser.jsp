@@ -80,15 +80,15 @@ rel="stylesheet" type="text/css" />
 											alt="contact-img" title="contact-img"
 											class="img-circle thumb-sm" />
 										</td>
-										<td>{{u.user_name}}</td>
-										<td>{{u.first_name}}</td>
-										<td>{{u.last_name}}</td>
-										<td>{{u.email}}</td>
+										<td ng-cloak>{{u.user_name}}</td>
+										<td ng-cloak>{{u.first_name}}</td>
+										<td ng-cloak>{{u.last_name}}</td>
+										<td ng-cloak>{{u.email}}</td>
 										<td ng-if="u.status=='1'"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
 										<td ng-if="u.status=='0'"><i class="fa fa-times fa-lg text-danger"
 												aria-hidden="true"></i></td>
-										<td>{{u.type}}</td>
+										<td ng-cloak>{{u.type}}</td>
 										<td><a href="" data-toggle="modal" data-target=".enterData" 
 												class="table-action-btn" ng-click="getUserByID(u.user_id)">
 												<i class="md md-edit text-warning"></i></a>
@@ -103,7 +103,7 @@ rel="stylesheet" type="text/css" />
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="dataTables_info" id="datatable-editable_info"
-									role="status" aria-live="polite">Showing {{pages}} to {{totalpages}} of {{totalcount}}
+									role="status" aria-live="polite" ng-cloak>Showing {{pages}} to {{totalpages}} of {{totalcount}}
 									entries</div>
 							</div>
 							<div class="col-sm-6">
@@ -140,7 +140,7 @@ rel="stylesheet" type="text/css" />
 						<label class="col-lg-2 control-label " for="userName2">Username *</label>
 						<div class="col-lg-10">
 							<input class=" form-control required" id="user_name"
-								name="user_name" type="text" value={{user_name}}>
+								name="user_name" type="text" ng-cloak value={{user_name}}>
 						</div>
 					</div>
 					<!-- User Password -->
@@ -148,7 +148,7 @@ rel="stylesheet" type="text/css" />
 						<label class="col-lg-2 control-label " for="password2">Password *</label>
 						<div class="col-lg-10">
 							<input id="password2" name="password" type="password"
-								class="required form-control" value={{password}}>
+								class="required form-control" ng-cloak value={{password}}>
 						</div>
 					</div>
 
@@ -157,7 +157,7 @@ rel="stylesheet" type="text/css" />
 						<label class="col-lg-2 control-label " for="email2">Email *</label>
 						<div class="col-lg-10">
 							<input id="email2" name="email" type="text"
-								class="required email form-control" value={{email}}>
+								class="required email form-control" ng-cloak value={{email}}>
 						</div>
 					</div>
 
@@ -166,7 +166,7 @@ rel="stylesheet" type="text/css" />
 						<label class="col-lg-2 control-label " for="phone">Contact Number *</label>
 						<div class="col-lg-10">
 							<input id="phone" name="phone" type="text" placeholder="Ex: 012345678 (Allow only number, no space)"
-								class="required form-control" value={{contact}} ng-pattern="/^\d+$/">
+								class="required form-control" ng-cloak value={{contact}} ng-pattern="/^\d+$/">
 						</div>
 					</div>
 			
@@ -174,7 +174,7 @@ rel="stylesheet" type="text/css" />
 						<label class="col-lg-2 control-label " for="fname">First Name *</label>
 						<div class="col-lg-10">
 							<input id="fname" name="fname" type="text"
-								class="form-control" value={{first_name}}>
+								class="form-control" ng-cloak value={{first_name}}>
 						</div>		
 					</div>
 					
@@ -182,14 +182,14 @@ rel="stylesheet" type="text/css" />
 						<label class="col-lg-2 control-label " for="lname">Last Name *</label>
 						<div class="col-lg-10">
 							<input id="lname" name="lname" type="text"
-								class="form-control" value={{last_name}}>
+								class="form-control" ng-cloak value={{last_name}}>
 						</div>	
 					</div>
 					
 					<div class="form-group row">
 						<label class="col-lg-2 control-label " for="lname">Gender *</label>
 						<div class="col-lg-10">
-							<select class="form-control select2" name="gender" value={{gender}}>
+							<select class="form-control select2" name="gender" ng-cloak value={{gender}}>
 								<option value="female">Female</option>
 								<option value="male">Male</option>
 							</select>
@@ -201,7 +201,7 @@ rel="stylesheet" type="text/css" />
 						<div class="col-lg-10">
 							<div class="input-group" id="dateofbirth">
 								<input type="text" class="required form-control add-on" ng-model="dob"
-									placeholder="dd-MM-yyyy" id="dob1" value="{{dob}}"> 
+									placeholder="dd-MM-yyyy" id="dob1" ng-cloak value="{{dob}}"> 
 								<span class="add-on input-group-addon bg-custom b-0 text-white" > <i data-time-icon="icon-time"
 											data-date-icon="icon-calendar"></i></span>
 							</div>
@@ -213,14 +213,14 @@ rel="stylesheet" type="text/css" />
 						<label class="col-lg-2 control-label">Address</label>
 						<div class="col-lg-10">
 							<textarea class="required form-control" rows="5"
-								 value={{address}}></textarea>
+								 ng-cloak value={{address}}></textarea>
 						</div>
 					</div>
 					
 					<div class="form-group row">
 						<label class="col-lg-2 control-label">Photo</label>
 						<div class="col-lg-10 dropzone dz-clickable" id="dropzone">
-							<div class="dz-default dz-message" value={{photo}}></div>
+							<div class="dz-default dz-message" ng-cloak value={{photo}}></div>
 						</div>
 					</div>
 					
@@ -259,7 +259,7 @@ rel="stylesheet" type="text/css" />
 					<div class="form-group row">
 						<label class="col-lg-2 control-label">Comment</label>
 						<div class="col-lg-10">
-							<textarea class="form-control" rows="5" value={{comment}}></textarea>
+							<textarea class="form-control" rows="5" ng-cloak value={{comment}}></textarea>
 						</div>
 					</div>
 					

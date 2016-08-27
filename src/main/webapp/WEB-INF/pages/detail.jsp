@@ -28,7 +28,7 @@
 		<!-- detail content information -->
 		<ul class="list-group" style="padding-left: 14px;">
 			<li class="list-group-item sublinkcategory"><spring:message
-					code="home"></spring:message> / {{category_name | uppercase}} /
+					code="home" ng-cloak></spring:message> / {{category_name | uppercase}} /
 				{{product_name | uppercase}}</li>
 		</ul>
 
@@ -42,15 +42,15 @@
 						<div class="list-group-item">
 							<p>
 								<spring:message code="remaining_time"></spring:message>
-								: <span>{{auc_detail.remainingTime | durationview}}</span>
+								: <span ng-cloak>{{auc_detail.remainingTime | durationview}}</span>
 							</p>
 						</div>
 						<!-- end remain time -->
 						<div class="list-group-item" id="img">
 							<div class="thumbnail" ng-repeat="proimg in gallery"
 								ng-show="$first">
-								<a href="{{proimg.image_path}}" data-lightbox="example-set"
-									id="myLink"> <img src="{{proimg.image_path}}"
+								<a ng-cloak href="{{proimg.image_path}}" data-lightbox="example-set"
+									id="myLink"> <img ng-cloak src="{{proimg.image_path}}"
 									class="img-responsive" width="100%" id="myImage" /></a>
 							</div>
 						</div>
@@ -66,8 +66,8 @@
 									<div data-u="slides"
 										style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
 										<div style="display: none;" ng-repeat="proimgAll in gallery">
-											<img data-u="image" src="{{proimgAll.image_path}}" id="moreImgs6" /><a
-												href="{{proimgAll.image_path}}" data-lightbox="example-set"></a>
+											<img data-u="image" ng-cloak src="{{proimgAll.image_path}}" id="moreImgs6" /><a
+												ng-cloak href="{{proimgAll.image_path}}" data-lightbox="example-set"></a>
 										</div>
 									</div>
 									<!-- Bullet Navigator -->
@@ -108,8 +108,8 @@
 					id="tablebidding">
 					<div class="list-group">
 						<div class="list-group-item">
-							<h3>{{product_name}}</h3>
-							<h4>{{product_condition}}</h4>
+							<h3 ng-cloak>{{product_name}}</h3>
+							<h4 ng-cloak>{{product_condition}}</h4>
 						</div>
 						<div class="list-group-item">
 							<form action="">
@@ -117,13 +117,13 @@
 									<thead>
 										<tr>
 											<td><b><spring:message code="current_price"></spring:message></b></td>
-											<td>{{current_price | currency}}</td>
+											<td ng-cloak>{{current_price | currency}}</td>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<th><spring:message code="minimum_bid"></spring:message></th>
-											<td>{{current_price + increment_price | currency}}
+											<td ng-cloak>{{current_price + increment_price | currency}}
 												({{current_price | currency}} + {{increment_price |
 												currency}})</td>
 										</tr>
@@ -182,12 +182,12 @@
 							<thead>
 								<tr>
 									<td><b><spring:message code="current_price"></spring:message></b></td>
-									<td>{{current_price | currency}}</td>
-									<td id='status1' ng-if="status==1" value="{{status}}"
+									<td ng-cloak>{{current_price | currency}}</td>
+									<td id='status1' ng-if="status==1" ng-cloak value="{{status}}"
 										class="status"><p>
 											<spring:message code="active"></spring:message>
 										</p></td>
-									<td id='status2' ng-if="status==3" value="{{status}}"
+									<td id='status2' ng-if="status==3" ng-cloak value="{{status}}"
 										class="status"><p>
 											<spring:message code="end"></spring:message>
 										</p></td>
@@ -202,12 +202,12 @@
 								</tr>
 								<tr>
 									<th><spring:message code="bid_history"></spring:message></th>
-									<td>{{num_bid}} <spring:message code="bids"></spring:message></td>
+									<td ng-cloak>{{num_bid}} <spring:message code="bids"></spring:message></td>
 									<sec:authorize access="isAuthenticated()">
 										<td class="text-right">
 										<!--  Bid History View -->
 										<a
-											href="/viewbidhistory/{{auction_id}}"> <input
+											ng-cloak href="/viewbidhistory/{{auction_id}}"> <input
 												type="button" class="btn btn-default bidhistory"
 												value="Bid History" ng-show="num_bid > 0">
 										</a>
@@ -219,11 +219,11 @@
 								</tr>
 								<tr>
 									<th><spring:message code="end_date"></spring:message></th>
-									<td colspan="2">{{end_date}}</td>
+									<td colspan="2" ng-cloak>{{end_date}}</td>
 								</tr>
 								<tr>
 									<th><spring:message code="start_date"></spring:message></th>
-									<td colspan="2">{{start_date}}</td>
+									<td colspan="2" ng-cloak>{{start_date}}</td>
 								</tr>
 								<tr>
 									<th><spring:message code="listed_by"></spring:message></th>
@@ -252,7 +252,7 @@
 				<spring:message code="description"></spring:message>
 			</div>
 			<div class="list-group-item">
-				<p>{{product_description}}</p>
+				<p ng-cloak>{{product_description}}</p>
 			</div>
 		</div>
 		<!-- group payment infor -->

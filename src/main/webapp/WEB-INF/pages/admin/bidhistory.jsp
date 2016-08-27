@@ -103,11 +103,11 @@
 		                              <label for="checkbox2"></label>
 		                            </div>
                           		</td>
-	                            <td>{{b.bid_id}}</td>
-	                            <td>{{b.auction.auction_id}}</td>
-	                            <td>{{b.user.user_name}}</td>
-	                            <td>{{b.current_price}}</td>
-	                            <td>{{b.bid_date}}</td>
+	                            <td ng-cloak>{{b.bid_id}}</td>
+	                            <td ng-cloak>{{b.auction.auction_id}}</td>
+	                            <td ng-cloak>{{b.user.user_name}}</td>
+	                            <td ng-cloak>{{b.current_price}}</td>
+	                            <td ng-cloak>{{b.bid_date}}</td>
                           		<!-- <td>
 		                          	<a href="#" class="table-action-btn" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
 		                              <i class="fa fa-eye"></i>

@@ -84,10 +84,10 @@
 													for="checkbox5"></label>
 											</div>
 										</td>
-										<td>{{cat.category_id}}</td>
-										<td>{{cat.category_name}}</td>
-										<td>{{cat.category_description}}</td>
-										<td>{{cat.parent_id}}</td>
+										<td ng-cloak>{{cat.category_id}}</td>
+										<td ng-cloak>{{cat.category_name}}</td>
+										<td ng-cloak>{{cat.category_description}}</td>
+										<td ng-cloak>{{cat.parent_id}}</td>
 										<td ng-if="cat.status=='1'"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
 										<td ng-if="cat.status=='0'"><i class="fa fa-times fa-lg text-danger"
@@ -116,7 +116,7 @@
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="dataTables_info" id="datatable-editable_info"
-									role="status" aria-live="polite">Showing {{pages}} to {{totalpages}} of {{totalcount}}
+									role="status" aria-live="polite" ng-cloak>Showing {{pages}} to {{totalpages}} of {{totalcount}}
 									entries</div>
 							</div>
 							<div class="col-sm-6">
@@ -173,7 +173,7 @@
 							</strong></label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="category-name"
-									ng-model="category_name" value="{{category_name}}"
+									ng-model="category_name" ng-cloak value="{{category_name}}"
 									placeholder="Ex: Automotive" required>
 							</div>
 						</div>
@@ -186,7 +186,7 @@
 							<div class="col-sm-10">
 								<textarea class="form-control" id="category-description"
 									ng-model="category_description"
-									value="{{category_description}}"
+									ng-cloak value="{{category_description}}"
 									placeholder="Please Enter Summary" required></textarea>
 							</div>
 						</div>

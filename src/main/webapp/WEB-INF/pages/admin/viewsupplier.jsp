@@ -85,11 +85,11 @@
 													for="checkbox14"></label>
 											</div>
 										</td>
-										<td>{{s.supplier_id}}</td>
-										<td>{{s.contact_name}}</td>
-										<td>{{s.address}}</td>
-										<td>{{s.email}}</td>
-										<td>{{s.phone}}</td>
+										<td ng-cloak>{{s.supplier_id}}</td>
+										<td ng-cloak>{{s.contact_name}}</td>
+										<td ng-cloak>{{s.address}}</td>
+										<td ng-cloak>{{s.email}}</td>
+										<td ng-cloak>{{s.phone}}</td>
 										<td ng-if="s.status=='1'"><i
 											class="table-action-btn fa fa-check" style="color: #3498db;"
 											aria-hidden="true"></i></td>
@@ -114,7 +114,7 @@
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="dataTables_info" id="datatable-editable_info"
-									role="status" aria-live="polite">Showing {{pages}} to {{totalpages}} of {{totalcount}}
+									role="status" aria-live="polite" ng-cloak>Showing {{pages}} to {{totalpages}} of {{totalcount}}
 									entries</div>
 							</div>
 							<div class="col-sm-6">
@@ -152,7 +152,7 @@
 							</strong></label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="contact-name"
-									ng-model="contact_name" value="{{contact_name}}"
+									ng-model="contact_name" ng-cloak value="{{contact_name}}"
 									placeholder="Ex: Jonh Query" required>
 							</div>
 						</div>
@@ -164,7 +164,7 @@
 								<input type="text" class="form-control" id="phone"
 									ng-model="phone"
 									placeholder="Ex: 012735487 (not allow letter and space)"
-									ng-pattern="/^\d+$/" name="phone" value="{{phone}}" required>
+									ng-pattern="/^\d+$/" name="phone" ng-cloak value="{{phone}}" required>
 							</div>
 						</div>
 						<!--  Email -->
@@ -173,7 +173,7 @@
 									class="text-danger">*</span></strong></label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="email"
-									ng-model="email" value="{{email}}"
+									ng-model="email" ng-cloak value="{{email}}"
 									placeholder="Ex: example@gmail.com" required>
 							</div>
 						</div>
@@ -184,7 +184,7 @@
 									class="text-danger">*</span></strong></label>
 							<div class="col-sm-10">
 								<textarea class="form-control" id="address" ng-model="address"
-									value="{{address}}"
+									ng-cloak value="{{address}}"
 									placeholder="Ex: House No., Street No, Sangkat, Khan, City"
 									required></textarea>
 							</div>

@@ -127,13 +127,13 @@
                 </thead>
                 <tbody class="body">
                   <tr ng-repeat="uea in userEndingAmount | orderBy:'-credit_id'">
-                    <td>{{uea.credit_id}}</td>
-                    <td>{{uea.user.last_name + " " + uea.user.first_name}}</td>
-                    <td>{{uea.credit_date}}</td>
-                    <td>{{uea.beginning_amount}}</td>
-                    <td>{{uea.transaction_type}}</td>
-                    <td>{{uea.amount}}</td>
-                    <td>{{uea.ending_amount}}</td>
+                    <td ng-cloak>{{uea.credit_id}}</td>
+                    <td ng-cloak>{{uea.user.last_name + " " + uea.user.first_name}}</td>
+                    <td ng-cloak>{{uea.credit_date}}</td>
+                    <td ng-cloak>{{uea.beginning_amount}}</td>
+                    <td ng-cloak>{{uea.transaction_type}}</td>
+                    <td ng-cloak>{{uea.amount}}</td>
+                    <td ng-cloak>{{uea.ending_amount}}</td>
                   </tr>
                 </tbody>
               </table>

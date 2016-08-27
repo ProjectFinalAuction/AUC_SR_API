@@ -34,7 +34,7 @@
 				<div class="panel-body" id="bid_history_detail">
 					<div class="row">
 						History for <strong><span id="product_name"
-							ng-model="produt_name">{{product_name}}</span></strong>
+							ng-model="produt_name" ng-cloak>{{product_name}}</span></strong>
 					</div>
 					<hr>
 					<div class="row" style="padding-bottom: 20px;">
@@ -44,7 +44,7 @@
 							<label for="current_price" class="col-sm-2"><strong>Current
 									Price</strong></label>
 							<div class="col-sm-10">
-								<span id="current_price">{{current_price}}</span>
+								<span id="current_price" ng-cloak>{{current_price}}</span>
 							</div>
 						</div>
 
@@ -53,7 +53,7 @@
 							<label for="starting_price" class="col-sm-2"><strong>Starting
 									Price</strong></label>
 							<div class="col-sm-10">
-								<span id="starting_price">{{start_price}}</span>
+								<span id="starting_price" ng-cloak>{{start_price}}</span>
 							</div>
 						</div>
 
@@ -62,7 +62,7 @@
 							<label for="number_of_bids" class="col-sm-2"><strong>Number
 									of Bids</strong></label>
 							<div class="col-sm-10">
-								<span id="number_of_bids">{{num_bid}}</span>
+								<span id="number_of_bids" ng-cloak>{{num_bid}}</span>
 							</div>
 						</div>
 
@@ -71,7 +71,7 @@
 							<label for="remaining_time" class="col-sm-2"><strong>Remaining
 									Time</strong></label>
 							<div class="col-sm-10">
-								<span id="remaining_time">{{remaing_date.remainingTime | durationview}}</span>
+								<span id="remaining_time" ng-cloak>{{remaing_date.remainingTime | durationview}}</span>
 							</div>
 						</div>
 
@@ -80,7 +80,7 @@
 							<label for="start_date_time" class="col-sm-2"><strong>Start
 									Date/Time</strong></label>
 							<div class="col-sm-10">
-								<span id="start_date_time">{{start_date}}</span>
+								<span id="start_date_time" ng-cloak>{{start_date}}</span>
 							</div>
 						</div>
 
@@ -89,7 +89,7 @@
 							<label for="end_date_time" class="col-sm-2"><strong>End
 									Date/Time</strong></label>
 							<div class="col-sm-10">
-								<span id="end_date_time">{{end_date}}</span>
+								<span id="end_date_time" ng-cloak>{{end_date}}</span>
 							</div>
 						</div>
 					</div>
@@ -102,10 +102,10 @@
 								<th>Amount</th>
 							</tr>
 							<tr ng-repeat="u in auctionBidHistory | orderBy:'-current_price'">
-								<td>{{$index + 1}}</td>
-								<td>{{u.bid_date}}</td>
-								<td>{{u.user.user_name}}</td>
-								<td>{{u.current_price}}</td>
+								<td ng-cloak>{{$index + 1}}</td>
+								<td ng-cloak>{{u.bid_date}}</td>
+								<td ng-cloak>{{u.user.user_name}}</td>
+								<td ng-cloak>{{u.current_price}}</td>
 							</tr>
 						</tbody>
 					</table>

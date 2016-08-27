@@ -83,9 +83,9 @@
 													for="checkbox5"></label>
 											</div>
 										</td>
-										<td>{{b.brand_id}}</td>
-										<td>{{b.brand_name}}</td>
-										<td>{{b.brand_description}}</td>
+										<td ng-cloak>{{b.brand_id}}</td>
+										<td ng-cloak>{{b.brand_name}}</td>
+										<td ng-cloak>{{b.brand_description}}</td>
 										<td ng-if="b.status=='1'"><i class="fa fa-check fa-lg text-primary"
 												aria-hidden="true"></i></td>
 										<td ng-if="b.status=='0'"><i class="fa fa-times fa-lg text-danger"
@@ -112,7 +112,7 @@
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="dataTables_info" id="datatable-editable_info"
-									role="status" aria-live="polite">Showing {{pages}} to {{totalpages}} of {{totalcount}}
+									role="status" aria-live="polite" ng-cloak>Showing {{pages}} to {{totalpages}} of {{totalcount}}
 									entries</div>
 							</div>
 							<div class="col-sm-6">
@@ -168,7 +168,7 @@
 							</strong></label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="brand-name"
-									ng-model="brand_name" value="{{brand_name}}"
+									ng-model="brand_name" ng-cloak value="{{brand_name}}"
 									placeholder="Ex: Samsung" required>
 							</div>
 						</div>
@@ -181,7 +181,7 @@
 							<div class="col-sm-10">
 								<textarea class="form-control" id="brand-description"
 									ng-model="brand_description"
-									value="{{brand_description}}"
+									ng-cloak value="{{brand_description}}"
 									placeholder="Please Enter Summary" required></textarea>
 							</div>
 						</div>

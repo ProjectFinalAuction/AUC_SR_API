@@ -108,22 +108,22 @@ rel="stylesheet" type="text/css" />
 											</td>
 											<td ng-repeat="proimg in a.product.gallery" ng-show="$first">
 												<img
-												src="{{proimg.image_path}}"
+												ng-cloak src="{{proimg.image_path}}"
 												class="thumb-sm" alt="product-img"></td>
-											<td>{{a.product.product_id}}</td>
-											<td>{{a.product.product_name}}</td>
-											<td>{{a.product_condition}}</td>
-											<td>{{a.product.supplier.contact_name}}</td>
-											<td>{{a.start_price}}</td>
-											<td>{{a.start_date}}</td>
-											<td>{{a.end_date}}</td>
+											<td ng-cloak>{{a.product.product_id}}</td>
+											<td ng-cloak>{{a.product.product_name}}</td>
+											<td ng-cloak>{{a.product_condition}}</td>
+											<td ng-cloak>{{a.product.supplier.contact_name}}</td>
+											<td ng-cloak>{{a.start_price}}</td>
+											<td ng-cloak>{{a.start_date}}</td>
+											<td ng-cloak>{{a.end_date}}</td>
 											<td ng-if="a.status=='1'"><i class="table-action-btn fa fa-check" style="color:#3498db;"
 												aria-hidden="true"></i></td>
 											<td ng-if="a.status=='0'"><i class="table-action-btn fa fa-times" style="color:#e74c3c; "
 												aria-hidden="true"></i></td>
 											<td ng-if="a.status=='3'"><i class="table-action-btn fa fa-gavel" style="color: #2ecc71;"
 												aria-hidden="true"></i></td>
-											<td style="text-align: center"><strong>{{a.num_bid}} Bid</strong></td>
+											<td style="text-align: center"><strong ng-cloak>{{a.num_bid}} Bid</strong></td>
 											<td class="action">
 												<a href="#"><i class="fa fa-eye fa-lg text-primary"
 													title="View bids"></i></a>&nbsp;&nbsp;
@@ -144,7 +144,7 @@ rel="stylesheet" type="text/css" />
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="dataTables_info" id="datatable-editable_info"
-										role="status" aria-live="polite">Showing {{pages}} to {{totalpages}} of {{totalcount}}
+										role="status" aria-live="polite" ng-cloak>Showing {{pages}} to {{totalpages}} of {{totalcount}}
 										entries</div>
 								</div>
 								<div class="col-sm-6">
@@ -180,7 +180,7 @@ rel="stylesheet" type="text/css" />
 									<select class="form-control required" name="supplier" 
 										ng-model="sup" id="supplier"
 										ng-change="findProductsHasSupplier(sup)"
-										ng-options="s.supplier_id as s.contact_name for s in supplier" value="{{contact_name}}">
+										ng-options="s.supplier_id as s.contact_name for s in supplier" ng-cloak value="{{contact_name}}">
 										<!-- <option value="" style="display:none">-- Choose Supplier --</option> -->
 									</select>
 								</div>
@@ -202,7 +202,7 @@ rel="stylesheet" type="text/css" />
 									Condition*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product"
-										ng-model="product_condition" value="{{product_condition}}" required>
+										ng-model="product_condition" ng-cloak value="{{product_condition}}" required>
 										<!-- <option value="" ng-selected="true">-- Choose Condition	--</option> -->
 										<option value="Very_Good">Very Good</option>
 										<option value="Good">Good</option>
@@ -247,7 +247,7 @@ rel="stylesheet" type="text/css" />
 								<div class="col-lg-10">
 									<div class="input-group">
 										<input type="text" id="startDate" class="required form-control"
-											value="{{start_date}}" ng-disabled="true"
+											ng-cloak value="{{start_date}}" ng-disabled="true"
 											ng-model="start_date" > <span
 											class="input-group-addon bg-custom b-0 text-white"><i
 											class="icon-calender"></i></span>
@@ -263,7 +263,7 @@ rel="stylesheet" type="text/css" />
 									<div class="input-group" id="end">
 										<input type="text" class="required form-control add-on"
 											placeholder="dd-mm-yyyy hh:mm:ss" id="endDate" name="endDate"
-											ng-model="end_date" value="{{end_date}}" ng-blur="checkErr()"> <span
+											ng-model="end_date" ng-cloak value="{{end_date}}" ng-blur="checkErr()"> <span
 											class="add-on input-group-addon bg-custom b-0 text-white">
 											<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 										</span>
@@ -291,7 +291,7 @@ rel="stylesheet" type="text/css" />
 							<div class="form-group clearfix">
 								<label class="col-lg-2 control-label">Comment</label>
 								<div class="col-lg-10">
-									<textarea class="form-control" rows="5" ng-model="comment" value="{{comment}}"></textarea>
+									<textarea class="form-control" rows="5" ng-model="comment" ng-cloak value="{{comment}}"></textarea>
 								</div>
 							</div>
 

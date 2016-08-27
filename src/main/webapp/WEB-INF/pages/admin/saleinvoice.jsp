@@ -88,25 +88,25 @@
 							<tbody style="color: #ffffff;">
 								<tr
 									ng-repeat=" inv in invoiceDetail | orderBy:'-invoice.invoice_id'">
-									<td>{{inv.invoice.invoice_date}}<br>
+									<td ng-cloak>{{inv.invoice.invoice_date}}<br>
 									<br>{{inv.invoice.user.contact}}
 									</td>
-									<td>Admin<br>
+									<td ng-cloak>Admin<br>
 									<br>{{inv.invoice.user.user_name}}
 									</td>
-									<td><a href="" style="color: #ffffff;" ng-click="findInvoiceDetailByInvoiceId(inv.invoice.invoice_id)">{{inv.invoice.invoice_id}}</a><br>
+									<td><a href="" style="color: #ffffff;" ng-click="findInvoiceDetailByInvoiceId(inv.invoice.invoice_id)" ng-cloak>{{inv.invoice.invoice_id}}</a><br>
 									<br>
 									<br></td>
-									<td>{{inv.auction.product.product_name}}<br>
+									<td ng-cloak>{{inv.auction.product.product_name}}<br>
 									<br>{{inv.invoice.user.address}}
 									</td>
-									<td>{{inv.buy_price}}<br>
+									<td ng-cloak>{{inv.buy_price}}<br>
 									<br>
 									<br></td>
-									<td>{{inv.qty}}<br>
+									<td ng-cloak>{{inv.qty}}<br>
 									<br>{{inv.invoice.user.first_name}}
 									</td>
-									<td>{{inv.buy_price * inv.qty}}<br>
+									<td ng-cloak>{{inv.buy_price * inv.qty}}<br>
 									<br>{{inv.invoice.user.last_name}}
 									</td>
 									<td ng-if="inv.invoice.status=='1'"><img alt=""
@@ -137,8 +137,8 @@
 								class="img-responsive" style="width:20%; height:20%;">
 							</div>
 							<div class="pull-right">
-								<h4 id="invoiceID">
-									Invoice # <br> <strong>{{invoice_id}}</strong>
+								<h4 id="invoiceID" >
+									Invoice # <br> <strong ng-cloak>{{invoice_id}}</strong>
 								</h4>
 							</div>
 						</div>
@@ -155,7 +155,7 @@
 								<div class="pull-right m-t-30">
 									<p>
 										<strong>Invoice Date: </strong> 
-										<span>{{invoice_date}}</span>
+										<span ng-cloak>{{invoice_date}}</span>
 									</p>
 									<p class="m-t-10">
 										<strong>Invoice Status: </strong> 
@@ -163,7 +163,7 @@
 										<span class="label label-pink" ng-if="status=='0'">UNPAID</span>
 									</p>
 									<p class="m-t-10">
-										<strong>Auction ID: </strong><span>{{auction_id}}</span>
+										<strong>Auction ID: </strong><span ng-cloak>{{auction_id}}</span>
 									</p>
 								</div>
 							</div>
@@ -185,10 +185,10 @@
 										<tbody>
 											<tr>
 												<td>1</td>
-												<td>{{product_name}}</td>
-												<td>{{qty}}</td>
-												<td>{{buy_price}}</td>
-												<td>{{buy_price * qty}}</td>
+												<td ng-cloak>{{product_name}}</td>
+												<td ng-cloak>{{qty}}</td>
+												<td ng-cloak>{{buy_price}}</td>
+												<td ng-cloak>{{buy_price * qty}}</td>
 											</tr>																																												
 										</tbody>
 									</table>
@@ -203,7 +203,7 @@
 								<p class="text-right">Discout: 0.0%</p>
 								<p class="text-right">VAT: 0.0%</p>
 								<hr>
-								<h3 class="text-right">USD {{buy_price * qty}}</h3>
+								<h3 class="text-right" ng-cloak>USD {{buy_price * qty}}</h3>
 							</div>
 						</div>
 						<hr>

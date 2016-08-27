@@ -93,9 +93,9 @@ pageEncoding="UTF-8"%>
 						<h1 class="title">
 							<a href="#">
 								<span class="img" ng-repeat="proimg in a.product.gallery" ng-show="$first">
-									<img src="{{proimg.image_path}}" class="img-thumbnail" style="width: 160px; height: 170px" alt="Cinque Terre">
+									<img ng-cloak src="{{proimg.image_path}}" class="img-thumbnail" style="width: 160px; height: 170px" alt="Cinque Terre">
 								</span>
-								<strong>{{a.product.product_name}}</strong>
+								<strong ng-cloak>{{a.product.product_name}}</strong>
 							</a>
 						</h1>
 						<!-- subtitle -->
@@ -106,15 +106,15 @@ pageEncoding="UTF-8"%>
 						</p>
 						<!-- seller -->
 						<span class="condition">
-							<spring:message code="brand"></spring:message>: <a href="#">{{a.product.brand.brand_name}}</a>
+							<spring:message code="brand"></spring:message>: <a href="#" ng-cloak>{{a.product.brand.brand_name}}</a>
 						</span><br>
 						<!-- seller -->
 						<span class="condition">
-							<spring:message code="condition"></spring:message>: <a href="#">{{a.product_condition}}</a>
+							<spring:message code="condition"></spring:message>: <a href="#" ng-cloak>{{a.product_condition}}</a>
 						</span><br>
 
 						<span class="seller">
-							<spring:message code="seller"></spring:message>: <a href="#">{{a.product.supplier.contact_name}}</a>
+							<spring:message code="seller"></spring:message>: <a href="#" ng-cloak>{{a.product.supplier.contact_name}}</a>
 						</span><br>
 						
 					</div>	<!--End image and property -->
@@ -128,17 +128,17 @@ pageEncoding="UTF-8"%>
 								data-end-hide-selector="[data-listingid='327081'] .awe-rt-Done" 
 								data-action-time="08/25/2016 00:22:49" 
 								data-end-value="Ended" 
-								data-action-milliseconds="1472059369000"><spring:message code="remaining"></spring:message></span> {{a.remainingTime | durationview}}</span>
+								data-action-milliseconds="1472059369000"><spring:message code="remaining"></spring:message></span> <span ng-cloak>{{a.remainingTime | durationview}}</span>
 								<span class="awe-rt-Done ">
 							</p>
 							<p class="bids">
 								&nbsp;
-								<span class="awe-rt-CurrentPrice price NumberPart" style=" color:#238FC7 "><span>{{a.current_price | currency}}</span></span>
+								<span class="awe-rt-CurrentPrice price NumberPart" style=" color:#238FC7 "><span ng-cloak>{{a.current_price | currency}}</span></span>
 								<span class="glyphicon glyphicon-option-vertical"></span>
-								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0">{{a.num_bid}}</span>
+								<span class="awe-rt-AcceptedListingActionCount" data-previous-value="0" ng-cloak>{{a.num_bid}}</span>
 								<spring:message code="bids"></spring:message>
 								&nbsp;
-								<a href="/detail/{{a.auction_id}}" class="btn btn-default awe-rt-Active awe-rt-Done"><spring:message code="bid_now"></spring:message> 
+								<a ng-cloak href="/detail/{{a.auction_id}}" class="btn btn-default awe-rt-Active awe-rt-Done"><spring:message code="bid_now"></spring:message> 
 									<span class="glyphicon glyphicon-chevron-right"></span>
 								</a>
 							</p>

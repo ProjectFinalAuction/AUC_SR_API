@@ -128,17 +128,17 @@
 	                          
 	                          <td ng-repeat="proimg in pro.gallery" ng-show="$first">
 	                         
-	                         	 <img src={{proimg.image_path}}   class="thumb-lg" alt="product-img" />
+	                         	 <img ng-cloak src={{proimg.image_path}}   class="thumb-lg" alt="product-img" />
 								
 							  </td>
 											
-	                          <td>{{pro.product_id}}</td>
-	                          <td>{{pro.product_name}}</td>
-	                          <td>{{pro.product_description}}</td>
-	                          <td>{{pro.supplier.contact_name}}</td>                                                       
-	                          <td>{{pro.category.category_name}}</td>
-	                          <td>{{pro.qty}}</td>
-	                          <td>{{pro.brand.brand_name}}</td>
+	                          <td ng-cloak>{{pro.product_id}}</td>
+	                          <td ng-cloak>{{pro.product_name}}</td>
+	                          <td ng-cloak>{{pro.product_description}}</td>
+	                          <td ng-cloak>{{pro.supplier.contact_name}}</td>                                                       
+	                          <td ng-cloak>{{pro.category.category_name}}</td>
+	                          <td ng-cloak>{{pro.qty}}</td>
+	                          <td ng-cloak>{{pro.brand.brand_name}}</td>
 	                          <td>
 	                          	<span ng-show="pro.status==1">Active</span>
 	                          	<span ng-show="pro.status==0">Inactive</span>
@@ -155,7 +155,7 @@
                         
                       </tbody>
                     </table>
-                    <div class="dataTables_info ng-binding"><b>Total Page&#8227;{{pagination.TOTAL_PAGES}}</b> 
+                    <div class="dataTables_info ng-binding" ng-cloak><b>Total Page&#8227;{{pagination.TOTAL_PAGES}}</b> 
                     											&nbsp;&nbsp;
                     										<b>All Products&#8227;{{pagination.TOTAL_COUNT}}</b></div>
                     <div id="PAGINATION">
@@ -189,7 +189,7 @@
 						<label class="col-lg-2 control-label " for="userName2">Product Name *</label>
 						<div class="col-lg-10">
 							<input class=" form-control required" id=""
-								name="user_name" type="text" ng-model="proname" value={{proname}}>
+								name="user_name" type="text" ng-model="proname" ng-cloak value={{proname}}>
 						</div>
 					</div>
 
@@ -198,7 +198,7 @@
 						<label class="col-lg-2 control-label " for="phone">Description *</label>
 						<div class="col-lg-10">
 							<textarea id="phone" name="phone" maxlength="250"
-								class="required form-control" ng-model="prodescription" value={{prodescriptiont}}>
+								class="required form-control" ng-model="prodescription" ng-cloak value={{prodescriptiont}}>
 							</textarea>
 						</div>
 					</div>
@@ -207,8 +207,8 @@
 						<label class="col-lg-2 control-label " for="fname">Supplier *</label>
 						<div class="col-lg-10">
 							<select id="lname" name="lname" type="text" class="form-control" ng-model="pro_supplier_to_update">
-								<option value="">{{prosupplier}}</option>
-								<option ng-repeat="supplier in Supplier" value="{{supplier.supplier_id}}">{{supplier.contact_name}}</option>
+								<option value="" ng-cloak>{{prosupplier}}</option>
+								<option ng-repeat="supplier in Supplier" ng-cloak value="{{supplier.supplier_id}}">{{supplier.contact_name}}</option>
 							
 					
 							</select>
@@ -219,9 +219,9 @@
 						<label class="col-lg-2 control-label " for="lname">Category *</label>
 						<div class="col-lg-10">
 							<select id="lname" name="lname" type="text" class="form-control" ng-model="pro_category_to_update">
-								<optgroup ng-repeat="categories in Categories" label="{{categories.category_name}}">
-									<option value="">{{thisPro_category_name}}</option>
-									<option ng-repeat="sub in categories.subCategories" value="{{sub.category_id}}">{{sub.category_name}}</option>
+								<optgroup ng-repeat="categories in Categories" ng-cloak label="{{categories.category_name}}">
+									<option value="" ng-cloak>{{thisPro_category_name}}</option>
+									<option ng-repeat="sub in categories.subCategories" ng-cloak value="{{sub.category_id}}">{{sub.category_name}}</option>
 								</optgroup>
 							</select>
 								
@@ -232,7 +232,7 @@
 						<label class="col-lg-2 control-label " for="lname">Quantity *</label>
 						<div class="col-lg-10">
 						<input id="lname" name="lname" type="text"
-								class="form-control" ng-model="proqty" alue={{proqty}}>
+								class="form-control" ng-model="proqty" ng-cloak value={{proqty}}>
 							
 						</div>
 					</div>
@@ -243,8 +243,8 @@
 							<select id="lname" name="lname" type="text" class="form-control" ng-model="pro_brand_to_update">
 								
 								
-								<option value="">{{probrand}}</option>
-								<option ng-repeat="brand in Brand" value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+								<option value="" ng-cloak>{{probrand}}</option>
+								<option ng-repeat="brand in Brand" ng-cloak value="{{brand.brand_id}}">{{brand.brand_name}}</option>
 							
 					
 							</select>
@@ -259,9 +259,9 @@
 						<!-- <input id="lname" name="lname" type="text"
 								class="form-control" ng-model="prostatus" value={{prostatus}}> -->
 						<select ng-model="prostatus" class="form-control">
-							<option value="1" ng-selected="{{prostatus==1}}">Active</option>
-							<option value="0" ng-selected="{{prostatus==0}}">Inactive</option>
-							<option value="3" ng-selected="{{prostatus==3}}">Auction</option>
+							<option value="1" ng-cloak ng-selected="{{prostatus==1}}">Active</option>
+							<option value="0" ng-cloak ng-selected="{{prostatus==0}}">Inactive</option>
+							<option value="3" ng-cloak ng-selected="{{prostatus==3}}">Auction</option>
 						</select>
 						</div>
 					</div>

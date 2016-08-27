@@ -100,7 +100,7 @@
 
 
 											<optgroup ng-repeat="supplier in Supplier">
-												<option value="{{supplier.supplier_id}}">{{supplier.contact_name}}</option>
+												<option ng-cloak value="{{supplier.supplier_id}}">{{supplier.contact_name}}</option>
 											</optgroup>
 
 										</select>
@@ -128,10 +128,10 @@
 
 
 											<optgroup ng-repeat="main in Categories"
-												label="{{main.category_name}}">
+												ng-cloak label="{{main.category_name}}">
 
 												<option ng-repeat="s in main.subCategories"
-													value="{{s.category_id}}">{{s.category_name}}</option>
+													ng-cloak value="{{s.category_id}}">{{s.category_name}}</option>
 
 
 											</optgroup>
@@ -158,7 +158,7 @@
 											<optgroup>
 												<!-- <option ng-repeat="brands in Brands" value="brand.brand_id">{{brand.brand_name}}</option> -->
 												<option ng-repeat="brands in Brands"
-													value="{{brands.brand_id}}">{{brands.brand_name}}</option>
+													ng-cloak value="{{brands.brand_id}}">{{brands.brand_name}}</option>
 											</optgroup>
 
 										</select>
