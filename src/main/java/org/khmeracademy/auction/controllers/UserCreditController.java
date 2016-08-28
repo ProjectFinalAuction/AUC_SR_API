@@ -40,13 +40,13 @@ public class UserCreditController {
 	//TODO: GET ALL USER CREDIT WITH ENDING AMOUNT 
 		@RequestMapping(value="/user-ending-amount", method = RequestMethod.GET)
 		public ResponseEntity<Map<String , Object>>findAllUserCreditWithEndingAmount(TopupFilter filter, Pagination pagination){
-			String url = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-active-user-credit-history-with-ending-amount")
-					.queryParam("page", pagination.getPage())
+			String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-active-user-credit-history-with-ending-amount")
+					.queryParam("page",pagination.getPage())
 					.queryParam("limit", pagination.getLimit())
-					.queryParam("fullName", filter.getFullName())
-					.toString();
+					.queryParam("userName", filter.getFullName())
+					.toUriString();
 			HttpEntity<Object> request = new HttpEntity<Object>(header);
-			ResponseEntity<Map> response = rest.exchange( url, HttpMethod.GET , request , Map.class) ;
+			ResponseEntity<Map> response = rest.exchange( url , HttpMethod.GET , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
 	

@@ -8,125 +8,64 @@ app.controller("auctionCtrl", function(){
 	
 });
 
-/*app.controller("myCtrl", [
-		'$scope',
-		'$http',
-		'$timeout',
-		'datetime',
-		function($scope, $http, $timeout, datetime) {
-			var getAuctionItems = function(id) {
-
-				$http({
-					url : 'http://localhost:8080/rest/auction/bid/' + id,
-					method : 'GET'
-				}).then(function(response) {
-					d = response.data.DATA;
-					
-					data = [ {
-						"Name" : d.product.product_name,
-						"NumberOfBids" : d.num_bid,
-						"CurrentBid" : d.bid_current_price,
-						"AuctionEndDateTime" : d.end_date
-					} ];
-					
-					 * , { "Name" : "ទូរស័ព្ទ IPhone ៧", "NumberOfBids" : 1000,
-					 * "CurrentBid" : 999, "AuctionEndDateTime" : "2016-08-20
-					 * 07:50:50" }
-					 
-					// ];
-					processAuctionItems(data);
-					//
-					$scope.auctions = data;
-
-				});
-
-			};
-
-			var tick = function() {
-				$scope.currentTime = moment();
-				processAuctionItems($scope.auctions);
-				$timeout(tick, 1000);
-			}
-
-			var processAuctionItems = function(data) {
-				angular.forEach(data, function(item) {
-					item.remainingTime = datetime
-							.getRemainigTime(item.AuctionEndDateTime);
-				});
-			}
-
-			$scope.currentTime = moment();
-
-			// getAuctionItems();
-			getAuctionItems(1); // test
-
-			$timeout(tick, 1000);
-
-			// $timeout(getAuctionItems, 10000);
-
-		} ]);
-
-app.factory('datetime', [ '$timeout', function($timeout) {
-	var duration = function(timeSpan) {
-		var days = Math.floor(timeSpan / 86400000);
-		var diff = timeSpan - days * 86400000;
-		var hours = Math.floor(diff / 3600000);
-		diff = diff - hours * 3600000;
-
-		var minutes = Math.floor(diff / 60000);
-		diff = diff - minutes * 60000;
-
-		var secs = Math.floor(diff / 1000);
-
-		return {
-			'days' : days,
-			'hours' : hours,
-			'minutes' : minutes,
-			'seconds' : secs
-		};
-	};
-
-	function getRemainigTime(referenceTime) {
-		var now = moment().utc();
-		return moment(referenceTime) - now;
-	}
-
-	return {
-		duration : duration,
-		getRemainigTime : getRemainigTime
-	};
-} ]);
-
-app.filter('durationview', [
-		'datetime',
-		function(datetime) {
-			return function(input, css) {
-				var duration = datetime.duration(input);
-				return duration.days + " ថ្ងៃ:" + duration.hours + " ម៉ោង:"
-						+ duration.minutes + " នាទី:" + duration.seconds
-						+ " វិនាទី";
-			};
-		} ]);
-*/
 
 // TODO: =========BID HISTORY FOR BACK-END============
 app.controller('bidHistory', function($scope,$http){
-	
+	$scope.userName = "";
+	var checkPagination = true;
+	var currentPage = 1;
 	// select all record to display
 	$scope.findAllBidHistory = function(){
 		$http({
-			url: 'http://localhost:8080/rest/bidhistory',
+			url: '/rest/bidhistory?limit=' + 20 +"&page=" + currentPage + "&userName="+$scope.userName,
 			method: 'GET',
 			
-		}).then(function(respone){
-			$scope.bidHistory = respone.data.DATA;
+		}).then(function(response){
+			$scope.bidHistory = response.data.DATA;
+			//pagination
+			$scope.pages = response.data.PAGINATION.PAGE;
+			$scope.totalpages = response.data.PAGINATION.TOTAL_PAGES;
+			$scope.totalcount = response.data.PAGINATION.TOTAL_COUNT;
+			if (checkPagination) {
+				$scope.setPagination(response.data.PAGINATION);
+				checkPagination = false;
+			}
 		});
 	}
 	
+	// TODO: CTEATE PAGINATION BUTTON
+	$scope.setPagination = function(pagination) {
+		console.log("PAGINATION==>", pagination);
+		$("#PAGINATION").bootpag({
+			total : pagination.TOTAL_PAGES,
+			page : pagination.PAGE,
+			maxVisible : 10,
+			leaps : true,
+			firstLastUse : true,
+			first : 'First',
+			last : 'Last',
+			wrapClass : 'pagination',
+			activeClass : 'active',
+			disabledClass : 'disabled',
+			nextClass : 'next',
+			prevClass : 'prev',
+			lastClass : 'last',
+			firstClass : 'first'
+		});
+		$("#PAGINATION ul").addClass("pagination");
+	}
+
+	$('#PAGINATION').bootpag().on("page", function(event, page) {
+		checkPagination = false;
+		currentPage = page;
+		$scope.findAllBidHistory();
+	});
+	
 	$scope.findAllBidHistory();
+	
 })
 
-// TODO: =========BID HISTORY BY USER_ID FOR FRONT-END============
+// TODO: =====+++++++++++++++++++++++++++++++++++++++++====BID HISTORY BY USER_ID FOR FRONT-END============
 app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
 	
 	// Show or Hide Panel
@@ -139,7 +78,7 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
 	$scope.findBidByUserId = function(user_id){
 		
 		$http({
-			url: 'http://localhost:8080/rest/bidhistory/' + user_id,
+			url: '/rest/bidhistory/' + user_id,
 		}).then(function(response){
 			$scope.userBidHistory = response.data.DATA;
 			//$scope.processAuctionItems($scope.userBidHistory);

@@ -138,7 +138,18 @@
                 </tbody>
               </table>
             </div>
-          
+          	<!-- Pagination-->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="dataTables_info" id="datatable-editable_info"
+						role="status" aria-live="polite" ng-cloak>{{pages}} to {{totalpages}} pages of {{totalcount}}
+						entries</div>
+				</div>
+				<div class="col-sm-6">
+					<div id="PAGINATION" class="pull-right"></div>
+				</div>
+			</div>
+			<!-- End Pagination-->
           </div>
 
         </div>

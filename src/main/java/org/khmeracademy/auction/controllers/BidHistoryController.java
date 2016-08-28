@@ -34,14 +34,6 @@ public class BidHistoryController {
 	@Autowired
 	private String WS_URL;
 	
-	/*@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findAllBid(){
-		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-categories", HttpMethod.GET , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
-	}
-	*/
-	
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> addNewBidHistory(@RequestBody AddBid addBid, @AuthenticationPrincipal User user){
@@ -56,11 +48,12 @@ public class BidHistoryController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> findAllBidHistory(BidFilter filter, Pagination pagination){
-		String url = UriComponentsBuilder.fromHttpUrl( WS_URL + "/find-all-bid-history")
-				.queryParam("page", pagination.getPage())
+		
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-bid-history")
+				.queryParam("page",pagination.getPage())
 				.queryParam("limit", pagination.getLimit())
 				.queryParam("userName", filter.getUserName())
-				.toString();
+				.toUriString();
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange( url , HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);

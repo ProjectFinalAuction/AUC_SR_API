@@ -1,21 +1,3 @@
-$(function(){
-
-	// $('#search').on('click', function(){
-
-	// 		$('#formsearch').slideDown('slow').css({
-
-	// 			'position': 'absolute',
-	// 			'display' : 'block',
-	// 			'right' : 10,
-	// 			'top'	: 10
-
-	// 		});
-	// });
-
-});
-
-
-
 // script for detail image slides
         function jssor_1_slider_init() {
             
@@ -106,3 +88,4 @@ $(function(){
       $("#myLink").attr('href', 'images/newcar4.png')
     });
 
+    jssor_1_slider_init();

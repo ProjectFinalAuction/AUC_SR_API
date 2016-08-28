@@ -81,7 +81,7 @@
 
 				<li class="has_sub"><a href="javascript:void(0)"
 					class="waves-effect"> <i class="fa fa-cart-arrow-down"
-						aria-hidden="true"></i><span> Bids</span> <span class="menu-arrow"></span>
+						aria-hidden="true"></i><span> Bid Management</span> <span class="menu-arrow"></span>
 				</a>
 					<ul class="list-unstyled">
 						<li><a

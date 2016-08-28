@@ -15,7 +15,7 @@
 <!-- css style of slide detail -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/css/slide-detail.css">
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/jssor.slider.min.js"></script>
 <!-- header -->
 <jsp:include page="header.jsp" />
 <!-- menu -->
@@ -38,7 +38,7 @@
 		<div class="row">
 			<!-- image and some detail information -->
 			<div class="col-md-5" style="padding-right: 0;">
-				<div class="row" rowspan="2">
+				<div class="row">
 					<!-- colunm for image content -->
 					<div class="list-group">
 						<div class="list-group-item">
@@ -57,53 +57,57 @@
 									class="img-responsive" width="100%" id="myImage" /></a>
 							</div>
 						</div>
+
+						<!-- ========================================================= -->
 						<div class="list-group-item">
-							<div class="thumbnail" style="border: none;">
-
-								<script type="text/javascript"
-									src="${pageContext.request.contextPath}/resources/static/js/jssor.slider.min.js"></script>
-								<!-- use jssor.slider.debug.js instead for debug -->
-
-								<div id="jssor_1"
-									style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 819px; height: 150px; overflow: hidden; visibility: hidden;">
-
-									<div data-u="slides"
-										style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
-										<div style="display: none;" ng-repeat="proimgAll in gallery">
-											<img data-u="image" src="{{proimgAll.image_path}}"
-												id="moreImgs6" /><a ng-cloak
-												href="{{proimgAll.image_path}}" data-lightbox="example-set"></a>
-										</div>
-									</div>
-									<!-- Bullet Navigator -->
-									<div data-u="navigator" class="jssorb03"
-										style="bottom: 10px; right: 20px;">
-										<!-- bullet navigator item prototype -->
-										<div data-u="prototype" style="width: 21px; height: 21px;">
-											<div data-u="numbertemplate"></div>
-										</div>
-									</div>
-									<!-- Arrow Navigator -->
-									<span data-u="arrowleft" class="jssora03l"
-										style="top: 0px; left: 8px; width: 55px; height: 55px;"
-										data-autocenter="2"></span> <span data-u="arrowright"
-										class="jssora03r"
-										style="top: 0px; right: 18px; width: 55px; height: 55px;"
-										data-autocenter="2"></span>
-								</div>
-
-								<!-- link from js.js to call function jssor_1_slider_init() -->
-								<script
-									src="${pageContext.request.contextPath}/resources/static/js/slider-detail.js"></script>
-								<script>
-									jssor_1_slider_init();
-								</script>
-								<!-- js photo pop up -->
-								<script
-									src="${pageContext.request.contextPath}/resources/static/dist/js/lightbox-plus-jquery.min.js"></script>
-
-							</div>
+							<div class="thumbnail" style="border:none;">
+								<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 819px; height: 150px; overflow: hidden; visibility: hidden;">
+							
+							        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
+							        	<div style="display: none;">
+							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home1.PNG" id="moreImgs1"/><a href="images/home1.png" data-lightbox="example-set"></a>
+							            </div>
+							            <div style="display: none;">
+							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home2.PNG" id="moreImgs2"/><a href="images/home2.png" data-lightbox="example-set"></a>
+							            </div>
+							            <div style="display: none;">
+							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home3.PNG" id="moreImgs3"/><a href="images/home3.png" data-lightbox="example-set"></a>
+							            </div>
+							            <div style="display: none;">
+							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home4.PNG" id="moreImgs4"/><a href="images/home4.png" data-lightbox="example-set"></a>
+							            </div>
+							            <div style="display: none;">
+							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home5.PNG" id="moreImgs5"/><a href="images/home5.png" data-lightbox="example-set"></a>
+							            </div> 	     
+							        </div>
+							      
+							        <!-- Bullet Navigator -->
+							        <div data-u="navigator" class="jssorb03" style="bottom:10px;right:20px;">
+							            <!-- bullet navigator item prototype -->
+							            <div data-u="prototype" style="width:21px;height:21px;">
+							                <div data-u="numbertemplate"></div>
+							            </div>
+							        </div>
+							        <!-- Arrow Navigator -->
+							        <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
+							        <span data-u="arrowright" class="jssora03r" style="top:0px;right:18px;width:55px;height:55px;" data-autocenter="2"></span>
+							    </div>
+							    <!-- link from js.js to call function jssor_1_slider_init() -->
+							    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/slider-detail.js"></script>
+							    
+    						</div>
 						</div>
+						
+						<!-- ================================================== -->
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					</div>
 					<!-- end div content left -->
 				</div>

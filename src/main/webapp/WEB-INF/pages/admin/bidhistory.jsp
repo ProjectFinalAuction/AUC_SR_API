@@ -36,18 +36,19 @@
             		<div class="card-box"> 
                   <div class="row m-t-10 m-b-10">
                     <!--Select Limit Row-->
-                    <div class="col-sm-4 col-lg-2">
-                      <div class="dataTables_length" id="datatable-editable_length">
-                        <label>Show 
-                          <select name="datatable-editable_length" aria-controls="datatable-editable" class="form-control input-sm" style="height: 38px;">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                          </select> 
-                        entries</label>
-                      </div>
-                    </div>
+<!--                     <div class="col-sm-4 col-lg-2"> -->
+<!--                       <div class="dataTables_length" id="datatable-editable_length"> -->
+<!--                         <label>Show  -->
+<!--                           <select name="datatable-editable_length" aria-controls="datatable-editable" class="form-control input-sm"  -->
+<!--                           style="height: 38px;" id="showrows"> -->
+<!--                             <option value="10" ng-selected="true">10</option> -->
+<!--                             <option value="25">25</option> -->
+<!--                             <option value="50">50</option> -->
+<!--                             <option value="100">100</option> -->
+<!--                           </select>  -->
+<!--                         entries</label> -->
+<!--                       </div> -->
+<!--                     </div> -->
 
                     <div class="col-sm-4 col-lg-6">
                       <form role="form">
@@ -118,33 +119,20 @@
                       </tbody>
                    </table>
                    </div><!-- table-responsive-->
-
-                  <!-- Pagination-->
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="dataTables_info" id="datatable-editable_info" role="status" aria-live="polite">
-                        Showing 1 to 10 of 16 entries
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="dataTables_paginate paging_simple_numbers" id="datatable-editable_paginate">
-                        <ul class="pagination">
-                          <li class="paginate_button previous disabled" aria-controls="datatable-editable" tabindex="0" id="datatable-editable_previous">
-                            <a href="#">Previous</a>
-                          </li>
-                          <li class="paginate_button active" aria-controls="datatable-editable" tabindex="0">
-                            <a href="#">1</a>
-                          </li>
-                          <li class="paginate_button " aria-controls="datatable-editable" tabindex="0">
-                            <a href="#">2</a>
-                          </li>
-                          <li class="paginate_button next" aria-controls="datatable-editable" tabindex="0" id="datatable-editable_next">
-                            <a href="#">Next</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div> <!-- End Pagination-->
+					
+					<!-- Pagination-->
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="dataTables_info" id="datatable-editable_info"
+								role="status" aria-live="polite" ng-cloak>{{pages}} to {{totalpages}} pages of {{totalcount}}
+								entries</div>
+						</div>
+						<div class="col-sm-6">
+							<div id="PAGINATION" class="pull-right"></div>
+						</div>
+					</div>
+					<!-- End Pagination-->
+ 
                 </div><!-- card-box-->
               </div> <!-- end col -->                                
             </div> <!-- end row -->                            
@@ -155,4 +143,5 @@
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>  
-<script src="${pageContext.request.contextPath}/resources/scripts/bidhistory-angular.js"></script>              
+<script src="${pageContext.request.contextPath}/resources/scripts/bidhistory-angular.js"></script>    
+    
