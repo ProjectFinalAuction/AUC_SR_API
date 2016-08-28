@@ -164,15 +164,15 @@
 												</sec:authorize></td>
 
 										</tr>
-										<tr>
-											<td colspan="2"><small><span class="lang"
-													key="description">Your site name here will bid
-														incrementally for you up to your maximum bid. Your maximum
-														bid is kept a secret from other users. Your bid is a
-														contract between you and the listing creator. If you have
-														the highest bid you will enter into a legally binding
-														purchase contract.</span></small></td>
-										</tr>
+<!-- 										<tr> -->
+<!-- 											<td colspan="2"><small><span class="lang" -->
+<!-- 													key="description">Your site name here will bid -->
+<!-- 														incrementally for you up to your maximum bid. Your maximum -->
+<!-- 														bid is kept a secret from other users. Your bid is a -->
+<!-- 														contract between you and the listing creator. If you have -->
+<!-- 														the highest bid you will enter into a legally binding -->
+<!-- 														purchase contract.</span></small></td> -->
+<!-- 										</tr> -->
 									</tbody>
 								</table>
 							</form>
