@@ -31,14 +31,10 @@ public class InvoiceController {
 	
 	//TODO: GET ALL USER CREDIT WITH ENDING AMOUNT 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>>findAllInvoiceDetails(InvoiceFilter filter, Pagination pagination){
-		String url = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-invoice-details")
-				.queryParam("page", pagination.getPage())
-				.queryParam("limit", pagination.getLimit())
-				.queryParam("fullName", filter.getFullName())
-				.toString();
+	public ResponseEntity<Map<String , Object>>findAllInvoiceDetails(){
+
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange( url , HttpMethod.GET , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange( WS_URL + "/find-all-invoice-details" , HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 	

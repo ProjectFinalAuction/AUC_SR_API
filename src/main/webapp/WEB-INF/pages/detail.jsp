@@ -9,13 +9,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><spring:message code="item_information"></spring:message></title>
+<!-- Owl Carousel Assets -->
+<link href="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.carousel.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.theme.css" rel="stylesheet">
+<style type="text/css">
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+</style>
 <!-- link to photos pop up lightbox -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/static/dist/css/lightbox.min.css">
 <!-- css style of slide detail -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/static/css/slide-detail.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/jssor.slider.min.js"></script>
+
 <!-- header -->
 <jsp:include page="header.jsp" />
 <!-- menu -->
@@ -59,56 +70,28 @@
 						</div>
 
 						<!-- ========================================================= -->
+<!-- 						<div class="list-group-item"> -->
+<!-- 							<div class="thumbnail"> -->
+<!-- 								<span ng-repeat="pimg in gallery"> -->
+<!-- 									<img src="{{pimg.image_path}}" style="width: 90px; height: 90px" class="img-responsive"> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 						<div class="list-group-item">
-							<div class="thumbnail" style="border:none;">
-								<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 819px; height: 150px; overflow: hidden; visibility: hidden;">
-							
-							        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
-							        	<div style="display: none;">
-							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home1.PNG" id="moreImgs1"/><a href="images/home1.png" data-lightbox="example-set"></a>
-							            </div>
-							            <div style="display: none;">
-							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home2.PNG" id="moreImgs2"/><a href="images/home2.png" data-lightbox="example-set"></a>
-							            </div>
-							            <div style="display: none;">
-							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home3.PNG" id="moreImgs3"/><a href="images/home3.png" data-lightbox="example-set"></a>
-							            </div>
-							            <div style="display: none;">
-							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home4.PNG" id="moreImgs4"/><a href="images/home4.png" data-lightbox="example-set"></a>
-							            </div>
-							            <div style="display: none;">
-							                <img data-u="image" src="${pageContext.request.contextPath}/resources/static/images/home5.PNG" id="moreImgs5"/><a href="images/home5.png" data-lightbox="example-set"></a>
-							            </div> 	     
-							        </div>
-							      
-							        <!-- Bullet Navigator -->
-							        <div data-u="navigator" class="jssorb03" style="bottom:10px;right:20px;">
-							            <!-- bullet navigator item prototype -->
-							            <div data-u="prototype" style="width:21px;height:21px;">
-							                <div data-u="numbertemplate"></div>
-							            </div>
-							        </div>
-							        <!-- Arrow Navigator -->
-							        <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
-							        <span data-u="arrowright" class="jssora03r" style="top:0px;right:18px;width:55px;height:55px;" data-autocenter="2"></span>
-							    </div>
-							    <!-- link from js.js to call function jssor_1_slider_init() -->
-							    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/js/slider-detail.js"></script>
-							    
-    						</div>
+				          <div class="row">
+				            <div class="span12">
+				
+				              <div id="owl-demo" class="owl-carousel">
+				                  <div class="item" ng-repeat="pimg in gallery"><img src="{{pimg.image_path}}" alt="Owl Image"></div>
+				              </div>
+				            </div>
+				          </div>
 						</div>
 						
 						<!-- ================================================== -->
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
 					</div>
+					
 					<!-- end div content left -->
 				</div>
 			</div>
@@ -317,6 +300,27 @@
 <jsp:include page="footer.jsp" />
 
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
+<script src="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.carousel.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#menustand").hide(function() {
+			$("#right-content").removeClass('col-md-9');
+		});
+	});
+	
+// load slide images
+   $(document).ready(function() {
+     $("#owl-demo").owlCarousel({
+       autoPlay: 3000,
+       items : 4,
+       itemsDesktop : [1199,3],
+       itemsDesktopSmall : [979,3]
+     });
+
+   });
+</script>
 <!--  Web Socket -->
 <script
 	src="${pageContext.request.contextPath}/resources/static/js/sockjs-0.3.4.js"></script>
@@ -373,18 +377,3 @@
 	connect();
 </script>
 <!-- End WebSocket -->
-
-
-
-
-
-
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#menustand").hide(function() {
-			$("#right-content").removeClass('col-md-9');
-		});
-	});
-</script>
