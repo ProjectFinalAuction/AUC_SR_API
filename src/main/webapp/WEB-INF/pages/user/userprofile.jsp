@@ -212,12 +212,10 @@
 				<div class="panel-heading">
 					Invoices
 					<div class="btn-group pull-right">
-						<button class="btn btn-default btn-xs">
+						<button class="btn btn-default btn-xs" onclick="onWon()">
 							<i class="fa fa-chevron-left" aria-hidden="true"></i>Back
 						</button>
-						<button class="btn btn-default btn-xs">
-							<i class="fa fa-money" aria-hidden="true"></i>Mark Paid
-						</button>
+						
 					</div>
 				</div>
 				<div class="panel-body" id="printInvoice">
@@ -245,10 +243,7 @@
 							<strong>Created Date</strong><br> <span id="created-date">20/08/2016</span>
 
 						</div>
-						<div class="col-sm-3 text-center">
-							<img alt=""
-								src="${pageContext.request.contextPath}/resources/static/images/paidStamp.png">
-						</div>
+						
 					</div>
 					<table class="table">
 						<tbody>
@@ -300,7 +295,7 @@
 								<td>
 									<div class="btn-group">
 										<button class="btn btn-default" style="margin-top: 25px;">
-											Save</button>
+											Submit</button>
 									</div>
 								</td>
 							</tr>

@@ -57,8 +57,8 @@
 			</div>
 
 			<div class="panel-body">
-				<form class="form-horizontal m-t-20" id="formLogin"
-					action="http://coderthemes.com/ubold_1.6/light/index.html">
+				<form class="form-horizontal m-t-20" id="formLogin" method="POST"
+					action="/login">
 
 					<div class="form-group ">
 						<div class="col-xs-12">
@@ -185,7 +185,10 @@ $(function() {
 	            url: "${pageContext.request.contextPath}/login",
 	            type: "POST",
 	            data: $("#formLogin").serialize(),
-	            success: function(data) {	            	
+	            success: function(data) {
+	            	
+	  
+	            	
 	            	if(data == "User account is locked"){
 	            		alert(data);
 	            	}else if(data == "User is disabled"){
@@ -202,9 +205,9 @@ $(function() {
 	        			  },
 	        			  function(){
 	        				  if(data=='admin'){
-	          						window.location.href="http://localhost:8080/"+data;	
+	          						window.location.href=data;	
 	          					}else{
-	          						window.location.href ="http://localhost:8080/"+data;	
+	          						window.location.href=data;	
 	          					}
 	        			});  		  
 	            	}

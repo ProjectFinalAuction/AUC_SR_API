@@ -22,13 +22,15 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
 			throws IOException, ServletException {
 			
-			response.getWriter().print(determineTargetUrl(auth));
+			response.getWriter().print(determineTargetUrl(auth, request));
 	        response.getWriter().flush();
+	        
+	        
 	        
 	}
 	
 	
-	private String determineTargetUrl(Authentication authentication) {
+	private String determineTargetUrl(Authentication authentication, HttpServletRequest request) {
 
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
@@ -39,13 +41,22 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 			roles.add(authority.getAuthority());
 			System.out.println("Extract Role: " + authority.getAuthority());
 		}
+		String redirectURL = (String)request.getSession().getAttribute("REDIRECT_URL");
+		
+		request.getSession().setAttribute("REDIRECT_URL", null);
+		
 		if(roles.contains("ROLE_ADMIN")) {
-			return "admin";
+			if(redirectURL==null){
+				return "/admin";
+			}else{
+				return redirectURL;
+			}
 		}else if(roles.contains("ROLE_BIDDER")){
-			return "index";
+			return redirectURL;
 		}else{
 			return "accessDenied";
 		}
+
 
 	}
 	
