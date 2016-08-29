@@ -10,8 +10,7 @@ app.controller('auctionCtrl', function() {
 
 // TODO: VIEW USER BACK END
 app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
-	
-	
+
 	// select all record to display
 	$scope.userName = "";
 	var checkPagination = true;
@@ -21,7 +20,8 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 		// alert($scope.pages);
 		$http(
 				{
-					url : '/rest/user?limit=' + 10 +"&page=" + currentPage + "&userName="+$scope.userName,
+					url : '/rest/user?limit=' + 10 + "&page=" + currentPage
+							+ "&userName=" + $scope.userName,
 					method : 'GET',
 
 				}).then(function(response) {
@@ -65,12 +65,9 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 		$scope.getAllUsers();
 	});
 
-	
-	
-	
-	////////////////////////////
+	// //////////////////////////
 	$scope.getUserByID = function(id) {
-		
+
 		$http({
 			url : '/rest/user/' + id,
 			method : 'GET'
@@ -93,9 +90,9 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 						$('select[name="gender"]').find('option[value="male"]')
 								.attr("selected", true);
 					}
-					$scope.dob =  moment(response.data.DATA.dob)
-							.format("DD-MM-YYYY");
-					
+					$scope.dob = moment(response.data.DATA.dob).format(
+							"DD-MM-YYYY");
+
 					$scope.address = response.data.DATA.address;
 					$scope.photo = response.data.DATA.photo;
 					if (response.data.DATA.type == 'admin') {
@@ -103,8 +100,8 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 					} else {
 						$("#role2").prop("checked", true);
 					}
-					if(response.data.DATA.status=='1'){
-						 $("#status1").prop("checked", true);
+					if (response.data.DATA.status == '1') {
+						$("#status1").prop("checked", true);
 					} else {
 						$("#status2").prop("checked", true);
 					}
@@ -113,14 +110,13 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 	}
 	// Update User
 	$scope.updateUser = function(id) {
-		date1 = ($('#dob1').val()).split(':');		
+		date1 = ($('#dob1').val()).split(':');
 		date2 = date1[0].split(' ');
 		date3 = date2[0].split('-');
-		
+
 		startDate = new Date(parseInt(date3[2]), parseInt(date3[1]) - 1,
-				parseInt(date3[0])
-				);		
-		
+				parseInt(date3[0]));
+
 		$scope.created_date = new Date();
 		$scope.created_by = 'admin';
 		$http(
@@ -148,29 +144,23 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 								.val() == 'admin') ? 1 : 2
 					}
 				}).then(function(response) {
-					swal({
-						title : "Success",
-						text : "User has been updated!",
-						type : "success",
-						timer : 1000,
-						showConfirmButton : false
-					});
-					$scope.getAllUsers();
+			swal({
+				title : "Success",
+				text : "User has been updated!",
+				type : "success",
+				timer : 1000,
+				showConfirmButton : false
+			});
+			$scope.getAllUsers();
 		}, function(error) {
 		});
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	// delete supplier
 	$scope.deleteUser = function(id, e) {
-		
-		console.log(id);	
-		
+
+		console.log(id);
+
 		swal({
 			title : "Are you sure?",
 			text : "Your will not be able to recover this user!",
@@ -210,18 +200,9 @@ app.controller('viewUserCtrl', function($scope, $http, $rootScope) {
 			}
 		});
 	}
-	
-	
-	
-	
-	
-	//////////////////////////
-	
-	
-	
-	
-	
-	
+
+	// ////////////////////////
+
 	// load all record
 
 	$scope.getAllUsers();
@@ -311,7 +292,6 @@ app.controller('UserCtrl', function($scope, $http, $rootScope) {
 	//			
 	// }
 
-	
 	// Get user_name and password to login
 	$scope.userLogin = function(user_name, password) {
 		$http({
@@ -324,55 +304,134 @@ app.controller('UserCtrl', function($scope, $http, $rootScope) {
 		})
 	}
 
-	
-
 	// $scope.addUser();
 })
 
 // ========================================================================================
 // TODO: ADD USER FRONT END
-app.controller('addUserCtrl', function($scope, $http, $rootScope) {
-	// add record function
-	$scope.addUser = function() {
-		$scope.created_date = new Date();
-		$scope.created_by = 'admin';
-		$http(
-				{
-					url : '/rest/user',
-					method : 'POST',
-					data : {
-						"address" : $scope.address,
-						"comment" : ($scope.comment == undefined) ? 'New'
-								: $scope.comment,
-						"contact" : $scope.contact,
-						"created_by" : $scope.created_by,
-						"created_date" : $scope.created_date,
-						"dob" : moment($('#datepicker').val()).format(
-								"YYYY-MM-DD"),
-						"email" : $scope.email,
-						"first_name" : $scope.first_name,
-						"gender" : $('.select2').val(),
-						"last_name" : $scope.last_name,
-						"password" : $scope.password,
-						"photo" : ($scope.photo == undefined) ? 'String'
-								: $scope.photo,
-						"status" : ($scope.status == undefined) ? '1' : $(
-								"input:radio[name=status]:checked").val(),
-						"type" : ($scope.type == undefined) ? 'bidder' : $(
-								"input:radio[name=role]:checked").val(),
-						"user_name" : $scope.user_name
-					}
-				}).then(function(respone) {
-			swal({
-				title : "Success!",
-				text : "User has been inserted.",
-				type : "success",
-				timer : 1000,
-				showConfirmButton : false
-			}, function() {
-				window.location.href = '/';
-			});
+app
+		.controller(
+				'addUserCtrl',
+				function($scope, $http, $rootScope) {
+					// add record function
+					$scope.addUser = function() {
+						$scope.verified_code = $scope.generateUUID();
+						$scope.created_date = new Date();
+						$scope.created_by = 'admin';
+						$http(
+								{
+									url : '/rest/user',
+									method : 'POST',
+									data : {
+										"address" : $scope.address,
+										"comment" : ($scope.comment == undefined) ? 'New'
+												: $scope.comment,
+										"contact" : $scope.contact,
+										"created_by" : $scope.created_by,
+										"created_date" : $scope.created_date,
+										"dob" : moment($('#datepicker').val())
+												.format("YYYY-MM-DD"),
+										"email" : $scope.email,
+										"first_name" : $scope.first_name,
+										"gender" : $('.select2').val(),
+										"last_name" : $scope.last_name,
+										"password" : $scope.password,
+										"photo" : ($scope.photo == undefined) ? 'String'
+												: $scope.photo,
+										"status" : ($scope.status == undefined) ? '1'
+												: $(
+														"input:radio[name=status]:checked")
+														.val(),
+										"type" : ($scope.type == undefined) ? 'bidder'
+												: $(
+														"input:radio[name=role]:checked")
+														.val(),
+										"user_name" : $scope.user_name,
+										"verified_id" : $scope.verified_code
+									}
+								}).then(function(respone) {
+							swal({
+								title : "Success!",
+								text : "User has been inserted.",
+								type : "success",
+								timer : 1000,
+								showConfirmButton : false
+							}, function() {
+								$scope.sendMail();
+								window.location.href = '/';
+								
+							});
 
-		});
-	}
-})
+						});
+					}
+
+					// ======= Generate Universal Unique ID
+					$scope.generateUUID = function() {
+						var d = new Date().getTime();
+						var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+								.replace(/[xy]/g, function(c) {
+									var r = (d + Math.random() * 16) % 16 | 0;
+									d = Math.floor(d / 16);
+									return (c == 'x' ? r : (r & 0x3 | 0x8))
+											.toString(16);
+								});
+						return uuid;
+					};
+					// ======= End Generate UID
+
+					// ======= Send email to verify
+					// send user message to our mailbox by using our email
+					// because we don't want to configure email of user anymore
+					$scope.sendMail = function() {
+
+						var kh_msg = "សូមស្វាគមន៍, \r\n"
+								+ "គណនីរបស់អ្នកត្រូវបានបង្កើត⁣។ ដើម្បីដំនើរការ⁣ សូមចុចលើតំណរភ្អាប់ខាងក្រោម៖\r\n"
+								+ "localhost:8080/register/confirm/"
+								+ $scope.verified_code
+								+ "\r\n"
+								+ "ដេញ⁣ ថ្លៃ⁣ គឺជាគេហទំព័រដំបូងគេនៅកម្ពុជាផ្លល់នូវសេវាកម្ម⁣ប្រកបដោយភាពងាយស្រួួូួលក្នុងការដេញថ្លៃ។\r\n"
+								+ "បើសិនមានចំនល់⁣⁣ សូមទំនាក់ទំនង⁣ localhost:8080/contactus"
+								+ "\r\n"
+								+ "រីករាយក្នុងការប្រើប្រាស់សេវាកម្មរបស់យើងខ្ញំុ\r\n\r\n";
+
+						var en_msg = "Welcome,\r\n"
+								+ "Your account "
+								+ $scope.email
+								+ " has been created. To activate it, please confirm your email address: "
+								+ "localhost:8080/register/confirm/"
+								+ $scope.verified_code
+								+ "\r\n"
+								+ "DENH TLAI is the first Cambodia auction website.\r\n"
+								+ "Need help or have questions? Contact us: localhost:8080/contactus"
+								+ "\r\n" + "Have a great day.";
+						var msg = kh_msg + en_msg;
+						$http({
+							url : 'http://localhost:8080/rest/mail',
+							method : 'POST',
+							data : {
+
+								"body" : msg,
+								"subject" : "DENH TLAI - Email Confirmation",
+								"to" : $scope.email // user send mail to
+															// us
+
+							}
+						}).then(function(response) {
+							swal({
+								title : "Success!",
+								text : "Mail has been sent.",
+								type : "success",
+								timer : 1000,
+								showConfirmButton : true
+							}, function() {
+								$('#last_name').val("");
+								$('#first_name').val("");
+								$('#email').val("");
+								$('#message').val("");
+							});
+
+						});
+					}
+					// ======= End Send email to verify
+
+				})
