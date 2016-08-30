@@ -316,7 +316,7 @@ app
 					// add record function
 					$scope.addUser = function() {
 						$scope.verified_code = $scope.generateUUID();
-						alert($scope.verified_code);
+						
 						$scope.created_date = new Date();
 						$scope.created_by = 'admin';
 						$http(
