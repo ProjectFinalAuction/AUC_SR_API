@@ -90,6 +90,7 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
 	/*checkout*/
 	$scope.checkOut = function(item){
 		onInvoice();
+	
 		$('#created-date').html(item.auction.end_date);
 		$('#item-name').html(item.auction.product.product_name);
 		$('#unit-price').html(item.auction.current_price);
@@ -98,7 +99,32 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
 		$('#total').html(item.auction.current_price);
 		$('#address').html(item.user.address);
 	}
-
+	
+	
+	//TODO: ADD INVOICE TO INVOICE DETAIL
+	$scope.addInvoice = function(objInvoice){
+		alert(objInvoice.auction.auction_id);
+		$http({
+			url : 'rest/bidhistory/add-invoice',
+			method : 'POST',
+			data : {
+				"auction_id": objInvoice.auction.auction_id,
+				"buy_price": objInvoice.auction.current_price,
+				"user_id": objInvoice.user.user_id,
+				
+			}
+		}).then(function(response){
+			swal({
+				title : "Success!",
+				text : "Invoice has been Created.",
+				type : "success",
+				timer : 1000,
+				showConfirmButton : false
+			});
+		})
+	}
+	
+	
 	//=================================================================
 	//TODO: INSERT BID PRICE TO BID HISTORY 
 	$scope.addTopUp = function(){

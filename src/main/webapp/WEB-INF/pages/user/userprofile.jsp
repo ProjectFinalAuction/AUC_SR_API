@@ -208,7 +208,8 @@
 
 
 			<!-- ============================ Invoice ===================== -->
-			<div class="panel panel-default" id="invoice">
+			<div class="panel panel-default" id="invoice" ng-repeat="ub in userBidHistory"
+					ng-if="ub.auction.status=='3'">
 				<div class="panel-heading">
 					Invoices
 					<div class="btn-group pull-right">
@@ -294,7 +295,7 @@
 								</td>
 								<td>
 									<div class="btn-group">
-										<button class="btn btn-default" style="margin-top: 25px;" ng-click="">
+										<button class="btn btn-default" style="margin-top: 25px;" ng-click="addInvoice(ub)">
 											Submit</button>
 									</div>
 								</td>
