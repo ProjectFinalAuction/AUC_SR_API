@@ -70,26 +70,28 @@
 						</div>
 
 						<!-- ========================================================= -->
-<!-- 						<div class="list-group-item"> -->
-<!-- 							<div class="thumbnail"> -->
-<!-- 								<span ng-repeat="pimg in gallery"> -->
-<!-- 									<img src="{{pimg.image_path}}" style="width: 90px; height: 90px" class="img-responsive"> -->
-<!-- 								</span> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 						<div class="list-group-item">
-				          <div class="row">
-				            <div class="span12">
-				
-				              <div id="owl-demo" class="owl-carousel">
-				                  <div class="item" ng-repeat="pimg in gallery"><img src="{{pimg.image_path}}" alt="Owl Image"></div>
-				              </div>
-				            </div>
-				          </div>
+							<div class="thumbnail">
+								<div>
+									<img ng-repeat="pimg in gallery" src="{{pimg.image_path}}" style="height: 80px; display: inline-block;" class="img-responsive">
+								</div>
+							</div>
 						</div>
+<!-- 						<div class="list-group-item"> -->
+<!-- 				          <div class="row"> -->
+<!-- 				            <div class="span12"> -->
+				
+<!-- 				              <div id="owl-demo" class="owl-carousel"> -->
+<!-- 				                  <div class="item" ng-repeat="pimg in gallery"><img src="{{pimg.image_path}}" alt="Owl Image"></div> -->
+<!-- 				              </div> -->
+<!-- 				            </div> -->
+<!-- 				          </div> -->
+<!-- 						</div> -->
 						
 						<!-- ================================================== -->
-
+						<!-- js photo pop up -->
+						<script src="${pageContext.request.contextPath}/resources/static/dist/js/lightbox-plus-jquery.min.js"></script>
+					
 					</div>
 					
 					<!-- end div content left -->
@@ -300,6 +302,7 @@
 <jsp:include page="footer.jsp" />
 
 
+<!-- slide more images -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.carousel.js"></script>
 
