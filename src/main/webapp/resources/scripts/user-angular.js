@@ -353,16 +353,19 @@ app
 									}
 								}).then(function(respone) {
 							swal({
-								title : "Success!",
-								text : "User has been inserted.",
-								type : "success",
-								timer : 1000,
-								showConfirmButton : false
-							}, function() {
-								$scope.sendMail();
-								window.location.href = '/';
-								
-							});
+								  title: "Email Confirmation",
+								  text: "An email has been sent to "+$scope.email+" It contains a confirmation link you must click to confirm your email address.",
+								  type: "warning",
+								  confirmButtonClass: "btn-danger",
+								  confirmButtonText: "Yes, I got it!",								  
+								  closeOnConfirm: false								  
+								},
+								function(isConfirm) {
+								  if (isConfirm) {
+									  $scope.sendMail();
+									  window.location.href = '/';
+								  } 								
+								});
 									
 						});
 					}
@@ -419,25 +422,7 @@ app
 
 							}
 						}).then(function(response) {
-							swal({   
-			    	  			title: "Confirm Email!",   
-			    	  			text: "Please check your mailbox "+$("#email").val()+"to confirm the registration"  ,   
-			    	  			type: "info",   
-			    	  			showCancelButton: true,   
-			    	  			closeOnConfirm: false,   
-			    	  			showLoaderOnConfirm: true, 
-			    	  		}, function(){   
-			    	  			setTimeout(function(){     
-			    	  				swal({ 
-				        				title: response.data.MESSAGE,
-				        			    type: "success",
-				        			    timer : 1000,
-				        			    showConfirmButton : false
-			    	  				});
-			    	  				
-			    	  			}, 1000); 
-			    	  		});
-
+							
 						});
 					}
 					// ======= End Send email to verify
