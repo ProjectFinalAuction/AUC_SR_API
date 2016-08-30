@@ -13,7 +13,11 @@ app.controller('biddingHistoryCtrl', ['$scope', '$http', '$timeout', 'datetime',
 	$scope.viewBiddingHistory = function(){
 		// get auction id when user click on bid history button
 		var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-				
+		
+		// loading
+		$("#myLoading").show();
+		
+		
 		$http({
 			url: '/rest/bidhistory/find-num-bid-and-bidder-in-auction-product-by-auc-id/' + id,
 			method: 'GET'
@@ -32,7 +36,9 @@ app.controller('biddingHistoryCtrl', ['$scope', '$http', '$timeout', 'datetime',
 			$scope.start_price=response.data.DATA[0].auction.start_price;
 			$scope.num_bid=response.data.DATA[0].auction.num_bid;			
 			$scope.start_date = moment(response.data.DATA[0].auction.start_date).format("LLLL");
-			$scope.end_date = moment(response.data.DATA[0].auction.end_date).format("LLLL")
+			$scope.end_date = moment(response.data.DATA[0].auction.end_date).format("LLLL");
+			
+			$("#myLoading").hide();
 			
 		});
 	}

@@ -10,16 +10,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><spring:message code="item_information"></spring:message></title>
 <!-- Owl Carousel Assets -->
-<link href="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.carousel.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.theme.css" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.carousel.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.theme.css"
+	rel="stylesheet">
 <style type="text/css">
-#owl-demo .item{
-  margin: 3px;
+#owl-demo .item {
+	margin: 3px;
 }
-#owl-demo .item img{
-  display: block;
-  width: 100%;
-  height: auto;
+
+#owl-demo .item img {
+	display: block;
+	width: 100%;
+	height: auto;
 }
 </style>
 <!-- link to photos pop up lightbox -->
@@ -34,9 +39,19 @@
 <!-- left content -->
 <jsp:include page="left-content.jsp" />
 <!-- right content -->
+
 <div class="col-md-9" ng-controller="detailCtrl" style="padding: 0;"
 	id="right-content">
-	<div class="container-fluid">
+
+	<!--  Loading Image -->
+	<div id="myLoading">
+		<img "alt="loading image"
+			src="${pageContext.request.contextPath}/resources/static/images/loading.gif" />
+	</div>
+	<!--  End Loading Image -->
+
+	<div class="container-fluid" id="myDetail">
+
 		<input type="hidden" id="ac_id" value="${param.Aid}">
 		<!-- detail content information -->
 		<ul class="list-group" style="padding-left: 14px;">
@@ -73,27 +88,30 @@
 						<div class="list-group-item">
 							<div class="thumbnail">
 								<div>
-									<img ng-repeat="pimg in gallery" src="{{pimg.image_path}}" style="height: 80px; display: inline-block;" class="img-responsive">
+									<img ng-repeat="pimg in gallery" src="{{pimg.image_path}}"
+										style="height: 80px; display: inline-block;"
+										class="img-responsive">
 								</div>
 							</div>
 						</div>
-<!-- 						<div class="list-group-item"> -->
-<!-- 				          <div class="row"> -->
-<!-- 				            <div class="span12"> -->
-				
-<!-- 				              <div id="owl-demo" class="owl-carousel"> -->
-<!-- 				                  <div class="item" ng-repeat="pimg in gallery"><img src="{{pimg.image_path}}" alt="Owl Image"></div> -->
-<!-- 				              </div> -->
-<!-- 				            </div> -->
-<!-- 				          </div> -->
-<!-- 						</div> -->
-						
+						<!-- 						<div class="list-group-item"> -->
+						<!-- 				          <div class="row"> -->
+						<!-- 				            <div class="span12"> -->
+
+						<!-- 				              <div id="owl-demo" class="owl-carousel"> -->
+						<!-- 				                  <div class="item" ng-repeat="pimg in gallery"><img src="{{pimg.image_path}}" alt="Owl Image"></div> -->
+						<!-- 				              </div> -->
+						<!-- 				            </div> -->
+						<!-- 				          </div> -->
+						<!-- 						</div> -->
+
 						<!-- ================================================== -->
 						<!-- js photo pop up -->
-						<script src="${pageContext.request.contextPath}/resources/static/dist/js/lightbox-plus-jquery.min.js"></script>
-					
+						<script
+							src="${pageContext.request.contextPath}/resources/static/dist/js/lightbox-plus-jquery.min.js"></script>
+
 					</div>
-					
+
 					<!-- end div content left -->
 				</div>
 			</div>
@@ -153,15 +171,15 @@
 												</sec:authorize></td>
 
 										</tr>
-<!-- 										<tr> -->
-<!-- 											<td colspan="2"><small><span class="lang" -->
-<!-- 													key="description">Your site name here will bid -->
-<!-- 														incrementally for you up to your maximum bid. Your maximum -->
-<!-- 														bid is kept a secret from other users. Your bid is a -->
-<!-- 														contract between you and the listing creator. If you have -->
-<!-- 														the highest bid you will enter into a legally binding -->
-<!-- 														purchase contract.</span></small></td> -->
-<!-- 										</tr> -->
+										<!-- 										<tr> -->
+										<!-- 											<td colspan="2"><small><span class="lang" -->
+										<!-- 													key="description">Your site name here will bid -->
+										<!-- 														incrementally for you up to your maximum bid. Your maximum -->
+										<!-- 														bid is kept a secret from other users. Your bid is a -->
+										<!-- 														contract between you and the listing creator. If you have -->
+										<!-- 														the highest bid you will enter into a legally binding -->
+										<!-- 														purchase contract.</span></small></td> -->
+										<!-- 										</tr> -->
 									</tbody>
 								</table>
 							</form>
@@ -303,8 +321,10 @@
 
 
 <!-- slide more images -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
-<script src="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/scripts/main-angular.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/static/dist/owl-carousel/owl.carousel.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -312,17 +332,17 @@
 			$("#right-content").removeClass('col-md-9');
 		});
 	});
-	
-// load slide images
-   $(document).ready(function() {
-     $("#owl-demo").owlCarousel({
-       autoPlay: 3000,
-       items : 4,
-       itemsDesktop : [1199,3],
-       itemsDesktopSmall : [979,3]
-     });
 
-   });
+	// load slide images
+	$(document).ready(function() {
+		$("#owl-demo").owlCarousel({
+			autoPlay : 3000,
+			items : 4,
+			itemsDesktop : [ 1199, 3 ],
+			itemsDesktopSmall : [ 979, 3 ]
+		});
+
+	});
 </script>
 <!--  Web Socket -->
 <script

@@ -1,5 +1,12 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
+/* loading */
+#myLoading img {
+    display: block;
+    margin: 0 auto;
+}
+
+
 fieldset, label { margin: 0; padding: 0; }
 /* body{ margin: 20px; } */
 /* h1 { font-size: 1.5em; margin: 10px; } */

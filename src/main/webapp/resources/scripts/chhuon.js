@@ -53,6 +53,12 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 	$scope.loop_auc_id = $("#loop_auc_id").val();
 //	alert($scope.loop_auc_id);
 	
+	// Loading
+	$("#myLoading").show();
+	
+	// End loading
+	
+	
 	//TODO: Get auction product by category id
 	$scope.getAuctionProductByCategoryID = function(id){
 		
@@ -60,7 +66,8 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 			url: ' http://localhost:8080/rest/auction/auc-pro-category/' +$scope.loop_auc_id,
 			method: 'GET'
 		}).then(function(response){
-			$scope.auctionProduct = response.data.DATA;			
+			$scope.auctionProduct = response.data.DATA;
+			$("#myLoading").hide();
 		});
 	}
 

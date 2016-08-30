@@ -12,7 +12,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 
 	//TODO: select all record to display 
 	$scope.findAllBestBiddingAuctions = function() {
-		
+		$("#myLoading").show();
 		$http({
 			url : '/rest/auction/find-all-best-bidding-auctions?limit=' + 8 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'
@@ -23,6 +23,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 				$scope.setPagination(response.data.PAGINATION);
 				checkPagination = false;
 			}
+			$("#myLoading").hide();
 		});	
 	}
 	

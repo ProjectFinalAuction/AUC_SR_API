@@ -79,6 +79,12 @@ pageEncoding="UTF-8"%>
 <!-- 					<input type="submit" id="submitDropDown" class="awe-hidden"> -->
 				</form>    
 			</div>
+			<!--  Loading Image -->
+			<div id="myLoading" >
+				<img "alt="loading image" src="${pageContext.request.contextPath}/resources/static/images/loading.gif"/>	
+			</div>
+			<!--  End Loading Image -->
+			
 
 			<!-- DATA-LISTING -->
 			

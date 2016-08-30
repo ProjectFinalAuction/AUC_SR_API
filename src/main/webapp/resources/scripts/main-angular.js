@@ -7,6 +7,7 @@ var app = angular.module('myApp', []);
 
 
 app.controller('categoryCtrl', function($scope,$http,$rootScope){
+	
 	// Get All Category
 	$scope.findAllCategories = function(){
 		$http({
@@ -14,18 +15,20 @@ app.controller('categoryCtrl', function($scope,$http,$rootScope){
 			method: 'GET',
 			
 		}).then(function(respone){
-			$scope.category = respone.data.DATA;
+			$scope.category = respone.data.DATA;			
 		});
 	}
 	
 	//Select Main Category
 	$scope.findMainCategories = function(){
+		
 		$http({
 			url: '/rest/category/find-main-category',
 			method: 'GET',
 			
 		}).then(function(respone){
 			$scope.maincategory = respone.data.DATA;
+			
 		});
 	}
 	
@@ -55,7 +58,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 
 	//TODO: select all record to display
 	$scope.findAllAuctions = function() {
-		
+		$("#myLoading").show();
 		$http({
 			url : '/rest/auction/all-auction-active?limit=' + 12 +"&page=" + currentPage + "&productName="+$scope.productName,
 			method : 'GET'
@@ -71,6 +74,7 @@ app.controller('auctionCtrl', ['$scope', '$http', '$timeout', 'datetime', functi
 				$scope.setPagination(response.data.PAGINATION);
 				checkPagination = false;
 			}
+			$("#myLoading").hide();
 		});	
 	}
 	
@@ -147,6 +151,10 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 	// get auction_id is used for bid history button -- EAN SOKCHOMRERN 2016/08/24
 	$scope.auction_id = id;
 	
+	// loading
+	$("#myLoading").show();
+	$("#myDetail").hide();
+	
 	// TODO: get one record function
 	$scope.getAuctionById = function(id){
 		$http({
@@ -176,6 +184,9 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 				$("#tablebidding").hide();
 				$("#titleEndStatus").text("Auction has been finished!");
 			}
+			
+			$("#myLoading").hide();
+			$("#myDetail").show();
 		});
 	}
 	

@@ -15,9 +15,15 @@
 
 <!-- content -->
 <div class="container" style="margin-top: 5px;" ng-controller="biddingHistoryCtrl">
+	
+	
 	<div class="row">
 		<div class="col-md-12 col-xs-12">
-
+			<!--  Loading Image -->
+			<div id="myLoading" >
+				<img "alt="loading image" src="${pageContext.request.contextPath}/resources/static/images/loading.gif"/>	
+			</div>
+			<!--  End Loading Image -->
 
 
 			<!-- ============================ BidHistory ===================== -->
