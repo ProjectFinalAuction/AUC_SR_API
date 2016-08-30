@@ -27,72 +27,83 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @RequestMapping("/rest/user")
 public class UserController {
-	
 
 	@Autowired
 	private HttpHeaders header;
-	
+
 	@Autowired
 	private RestTemplate rest;
-	
+
 	@Autowired
 	private String WS_URL;
-	
+
 	// Get all Users
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> getAllUsers(UserFilter filter, Pagination pagination){
+	public ResponseEntity<Map<String, Object>> getAllUsers(UserFilter filter, Pagination pagination) {
 
-		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/get-all-users")
-				.queryParam("page",pagination.getPage())
-				.queryParam("limit", pagination.getLimit())
-				.queryParam("userName", filter.getUserName())
-				.toUriString();
+		String url = UriComponentsBuilder.fromHttpUrl(WS_URL + "/get-all-users")
+				.queryParam("page", pagination.getPage()).queryParam("limit", pagination.getLimit())
+				.queryParam("userName", filter.getUserName()).toUriString();
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(url , HttpMethod.GET , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		ResponseEntity<Map> response = rest.exchange(url, HttpMethod.GET, request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
-	
-	//Add User
+
+	// Add User
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Map<String , Object>> addUser(@RequestBody AddUser addUser){
-		HttpEntity<Object> request = new HttpEntity<Object>(addUser,header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-user", HttpMethod.POST , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+	public ResponseEntity<Map<String, Object>> addUser(@RequestBody AddUser addUser) {
+		HttpEntity<Object> request = new HttpEntity<Object>(addUser, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-user", HttpMethod.POST, request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
-	
-	//Update User
+
+	// Update User
 	@RequestMapping(method = RequestMethod.PUT)
-	public ResponseEntity<Map<String , Object>> updateUser(@RequestBody AddUser updateUser){
-		
+	public ResponseEntity<Map<String, Object>> updateUser(@RequestBody AddUser updateUser) {
+
 		// REQUEST = REQUEST BODY + HEADER
-		HttpEntity<Object> request = new HttpEntity<Object>(updateUser,header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user", HttpMethod.PUT , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		HttpEntity<Object> request = new HttpEntity<Object>(updateUser, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user", HttpMethod.PUT, request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
-	
+
 	// Get User by ID
-	@RequestMapping(value="/{user_id}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> getUserByID( @PathVariable int user_id){
+	@RequestMapping(value = "/{user_id}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> getUserByID(@PathVariable int user_id) {
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-id/"+ user_id, HttpMethod.GET , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-id/" + user_id, HttpMethod.GET, request,
+				Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
-	
-	//Get User By UserName
-	@RequestMapping(value="/user-name/{user_name}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> getUserByName(@PathVariable String user_name){
+
+	// Get User By UserName
+	@RequestMapping(value = "/user-name/{user_name}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> getUserByName(@PathVariable String user_name) {
 		UserLogin login = new UserLogin();
 		login.setUser_name(user_name);
-		HttpEntity<Object> request = new HttpEntity<Object>(login,header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-name/"+ user_name, HttpMethod.GET , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		HttpEntity<Object> request = new HttpEntity<Object>(login, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-name/" + user_name, HttpMethod.GET, request,
+				Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
-	
-	//Delete user by id	
-	@RequestMapping(value="/{userId}", method = RequestMethod.DELETE)
-	public ResponseEntity<Map<String , Object>> deleteUsers(@PathVariable int userId){
+
+	// Delete user by id
+	@RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String, Object>> deleteUsers(@PathVariable int userId) {
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-user/" + userId, HttpMethod.DELETE , request , Map.class) ;
-		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-user/" + userId, HttpMethod.DELETE, request,
+				Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
+
+	// Get user by verified code
+
+	@RequestMapping(value = "/{verified_code}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> getUserByVerifiedCode(@PathVariable String verified_code) {
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-verified-code/" + verified_code, HttpMethod.GET, request,
+				Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+	}
+
 }

@@ -19,6 +19,7 @@ public class AddUser {
 	private String created_by;
 	private Date created_date;
 	private String comment;
+	private String verified_code;
 	
 	public int getUser_id() {
 		return user_id;
@@ -116,4 +117,11 @@ public class AddUser {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	public String getVerified_code() {
+		return verified_code;
+	}
+	public void setVerified_code(String verified_code) {
+		this.verified_code = verified_code;
+	}
+	
 }

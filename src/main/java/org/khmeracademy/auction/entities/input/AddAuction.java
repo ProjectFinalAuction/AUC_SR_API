@@ -1,8 +1,6 @@
 package org.khmeracademy.auction.entities.input;
 
-import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class AddAuction {
 	private int auction_id; 

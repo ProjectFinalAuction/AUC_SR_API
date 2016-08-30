@@ -41,7 +41,7 @@ public class InvoiceController {
 	
 	//TODO: GET FIND INVOICE DETAIL BY INVOICE_ID
 	@RequestMapping(value="/{invoice_id}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String , Object>> findBiddingAuctionByAuctionId(@PathVariable int invoice_id){
+	public ResponseEntity<Map<String , Object>> findInvoiceDetailByInvoiceId(@PathVariable int invoice_id){
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-invoice-detail-by-invoice-id/" + invoice_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);

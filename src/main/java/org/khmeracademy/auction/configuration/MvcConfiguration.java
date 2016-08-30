@@ -24,7 +24,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addViewController("/home").setViewName("/home");
 		registry.addViewController("/").setViewName("/index");
 		registry.addViewController("/index").setViewName("/index");
-		registry.addViewController("/login").setViewName("/login");
+		//registry.addViewController("/login").setViewName("/login");
 		registry.addViewController("/register").setViewName("/register");
 		registry.addViewController("/admin").setViewName("/admin/dashboard");
 		registry.addViewController("/admin/dashboard").setViewName("/admin/dashboard");
@@ -59,6 +59,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		
 		registry.addViewController("/viewbidhistory/{id}").setViewName("/viewbidhistory");
 		registry.addViewController("/detail2").setViewName("/detail2");
+		registry.addViewController("/register/viewconfirm/{id}").setViewName("/viewbidhistory");
 	}
 
 }

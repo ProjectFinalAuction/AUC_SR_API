@@ -179,7 +179,6 @@ rel="stylesheet" type="text/css" />
 								<div class="col-lg-10">
 									<select class="form-control required" name="supplier" 
 										ng-model="sup" id="supplier"
-										ng-change="findProductsHasSupplier(sup)"
 										ng-options="s.supplier_id as s.contact_name for s in supplier" ng-cloak value="{{contact_name}}">
 										<!-- <option value="" style="display:none">-- Choose Supplier --</option> -->
 									</select>
@@ -189,10 +188,9 @@ rel="stylesheet" type="text/css" />
 								<label class="col-lg-2 control-label" for="product">Product
 									*</label>
 								<div class="col-lg-10">
-									<select class="form-control required" name="product"
-										ng-model="pro"
-										ng-options="p.product_id as p.product_name for p in product" 
-										ng-value="product_name">
+									<select class="form-control required" name="product" id="select"
+										ng-model="product_name" ng-options="p.product_id as p.product_name for p in product" ng-cloak
+										value="{{product_name}}">
 										<!-- <option value="" style="display:none">-- Choose	Product --</option> -->
 									</select>
 								</div>
