@@ -316,6 +316,7 @@ app
 					// add record function
 					$scope.addUser = function() {
 						$scope.verified_code = $scope.generateUUID();
+						alert($scope.verified_code);
 						$scope.created_date = new Date();
 						$scope.created_by = 'admin';
 						$http(
@@ -338,16 +339,17 @@ app
 										"password" : $scope.password,
 										"photo" : ($scope.photo == undefined) ? 'String'
 												: $scope.photo,
-										"status" : ($scope.status == undefined) ? '1'
-												: $(
-														"input:radio[name=status]:checked")
-														.val(),
+//										"status" : ($scope.status == undefined) ? '1'
+//												: $(
+//														"input:radio[name=status]:checked")
+//														.val(),
+										"status" : '0', // ===== before confirming email, user status is inactive(0)		
 										"type" : ($scope.type == undefined) ? 'bidder'
 												: $(
 														"input:radio[name=role]:checked")
 														.val(),
 										"user_name" : $scope.user_name,
-										"verified_id" : $scope.verified_code
+										"verified_code" : $scope.verified_code
 									}
 								}).then(function(respone) {
 							swal({
@@ -361,7 +363,7 @@ app
 								window.location.href = '/';
 								
 							});
-
+									
 						});
 					}
 
@@ -386,11 +388,11 @@ app
 
 						var kh_msg = "សូមស្វាគមន៍, \r\n"
 								+ "គណនីរបស់អ្នកត្រូវបានបង្កើត⁣។ ដើម្បីដំនើរការ⁣ សូមចុចលើតំណរភ្អាប់ខាងក្រោម៖\r\n"
-								+ "localhost:8080/register/confirm/"
+								+ "http://localhost:8080/register/confirm/"
 								+ $scope.verified_code
 								+ "\r\n"
 								+ "ដេញ⁣ ថ្លៃ⁣ គឺជាគេហទំព័រដំបូងគេនៅកម្ពុជាផ្លល់នូវសេវាកម្ម⁣ប្រកបដោយភាពងាយស្រួួូួលក្នុងការដេញថ្លៃ។\r\n"
-								+ "បើសិនមានចំនល់⁣⁣ សូមទំនាក់ទំនង⁣ localhost:8080/contactus"
+								+ "បើសិនមានចំងល់⁣⁣ សូមទំនាក់ទំនង⁣ http://localhost:8080/contactus"
 								+ "\r\n"
 								+ "រីករាយក្នុងការប្រើប្រាស់សេវាកម្មរបស់យើងខ្ញំុ\r\n\r\n";
 
@@ -398,11 +400,11 @@ app
 								+ "Your account "
 								+ $scope.email
 								+ " has been created. To activate it, please confirm your email address: "
-								+ "localhost:8080/register/confirm/"
+								+ "http://localhost:8080/register/confirm/"
 								+ $scope.verified_code
 								+ "\r\n"
 								+ "DENH TLAI is the first Cambodia auction website.\r\n"
-								+ "Need help or have questions? Contact us: localhost:8080/contactus"
+								+ "Need help or have questions? Contact us: http://localhost:8080/contactus"
 								+ "\r\n" + "Have a great day.";
 						var msg = kh_msg + en_msg;
 						$http({
@@ -417,21 +419,29 @@ app
 
 							}
 						}).then(function(response) {
-							swal({
-								title : "Success!",
-								text : "Mail has been sent.",
-								type : "success",
-								timer : 1000,
-								showConfirmButton : true
-							}, function() {
-								$('#last_name').val("");
-								$('#first_name').val("");
-								$('#email').val("");
-								$('#message').val("");
-							});
+							swal({   
+			    	  			title: "Confirm Email!",   
+			    	  			text: "Please check your mailbox "+$("#email").val()+"to confirm the registration"  ,   
+			    	  			type: "info",   
+			    	  			showCancelButton: true,   
+			    	  			closeOnConfirm: false,   
+			    	  			showLoaderOnConfirm: true, 
+			    	  		}, function(){   
+			    	  			setTimeout(function(){     
+			    	  				swal({ 
+				        				title: response.data.MESSAGE,
+				        			    type: "success",
+				        			    timer : 1000,
+				        			    showConfirmButton : false
+			    	  				});
+			    	  				
+			    	  			}, 1000); 
+			    	  		});
 
 						});
 					}
 					// ======= End Send email to verify
+					
+					
 
 				})
