@@ -101,8 +101,18 @@ public class UserController {
 	@RequestMapping(value = "/{verified_code}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> getUserByVerifiedCode(@PathVariable String verified_code) {
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-verified-code/" + verified_code, HttpMethod.GET, request,
-				Map.class);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-verified-code/" + verified_code,
+				HttpMethod.GET, request, Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+	}
+
+	// Update User
+	@RequestMapping(value="/update-user-confirm-email/{verified_code}",method = RequestMethod.PUT)
+	public ResponseEntity<Map<String, Object>> updateUserConfirmEmail(@PathVariable String verified_code) {
+
+		// REQUEST = REQUEST BODY + HEADER
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user-confirm-email/"+verified_code, HttpMethod.PUT, request, Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
 

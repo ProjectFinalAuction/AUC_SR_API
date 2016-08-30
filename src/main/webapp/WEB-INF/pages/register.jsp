@@ -190,7 +190,7 @@
 			</div>
 			<!-- end div col-md-12 -->
 		</form>
-		<button type="button" ng-click="sendMail()">Click to verify email</button>
+<!-- 		<button type="button" ng-click="test()">Click to verify email</button> -->
 	</div>
 	<!-- end div container -->
 </div>

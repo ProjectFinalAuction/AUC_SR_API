@@ -59,7 +59,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		
 		registry.addViewController("/viewbidhistory/{id}").setViewName("/viewbidhistory");
 		registry.addViewController("/detail2").setViewName("/detail2");
-		registry.addViewController("/register/viewconfirm/{id}").setViewName("/viewbidhistory");
+		registry.addViewController("/register/confirm/{id}").setViewName("/confirm-email");
 	}
 
 }

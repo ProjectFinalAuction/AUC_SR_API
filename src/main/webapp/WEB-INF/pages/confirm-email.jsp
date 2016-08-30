@@ -14,7 +14,7 @@
 <jsp:include page="menu.jsp" />
 
 <!-- content -->
-<div class="content" id="register" ng-controller="addUserCtrl">
+<div class="content" id="register" ng-controller="confirmEmailCtrl">
 	<div class="panel panel-default" >
 		<div class="row" >
 			
@@ -36,4 +36,4 @@
 
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/scripts/user-angular.js"></script>
+	src="${pageContext.request.contextPath}/resources/scripts/confirm-email-angular.js"></script>
