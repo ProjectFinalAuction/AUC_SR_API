@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.khmeracademy.auction.entities.User;
 import org.khmeracademy.auction.entities.input.AddBid;
+import org.khmeracademy.auction.entities.input.AddInvoice;
 import org.khmeracademy.auction.filtering.BidFilter;
 import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,4 +86,16 @@ public class BidHistoryController {
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-num-bid-and-bidder-in-auction-product-by-auc-id/" + auction_id, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}	
+	
+	
+	//TODO: ADD INVOICE TO INVOICE AND INVOICE DETATIL
+	@RequestMapping(value="/add-invoice", method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> addInvoice(@RequestBody AddInvoice addinvoice){
+		
+		
+		HttpEntity<AddInvoice> request = new HttpEntity<AddInvoice>(addinvoice, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-invoice", HttpMethod.POST , request , Map.class) ;
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), response.getStatusCode());
+	}
+
 }

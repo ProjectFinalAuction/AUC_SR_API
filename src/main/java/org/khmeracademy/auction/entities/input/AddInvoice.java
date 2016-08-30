@@ -7,7 +7,7 @@ public class AddInvoice {
 	private double buy_price;
 	private int qty;
 	private int user_id;
-	
+	private String status;
 	
 	public int getInvoice_id() {
 		return invoice_id;
@@ -38,6 +38,12 @@ public class AddInvoice {
 	}
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

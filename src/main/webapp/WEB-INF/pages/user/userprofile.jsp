@@ -258,8 +258,8 @@
 							</tr>
 							<tr>
 								<td>1</td>
-								<td><a href=""><span id="item-name"></span></a></td>
-								<td class="hidden-xs">1</td>
+								<td><a href=""><span id="item-name" ng-model="auction_id"></span></a></td>
+								<td class="hidden-xs"></td>
 								<td class="hidden-xs">$ <span id="unit-price"></span></td>
 								<td class="hidden-xs">$ <span id="total-price"></span></td>
 							</tr>
@@ -294,7 +294,7 @@
 								</td>
 								<td>
 									<div class="btn-group">
-										<button class="btn btn-default" style="margin-top: 25px;">
+										<button class="btn btn-default" style="margin-top: 25px;" ng-click="">
 											Submit</button>
 									</div>
 								</td>

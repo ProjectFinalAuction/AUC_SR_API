@@ -1,6 +1,7 @@
 package org.khmeracademy.auction.entities.input;
 
 public class UserLogin {
+	
 	private String user_name;
 	private String password;
 	

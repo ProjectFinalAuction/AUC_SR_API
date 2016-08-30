@@ -32,6 +32,7 @@
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" 
 							role="button" aria-haspopup="true" aria-expanded="false">
 								<spring:message code="welcome"></spring:message>  <sec:authentication property="principal.username" />
+								
 							</a>
 							<h5 class="dropdown-menu" aria-labelledby="Preview">
 								<a href="${pageContext.request.contextPath}/userprofile" style="padding-bottom: 1px;">						

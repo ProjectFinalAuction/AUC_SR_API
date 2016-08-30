@@ -187,8 +187,6 @@ $(function() {
 	            data: $("#formLogin").serialize(),
 	            success: function(data) {
 	            	
-	  
-	            	
 	            	if(data == "User account is locked"){
 	            		alert(data);
 	            	}else if(data == "User is disabled"){

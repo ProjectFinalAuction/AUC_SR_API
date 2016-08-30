@@ -41,6 +41,8 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 			roles.add(authority.getAuthority());
 			System.out.println("Extract Role: " + authority.getAuthority());
 		}
+		
+		//TODO: GET CURRENT URL
 		String redirectURL = (String)request.getSession().getAttribute("REDIRECT_URL");
 		
 		request.getSession().setAttribute("REDIRECT_URL", null);

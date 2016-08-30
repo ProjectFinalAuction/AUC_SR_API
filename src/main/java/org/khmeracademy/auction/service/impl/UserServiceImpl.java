@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService{
 			u.setUser_name((String)data.get("user_name"));
 			u.setPassword((String) data.get("password"));
 			
+			
 			List<Role> roles = new ArrayList<Role>();
 			
 			List<HashMap<String, Object>> dataRole = (List<HashMap<String, Object>>) data.get("roles");
