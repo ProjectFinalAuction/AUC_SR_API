@@ -95,30 +95,32 @@
 		<div class="col-md-12">
 			<ul class="list-group" style="margin-top: 15px;">
 				<li class="list-group-item sublinkcategory"><spring:message
-						code="home"></spring:message> / user / proflie</li>
+						code="home"></spring:message> / <spring:message
+						code="user"></spring:message> / <spring:message
+						code="profile"></spring:message></li>
 			</ul>
 		</div>
 		<div class="col-md-2 col-xs-12 left">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Bidding</h3>
+					<h3 class="panel-title"><spring:message code="bidding"></spring:message></h3>
 				</div>
 				<ul class="nav nav-pills nav-stacked" style="padding: 1px 3px;">
-					<li class="active"><a href="" onclick="onBid()">Active</a></li>
-					<li><a href="" onclick="onWon()">Won</a></li>
-					<li><a href="">Not Won</a></li>
-					<li><a href="#">WishList</a></li>
-					<li><a href="" onclick="onInvoice()">Invoice</a></li>
+					<li class="active"><a href="" onclick="onBid()"><spring:message code="active"></spring:message></a></li>
+					<li><a href="" onclick="onWon()"><spring:message code="won"></spring:message></a></li>
+					<li><a href=""><spring:message code="not_won"></spring:message></a></li>
+					<li><a href="#"><spring:message code="wishlist"></spring:message></a></li>
+					<li><a href="" onclick="onInvoice()"><spring:message code="invoice"></spring:message></a></li>
 				</ul>
 			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Account</h3>
+					<h3 class="panel-title"><spring:message code="account"></spring:message></h3>
 				</div>
 				<ul class="nav nav-pills nav-stacked" style="padding: 1px 3px;">
-					<li><a href="" onclick="onDetail()">Details</a></li>
-					<li><a href="" onclick="onChangePassword()">Password</a></li>
-					<li><a href="" onclick="onCredit()">Credit</a></li>
+					<li><a href="" onclick="onDetail()"><spring:message code="details"></spring:message></a></li>
+					<li><a href="" onclick="onChangePassword()"><spring:message code="password"></spring:message></a></li>
+					<li><a href="" onclick="onCredit()"><spring:message code="credit"></spring:message></a></li>
 				</ul>
 			</div>
 		</div>
@@ -130,9 +132,9 @@
 					<div class="row">
 						<div class="col-sm-2 hidden-xs"></div>
 						<div class="col-sm-6">
-							Title<br>Current Price &nbsp;|&nbsp; My Bid
+							<spring:message code="title"></spring:message><br><spring:message code="current_price"></spring:message> &nbsp;|&nbsp; <spring:message code="my_bid"></spring:message>
 						</div>
-						<div class="col-sm-3">Remaining Time</div>
+						<div class="col-sm-3"><spring:message code="remaining_time_bids"></spring:message></div>
 					</div>
 				</div>
 				<div class="list clearfix" ng-repeat="ub in userBidHistory"
@@ -149,14 +151,14 @@
 							<p>
 								<strong><a href="#" ng-cloak>{{ub.auction.product.product_name}}</a></strong>
 							</p>
-							<p ng-cloak>Current Price$ {{ub.auction.current_price}}
-								&nbsp;&nbsp;|&nbsp;&nbsp;Your Bid $
+							<p ng-cloak><spring:message code="current_price"></spring:message>$ {{ub.auction.current_price}}
+								&nbsp;&nbsp;|&nbsp;&nbsp;<spring:message code="your_bid"></spring:message> $
 								{{ub.user_latest_current_price}}</p>
 						</div>
 						<div class="col-sm-3 text-right" ng-cloak>{{ub.remainingTime |
 							durationview}}</div>
 					</div>
-					<button class="btn btn-default contact">Contact</button>
+					<button class="btn btn-default contact"><spring:message code="contact_s"></spring:message></button>
 				</div>
 
 			</div>
@@ -168,11 +170,11 @@
 					<div class="row">
 						<div class="col-sm-2 hidden-xs"></div>
 						<div class="col-sm-8">
-							Title<br>Won DateTime
+							<spring:message code="title"></spring:message><br><spring:message code="won_datetime"></spring:message>
 							<div class="row">
-								<div class="col-sm-4" id="qty">Quantity</div>
-								<div class="col-sm-4">Price</div>
-								<div class="col-sm-4">Total</div>
+								<div class="col-sm-4" id="qty"><spring:message code="quantity"></spring:message></div>
+								<div class="col-sm-4"><spring:message code="price"></spring:message></div>
+								<div class="col-sm-4"><spring:message code="total"></spring:message></div>
 							</div>
 						</div>
 					</div>
@@ -203,7 +205,7 @@
 						</div>
 					</div>
 					<div ng-if="ub.auction.status=='3'">
-						<button class="btn btn-default contact" ng-disabled="disable" ng-click="checkOut(ub)">Checkout</button>
+						<button class="btn btn-default contact" ng-disabled="disable" ng-click="checkOut(ub)"><spring:message code="checkout"></spring:message></button>
 					</div>
 					
 				</div>
@@ -213,10 +215,10 @@
 			<!-- ============================ Invoice ===================== -->
 			<div class="panel panel-default" id="invoice">
 				<div class="panel-heading">
-					Invoices
+					<spring:message code="invoices"></spring:message>Invoices
 					<div class="btn-group pull-right">
 						<button class="btn btn-default btn-xs" onclick="onWon()">
-							<i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+							<i class="fa fa-chevron-left" aria-hidden="true"></i> <spring:message code="back"></spring:message>
 						</button>
 						
 					</div>
@@ -233,13 +235,13 @@
 					<hr>
 					<div class="row" style="padding-bottom: 150px;">
 						<div class="col-sm-4 ">
-							<strong>Bidder Info</strong><br> <span>Bidder: <sec:authentication
+							<strong><spring:message code="bidder_info"></spring:message></strong><br> <span><spring:message code="bidder"></spring:message>: <sec:authentication
 									property="principal.user_name" />
 							</span><br> 
-							Address: <span id="address"></span>
+							<spring:message code="address"></spring:message>: <span id="address"></span>
 						</div>
 						<div class="col-sm-5 text-center">
-							<strong>Created Date</strong><br> <span id="created-date"></span>
+							<strong><spring:message code="created_date"></spring:message></strong><br> <span id="created-date"></span>
 
 						</div>
 						
@@ -248,10 +250,10 @@
 						<tbody>
 							<tr class="active">
 								<th>#</th>
-								<th>Items</th>
-								<th class="hidden-xs">Quantity</th>
-								<th class="hidden-xs">Unit Price</th>
-								<th>Total</th>
+								<th><spring:message code="items"></spring:message></th>
+								<th class="hidden-xs"><spring:message code="quantity"></spring:message></th>
+								<th class="hidden-xs"><spring:message code="unit_price"></spring:message></th>
+								<th><spring:message code="total"></spring:message></th>
 								<td class="hidden-xs"></td>
 
 							</tr>
@@ -266,19 +268,19 @@
 							<tr>
 
 								<td colspan="3"></td>
-								<td><label>Subtotal</label></td>
+								<td><label><spring:message code="sub_total"></spring:message></label></td>
 								<td>$ <span id="sub-total"></span></td>
 								<td class="hidden-xs"></td>
 							</tr>
 							<tr>
 								<td colspan="3"></td>
-								<td><label>Sales Tax</label></td>
+								<td><label><spring:message code="sale_tax"></spring:message></label></td>
 								<td>$0.00</td>
 								<td class="hidden-xs"></td>
 							</tr>
 							<tr class="success">
 								<td colspan="3"></td>
-								<td><label>Total</label></td>
+								<td><label><spring:message code="total"></spring:message></label></td>
 								<td>$ <strong id="total"></strong></td>
 								<td class="hidden-xs"></td>
 							</tr>
@@ -295,7 +297,7 @@
 								<td>
 									<div class="btn-group">
 										<button class="btn btn-default" style="margin-top: 25px;" ng-click='addInvoice()'>
-											Submit</button>
+											<spring:message code="submit"></spring:message></button>
 									</div>
 								</td>
 							</tr>
@@ -500,34 +502,33 @@
 			<!-- ======================= TOP UP ==================== -->
 			<div class="panel panel-default" id="credit">
 
-				<div class="panel-heading">Information</div>
+				<div class="panel-heading"><spring:message code="information"></spring:message></div>
 				<div class="panel-body">
 					<div class="tab-content">
 						<div class="tab-panel">
 							<form class="form-horizontal" role="form">
 								<div class="form-group">
-									<label class="control-label col-sm-3">Topup Amount: </label>
+									<label class="control-label col-sm-3"><spring:message code="top_up_amount"></spring:message>: </label>
 									<div class="col-sm-4">
 										<select class="form-control selectCurr" id="curr" ng-model="curr" required>
-											<option value="USD" ng-selected="true">US Dollar</option>
-											<option value="KHR">Cambodian Riel</option>
+											<option value="USD" ng-selected="true"><spring:message code="us_dollar"></spring:message></option>
+											<option value="KHR"><spring:message code="cambodian_riel"></spring:message></option>
 										</select>
 									</div>
-									<label class="control-label col-sm-4" ng-cloak>Total Amount: <font
-										color="#238fc7">{{ending_amount}}</font> Credit
+									<label class="control-label col-sm-4" ng-cloak><spring:message code="total_amount"></spring:message>: <font
+										color="#238fc7">{{ending_amount}}</font> <spring:message code="credit"></spring:message>
 									</label>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-4">
-										<input ng-model="balance" type="number" class="form-control"
-											placeholder="Type your balance">
+										<input ng-model="balance" type="number" class="form-control" placeholder="<spring:message code='type_your_balance'></spring:message>">
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-3">
 										<button type="submit" class="btn btn-default"
 											ng-disabled="balance < 1 || !(!!balance)" ng-click="addTopUp()">
-											<i class="fa fa-plus" aria-hidden="true"></i> Topup
+											<i class="fa fa-plus" aria-hidden="true"></i> <spring:message code="top_up"></spring:message>
 										</button>
 									</div>
 								</div>

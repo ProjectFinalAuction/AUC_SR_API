@@ -223,7 +223,7 @@
 											<!--  Bid History View --> <a ng-cloak
 											href="/viewbidhistory/{{auction_id}}"> <input
 												type="button" class="btn btn-default bidhistory"
-												value="Bid History" ng-show="num_bid > 0">
+												value="<spring:message code='bid_history'></spring:message>" ng-show="num_bid > 0">
 										</a>
 
 

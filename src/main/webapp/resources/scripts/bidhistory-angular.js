@@ -148,8 +148,8 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
     	  	if(response.data.CODE=="9999"){
     	  		//alert("YOUR TOP UP BALANCE " + response.data.DATA.amount);
     	  		swal({
-    				title : "Your Top Up Balance is \r\n"+response.data.DATA.amount + " Riel",
-    				//text : "YOUR TOP UP BALANCE " + response.data.DATA.amount,
+    				title : "Top Up",
+    				text : "Your Top Up Balance is "+response.data.DATA.amount + " Riel",
     				type : "success",
     				showConfirmButton : true
     			});
