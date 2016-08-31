@@ -112,7 +112,10 @@
 									<td ng-if="inv.invoice.status=='1'"><img alt=""
 										src="${pageContext.request.contextPath}/resources/static/images/paidStamp.png"
 										class="img-responsive"></td>
-									<td ng-if="inv.invoice.status=='0'"></td>
+									<td ng-if="inv.invoice.status=='0'"><img alt=""
+										src="${pageContext.request.contextPath}/resources/static/images/unpaid-stamp.png"
+										class="img-responsive"></td>
+									</td>
 								</tr>
 								
 							</tbody>

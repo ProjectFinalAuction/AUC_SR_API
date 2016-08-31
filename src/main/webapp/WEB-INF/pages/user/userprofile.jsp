@@ -178,7 +178,7 @@
 					</div>
 				</div>
 				<div class="list clearfix" ng-repeat="ub in userBidHistory"
-					ng-if="ub.auction.status=='3'">
+					ng-if="ub.auction.status=='3' || ub.auction.status=='4'">
 					<div class="row">
 						<div class="col-sm-2">
 							<a ng-cloak
@@ -202,19 +202,21 @@
 
 						</div>
 					</div>
-					<button class="btn btn-default contact" ng-click="checkOut(ub)">Checkout</button>
+					<div ng-if="ub.auction.status=='3'">
+						<button class="btn btn-default contact" ng-disabled="disable" ng-click="checkOut(ub)">Checkout</button>
+					</div>
+					
 				</div>
 			</div>
 
 
 			<!-- ============================ Invoice ===================== -->
-			<div class="panel panel-default" id="invoice" ng-repeat="ub in userBidHistory"
-					ng-if="ub.auction.status=='3'">
+			<div class="panel panel-default" id="invoice">
 				<div class="panel-heading">
 					Invoices
 					<div class="btn-group pull-right">
 						<button class="btn btn-default btn-xs" onclick="onWon()">
-							<i class="fa fa-chevron-left" aria-hidden="true"></i>Back
+							<i class="fa fa-chevron-left" aria-hidden="true"></i> Back
 						</button>
 						
 					</div>
@@ -226,11 +228,7 @@
 								src="${pageContext.request.contextPath}/resources/static/images/denhtlai.png"
 								class="img-responsive" style="width: 80%">
 						</div>
-						<div class="col-sm-4 pull-right">
-							<h5>
-								Invoice # <br> <br> <strong>2015-04-23654789</strong>
-							</h5>
-						</div>
+						
 					</div>
 					<hr>
 					<div class="row" style="padding-bottom: 150px;">
@@ -241,7 +239,7 @@
 							Address: <span id="address"></span>
 						</div>
 						<div class="col-sm-5 text-center">
-							<strong>Created Date</strong><br> <span id="created-date">20/08/2016</span>
+							<strong>Created Date</strong><br> <span id="created-date"></span>
 
 						</div>
 						
@@ -259,8 +257,9 @@
 							</tr>
 							<tr>
 								<td>1</td>
-								<td><a href=""><span id="item-name" ng-model="auction_id"></span></a></td>
-								<td class="hidden-xs"></td>
+								<td><a href=""><span id="item-name"></span> 
+									<span id="auction_id" ng-show="false"></span></a></td>
+								<td class="hidden-xs"><span id="qty">1</span></td>
 								<td class="hidden-xs">$ <span id="unit-price"></span></td>
 								<td class="hidden-xs">$ <span id="total-price"></span></td>
 							</tr>
@@ -295,7 +294,7 @@
 								</td>
 								<td>
 									<div class="btn-group">
-										<button class="btn btn-default" style="margin-top: 25px;" ng-click="addInvoice(ub)">
+										<button class="btn btn-default" style="margin-top: 25px;" ng-click='addInvoice()'>
 											Submit</button>
 									</div>
 								</td>

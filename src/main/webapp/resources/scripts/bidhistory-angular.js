@@ -67,6 +67,7 @@ app.controller('bidHistory', function($scope,$http){
 
 // TODO: =====+++++++++++++++++++++++++++++++++++++++++====BID HISTORY BY USER_ID FOR FRONT-END============
 app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', function ($scope, $http, $timeout, datetime, $rootScope){
+	$scope.formdata = {};
 	
 	// Show or Hide Panel
 	$scope.controlPanel = function(){
@@ -81,6 +82,7 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
 			url: '/rest/bidhistory/' + user_id,
 		}).then(function(response){
 			$scope.userBidHistory = response.data.DATA;
+			
 			//$scope.processAuctionItems($scope.userBidHistory);
 			
 			
@@ -88,39 +90,45 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
 	}
 	
 	/*checkout*/
+	
 	$scope.checkOut = function(item){
 		onInvoice();
 	
-		$('#created-date').html(item.auction.end_date);
+		$('#created-date').html(moment(new Date()).format("DD-MM-YYYY"));
+		$('#auction_id').html(item.auction.auction_id);
 		$('#item-name').html(item.auction.product.product_name);
 		$('#unit-price').html(item.auction.current_price);
 		$('#total-price').html(item.auction.current_price);
 		$('#sub-total').html(item.auction.current_price);
 		$('#total').html(item.auction.current_price);
 		$('#address').html(item.user.address);
+		
 	}
 	
 	
 	//TODO: ADD INVOICE TO INVOICE DETAIL
-	$scope.addInvoice = function(objInvoice){
-		alert(objInvoice.auction.auction_id);
+	
+	
+	$scope.addInvoice = function(){
+				
 		$http({
 			url : 'rest/bidhistory/add-invoice',
 			method : 'POST',
 			data : {
-				"auction_id": objInvoice.auction.auction_id,
-				"buy_price": objInvoice.auction.current_price,
-				"user_id": objInvoice.user.user_id,
-				
+				"auction_id" : $("#auction_id").text(),
+				"buy_price" : $("#unit-price").text(),
+				"qty" : 1,
+				"user_id" : USER_ID,
 			}
 		}).then(function(response){
 			swal({
 				title : "Success!",
-				text : "Invoice has been Created.",
+				text : "Invoice has been Created But Not Paid Yet.",
 				type : "success",
 				timer : 1000,
 				showConfirmButton : false
 			});
+			$scope.findBidByUserId(USER_ID);
 		})
 	}
 	
@@ -153,6 +161,8 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
 	      });
 	}
 	$scope.userCredit(USER_ID);
+	
+	
 	//===============================================
 	$scope.tick = function () {
         $scope.currentTime = moment();
