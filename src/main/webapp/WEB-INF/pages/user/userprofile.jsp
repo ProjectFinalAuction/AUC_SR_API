@@ -116,8 +116,8 @@
 					<h3 class="panel-title">Account</h3>
 				</div>
 				<ul class="nav nav-pills nav-stacked" style="padding: 1px 3px;">
-					<li><a href="#">Details</a></li>
-					<li><a href="#">Password</a></li>
+					<li><a href="" onclick="onDetail()">Details</a></li>
+					<li><a href="" onclick="onChangePassword()">Password</a></li>
 					<li><a href="" onclick="onCredit()">Credit</a></li>
 				</ul>
 			</div>
@@ -305,7 +305,198 @@
 
 			</div>
 
+			<!--  User Details by EAN SOKCHOMRERN -->
+			<!-- ============================ USER DETAILS ===================== -->
 
+			<div class="panel panel-default" id="detail" style="display:none">
+
+				<!-- form register -->
+				<form class="form-horizontal" role="form" id="myForm">
+						<div class="col-md-12">
+							<div class="list-group">
+								<div class="list-group-item">
+									<small><spring:message code="your_contact_information"></spring:message></small>
+								</div>
+								<div class="list-group-item">
+									<div class="form-group">
+										<label class="control-label col-sm-3" for="email"><spring:message
+												code="email"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<input type="email" class="form-control" id="email"
+												ng-model="email" required>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-sm-3" for="contact"><spring:message
+												code="contact"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<input type="text" class="form-control" id="contact" required
+												placeholder="Ex: 012 345 678" ng-model="contact">
+										</div>
+									</div>
+								</div>
+
+								<div class="list-group-item">
+									<small><spring:message code="additional_information"></spring:message></small>
+								</div>
+								<div class="list-group-item">
+									<div class="form-group">
+										<label class="control-label col-sm-3" for="fname"><spring:message
+												code="first_name"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<input type="text" class="form-control" id="first_name"
+												ng-model="first_name" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-3" for="lname"><spring:message
+												code="last_name"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<input type="text" class="form-control" id="last_name"
+												ng-model="last_name" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-3" for="gender"><spring:message
+												code="gender"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<select class="form-control select2" value={{gender}}
+												name="gender">
+												<option value="female"><spring:message
+														code="female"></spring:message></option>
+												<option value="male"><spring:message code="male"></spring:message></option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-3" for="gender"><spring:message
+												code="dob"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<div class="input-group">
+												<input type="text" class="required form-control"
+													placeholder="mm/dd/yyyy" id="dob" ng-model="dob"
+													required> <span
+													class="input-group-addon bg-custom b-0 text-white"><i
+													class="glyphicon glyphicon-calendar"></i></span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-3" for="gender"><spring:message
+												code="address"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<textarea class="required form-control" rows="5"
+												ng-model="address" id="address_u" required></textarea>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-3"></div>
+										<div class="col-sm-3">
+											<button type="button" class="btn btn-primary btn-block"
+												ng-click="updateUser()">
+												<spring:message code="complete_updated"></spring:message>
+											</button>
+										</div>
+										<div class="col-sm-4">
+											<p>
+												<small><spring:message code="all_fields_marked_with"></spring:message>
+													" <sup><i class="glyphicon glyphicon-star"></i></sup> " <spring:message
+														code="are_required"></spring:message></small>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end div col-md-12 -->
+				</form>				
+			</div>
+			<!-- end div container -->
+
+			<!--  END User Details-->
+			<!-- =============================================== -->
+			
+				
+			<!-- ============================ Change password - EAN SOKCHOMRERN ===================== -->
+
+			<div class="panel panel-default" id="changePassword"  style="display:none">
+
+				<!-- form register -->
+				<form class="form-horizontal" role="form" id="myChangePwdForm" name="myChangePwdForm">
+						<div class="col-md-12">
+							<div class="list-group">
+								<div class="list-group-item">
+									<p><spring:message code="change_password"></spring:message></p>
+								</div>
+								<div class="list-group-item">
+									<div class="form-group">
+										<!-- Current Password -->
+										<label class="control-label col-sm-3" for="current_password"><spring:message
+												code="current_password"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<input type="password" class="form-control" id="current_password"
+												ng-model="current_password" required>
+										</div>		
+									</div>
+										<!-- New Password -->
+									<div class="form-group">	
+										<label class="control-label col-sm-3" for="new_password"><spring:message
+												code="new_password"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<input type="password" class="form-control" id="new_password"
+												ng-model="new_password" required>
+										</div>
+									</div>
+										<!-- Re-Type New Password -->
+									<div class="form-group">	
+										<label class="control-label col-sm-3" for="retype_new_password"><spring:message
+												code="retype_new_password"></spring:message> <sup><i
+												class="glyphicon glyphicon-star"></i></sup></label>
+										<div class="col-sm-7">
+											<input type="password" class="form-control" id="retype_new_password"
+												ng-model="retype_new_password"  onkeyup="checkPasswordMatch();" required> 
+												<span id="confirm"></span>		
+												
+										</div>
+									</div>		
+									<div class="form-group">
+										<div class="col-sm-3"></div>
+										<div class="col-sm-3">
+											<button type="button" class="btn btn-primary btn-block"
+												ng-click="updateUserPassword()" ng-disabled="myChangePwdForm.$invalid">
+												<spring:message code="complete_updated"></spring:message>
+											</button>
+										</div>
+										<div class="col-sm-4">
+											<p>
+												<small><spring:message code="all_fields_marked_with"></spring:message>
+													" <sup><i class="glyphicon glyphicon-star"></i></sup> " <spring:message
+														code="are_required"></spring:message></small>
+											</p>
+										</div>
+									</div>
+																
+								</div>							
+							</div>
+						</div>
+						<!-- end div col-md-12 -->
+				</form>				
+			</div>
+			<!-- end div container -->
+			<!--  END Change Password-->
+			
+			
 			<!-- ======================= TOP UP ==================== -->
 			<div class="panel panel-default" id="credit">
 
@@ -392,6 +583,8 @@
 		document.getElementById("bid").style.display = "none";
 		document.getElementById("invoice").style.display = "none";
 		document.getElementById("won").style.display = "none";
+		document.getElementById("detail").style.display = "none";
+		document.getElementById("changePassword").style.display = "none";
 
 	}
 
@@ -400,6 +593,8 @@
 		document.getElementById("bid").style.display = "block";
 		document.getElementById("invoice").style.display = "none";
 		document.getElementById("won").style.display = "none";
+		document.getElementById("detail").style.display = "none";
+		document.getElementById("changePassword").style.display = "none";
 
 	}
 
@@ -408,6 +603,8 @@
 		document.getElementById("bid").style.display = "none";
 		document.getElementById("invoice").style.display = "block";
 		document.getElementById("won").style.display = "none";
+		document.getElementById("detail").style.display = "none";
+		document.getElementById("changePassword").style.display = "none";
 	}
 
 	function onWon() {
@@ -415,5 +612,40 @@
 		document.getElementById("bid").style.display = "none";
 		document.getElementById("invoice").style.display = "none";
 		document.getElementById("won").style.display = "block";
+		document.getElementById("detail").style.display = "none";
+		document.getElementById("changePassword").style.display = "none";
 	}
+	
+	function onDetail() {
+		document.getElementById("credit").style.display = "none";
+		document.getElementById("bid").style.display = "none";
+		document.getElementById("invoice").style.display = "none";
+		document.getElementById("won").style.display = "none";
+		document.getElementById("detail").style.display = "block";
+		document.getElementById("changePassword").style.display = "none";
+
+	}
+	
+	function onChangePassword(){
+		
+		document.getElementById("credit").style.display = "none";
+		document.getElementById("bid").style.display = "none";
+		document.getElementById("invoice").style.display = "none";
+		document.getElementById("won").style.display = "none";
+		document.getElementById("detail").style.display = "none";
+		document.getElementById("changePassword").style.display = "block";
+
+	}
+	
+	// Check new and re-type password are matched
+	function checkPasswordMatch() {
+		var password = $("#new_password").val();
+		var confirmPassword = $("#retype_new_password").val();
+
+		if (password != confirmPassword) {
+			$("#confirm").text("Passwords do not match!");
+		} else
+			$("#confirm").text("Passwords matched!");
+	}
+
 </script>

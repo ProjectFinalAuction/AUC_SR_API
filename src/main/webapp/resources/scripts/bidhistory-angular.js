@@ -146,11 +146,156 @@ app.controller('userBidHistory', ['$scope', '$http', '$timeout', 'datetime', fun
       }).then(function (response) {
     	  	$scope.ending_amount = response.data.DATA.ending_amount;
     	  	if(response.data.CODE=="9999"){
-    	  		alert("YOUR TOP UP BALANCE " + response.data.DATA.amount);
+    	  		//alert("YOUR TOP UP BALANCE " + response.data.DATA.amount);
+    	  		swal({
+    				title : "Your Top Up Balance is \r\n"+response.data.DATA.amount + " Riel",
+    				//text : "YOUR TOP UP BALANCE " + response.data.DATA.amount,
+    				type : "success",
+    				showConfirmButton : true
+    			});
+    	  		
+    	  		
+    	  		
     	  	}
 //    	  	alert(response.data.DATA.ending_amount);
       });
 	}
+	
+	
+	
+	//================================================================
+	//TODO: GET USER DETAIL
+	// get user by id
+	$scope.getUserByID = function(id) {
+		
+		$http({
+			url : '/rest/user/' + id,
+			method : 'GET'
+		}).then(
+				function(response) {
+					$scope.password=response.data.DATA.password;	
+					$scope.email = response.data.DATA.email;
+					$scope.contact = response.data.DATA.contact;
+					$scope.first_name = response.data.DATA.first_name;
+					$scope.last_name = response.data.DATA.last_name;
+					if ((response.data.DATA.gender == 'female')
+							|| (response.data.DATA.gender == 'F')) {
+
+						$('select[name="gender"]').find(
+								'option[value="female"]')
+								.attr("selected", true);
+					} else {
+
+						$('select[name="gender"]').find('option[value="male"]')
+								.attr("selected", true);
+					}
+					$scope.dob = moment(response.data.DATA.dob).format(
+							"DD-MM-YYYY");
+
+					$scope.address = response.data.DATA.address;
+					
+					
+
+				});
+	}
+	$scope.getUserByID(USER_ID);
+	
+	// =====================================================
+	// TODO: Update User information
+	$scope.updateUser = function() {
+		
+		date1 = ($('#dob').val()).split(':');
+		date2 = date1[0].split(' ');
+		date3 = date2[0].split('-');
+		
+		
+		birthDate = new Date(parseInt(date3[2]), parseInt(date3[1]) - 1,
+				parseInt(date3[0]));
+		
+				
+		$http(
+				{
+					url : '/rest/user/update-user-profile',
+					method : 'PUT',
+					data : {
+						"user_id" : USER_ID,
+						"address" : $scope.address,
+						"contact" : $scope.contact,
+						"dob" : birthDate,
+						"email" : $scope.email,
+						"first_name" : $scope.first_name,
+						"gender" : $('.select2').val(),
+						"last_name" : $scope.last_name					
+					}
+				}).then(function(response) {
+			swal({
+				title : "Success",
+				text : "User has been updated!",
+				type : "success",
+				timer : 1000,
+				showConfirmButton : false
+			});
+			
+		}, function(error) {
+			
+		});
+		
+	}
+	
+	//================================================================
+	// =====================================================
+	// TODO: Update User password
+	$scope.updateUserPassword = function() {
+		$scope.getUserByID(USER_ID);
+		
+		
+		var old_pwd = $scope.password;
+		var current_pwd = $scope.current_password;
+		
+		
+		if(old_pwd != current_pwd){
+			$("#current_password").select();
+			swal({
+				  title: "Current Password Is Not Correct!",
+				  text: "Please try again!",
+				  type: "error",
+				  confirmButtonClass: "btn-danger",
+				  confirmButtonText: "Yes, I got it!",								  
+				  closeOnConfirm: false								  
+				});
+				
+			
+		}else {
+		
+		
+			$http(
+					{
+						url : '/rest/user/update-user-password',
+						method : 'PUT',
+						data : {
+							"user_id" : USER_ID,
+							"password" : $scope.new_password
+						}
+					}).then(function(response) {
+				swal({
+					title : "Success",
+					text : "User password has been updated!",
+					type : "success",
+					timer : 1000,
+					showConfirmButton : false
+				});
+				
+			}, function(error) {
+				
+			});
+		
+		}
+	}
+	
+	//============================================
+	
+	
+	
 	
 	$scope.userCredit = function(userID){
 		$http({

@@ -98,7 +98,7 @@ public class UserController {
 
 	// Get user by verified code
 
-	@RequestMapping(value = "/{verified_code}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get-verified-code/{verified_code}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> getUserByVerifiedCode(@PathVariable String verified_code) {
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/get-user-by-verified-code/" + verified_code,
@@ -107,13 +107,35 @@ public class UserController {
 	}
 
 	// Update User
-	@RequestMapping(value="/update-user-confirm-email/{verified_code}",method = RequestMethod.PUT)
+	@RequestMapping(value = "/update-user-confirm-email/{verified_code}", method = RequestMethod.PUT)
 	public ResponseEntity<Map<String, Object>> updateUserConfirmEmail(@PathVariable String verified_code) {
 
 		// REQUEST = REQUEST BODY + HEADER
 		HttpEntity<Object> request = new HttpEntity<Object>(header);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user-confirm-email/"+verified_code, HttpMethod.PUT, request, Map.class);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user-confirm-email/" + verified_code,
+				HttpMethod.PUT, request, Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
 
+	// Update User profile in userprofile.jsp
+	@RequestMapping(value = "/update-user-profile", method = RequestMethod.PUT)
+	public ResponseEntity<Map<String, Object>> updateUserProfile(@RequestBody AddUser updateUser) {
+
+		// REQUEST = REQUEST BODY + HEADER
+		HttpEntity<Object> request = new HttpEntity<Object>(updateUser, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user-profile", HttpMethod.PUT, request,
+				Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+	}
+
+	// Update User password in userprofile.jsp
+	@RequestMapping(value = "/update-user-password", method = RequestMethod.PUT)
+	public ResponseEntity<Map<String, Object>> updateUserPassword(@RequestBody AddUser updateUser) {
+
+		// REQUEST = REQUEST BODY + HEADER
+		HttpEntity<Object> request = new HttpEntity<Object>(updateUser, header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/update-user-password", HttpMethod.PUT, request,
+				Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+	}
 }
