@@ -202,7 +202,7 @@
 						<div class="row">
 							<div class="col-md-3 col-md-offset-9">
 								<p class="text-right">
-									<b>Sub-total:</b> 0.00
+									<b>Sub-total:</b> {{buy_price}}
 								</p>
 								<p class="text-right">Discout: 0.0%</p>
 								<p class="text-right">VAT: 0.0%</p>
