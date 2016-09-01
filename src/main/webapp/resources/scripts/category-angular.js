@@ -25,6 +25,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 			}
 		});
 	}
+
 	// TODO: CTEATE PAGINATION BUTTON
 	$scope.setPagination = function(pagination) {
 		console.log("PAGINATION==>", pagination);
@@ -137,7 +138,7 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 	//Get Category By ID	
 
 	$scope.getCategoryByID = function(categoryObject){
-		$scope.mainCategories = angular.copy($scope.category);
+		$scope.mainCategories = angular.copy($scope.maincategory);
 		$scope.category_description = categoryObject.category_description;
 		$scope.category_id = categoryObject.category_id;
 		$scope.category_name = categoryObject.category_name;
@@ -149,9 +150,11 @@ app.controller('myCtrl', function($scope,$http,$rootScope){
 		}
 		
 		// match parent_id with "type of"
-		$scope.mainCat = categoryObject.parent_id;
+		$scope.mainCat = categoryObject.parent_id;		
+		
 		// pass parent_id to store in update button
 		$scope.parent_id = categoryObject.parent_id;
+		
 		
 	}
 	
