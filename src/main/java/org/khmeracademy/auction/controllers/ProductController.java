@@ -209,5 +209,14 @@ public class ProductController {
 			ResponseEntity<Map> response = rest.exchange(WS_URL + "/delete-product/" + productId, HttpMethod.DELETE , request , Map.class) ;
 			return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 		}
+		
+		
+		@RequestMapping(value = "/product-of-supplier-for-update/{supplier_id}", method = RequestMethod.GET)
+		public ResponseEntity<Map<String, Object>> findProductsHasSupplierForUpdate(@PathVariable int supplier_id) {
+			HttpEntity<Object> request = new HttpEntity<Object>(header);
+			ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-products-has-supplier-for-update/" + supplier_id,
+					HttpMethod.GET, request, Map.class);
+			return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+		}
 
 }

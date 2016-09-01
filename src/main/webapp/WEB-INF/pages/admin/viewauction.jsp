@@ -39,8 +39,8 @@ rel="stylesheet" type="text/css" />
 							<li class="active">Auction List</li>
 						</ol>
 					</div>
-				</div>
-
+				</div>				
+				
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card-box">
@@ -65,6 +65,7 @@ rel="stylesheet" type="text/css" />
 							</div>
 							
 							<div class="table-responsive">
+							
 							<!-- Table Data-->
 								<table class="table table-hover mails m-0 table table-actions-bar">
 									<thead>
@@ -189,9 +190,8 @@ rel="stylesheet" type="text/css" />
 									*</label>
 								<div class="col-lg-10">
 									<select class="form-control required" name="product" id="select"
-										ng-model="product_name" ng-options="p.product_id as p.product_name for p in product" ng-cloak
-										value="{{product_name}}">
-										<!-- <option value="" style="display:none">-- Choose	Product --</option> -->
+										ng-model="product_name" ng-options="p.product_id as p.product_name for p in product" ng-cloak>
+										<option value="" style="display:none">{{product_name}}</option>
 									</select>
 								</div>
 							</div>

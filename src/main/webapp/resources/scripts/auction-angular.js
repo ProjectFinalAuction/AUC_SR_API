@@ -17,6 +17,7 @@ app
 
 					// TODO: select all record to display
 					$scope.findAllAuctions = function() {
+						
 						$http(
 								{
 									url : '/rest/auction?limit=' + 10 + "&page="
@@ -35,6 +36,7 @@ app
 														.setPagination(response.data.PAGINATION);
 												checkPagination = false;
 											}
+											
 										});
 					}
 
@@ -115,10 +117,10 @@ app
 							method : 'GET'
 						}).then(function(response) {
 							console.log(response.data.DATA);
-//							$scope.sup = response.data.DATA.product.supplier.supplier_id;
-//
-//							$scope.findProductsHasSupplier($scope.sup);
-//							$scope.pro = response.data.DATA.product.product_id;
+							$scope.sup = response.data.DATA.product.supplier.supplier_id;
+								
+							$scope.findProductsHasSupplier($scope.sup);
+							$scope.pro = response.data.DATA.product.product_id;
 							
 							$scope.product_name = response.data.DATA.product.product_name;
 							
@@ -130,6 +132,7 @@ app
 							$scope.end_date = moment(response.data.DATA.end_date).format("DD-MM-YYYY HH:mm:ss");
 							$scope.status = response.data.DATA.status;
 							$scope.comment = response.data.DATA.comment;
+							
 							
 							
 						});
@@ -296,6 +299,18 @@ app.controller('addAucCtrl', function($scope, $http, $rootScope) {
 			$scope.product = response.data.DATA;
 		});
 	}
+	
+	
+	// TODO: TO LIST ALL PRODUCTS FOR CHOOSE TO ADD -- EAN SOKCHOMRERN (01/09/2016)
+	$scope.findProductsHasSupplierForUpdate = function(id) {
+		$http({
+			url : '/rest/product/product-of-supplier-for-update/' + id,
+			method : 'GET'
+		}).then(function(response) {
+			$scope.product = response.data.DATA;
+		});
+	}
+	
 
 	// TODO: add record function
 	$scope.addAuction = function() {
