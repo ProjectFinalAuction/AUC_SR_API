@@ -126,7 +126,7 @@
                   </tr>
                 </thead>
                 <tbody class="body">
-                  <tr ng-repeat="uea in userEndingAmount | orderBy:'-credit_id'">
+                  <tr ng-repeat="uea in userEndingAmount | filter:str_search | orderBy:'-credit_id'">
                     <td ng-cloak>{{uea.credit_id}}</td>
                     <td ng-cloak>{{uea.user.last_name + " " + uea.user.first_name}}</td>
                     <td ng-cloak>{{uea.credit_date}}</td>
