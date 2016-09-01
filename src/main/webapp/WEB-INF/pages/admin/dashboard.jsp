@@ -14,7 +14,7 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
-<div class="content-page rightContent">
+<div class="content-page rightContent" ng-controller="dashboard">
         <!-- Start content -->
         <div class="content ">
           <div class="container">
@@ -30,7 +30,8 @@
 			<div class="row">              
               <div class="col-lg-4 col-sm-6">
                 <div class="card-box">
-                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="Today's Bids" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#ffbd4a" data-bgcolor="#505A66">
+                  <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="Today's Bids" 
+                  	data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#ffbd4a" data-bgcolor="#505A66">
                   </div>
                   <div class="widget-panel widget-style-2">
                   <i class="md md-add-shopping-cart text-warning"></i>
@@ -127,53 +128,18 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>B001</td>
-                          <td>A001</td>
-                          <td><a href="#">Soa</a></td>
-                          <td>$1,456</td>
-                          <td>08/07/2016</td>
+                        <tr ng-repeat="r in recentBid">
+                          <td>{{r.bid_id}}</td>
+                          <td>{{r.auction.auction_id}}</td>
+                          <td>{{r.user.user_name}}</td>
+                          <td>{{r.auction.current_price | currency}}</td>
+                          <td>{{bid_date}}</td>
                           <td>
                           	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
                           	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
                           </td>
                         </tr>
-
-                        <tr>
-                          <td>B002</td>
-                          <td>A002</td>
-                          <td><a href="#">Sok</a></td>
-                          <td>$6,562</td>
-                          <td>08/07/2016</td>
-                          <td>
-                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
-                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>B003</td>
-                          <td>A002</td>
-                          <td><a href="#">Sao</a></td>
-                          <td>$3,458</td>
-                          <td>08/07/2016</td>
-                          <td>
-                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
-                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>B004</td>
-                          <td>A001</td>
-                          <td><a href="#">Sok</a></td>
-                          <td>$1,256</td>
-                          <td>08/07/2016</td>
-                          <td>
-                          	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
-                          	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
-                          </td>
-                        </tr>
+ 
                       </tbody>
                     </table>
                   </div><!-- end table-responsive -->
@@ -183,7 +149,7 @@
               <div class="col-lg-6">
           		  <div class="card-box">
                   <a href="#" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
-          			  <h4 class="header-title m-t-0">Top Auction of Products</h4>
+          			  <h4 class="header-title m-t-0">High Bidding</h4>
           			  
             			<div class="table-responsive">
                     <table class="table table-actions-bar">
@@ -311,3 +277,4 @@
 
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
+<script src="${pageContext.request.contextPath}/resources/scripts/dashboard-angular.js"></script>

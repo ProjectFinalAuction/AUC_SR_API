@@ -23,17 +23,6 @@
 <script src="${pageContext.request.contextPath}/resources/static/assets/js/jquery.app.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/sol.js"></script>
 
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$('.counter').counterUp({
-			delay : 100,
-			time : 1200
-		});
-
-		$(".knob").knob();
-		$('.circliful-chart').circliful();
-	});
-</script>
 
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/peity/jquery.peity.min.js"></script>
 
@@ -48,8 +37,20 @@
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/counterup/jquery.counterup.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-knob/jquery.knob.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
-
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		
+		$('.counter').counterUp({
+			delay : 100,
+			time : 1200
+		});
+		
+		$(".knob").knob();
+		$('.circliful-chart').circliful();
+	});
+</script>
 <!-- Jquery Dashboard -->
+<script src="${pageContext.request.contextPath}/resources/static/assets/pages/jquery.dashboard.js"></script>
 
 <!--Form Validation-->
 <script src="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrapvalidator/dist/js/bootstrapValidator.js" type="text/javascript"></script>
@@ -65,8 +66,7 @@
 <script type="text/javascript">
 	 
       $('#end').datetimepicker({
-        format: 'dd-MM-yyyy hh:mm:ss',
-           
+        format: 'dd-MM-yyyy hh:mm:ss',           
       });
       
       $('#dateofbirth').datetimepicker({

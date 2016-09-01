@@ -10,7 +10,8 @@
 
 <!-- Style Circliful Chart-->
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/resources/static/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+
+
 <!--Radial Chart CSS -->
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/radial/radial.css" rel="stylesheet">
  
@@ -19,7 +20,6 @@
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/datatables/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
  
 <!--  -------------	Date time Picker ------------ -->
-
 <link href="${pageContext.request.contextPath}/resources/static/assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
  
  
