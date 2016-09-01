@@ -132,7 +132,7 @@
                           <td ng-cloak>{{r.bid_id}}</td>
                           <td ng-cloak>{{r.auction.auction_id}}</td>
                           <td ng-cloak>{{r.user.user_name}}</td>
-                          <td ng-cloak>{{r.auction.current_price | currency}}</td>
+                          <td ng-cloak>{{r.current_price | currency}}</td>
                           <td ng-cloak>{{bid_date}}</td>
 <!--                           <td> -->
 <!--                           	<a href="#" class="table-action-btn"><i class="md md-edit"></i></a> -->
