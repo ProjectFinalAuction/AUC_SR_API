@@ -79,8 +79,9 @@
 									<br>Last Name
 									</th>
 									<th>Paid<br> <select class="form-control required">
-											<option value="paid">Paid</option>
+											
 											<option value="unpaid">Unpaid</option>
+											<option value="paid">Paid</option>
 									</select>
 									</th>
 								</tr>
