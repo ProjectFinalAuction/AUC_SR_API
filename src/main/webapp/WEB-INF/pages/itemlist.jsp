@@ -97,7 +97,7 @@ pageEncoding="UTF-8"%>
 					<div class="col-sm-7 img-wraper">
 						<!-- img & title -->
 						<h1 class="title">
-							<a href="#">
+							<a href="/detail/{{a.auction_id}}">
 								<span class="img" ng-repeat="proimg in a.product.gallery" ng-show="$first">
 									<img ng-cloak src="{{proimg.image_path}}" class="img-thumbnail" style="width: 160px; height: 170px" alt="Cinque Terre">
 								</span>
