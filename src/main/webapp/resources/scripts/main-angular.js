@@ -239,7 +239,7 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 		        			    type: "error",
 		        			    closeOnConfirm: false
 	    	  				});
-			    	  		//alert("YOU CANNOT BID MORE. YOUR AMOUNT HAS ONLY " + response.data.DATA);
+			    	  		
 			    	  	}else{
 			    	  		swal({ 
 		        				title: response.data.MESSAGE,
@@ -262,11 +262,6 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 					})
 					
 					
-					
-					
-					
-					
-					//$scope.findAllSuppliers();
 				} else {
 					swal({
 						title : "Cancelled!", 
