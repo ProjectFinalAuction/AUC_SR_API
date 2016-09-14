@@ -64,7 +64,7 @@
 }
 
 #credit, #invoice {
-	position: absolute;
+	position: relative;
 	top: 0;
 	width: 97%;
 	display: none;
@@ -211,7 +211,47 @@
 				</div>
 			</div>
 
+					<!-- ======================= TOP UP ==================== -->
+			<div class="panel panel-default" id="credit" style="display:none">
 
+				<div class="panel-heading"><spring:message code="information"></spring:message></div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-panel">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label class="control-label col-sm-3"><spring:message code="top_up_amount"></spring:message>: </label>
+									<div class="col-sm-4">
+										<select class="form-control selectCurr" id="curr" ng-model="curr" required>
+											<option value="USD" ng-selected="true"><spring:message code="us_dollar"></spring:message></option>
+											<option value="KHR"><spring:message code="cambodian_riel"></spring:message></option>
+										</select>
+									</div>
+									<label class="control-label col-sm-4" ng-cloak><spring:message code="total_amount"></spring:message>: <font
+										color="#238fc7">{{ending_amount}}</font> <spring:message code="credit"></spring:message>
+									</label>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-4">
+										<input ng-model="balance" type="number" class="form-control" placeholder="<spring:message code='type_your_balance'></spring:message>">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-3">
+										<button type="submit" class="btn btn-default"
+											ng-disabled="balance < 1 || !(!!balance)" ng-click="addTopUp()">
+											<i class="fa fa-plus" aria-hidden="true"></i> <spring:message code="top_up"></spring:message>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			
 			<!-- ============================ Invoice ===================== -->
 			<div class="panel panel-default" id="invoice">
 				<div class="panel-heading">
@@ -499,46 +539,7 @@
 			<!--  END Change Password-->
 			
 			
-			<!-- ======================= TOP UP ==================== -->
-			<div class="panel panel-default" id="credit">
-
-				<div class="panel-heading"><spring:message code="information"></spring:message></div>
-				<div class="panel-body">
-					<div class="tab-content">
-						<div class="tab-panel">
-							<form class="form-horizontal" role="form">
-								<div class="form-group">
-									<label class="control-label col-sm-3"><spring:message code="top_up_amount"></spring:message>: </label>
-									<div class="col-sm-4">
-										<select class="form-control selectCurr" id="curr" ng-model="curr" required>
-											<option value="USD" ng-selected="true"><spring:message code="us_dollar"></spring:message></option>
-											<option value="KHR"><spring:message code="cambodian_riel"></spring:message></option>
-										</select>
-									</div>
-									<label class="control-label col-sm-4" ng-cloak><spring:message code="total_amount"></spring:message>: <font
-										color="#238fc7">{{ending_amount}}</font> <spring:message code="credit"></spring:message>
-									</label>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-4">
-										<input ng-model="balance" type="number" class="form-control" placeholder="<spring:message code='type_your_balance'></spring:message>">
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-3">
-										<button type="submit" class="btn btn-default"
-											ng-disabled="balance < 1 || !(!!balance)" ng-click="addTopUp()">
-											<i class="fa fa-plus" aria-hidden="true"></i> <spring:message code="top_up"></spring:message>
-										</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
+	
 
 		</div>
 	</div>

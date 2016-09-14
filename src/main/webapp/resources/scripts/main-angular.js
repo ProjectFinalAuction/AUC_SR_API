@@ -206,48 +206,131 @@ app.controller('detailCtrl', ['$scope', '$http', '$timeout', 'datetime', functio
 		
 	}*/
 		
-	//TODO: INSERT BID PRICE TO BID HISTORY 
+	//NEW VERSION: INSERT BID PRICE TO BID HISTORY - BY EAN SOKCHOMRERN (13/09/2016)
+	// The old version is not logic because user clicks on Cancel, the record is saved to database.
 	$scope.addBidPrice = function(){
-		$http({
-          method: 'POST',
-          url: '/rest/bidhistory',
-          data: {
-          	"auction_id" : id,
-          	"current_price" : $('#exampleInputAmount').val()
-          }
-      }).then(function (response) {
-    	  	if(response.data.CODE=="0000"){
-    	  		alert("YOU CANNOT BID MORE. YOUR AMOUNT HAS ONLY " + response.data.DATA);
-    	  	}else{
-    	  		swal({   
-    	  			title: "Bid Now!",   
-    	  			text: "Your Amount is $" + $('#exampleInputAmount').val(),   
-    	  			type: "info",   
-    	  			showCancelButton: true,   
-    	  			closeOnConfirm: false,   
-    	  			showLoaderOnConfirm: true, 
-    	  		}, function(){   
-    	  			setTimeout(function(){     
-    	  				swal({ 
-	        				title: response.data.MESSAGE,
-	        			    type: "success",
-	        			    timer : 1000,
-	        			    showConfirmButton : false
+		swal({
+			title: "Bid Now!",
+			text: "Your Amount is $" + $('#exampleInputAmount').val(),
+			type: "info",
+			showCancelButton: true,
+			
+			cancelButtonText: "Cancel",
+			closeOnConfirm: false,
+			closeOnCancel: false ,
+			showLoaderOnConfirm: true }, 
+			function(isConfirm){ 
+				if (isConfirm) {
+									
+					$http({
+						 method: 'POST',
+				          url: '/rest/bidhistory',
+				          data: {
+				          	"auction_id" : id,
+				          	"current_price" : $('#exampleInputAmount').val()
+				          }
+					}).
+					then(function(response){
+						
+						if(response.data.CODE=="0000"){
+							swal({ 
+		        				title: "Please TopUp Amount",
+		        				text: "You cannot bid more because your amount is only " + response.data.DATA + " Riels"+"\n\n"+"To topup, please go to My Account -> Credit Menu",
+		        			    type: "error",
+		        			    closeOnConfirm: false
+	    	  				});
+			    	  		//alert("YOU CANNOT BID MORE. YOUR AMOUNT HAS ONLY " + response.data.DATA);
+			    	  	}else{
+			    	  		swal({ 
+		        				title: response.data.MESSAGE,
+		        			    type: "success",
+		        			    timer : 1000,
+		        			    showConfirmButton : false
+	    	  				});
+	    	  				// Web Socket
+	    	        	  	sendName();
+	    	        	  	// return web socket
+	    	        	  	$('#exampleInputAmount').val("");
+			    	  	}						
+					}).catch(function(response) {
+						swal({ 
+	        				title: "Invalid Amount",
+	        				text: "Your amount is too low",
+	        			    type: "error",
+	        			    closeOnConfirm: false
     	  				});
-    	  				// Web Socket
-    	        	  	sendName();
-    	        	  	// return web socket
-    	        	  	$('#exampleInputAmount').val("");
-    	  			}, 1000); 
-    	  		});
-//    	  		alert(response.data.MESSAGE);
-    	  		
-    	  	}
-    	  	
-    	  	//$scope.getAuctionById();   -- No need to call because we call in sendName() of web socket (page detail.jsp)
-    	  	
-      });
+					})
+					
+					
+					
+					
+					
+					
+					//$scope.findAllSuppliers();
+				} else {
+					swal({
+						title : "Cancelled!", 
+						text : "Your bid is not saved :)", 
+						type : "error",
+						timer : 1000,
+						showConfirmButton : false
+					});
+				}
+			});				
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	//TODO: INSERT BID PRICE TO BID HISTORY 
+//	$scope.addBidPrice = function(){
+//		$http({
+//          method: 'POST',
+//          url: '/rest/bidhistory',
+//          data: {
+//          	"auction_id" : id,
+//          	"current_price" : $('#exampleInputAmount').val()
+//          }
+//      }).then(function (response) {
+//    	  	if(response.data.CODE=="0000"){
+//    	  		alert("YOU CANNOT BID MORE. YOUR AMOUNT HAS ONLY " + response.data.DATA);
+//    	  	}else{
+//    	  		swal({   
+//    	  			title: "Bid Now!",   
+//    	  			text: "Your Amount is $" + $('#exampleInputAmount').val(),   
+//    	  			type: "info",   
+//    	  			showCancelButton: true,   
+//    	  			closeOnConfirm: false,   
+//    	  			showLoaderOnConfirm: true, 
+//    	  		}, function(){   
+//    	  			setTimeout(function(){     
+//    	  				swal({ 
+//	        				title: response.data.MESSAGE,
+//	        			    type: "success",
+//	        			    timer : 1000,
+//	        			    showConfirmButton : false
+//    	  				});
+//    	  				// Web Socket
+//    	        	  	sendName();
+//    	        	  	// return web socket
+//    	        	  	$('#exampleInputAmount').val("");
+//    	  			}, 1000); 
+//    	  		});
+////    	  		alert(response.data.MESSAGE);
+//    	  		
+//    	  	}
+//    	  	
+//    	  	//$scope.getAuctionById();   -- No need to call because we call in sendName() of web socket (page detail.jsp)
+//    	  	
+//      });
+//	}
+	
+	
+	
 	
 	
     $scope.tick = function () {
