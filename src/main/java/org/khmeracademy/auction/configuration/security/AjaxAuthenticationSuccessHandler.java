@@ -9,7 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.EmbeddedWebApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -18,6 +19,10 @@ import org.springframework.stereotype.Component;
 @Component("ajaxAuthenticationSuccessHandler")
 public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
+	// Get port number
+	@Autowired
+	EmbeddedWebApplicationContext server;
+	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
 			throws IOException, ServletException {
@@ -48,7 +53,14 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 		request.getSession().setAttribute("REDIRECT_URL", null);
 		
 		if(roles.contains("ROLE_ADMIN")) {
-			if(redirectURL==null){
+			
+			// localhost:8080/ , we want to get the string "8080/" to compare the server port
+			String str_index_page = redirectURL.substring(redirectURL.length() - 5);
+						
+			// get server port
+			String server_port = server.getEmbeddedServletContainer().getPort()+"/";
+			
+			if(redirectURL==null || str_index_page.equals(server_port) ){
 				return "/admin";
 			}else{
 				return redirectURL;
