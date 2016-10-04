@@ -87,6 +87,9 @@
 						<li><a
 							href="${pageContext.request.contextPath}/admin/bidhistory">Bid
 								History</a></li>
+								
+						<li><a
+							href="${pageContext.request.contextPath}/admin/view_all_bid_winners">All Bid Winners</a></li>		
 					</ul></li>
 				<li class="has_sub"><a href="javascript:void(0)"
 					class="waves-effect"><i class="fa fa-credit-card" aria-hidden="true"></i>

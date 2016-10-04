@@ -7,6 +7,7 @@ import org.khmeracademy.auction.entities.User;
 import org.khmeracademy.auction.entities.input.AddBid;
 import org.khmeracademy.auction.entities.input.AddInvoice;
 import org.khmeracademy.auction.filtering.BidFilter;
+import org.khmeracademy.auction.filtering.SupplierFilter;
 import org.khmeracademy.auction.utils.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -96,6 +97,31 @@ public class BidHistoryController {
 		HttpEntity<AddInvoice> request = new HttpEntity<AddInvoice>(addinvoice, header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL + "/add-invoice", HttpMethod.POST , request , Map.class) ;
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), response.getStatusCode());
+	}
+	
+	// Get all bid winners -- 04/10/2016 -- BY EAN SOKCHOMRERN
+//	@RequestMapping(value="/find-all-bid-winners", method = RequestMethod.GET)
+//	public ResponseEntity<Map<String, Object>> findAllBidWinners(){
+//		
+//		HttpEntity<Object> request = new HttpEntity<Object>(header);
+//		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-all-bid-winners-with-winner-id" , HttpMethod.GET , request , Map.class) ;
+//		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
+//		
+//		
+//	}	
+	
+	// Get all bid winners -- 04/10/2016 -- BY EAN SOKCHOMRERN
+	@RequestMapping(value="/find-all-bid-winners", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> findAllBidWinners(BidFilter filter, Pagination pagination){
+		
+		String url  = UriComponentsBuilder.fromHttpUrl(WS_URL + "/find-all-bid-winners-with-winner-id")
+				.queryParam("page",pagination.getPage())
+				.queryParam("limit", pagination.getLimit())
+				.queryParam("userName", filter.getUserName())
+				.toUriString();
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange( url , HttpMethod.GET , request , Map.class) ;
+		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
 
 }
