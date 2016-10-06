@@ -35,7 +35,7 @@
                   </div>
                   <div class="widget-panel widget-style-2">
                   <i class="md md-add-shopping-cart text-warning"></i>
-                  <h3><b class="counter">1256</b></h3>
+                  <h3 id="allTodayBid"><b class="counter"></b></h3>
                   <div class="m-t-5">Today's Bids</div>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                   </div>
                   <div class="widget-panel widget-style-2">
                     <i class="md md-store-mall-directory text-danger"></i>
-                    <h3><b class="counter">1118</b></h3>
+                    <h3 id="allTodayBiddenProducts"><b class="counter"></b></h3>
                     <div class="m-t-5">Products Auction</div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
                   </div>
                   <div class="widget-panel widget-style-2">
                     <i class="md md-account-child text-custom"></i>
-                    <h2><b class="counter">85</b></h2>
+                    <h3 id="allTodayBidders"><b class="counter"></b></h3>
                     <div class="m-t-5">All Bidder</div>
                   </div>
                 </div>
@@ -72,7 +72,7 @@
                     <i class="md md-attach-money text-white"></i>
                   </div>
                   <div class="text-right">
-                    <h3><b class="counter">31,570</b></h3>
+                    <h3 id="todayTotalRevenue"><b class="counter"></b></h3>
                     <p>Total Revenue</p>
                   </div>
                   <div class="circliful-chart m-b-30" data-dimension="180" data-text="35%" data-info="Total Revenue" data-width="15" data-fontsize="24" data-percent="35" data-fgcolor="#34d3eb" data-bgcolor="#505A66">
@@ -86,7 +86,7 @@
                     <i class="md md-add-shopping-cart text-white"></i>
                   </div>
                   <div class="text-right">
-                    <h3><b class="counter">280</b></h3>
+                    <h3 id="allTodayNewProducts"><b class="counter"></b></h3>
                     <p>Today's New Products</p>
                   </div>
                   <div class="circliful-chart m-b-30" data-dimension="180" data-text="8%" data-info="New Products" data-width="15" data-fontsize="24" data-percent="8" data-fgcolor="#fb6d9d" data-bgcolor="#505A66">
@@ -100,7 +100,7 @@
                     <i class="md md-remove-red-eye text-white"></i>
                   </div>
                   <div class="text-right">
-                    <h3><b class="counter">1,570</b></h3>
+                    <h3><b class="counter">N/A</b></h3>
                     <p>Today's Visits</p>
                   </div>
                   <div class="circliful-chart m-b-30" data-dimension="180" data-text="20%" data-info="Today's Visits" data-width="15" data-fontsize="24" data-percent="20" data-fgcolor="#81c868" data-bgcolor="#505A66">
@@ -113,16 +113,16 @@
             	<div class="col-lg-6">
             		<div class="card-box">
                   <a href="#" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
-            			<h4 class="header-title m-t-0">Recent Bids</h4>
+            			<h4 class="header-title m-t-0">Today Bids</h4>
             			
           			  <div class="table-responsive">
                     <table class="table table-actions-bar">
                       <thead>
                         <tr>
                           <th>Bid_ID</th>
-                          <th>Auction_ID</th>
-                          <th>Username</th>
-                          <th>CurrentPrice</th>
+                          <th>Auc_ID</th>
+                          <th>U_name</th>
+                          <th>Price</th>
                           <th>Bid Date</th>
 <!--                           <th style="min-width: 80px;">Action</th> -->
                         </tr>
@@ -155,38 +155,23 @@
                     <table class="table table-actions-bar">
                       <thead>
                         <tr>
-                          <th>Bid_ID</th>
-                          <th>Auction_ID</th>
-                          <th>Username</th>
-                          <th>CurrentPrice</th>
+                          
+                          <th>Auc_ID</th>
+                          <th>P_Name</th>
+                          <th>U_Name</th>
+                          <th>Price</th>
                           <th>Bid Date</th>
-<!--                           <th style="min-width: 80px;">Action</th> -->
+
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>B001</td>
-                          <td>A001</td>
-                          <td><a href="#">Soa</a></td>
-                          <td>$1,456</td>
-                          <td>08/07/2016</td>
-<!--                           <td> -->
-<!--                             <a href="#" class="table-action-btn"><i class="md md-edit"></i></a> -->
-<!--                             <a href="#" class="table-action-btn"><i class="md md-close"></i></a> -->
-<!--                           </td> -->
-                        </tr>
-
-                        <tr>
-                          <td>B002</td>
-                          <td>A002</td>
-                          <td><a href="#">Sok</a></td>
-                          <td>$6,562</td>
-                          <td>08/07/2016</td>
-<!--                           <td> -->
-<!--                             <a href="#" class="table-action-btn"><i class="md md-edit"></i></a> -->
-<!--                             <a href="#" class="table-action-btn"><i class="md md-close"></i></a> -->
-<!--                           </td> -->
-                        </tr>
+                       	<tr ng-repeat="h in highBidding">
+                          <td ng-cloak>{{h.auction.auction_id}}</td>
+                          <td ng-cloak>{{h.auction.product.product_name}}</td>
+                          <td ng-cloak>{{h.user.user_name}}</td>
+                          <td ng-cloak>{{h.current_price | currency}}</td>
+                          <td ng-cloak>{{h.bid_date}}</td>
+                        </tr>                        
                       </tbody>
                     </table>
                   </div><!-- end table-responsive -->

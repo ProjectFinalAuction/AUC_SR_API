@@ -124,5 +124,8 @@ public class AuctionController {
 		ResponseEntity<Map> response = rest.exchange(url, HttpMethod.GET , request , Map.class) ;
 		return new ResponseEntity<Map<String , Object>>(response.getBody() , HttpStatus.OK);
 	}
+	
+	
+	
 
 }
