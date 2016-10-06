@@ -70,7 +70,7 @@ app.controller('dashboard', function($rootScope, $scope, $http) {
 			url : '/rest/dashboard/find-today-total-revenue',
 			method : 'GET'
 		}).then(function(response){
-			$('#todayTotalRevenue').text(response.data.DATA);
+			$('#todayTotalRevenue').text('$ '+response.data.DATA/4000.0);
 		})
      }
 	$scope.findTodayTotalRevenue();
