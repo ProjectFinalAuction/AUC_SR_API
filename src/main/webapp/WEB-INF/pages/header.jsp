@@ -1,3 +1,15 @@
+<script type="text/javascript"> var continueSite = "http://localhost:8080"</script>
+<script src="http://localhost:2016/static/script/knongdai_login.js"></script>
+
+<sec:authorize access="isAnonymous()" >
+ 	<script type="text/javascript"> isAnonymous(continueSite);  </script>
+</sec:authorize>
+
+
+
+
+
+
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/resources/static/assets/images/auction.ico">
 

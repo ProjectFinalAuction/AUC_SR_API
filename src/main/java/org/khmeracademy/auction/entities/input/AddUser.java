@@ -20,7 +20,14 @@ public class AddUser {
 	private Date created_date;
 	private String comment;
 	private String verified_code;
+	private String user_hash;
 	
+	public String getUser_hash() {
+		return user_hash;
+	}
+	public void setUser_hash(String user_hash) {
+		this.user_hash = user_hash;
+	}
 	public int getUser_id() {
 		return user_id;
 	}

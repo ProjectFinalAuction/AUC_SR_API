@@ -16,9 +16,15 @@
 				<div id="right-head-info" class="col-md-6">
 					<sec:authorize access="!isAuthenticated()">
 					
-						<a class="nav-link" href="${pageContext.request.contextPath}/login" id="loginFrm">
+<%-- 						<a class="nav-link" href="${pageContext.request.contextPath}/login" id="loginFrm"> --%>
+<%-- 							<spring:message code="login"></spring:message>  --%>
+<!-- 						</a> -->
+						
+						<a class="nav-link" href="http://localhost:2016/login?continue-site=http://localhost:8080" id="loginFrm">
 							<spring:message code="login"></spring:message> 
 						</a>
+		
+						
 						<span>&nbsp;|&nbsp; </span>
 					
 						<a class="nav-link" href="${pageContext.request.contextPath}/register"><spring:message code="register"></spring:message></a>
