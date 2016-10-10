@@ -1,9 +1,9 @@
 <script type="text/javascript"> var continueSite = "http://localhost:8080"</script>
-<script src="http://localhost:2016/static/script/knongdai_login.js"></script>
+<!-- <script src="http://localhost:2016/static/script/knongdai_login.js"></script> -->
 
-<sec:authorize access="isAnonymous()" >
- 	<script type="text/javascript"> isAnonymous(continueSite);  </script>
-</sec:authorize>
+<!-- <sec:authorize access="isAnonymous()" > -->
+<!--  	<script type="text/javascript"> isAnonymous(continueSite);  </script> -->
+<!-- </sec:authorize> -->
 
 
 

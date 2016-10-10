@@ -1,5 +1,6 @@
 package org.khmeracademy.auction.service.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +51,8 @@ public class UserServiceImpl implements UserService{
 		HttpEntity<Object> request = new HttpEntity<Object>(login,header);
 		ResponseEntity<Map> response = rest.exchange(WS_URL+"/get-user-by-name/" + user_name, HttpMethod.GET , request , Map.class) ;
 		
+		
+		
 		Map<String, Object> map = (HashMap<String, Object>)response.getBody();
 		System.out.println(map);
 		if(map.get("DATA") != null){
@@ -92,26 +95,34 @@ public class UserServiceImpl implements UserService{
 	public User findUserByUserHash(String userHash) {
 		try{
 			HttpEntity<Object> request = new HttpEntity<Object>(header);
-			ResponseEntity<Map> response = rest.exchange(WS_URL + "/user/find-user-by-user-hash/"+userHash, HttpMethod.POST , request , Map.class);
+			ResponseEntity<Map> response = rest.exchange("http://localhost:9999/api/find-user-by-user-hash/"+userHash, HttpMethod.GET , request , Map.class);
+			//"http://localhost:9999/api/find-user-by-user-hash/"
+			//System.out.println(WS_URL + "/rest/user/find-user-by-user-hash/"+userHash);
+//			
+			//System.out.println(response.getBody());
+			
 			Map<String, Object> map = (HashMap<String, Object>)response.getBody();
 			if(map.get("DATA") != null){
+				
+				//System.out.println("USERT ======== >" + map.get("DATA"));
+				
 				Map<String , Object> data =  (Map<String, Object>) map.get("DATA");
 				List<Role> roles = new ArrayList<>();
 				User u = new User();
-				u.setUser_id((Integer) data.get("ID"));
-				u.setUser_name((String)data.get("USERNAME"));
-				u.setPassword((String) data.get("PASSWORD"));
+				u.setUser_id((Integer) data.get("user_id"));
+				u.setUser_name((String)data.get("user_name"));
+				u.setPassword((String) data.get("password"));
 				//u.setDescription((String) data.get("DESCRIPTION"));
 				//u.setUser_image((String) data.get("USER_IMAGE"));
 				Role role = new Role();
-				role.setRole_name((String)data.get("ROLE"));
+				role.setRole_name((String)data.get("roles.role_name"));
 				roles.add(role);
 					
 				u.setRoles(roles);
 				return u;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return null;
 	}
@@ -135,19 +146,26 @@ public class UserServiceImpl implements UserService{
 		Map<String, Object> userMap = (Map<String, Object>) map.get("DATA");
 		
 		if(userMap != null){
-			//TODO : If user object exists in KhmerAacademy Database, but user doesn't exist in TinhEy Database, so save user object in TinhEy Database
+			//TODO : If user object exists in KhmerAacademy Database, but user doesn't exist in Auction Database, so save user object in Auction Database
 			AddUser user = new AddUser();
 			user.setUser_name((String)userMap.get("USERNAME"));
 			user.setPassword((String)userMap.get("PASSWORD"));
-			//user.setUser_image((String)userMap.get("USER_IAMGE_URL"));
+			user.setEmail((String)userMap.get("EMAIL"));
+			user.setGender((String)userMap.get("GENDER"));
+			
+			user.setPhoto((String)userMap.get("USER_IAMGE_URL"));
+			
+			
 			user.setUser_hash((String)userMap.get("USER_HASH"));
+			user.setStatus((String)userMap.get("STATUS"));
+			user.setVerified_code((String)userMap.get("VERIFICATION_CODE"));
 			//user.setRoles("ROLE_USER");
 			
-			System.out.println("//TODO : If user exists in KhmerAacademy Database, but user doesn't exists in TinhEy Database, so save user in TinhEy Database");
+			System.out.println("//TODO : If user exists in KhmerAacademy Database, but user doesn't exists in Auction Database, so save user in Auction Database");
 			
 			//TODO : Save user from KhmerAcademy into TinhEy Database 
 			HttpEntity<Object> savedRequest = new HttpEntity<Object>(user,header);
-			ResponseEntity<Map> savedResponse = rest.exchange(WS_URL + "/user/register", HttpMethod.POST , savedRequest , Map.class);
+			ResponseEntity<Map> savedResponse = rest.exchange(WS_URL + "/add-user", HttpMethod.POST , savedRequest , Map.class);
 			Map<String, Object> savedMap = (HashMap<String, Object>)savedResponse.getBody();
 			System.out.println("savedMap ====== > " + savedMap);
 			return true;

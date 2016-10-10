@@ -138,4 +138,16 @@ public class UserController {
 				Map.class);
 		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
 	}
+	
+	// Get User By UserName
+	@RequestMapping(value = "/find-user-by-user-hash/{user_hash}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> findUserByUserHash(@PathVariable String user_hash) {
+//		UserLogin login = new UserLogin();
+//		login.setUser_name(user_name);
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(header);
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/find-user-by-user-hash/" + user_hash, HttpMethod.GET, request,
+				Map.class);
+		return new ResponseEntity<Map<String, Object>>(response.getBody(), HttpStatus.OK);
+	}
 }

@@ -20,25 +20,27 @@ public class AutoLoginController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/auto-login" , method= RequestMethod.GET)
-	public String autoLogin(@RequestParam("user-hash") String userHash , @RequestParam(name="continue-site", required=false , defaultValue="http://www.knongdai.com") String continueSite) {
+	public String autoLogin(@RequestParam("user-hash") String userHash , @RequestParam(name="continue-site", required=false , defaultValue="/") String continueSite) {
 		try{
 			
-			//TODO : Find user by user hash from TinhEy Database 
+			//TODO : Find user by user hash from Auction Database 
 			User user = userService.findUserByUserHash(userHash);
+			
 			
 			//TODO : If user doesn't exit in TinhEy Database 
 			if(user == null){
 				//TODO : Get user from KhmerAcademy Database by user hash to save into TinhEy Database 
 				if(userService.registerUser(userHash)){
 					user = userService.findUserByUserHash(userHash);
-					System.out.println("User from KhmerAcademy  has beend saved into TinhEy Database successfully! Username : "+  user.getUsername());
+					System.out.println("User from KhmerAcademy  has beend saved into Auction Database successfully! Username : "+  user.getUsername());
 				}else{
-					System.out.println("User from KhmerAcademy  has not beend saved into TinhEy Database");
+					System.out.println("User from KhmerAcademy  has not beend saved into Auction Database");
 				}
 			}else{
-				System.out.println("User aleady exists in KhmerAcademy and TinhEy Databaes.");
+				System.out.println("User aleady exists in KhmerAcademy and Auction Databaes.");
 			}
 			
+		
 			System.out.println("Username : " + user.getUsername());
 			
 			//TODO : Set User Object into Spring Security Authentication
