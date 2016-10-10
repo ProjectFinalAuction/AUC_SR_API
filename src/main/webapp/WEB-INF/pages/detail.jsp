@@ -163,7 +163,7 @@
 													</button>
 												</sec:authorize> <sec:authorize access="!isAuthenticated()">
 
-													<a href="/login"><button class="btn btn-block"
+													<a href="http://localhost:2016/login?continue-site=http://localhost:8080"><button class="btn btn-block"
 															type="button"
 															style="width: 50%; float: left; background-color: #43b3f3; color: white">
 															<spring:message code="bid_now"></spring:message>

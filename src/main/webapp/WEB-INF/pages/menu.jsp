@@ -27,7 +27,10 @@
 						
 						<span>&nbsp;|&nbsp; </span>
 					
-						<a class="nav-link" href="${pageContext.request.contextPath}/register"><spring:message code="register"></spring:message></a>
+<%-- 						<a class="nav-link" href="${pageContext.request.contextPath}/register"><spring:message code="register"></spring:message></a> --%>
+						<a class="nav-link" href="http://localhost:2016/register?continue-site=http://localhost:8080/register"><spring:message code="register"></spring:message></a>
+						
+						
 						<span>&nbsp;|&nbsp; </span>
 						
 					</sec:authorize>
