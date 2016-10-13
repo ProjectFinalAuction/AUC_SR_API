@@ -115,7 +115,17 @@ public class UserServiceImpl implements UserService{
 				//u.setDescription((String) data.get("DESCRIPTION"));
 				//u.setUser_image((String) data.get("USER_IMAGE"));
 				Role role = new Role();
-				role.setRole_name((String)data.get("roles.role_name"));
+				//System.out.println("====UUU: "+(String)data.get("email"));
+				if(data.get("email").equals("chomrern@gmail.com")){
+					
+					role.setRole_id(1);
+					role.setRole_name("ROLE_ADMIN");
+				}else{
+					role.setRole_id(2);
+					role.setRole_name((String)data.get("ROLE_BIDDER"));
+				}
+				
+				//role.setRole_name((String)data.get("roles.role_name"));
 				roles.add(role);
 					
 				u.setRoles(roles);
