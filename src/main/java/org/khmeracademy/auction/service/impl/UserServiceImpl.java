@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService{
 					role.setRole_name("ROLE_ADMIN");
 				}else{
 					role.setRole_id(2);
-					role.setRole_name((String)data.get("ROLE_BIDDER"));
+					role.setRole_name("ROLE_BIDDER");
 				}
 				
 				//role.setRole_name((String)data.get("roles.role_name"));
